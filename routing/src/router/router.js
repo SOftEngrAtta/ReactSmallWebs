@@ -1,28 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router , 
-    Route , 
-    Link 
-} from 'react-router-dom';
+import { BrowserRouter as Router , Route  } from 'react-router-dom';
+
+import Navbar from '../components/navbar';
+import Home from '../components/home';
+import About from '../components/about';
+import Contact from '../components/contact';
 
 import App from '../App';
-import  HomeComponent  from '../components/home';
-import  AboutComponent  from '../components/about';
-import ContactComponent from '../components/contact';
 
 const CustomRoutes = ()=>(
+
     <Router>
         <div>
-            <Link to='/home'>Home</Link>
-            <Link to='/about'>About</Link>   
-            <Link to='/contact'>Contact</Link>   
-               
-            <Route exact path="/" component={App}></Route>
-            <Route path="/home" component={ HomeComponent }></Route>
-            <Route path="/about" component={ AboutComponent }></Route>
-            <Route path="/contact" component={ ContactComponent }></Route>
-            
+            <Navbar />
+            <Route exact path="/" component={ App }></Route>
+            <Route exact path="/home" component={ Home }></Route>     
+            <Route exact path="/about" component={ About }></Route>     
+            <Route exact path="/contact" component={ Contact }></Route>     
+                 
         </div>
     </Router>
+
 )
 
-export default CustomRoutes ;
+export default CustomRoutes;
