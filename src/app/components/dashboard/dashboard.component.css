@@ -1,0 +1,75 @@
+#submittedpop , #addmorefundpop, #submittedpop3{
+    margin-top: 50px;
+}
+#upc-paypop{
+    padding: 4%;
+    margin-top:30px;
+}
+
+.pay-cls{
+    text-align: center;
+	color: #fff;
+	border-radius: 20px;
+	display: block;
+	padding: 6px 30px;
+	font-size: 13px;
+	background: rgb(243, 111, 111);
+	background: -webkit-gradient(linear, left top, right top, from(rgba(243, 111, 111, 1)), to(rgba(240, 56, 56, 1)));
+	background: linear-gradient(to right, rgba(243, 111, 111, 1) 0%, rgba(240, 56, 56, 1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f36f6f', endColorstr='#f03838', GradientType=1);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.my-fav-inner{
+    display: inline-flex;
+}
+.my-fav{
+	min-height:282px;
+}
+.recent-activity{
+	min-height:282px;
+}
+.display-msg{
+	color: #414062;
+    font-size: 21px;
+    font-weight: 300;
+    padding: 23px 30px;
+    margin: 0px;
+    text-align: center;
+}
+
+
+.disable-btn {
+	background: #2d2d2d61;
+    border: none;
+}
+.loader-cls{
+	width: 20px;
+    margin-left: 20px;
+}
+.recent-activity-css{
+	/* padding: 0; */
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.recent-activity-css li{
+	padding: 0;
+}
+.recent-activity-css .title-descr{
+	text-align: left;
+}
+.avlfund-amount-det>ul>li {
+	padding-left: 10px !important;
+	width : 25%;
+}
+
+
+@media screen and (max-width:568px) {
+	.avlfund-amount-det>ul>li {
+		padding-left: 10px !important;
+		width : 100%;
+	}
+	.pay-met h3{
+		padding-bottom: 10px;	
+	}
+}

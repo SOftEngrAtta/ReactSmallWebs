@@ -1,0 +1,137 @@
+
+
+  <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/slick.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/style-detail.css">
+
+  <link rel="stylesheet" type="text/css" href="/assets/css/fancybox.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+
+<div class="option_steps">
+  <div class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="logo">
+            <img src="/assets/images/logo-car-detail.png" alt="" />
+          </div>
+          <div class="tagline" *ngIf="documentTypeId == 's5J8N3lqkeE='">{{ details?.AuctionHouseName }}</div>
+          <div class="tagline" *ngIf="documentTypeId == 'KXS0ZqjE6PU='">Arrived at Autorod's Yard</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mnheight" id="slider">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>{{ details.ModelYear }} {{ details.Make }} {{ details.Model }}</h1>
+      </div>
+      <div class="col-md-2 col-lg-2 col-sm-12 hide_1198">
+        <div>
+          <ul class="slidescar-thumbs">
+            <ngx-slick class="carousel" id="slick1" #slickModal="slick-modal" [config]="slideConfig">
+              <li ngxSlickItem *ngFor="let item of details.DocumentImages; let i = index">
+                <a href="javascript:;" class="" >
+                  <img src="{{ item.Images }}" alt="" style="width: 100% !important"/>
+                </a>
+              </li>
+            </ngx-slick>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-sm-12 resp_watermark">
+        <div class="cars_slider centerslides-slk">
+          <ngx-slick class="carousel" id="slick2" #slickModal="slick-modal" [config]="slideConfig2">
+            <a data-fancybox="gallery" href="{{ item.Images }}" ngxSlickItem *ngFor="let item of details.DocumentImages; let i = index">
+              <img src="{{ item.Images }}" alt="" />
+            </a>
+          </ngx-slick>
+        </div>
+        <div class="cars_slider_bottom">
+          <div>
+            <img src="/assets/images/small-logo.png" alt="" />
+            <div class="cta_outer">              
+                <!-- <span><i class="whatsapp">&nbsp;</i>+81 80 6647 2534</span> -->
+              <span>
+                <i class="phone">&nbsp;</i>+81 3 4560 2331</span>
+            </div>
+          </div>
+        </div>
+        <div class="cars_slider_thumbnails_hrz_outer thumbshrz-slides"  *ngIf="documentTypeId == 'KXS0ZqjE6PU='">
+          <ul class="slides_pne cars_slider_thumbnails_hrz">
+            <ngx-slick class="carousel" id="slick3" #slickModal="slick-modal" [config]="slideConfig3">
+              <li class="four" ngxSlickItem *ngFor="let item of details.DocumentImages; let i = index">
+                <a href="javascript:;">
+                  <img src="{{ item.Images }}" alt="" style="width: 100% !important"/>
+                </a>
+              </li>
+            </ngx-slick>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 col-sm-12">
+        <h2>Vehicle Specifications</h2>
+        <div class="features">
+          <ul>
+            <li class="ico1" *ngIf="details.MfgYear">
+              <span>Mfg. Year</span>
+              <strong>{{ details.MfgYear }}</strong>
+            </li>
+            <li class="ico2" *ngIf="details.Registration">
+              <span>Registration</span>
+              <strong>{{ details.Registration }}</strong>
+            </li>
+            <li class="ico3" *ngIf="details.Package">
+              <span>Package</span>
+              <strong>{{ details.Package }}</strong>
+            </li>
+            <li class="ico4" *ngIf="details.Color">
+              <span>Color</span>
+              <strong>{{ details.Color }}</strong>
+            </li>
+            <li class="ico5" *ngIf="details.Engine">
+              <span>Engine</span>
+              <strong>{{ details.Engine }} CC</strong>
+            </li>
+            <li class="ico6" *ngIf="details.BodyType">
+              <span>Body Type</span>
+              <strong>{{ details.BodyType }}</strong>
+            </li>
+            <li class="ico7" *ngIf="details.Equipment">
+              <span>Equipment</span>
+              <strong>{{ details.Equipment }}</strong>
+            </li>
+            <li class="ico8" *ngIf="details.Mileage">
+              <span>Mileage</span>
+              <strong>{{ details.Mileage }} KM</strong>
+            </li>
+            <li class="ico9" *ngIf="details.Transmission">
+              <span>Transmission</span>
+              <strong>{{ details.Transmission }}</strong>
+            </li>
+            <li class="ico10" *ngIf="details.Drive">
+              <span>Drive</span>
+              <strong>{{ details.Drive }}</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">COPYRIGHTS &copy; 2018 Autorod CO., LTD. ALL RIGHTS RESERVED
+        </div>
+        <div class="col-sm-6 text-right">
+          <a href="https://www.autorod.com/privacy-policy/" target="_blank">Privacy Policy</a> &nbsp; | &nbsp;
+          <a href="https://www.autorod.com/terms-conditions/" target="_blank">Terms &amp; Conditions</a> &nbsp; | &nbsp;
+          <a href="https://www.autorod.com/terms-of-trade/" target="_blank">Terms of Trade</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>

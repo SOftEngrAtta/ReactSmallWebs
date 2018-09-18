@@ -1,0 +1,293 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('../node_modules/toastr/build/toastr.min.css');
+@import url('../node_modules/slick-carousel/slick/slick.css');
+@import url('../node_modules/slick-carousel/slick/slick-theme.css');
+@import url('../node_modules/flag-icon-css/css/flag-icon.css');
+@import url('//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+@import url('./assets/css/font-awesome/css/font-awesome.min.css');
+@import url('./assets/css/hover.css');
+@import url('./assets/css/select.css');
+@import url('./assets/css/flat/blue.css');
+@import url('./assets/css/popup.css');
+@import url('./assets/css/daterangepicker.css');
+@import url('./assets/css/introjs.min.css');
+@import url('./assets/css/style.css');
+@import url('./assets/icons/style.css');
+@import url('./assets/css/style-quotation.css');
+@import url('./assets/css/_search-area.css');
+/* INVOICES STYLE LINKS */
+@import url('https://www.autorod.com/Assets/css/style-invoice.css');
+@import url('https://www.autorod.com/Assets/css/normalize.css');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,800');
+
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import url('./assets/css/ngx-datatable.css');
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+@import '~@ng-select/ng-select/themes/default.theme.css';
+
+.nav-active {
+  background-color: #fff;
+  border-radius: 3px;
+  color: #2c2c2c !important;
+}
+
+/* generic classes */
+
+.hand-tool {
+  cursor: pointer;
+  line-height: 12px;
+}
+.main_login {
+  background: url('/assets/login/login-bg.jpg');
+  background-size: cover;
+  height: auto;
+}
+.modal.show.fade {
+  opacity: 1 !important;
+  background: #00000069;
+}
+.modal.show.fade .modal-dialog {
+  transform: translate(0, 50%);
+}
+.star-clr {
+  color: red;
+}
+/* end */
+
+.ngx-datatable.fixed-header
+  .datatable-header
+  .datatable-header-inner
+  .datatable-header-cell {
+  border: 2px solid #f2f2f2;
+}
+
+.viewquotebtn a {
+  padding: 8px;
+  width: 100%;
+  margin-top: 17px;
+  border-radius: 2px;
+  color: #fff;
+  border: 0px;
+  background: #4246a4;
+  display: block;
+  text-align: center;
+}
+/* .membership_type li{
+	margin-left: 20px;
+} */
+.membership_type li:not(:first-child) {
+  margin-left: 30px;
+}
+
+.slpopdet-sel-inner .slpopdet-sel-eval .slpopdet-sel-eval-inner input {
+  width: 30%;
+}
+
+/* disabled field class */
+.disable-field-cls {
+  background-color: #85858547 !important;
+}
+
+/* ----- */
+
+/*  */
+
+.centerslides-slk .slick-arrow {
+  position: absolute;
+  z-index: 991;
+  top: 0px;
+  width: 30px;
+  height: 120px;
+  border: 0px;
+  font-size: 0px;
+  top: 49%;
+  margin-top: -60px;
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  ) !important;
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  ) !important;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  ) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99000000', endColorstr='#99000000', GradientType=0 ) !important;
+  transform: initial;
+}
+.centerslides-slk .slick-arrow:before {
+  content: ' ';
+  display: block;
+  height: 40px;
+  width: 30px;
+  background-image: url(/assets/images/detail-sprites.png);
+  background-repeat: no-repeat;
+  background-position: -226px -10px;
+}
+.centerslides-slk .slick-prev {
+  left: 0px;
+}
+.centerslides-slk .slick-next {
+  right: 0px;
+}
+.centerslides-slk .slick-next.slick-arrow:before {
+  background-position: -271px -10px;
+}
+.slidescar-thumbs .slick-slide img {
+  border: 3px solid transparent;
+}
+.slidescar-thumbs {
+  overflow: hidden;
+}
+.slidescar-thumbs .slick-current img,
+.thumbshrz-slides .slick-current img {
+  border: solid 3px #ec1c24;
+  -webkit-box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  width: initial !important;
+}
+.slidescar-thumbs li img {
+  margin: 0 0 17px 0;
+}
+
+.modal.show.fade .modal-dialog {
+  -webkit-transform: translate(0, 0%);
+  transform: translate(0, 0%);
+}
+@media screen and (max-width: 991px) {
+  .profile-sect ul li img{
+		height:40px;
+  }
+  .cbp-spmenu>ul.responsenav>li.logoutb{
+    margin:0px;
+  }
+}
+@media screen and (max-width: 667px) {
+  .slct-ship-det-inner{
+    padding:15px 30px 0px 15px
+  }
+  .slct-ship-det-inner .typ{
+    padding-bottom:0px;
+  }
+}
+@media screen and (max-width: 568px) {
+
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager{
+  margin:4px  10px 0 0px !important;
+}
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li{
+  margin:0px !important;
+}
+.ngx-datatable .datatable-footer .datatable-footer-inner{
+height:70px !important;
+}
+
+}
+@media screen and (max-width: 375px) {
+  .upc-paypop.upc-pay-page.dash-change-password{
+    width:350px;
+  }
+  #loginForm{
+    width:360px !important;
+  }
+  .remember_me{
+    display:none;
+  }
+}
+@media screen and (max-width: 360px) {
+	.upc-paypop.upc-pay-page.dash-change-password{
+    width:335px;
+  }
+
+  #loginForm{
+    width:340px !important;
+  }
+
+}
+@media screen and (max-width: 320px) {
+	.upc-paypop.upc-pay-page.dash-change-password{
+    width:295px;
+  }
+  .fancybox-slide>div.slct-ship-det{
+    width:295px;
+  }
+  #loginForm{
+    width:300px !important;
+  }
+}
+
+/* image upload  button css */
+.image-car-uploader > .img-ul{
+  background: none;
+  border: none;
+}
+.img-ul-upload{
+  background-color:none;
+  background-image: url('assets/images/browse-car.png');
+  width: 119px;
+  height: 71px;
+  cursor: pointer;
+}
+.img-ul-upload>span,.img-ul-drag-box-msg ,.img-ul-clear{
+  display: none !important;
+}
+.image-car-uploader{
+  display: inline-flex;
+}
+
+/* date picker */
+.wc-date-container{
+  display: block;
+  font-size: 12px !important;
+  color: #6b6b6b;
+  font-weight: 600;
+  width: 100% !important;
+  padding: 6px 10px !important;
+  margin-bottom: 19px !important;
+  border-radius: 20px;
+  border: 1px solid #c2c2c2 !important;
+}
+.wc-date-container span{
+  color: #6b6b6b !important;
+}
+.wc-date-container i{
+  float: right;
+  font-size: 15px !important;
+  color: #6b6b6b !important;
+}
+/* .wc-banner , .wc-details , .year-title , .calendar-day span{
+  background: #6b6b6b !important;
+} */
+/* end */
+
+#toast-container>.toast-success{
+  background-image: none !important;
+}
+
+
+
+/* bid status color */
+.orange-color{
+  color:#f5ba2b !important;
+}
+.green-color{
+  color: #1ba96b !important;
+}
+.red-color{
+  color: #e93d3f !important;
+}
+/* end */
+
+/* search-css */
+.datatable-body-cell-label{
+  margin-top: 10px;
+}
+/* end */
+
+

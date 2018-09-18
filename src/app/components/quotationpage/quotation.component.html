@@ -1,0 +1,689 @@
+<section class="headertopsect">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12 nopad_xs_right ">
+                <div class="logo">
+                    <a class="responsenav icon-menu-mob toggle-menu menu-left jPushMenuBtn" href="javascript:;">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                        <!--<img src="/assets/images/menu.png">-->
+                    </a>
+                    <a href="javascript:;">
+                        <img src="/assets/images/autorod-images/logo.png" alt="" class="img-responsive" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 nopad_xs_left nopad_sm_right nopad_sm_left">
+                <div class="main-currency-sec">
+                    <ul>
+                        <li>
+                            <div class="time-sec">
+                                <span class="japan-time">JAPAN TIME:</span>
+                                <span class="time">9:45:21</span>
+                                <P>CURRENCY RATE:1 USD =
+                                    <span>109.10 JPY</span>
+                                </P>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="number">
+                                <span class="tw27">24/7</span>
+                                <span class="sales">Sales and Support</span>
+                                <p>+81 3 4560 2331</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="quotetpsect quo-sld-bg" *ngIf="mulitImagesSlider.length > 1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 ordr-panledetail1 ordr-quotenew hglt frty">
+                <ul class="order-detail-cars-list">
+                    <li  *ngFor="let img of mulitImagesSlider" [ngClass]="{ 'booked' : (img.booked == true) , 'active' : img.index == selectedIndex }" (click)="selectitem(img)">
+                        <a href="javascript:;" class="active">
+                            <img [src]="img.path  | splitimage ">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="main-mombasa">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="flag-mom">
+                        <p> <span *ngIf="selectedCar?.CountryFlag" class="flag-icon flag-icon-squared" [ngClass]="selectedCar?.CountryFlag"></span> {{ quoDetail?.PortName }}
+                            <span>, {{ quoDetail?.CountryName }}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <div class="gen-date gen-date1">
+                        <p>
+                            <img src="/assets/images/autorod-images/membership-icon.png" alt="" /> Membership:
+                            <span> {{ selectedCar?.QuotationDetailDataDTO[0]['MembershipName'] }} Membership </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <div class="gen-date">
+                        <p>
+                            <img src="/assets/images/autorod-images/gen-icon.png" alt="" /> Generated Date :
+                            <strong>{{ selectedCar?.QuotationData?.SentDate | date}}</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                <div class="main-left-section nquotepage">
+
+                    <div class="slider-div" >
+                        <div class="slide-thumb-img">
+                            <div class="slider slider-for">
+                                <div *ngFor="let img of imagesSlider" >
+                                    <span class="hand-tool">
+                                        <a [href]="img | splitimage" data-fancybox="gallery1" fancybox-button--zoom="" data-caption="" tabindex="0">
+                                            <img [src]="img | splitimage" />
+                                        </a>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="slide-main-img">
+                            <div class="slider slider-nav">
+                                <div  *ngFor="let img of imagesSlider">
+                                    <div class="hand-tool">
+                                        <img [src]="img | splitimage" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="main-map-img-vehicle">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="main-vehicle-sec">
+                                    <div class="vehicle-sec">
+                                        <h2>Vehicle Specification</h2>
+                                        <ul>
+                                            <li><span><img src="/assets/images/autorod-images/mfg-icon.png"/></span><span class="chas">Mfg.Year</span><p>--</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/bodytype-icon.png"/></span><span class="chas">Body Type</span><p>--</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/transmission-icon.png"/></span><span class="chas">Transmission</span>
+                                                <p>{{ selectedCar?.AuctionData?.Transmission || '--' }}</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/mileage-icon.png"/></span><span class="chas">Mileage</span>
+                                                <p>{{ selectedCar?.AuctionData?.Mileage || '--' }}</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/condition-icon.png"/></span><span class="chas">Condition</span>
+                                                <p>{{ selectedCar?.AuctionData?.Rate || '--' }}</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/registration-icon.png"/></span><span class="chas">Registration</span>
+                                                <p>{{ selectedCar?.AuctionData?.Year || '--' }}</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/auctiongrade-icon.png"/></span><span class="chas">Auction Grade</span>
+                                                <p>--</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/equipment-icon.png"/></span><span class="chas">Equipment</span>
+                                                <p>{{ selectedCar?.AuctionData?.Equipment || '--' }}</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/dimenssion-icon.png"/></span><span class="chas">Dimension</span>
+                                                <p>--</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/fuel-icon.png"/></span><span class="chas">Fuel</span>
+                                                <p>--</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/m3-icon.png"/></span><span class="chas">M3 of Car</span>
+                                                <p>{{ selectedCar?.AuctionData?.Dimension || '--' }} m<sup>3</sup></p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/engine-icon.png"/></span><span class="chas">Engine CC</span>
+                                                <p>{{ selectedCar?.AuctionData?.EngineCC || '--' }}</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/drive-icon.png"/></span><span class="chas">Drive</span>
+                                                <p>{{ selectedCar?.AuctionData?.PRIV || '--' }}</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/color-icon.png"/></span><span class="chas">Color</span>
+                                                <p>{{ selectedCar?.AuctionData?.Color || '--' }}</p>
+                                            </li>
+                                            <li><span><img src="/assets/images/autorod-images/doors-icon.png"/></span><span class="chas">Doors</span>
+                                                <p>--</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="main-right-section">
+                    <div class="toyo-allex">
+                        <h2>{{ selectedCar?.AuctionData?.Make }} {{ selectedCar?.AuctionData?.Model }} {{ selectedCar?.AuctionData?.Year}}
+                        </h2>
+                        <ul>
+                            <li><span><img src="/assets/images/autorod-images/chassis-icon.png" alt="" /></span><span class="chas">Chassis ID</span>
+                                <p [title]="selectedCar?.AuctionData?.Body" class="width-para">{{ selectedCar?.AuctionData?.Body || '--' }}</p>
+                            </li>
+                            <li><span><img src="/assets/images/autorod-images/package-icon.png" alt="" /></span><span class="chas">Package</span>
+                                <p [title]="selectedCar?.AuctionData?.Grade" class="width-para" [innerHTML]="selectedCar?.AuctionData?.Grade"></p>
+                            </li>
+                        </ul>
+                        <div class="sup-saver">
+                            <ul>
+                                <li [ngClass]="{'up-active' : (i == 0)}" *ngFor="let plan of selectedCar?.QuotationDetailDataDTO; let i = index" (click)=" displayPlanIndex = i ">
+                                    <p>{{ plan.PlanName }}</p>
+                                    <span>{{ plan.PlanPercentOff }}% UPFRONT</span>
+                                    <i class="fa fa-caret-down"></i>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="main-super-saver">
+                        <!-- main-mig-saver main-big-saver -->
+                        <div class="super">
+                            <ul>
+                                <li>
+                                    <div class="payment">
+                                        <h3>{{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['PlanName'] }}</h3>
+                                        <span>{{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['PlanPercentOff'] }}% UPFRONT
+                                            PAYMENT
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="jpy-usd">
+                                        <ul class="language demo-intro cur-ul">
+                                            <li [ngClass]="{'ac' : activecurrency == 'JPY' }" (click)="selectedcurrency('JPY')">
+                                                <a href="javascript:;">JPY</a>
+                                            </li>
+                                            <li [ngClass]="{'ac' : activecurrency == 'USD' }" (click)="selectedcurrency('USD')">
+                                                <a href="javascript:;">USD</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bid-price">
+                            <ul>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['BidPrice'] && !isCnfBase">
+                                    Bid Price
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['BidPrice'] && !isCnfBase">
+                                    <span>
+                                        {{ activecurrency }}
+                                    </span>
+                                    {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['BidPrice'] | roundoffhtmlnumber | number }}
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['ServiceCharges'] && !isCnfBase">
+                                    Services Charges
+                                </li>
+                                
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['ServiceCharges'] && !isCnfBase">
+                                    <span>
+                                        {{ activecurrency }}
+                                    </span>
+                                    {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['ServiceCharges'] | roundoffhtmlnumber | number }}
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['TotalAdditionalCharges'] && selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['TotalAdditionalCharges'] != null ">Additional Charges<span class="hlp-icon">
+                                        <a href="javascript:;">
+                                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                    <div class="popshd" >
+                                    <div class="popshd-inner">
+                                        <a class="close-popshd" href="javascript:;">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                        <table>
+                                            <tbody>
+                                                <tr *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['AlterationCharges']">
+                                                    <td>ALTERATION CHARGES</td>
+                                                    <td>
+                                                        <span class="current-currency">
+                                                            {{ activecurrency }}
+                                                        </span> {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['AlterationCharges'] | roundoffhtmlnumber | number }}
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['RikusoFee']">
+                                                    <td>ADDITIONAL RIKUSO</td>
+                                                    <td>
+                                                        <span class="current-currency">{{ activecurrency }}</span> {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['RikusoFee'] | roundoffhtmlnumber | number }}
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['ExtraFee']">
+                                                    <td>AUCNET CHARGES</td>
+                                                    <td>
+                                                        <span class="current-currency">{{ activecurrency }}</span> {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['ExtraFee'] | roundoffhtmlnumber | number }}</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>TOTAL</th>
+                                                    <th>
+                                                        <span class="current-currency">{{ activecurrency }}</span> {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['TotalAdditionalCharges'] | roundoffhtmlnumber | number }}</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['TotalAdditionalCharges'] && selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['TotalAdditionalCharges'] != null ">
+                                    <span>
+                                        {{ activecurrency }}
+                                    </span> 
+                                    {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['TotalAdditionalCharges'] | roundoffhtmlnumber | number }}
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['InspectionCharges'] && !isCnfBase">
+                                    Inspection
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['InspectionCharges'] && !isCnfBase">
+                                    <span>
+                                        {{ activecurrency }}
+                                    </span>
+                                    {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['InspectionCharges'] | roundoffhtmlnumber | number }}
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['OnePriceFee'] && !isCnfBase">
+                                    One Price
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['OnePriceFee'] && !isCnfBase">
+                                    <span>
+                                        {{ activecurrency }}
+                                    </span>
+                                    {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['OnePriceFee'] | roundoffhtmlnumber | number }}
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['VanningCharges'] && !isCnfBase">
+                                    Vanning Charges
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['VanningCharges'] && !isCnfBase">
+                                    <span>
+                                        {{ activecurrency }}
+                                    </span>
+                                    {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['VanningCharges'] | roundoffhtmlnumber | number }}
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['FOB']">
+                                    FOB of Unit
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['FOB']">
+                                    <span>
+                                        {{ activecurrency }}
+                                    </span>
+                                    {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['FOB'] | roundoffhtmlnumber | number }}
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['FreightCharges'] && selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['FreightCharges'] != null ">
+                                    Freight
+                                </li>
+                                <li *ngIf="selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['FreightCharges'] && selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['FreightCharges'] != null ">
+                                    <span>
+                                        {{ activecurrency }}
+                                    </span>
+                                    {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['FreightCharges'] | roundoffhtmlnumber | number }}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="cnf-total">
+                            <div class="pri-cn">
+                                <ul>
+
+                                    <li *ngIf="quoDetail?.CountryName != 'Sri Lanka' && quotationDetail && quotationDetail.length && quotationDetail[0]['QuotationData']['ShipmentTermId'] != 1 && (!isCnfBase || isCnfBase)">
+                                        Total CNF Price
+                                    </li>
+                                    <li *ngIf="quoDetail?.CountryName == 'Sri Lanka' && quotationDetail && quotationDetail.length && quotationDetail[0]['QuotationData']['ShipmentTermId'] != 1">
+                                        Total CIF Price
+                                    </li>
+                                    <li *ngIf="quotationDetail && quotationDetail.length && quotationDetail[0]['QuotationData']['ShipmentTermId'] == 1 && !isCnfBase">
+                                        FOB Price
+                                    </li>
+                                    <li>
+                                        {{ activecurrency }} {{ selectedCar?.QuotationDetailDataDTO[displayPlanIndex]['CNF'] | roundoffhtmlnumber | number}}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="inq-book-btns">
+                                <ul>
+                                    <li><button class="inq-btn" type="button" (click)="openInquireNowPopUp()">Inquire Now</button></li>
+                                    <li><button class="book-btn" type="button" (click)="bookNow(selectedCar?.QuotationDetailDataDTO[displayPlanIndex])">Book This or Similar</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="main-production">
+                        <div class="pro-deatils">
+                            <h3>PRODUCTION DEATAILS</h3>
+                        </div>
+                        <div class="pro-inp">
+                            <select [(ngModel)]="manufactureYearCheck.makerId">
+                                <option selected disabled value="">Select Option</option>
+                                <option *ngFor="let make of makers" [value]="make.id">
+                                    {{make.name}}
+                                </option>
+                            </select>
+                            <div class="nze">
+                                <input type="text" name="" placeholder="Enter Here" [(ngModel)]="manufactureYearCheck.chassisNo">
+                            </div>
+                            <div class="find-btn">
+                                <span class="year-month-css" *ngIf="manufactureDetail && manufactureDetail.year && manufactureDetail.month">Year : <strong>{{ manufactureDetail.year}}</strong> , Month :<strong>{{ manufactureDetail.month }}</strong></span>
+                                <span class="err-display" *ngIf="manufactureDetail?.message">Message :
+                                    <strong>{{ manufactureDetail?.message }}</strong>
+                                </span>
+                                <span class="err-display" *ngIf="manufactureDetail == null ">Message : Not Found</span>
+                                <img class="loader-css" *ngIf="productionloader" src="/assets/images/quotation-page-loader.gif" alt="">
+                                <button type="button" (click)="findProduction()">Find</button>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="copy-rights">
+                    <p>COPYRIGHTS © 2018 AUTOROD JAPAN CO., LTD. ALL RIGHTS RESERVED</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- inquire now -->
+<app-inquire [InquireNow]="inquirenow"></app-inquire>
+
+
+<!-- modals -->
+<div id="quotationReqTranslation" class="OrderCreation translate-inspect" [style.margin-top.px]="10">
+    <div class="translate-inspect-hd">
+        <h3>Request Translationof Auction Sheet</h3>
+    </div>
+    <div class="req-auct-det">
+        <ul>
+            <li>
+                <span>Make</span>
+            </li>
+            <li>
+                <strong>{{ selectedCar?.AuctionData?.Make }}</strong>
+            </li>
+            <li>
+                <span>Year</span>
+            </li>
+            <li>
+                <strong>{{ selectedCar?.AuctionData?.Year}}</strong>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <span>Model</span>
+            </li>
+            <li>
+                <strong>{{ selectedCar?.AuctionData?.Model }}</strong>
+            </li>
+            <li>
+                <span>Chassis</span>
+            </li>
+            <li>
+                <strong>{{ selectedCar?.AuctionData?.Body }} </strong>
+            </li>
+        </ul>
+    </div>
+
+    <div class="trans-features trans-footer">
+        <ul>
+            <li>
+                <label class="hand-tool" (change)="selectalltrans(requesttranslationOptions[0]['isSelected'])">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[0]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[0]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[1]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[1]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[2]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[2]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[3]['isSelected']">
+
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[3]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[4]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[4]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[5]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[5]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[6]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[6]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[7]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[7]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[8]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[8]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[9]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[9]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[10]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[10]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[11]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[11]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[12]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[12]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[13]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[13]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[14]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[14]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[15]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[15]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[16]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[16]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[17]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[17]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[18]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>{{ requesttranslationOptions[18]['name'] }}</span>
+                </label>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[19]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>{{ requesttranslationOptions[19]['name'] }}</span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[20]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>{{ requesttranslationOptions[20]['name'] }}</span>
+                </label>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[21]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>{{ requesttranslationOptions[21]['name'] }}</span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[22]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>{{ requesttranslationOptions[22]['name'] }}</span>
+                </label>
+            </li>
+        </ul>
+        <div align="center">
+            <button class="submitbtn-request" (click)="reqTeanslatedSheet()">Submit Request</button>
+
+        </div>
+    </div>
+</div>
+<!-- end -->

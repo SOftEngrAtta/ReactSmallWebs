@@ -1,0 +1,12 @@
+{
+    "chj_pro_url": {
+        "chjPort850" : "https://area.autorod.com/data/api/",
+        "chjPort8051" : "https://www.autorod.com/pricing/api/",
+        "chjPort81" : "https://www.autorod.com/auctioncenter/api/",
+        "chjPortADMIN" : "https://www.autorod.com/stock/api/",
+        "manufacDetail" : "https://www.stradingjapan.com/api/"
+    },
+    "pro_v2_key" : {
+        "key" : "ATR-003" 
+    }
+}

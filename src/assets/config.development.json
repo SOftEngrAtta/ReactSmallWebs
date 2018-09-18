@@ -1,0 +1,12 @@
+{
+    "chj_dev_url": {
+        "chjPort850" : "http://devserver:650/api/",
+        "chjPort8051" : "http://devserver:89/api/",
+        "chjPort81" : "http://devserver:81/api/",
+        "chjPortADMIN" : "http://devserver:700/api/",
+        "manufacDetail" : "https://www.stradingjapan.com/api/"
+    },
+    "dev_v2_key" : {
+        "key" : "ATR-003" 
+    }
+}

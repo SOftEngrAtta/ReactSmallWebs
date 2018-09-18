@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="clearfix"></div>
+<section>
+	<div class="container">
+    	<div class="row">
+        	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            	<div class="resutl">
+                	<h5><strong>Notifications</strong><span>{{ notifications.length }}</span></h5>
+            	</div>
+            </div>
+            </div>
+            <div class="row" align="center">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" *ngIf="notifications.length">
+                    <div class="notif-list">
+                        <ul class="notifhd">
+                            <li></li>
+                            <li>Details</li>
+                            <li>Order ID</li>
+                            <li>Date</li>
+                            <li>Action</li>
+                        </ul>
+                        <ul class="notifdet" *ngFor="let notification  of notifications">
+                            <li><img src="/assets/images/exportdoc-icon.png"></li>
+                            <li>
+                                <h5>
+                                    {{ notification.Title }}
+                                </h5>
+                                <span>
+                                    {{ notification.Description }}    
+                                </span>
+                            </li>
+                            <li>
+                                {{ notification.OrderId || '--' }}
+                            </li>
+                            
+                            <li>
+                                {{ notification.Date | date }}
+                            </li>
+                            <li *ngIf="notification.ActionUrl">
+                                <a href="javascript:;" class="view-order" (click)="openlink(notification.ActionUrl)">View</a>
+                            </li>
+                            <li *ngIf="!notification.ActionUrl">
+                                --
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+                <div *ngIf="notifications.length == 0">
+                    No record found
+                </div>
+        	</div>
+            <div class="row">
+            	<div class="col-lg-4 resutl">
+           
+        		</div>
+                <div class="col-lg-8 text-right ">
+                <!-- <div class="mnpage">
+                    <span class="showrslts">Showing 1 - 10 of 123 Records</span>
+                    <ul id="pagination-dm" class="pagination-sm"></ul>
+                </div> -->
+                </div>
+            </div>
+    </div>
+</section>

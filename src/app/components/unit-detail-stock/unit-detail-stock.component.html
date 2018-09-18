@@ -1,0 +1,318 @@
+<app-header></app-header>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-sm-6">
+                <ul class="breadcrumb breadcrumb-cstm">
+                    <li class="breadcrumb-item">
+                        <a href="/">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="javascript:;">Vehicle Detail</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="javascript:;">{{ stockdetails?.Make }} {{ stockdetails?.Model }} {{ stockdetails?.Year }}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <ul class="pr-fav">
+                    <li (click)="favUnfav(1)"><a href="javascript:;" class="fav">Add to Favourite</a></li>
+                </ul>
+            </div>
+            <div class="line-bt"></div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-7">
+                <div class="car-slides-main">
+                    <div class="car-slides-main-hd">
+                        <h3>{{ stockdetails?.Make }} {{ stockdetails?.Model }} {{ stockdetails?.Year }}</h3>
+                        <p>
+                            <span>REF #</span>
+                            <strong>{{getStockDetailFromParents.ReferenceId}}</strong>
+                        </p>
+                    </div>
+                    <div class="car-slides-main-cont">
+                        <div class="big-slide-images">
+                            <div class="item" *ngFor="let items of vehicleImages;let i = index;">
+                                <img src="{{ items }}">
+                                <span *ngIf="stockdetails?.PublicStatusId == 3" class="labls inn sld">Sold</span>
+                                <span *ngIf="stockdetails?.PublicStatusId == 5" class="labls inn rsrvd">Reserved</span>
+                            </div>
+
+                        </div>
+                        <div class="small-slide-images">
+                            <div class="item" *ngFor="let items of vehicleImages;let i = index;">
+                                <img src="{{ items }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="stand-feature" >
+                    <div class="stand-feature-hd">
+                        <h3>PRICE Detail</h3>
+                    </div>
+                    <div class="car-detail-content" *ngIf="!isCustomerLogin">
+                        <div class="vprce">
+                            <span class="hdprce">Vehicle Price ( 50% )</span>
+                            <strong>JPY {{ stockdetails?.PercentagePrice50 | number }}</strong>
+                        </div>
+                        <div class="vprce">
+                            <span class="hdprce">Vehicle Price ( 100% )</span>
+                            <strong>JPY {{ stockdetails?.PercentagePrice100 | number }}</strong>
+                        </div>
+                    </div>
+                    <div class="car-detail-content" *ngIf="isCustomerLogin">
+                        <div class="vprce">
+                            <span class="hdprce">Vehicle Price</span>
+                            <strong>JPY {{ stockdetails?.PercentagePrice100 | number }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="stand-feature" [hidden]="isCarFavourite || isCustomerLogin">
+                    <div class="stand-feature-hd">
+                        <h3>Shipment Detail</h3>
+                    </div>
+                    <div class="car-detail-content">
+                        <div class="vprce">
+                            <span class="hdprce">Shipping Country</span>
+                            <strong>{{ customerShipmentDetail?.ShipmentCountry?.name || '--' }}</strong>
+                        </div>
+                        <div class="vprce">
+                            <span class="hdprce">Port</span>
+                            <strong>{{ customerShipmentDetail?.ShipmentPort?.name || '--'  }}</strong>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div *ngIf="stockdetails?.PublicStatusId != 3">
+                    <button class="buynow-btn" (click)="openstockpricepopup()" style="padding: 2%; font-size: 20px;">Reserve Now</button>
+                </div> -->
+                <div [style.margin-top.px]="10" *ngIf="!isCustomerLogin && stockdetails?.PublicStatusId != 3" [hidden]="isCarFavourite">
+                    <button class="inquiry-btn" (click)="openInquireDetail()" style="padding: 2%; font-size: 20px;width: 48%" >Inquire Now </button>    
+                    <button  class="buynow-btn" (click)="openstockpricepopup()" style="padding: 2%; font-size: 20px;width: 48%">Reserve Now</button>
+                </div>
+                <div [style.margin-top.px]="10" *ngIf="isCustomerLogin || stockdetails?.PublicStatusId == 3 || isCarFavourite">
+                    <button class="inquiry-btn" (click)="openInquireDetail()" style="padding: 2%; font-size: 20px;width: 100%" >Inquire Now </button>    
+                </div>
+                <div class="price-calculator-main" style="display: none;">
+                    <div class="price-calculator-main-hd">
+                        <h3>PRICE CALCULATOR</h3>
+                    </div>
+                    <div class="price-calculator-mid">
+                        <div class="vprce">
+                            <span class="hdprce">Vehicle Price:</span>
+                            <strong>$1,380</strong>
+                        </div>
+                        <div class="price-selfields">
+
+                            <select name="chosecountry" id="" class="ccoun">
+                                <option value="">Choose Country</option>
+                                <option value="">Choose Country</option>
+                            </select>
+                            <select name="choseport" id="">
+                                <option value="">Choose Port</option>
+                                <option value="">Choose Port</option>
+                            </select>
+                            <div class="shptype">
+                                <span>Select Shipment Type</span>
+                                <span class="radioss">
+                                    <label>
+                                        <input type="radio" name="shtype">
+                                        <i class="rdbtn"></i>
+                                        <span>RORO</span>
+                                    </label>
+                                </span>
+                                <span class="">
+                                    <label>
+                                        <input type="radio" name="shtype">
+                                        <i class="rdbtn"></i>
+                                        <span>Container</span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="adntnol-optn">
+                            <h3 class="mnhd">Additional Options</h3>
+                            <ul class="addition-option">
+                                <li>
+                                    <label>
+                                        <input type="checkbox">
+                                        <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                        <span>Marine Insurance</span>
+                                    </label>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <input type="checkbox">
+                                        <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                        <span>BF Warranty (Free Trial!)</span>
+                                    </label>
+                                </li>
+                            </ul>
+                            <h3 class="mnhd mnhd2">Local Government Requirements</h3>
+                            <ul class="gov-requirem">
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="govt">
+                                        <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                        <span>Local Government RequirmentsPre-export Inspection
+                                            <br>(Not Available)</span>
+                                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="req">
+                                        <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                        <span>Requirement by your Government
+                                            <br>(Not Available)</span>
+                                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="price-calculator-bot">
+                        <div class="total-prices">
+                            <h4 class="ttl-prchd">
+                                <span class="left">Total Price:</span>
+                                <span class="ttl-prchd-sp">
+                                    <span>CIF</span>
+                                    <strong>$675,7834</strong>
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="butnss">
+                            <button class="prcbtn">Get a Price Quote Now</button>
+                            <button class="buynow-btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="vehicle-spec-det">
+                    <div class="vehicle-spec-hd">
+                        <h3>Vehicle Specifications</h3>
+                    </div>
+                    <div class="vehicle-spec-det-mn">
+                        <table>
+                            <tr>
+                                <td>
+                                    <span class="sprites ref"></span>Ref No.</td>
+                                <td>
+                                    <span>{{ getStockDetailFromParents.ReferenceId }}</span>
+                                </td>
+                                <td>
+                                    <span class="sprites cha"></span>Chassis #</td>
+                                <td>
+                                    <span>{{ stockdetails?.ChassisNumber || '--' }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="sprites str"></span>Steering</td>
+                                <td>
+                                    <span>RHD</span>
+                                </td>
+                                <td>
+                                    <span class="sprites ecol"></span>Ext. Color</td>
+                                <td>
+                                    <span>{{ stockdetails?.Color.toUpperCase() || '--' }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="sprites engsize"></span>Engine Size</td>
+                                <td>
+                                    <span>{{stockdetails?.EngineCC || '--' }}CC</span>
+                                </td>
+                                <td>
+                                    <span class="sprites fue"></span>Fuel</td>
+                                <td>
+                                    <span>{{stockdetails?.Fuel || '--' }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="sprites drv"></span>Drive</td>
+                                <td>
+                                    <span>{{stockdetails?.Drive || '--' }}</span>
+                                </td>
+                                <td>
+                                    <span class="sprites trm"></span>Transmiss</td>
+                                <td>
+                                    <span>{{stockdetails?.Transmission || '--' }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="sprites dor"></span>Doors</td>
+                                <td>
+                                    <span>{{stockdetails?.Door || '--' }}</span>
+                                </td>
+                                <td>
+                                    <span class="sprites ryg"></span>Reg. Year</td>
+                                <td>
+                                    <span>{{stockdetails?.Year || '--' }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="sprites mle"></span>Mileage</td>
+                                <td>
+                                    <span>{{stockdetails?.Mileage || '--' }}</span>
+                                </td>
+                                <td>
+                                    <span class="sprites mym"></span>Man. Year</td>
+                                <td>
+                                    <span>{{stockdetails?.Year || '--' }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="sprites loc"></span>Location</td>
+                                <td>
+                                    <span>{{stockdetails?.Country || '--' }}</span>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-5">
+
+                <div class="stand-feature">
+                    <div class="stand-feature-hd">
+                        <h3>Standard Features</h3>
+                    </div>
+                    <div class="stand-feature-mid">
+                        <ul class="stand-feature-listt" *ngFor="let item of FeaturesList1; let i = index;">
+                            <li [ngClass]=" { 'red' : item.IsActive } ">
+                                <i class="fa fa-check " aria-hidden="true"></i> {{ item.Name }}</li>
+                        </ul>
+                        <ul class="stand-feature-listt stand-feature-listt2" *ngFor="let item of FeaturesList2; let i = index;">
+                            <li [ngClass]=" { 'red' : item.IsActive } ">
+                                <i class="fa fa-check " aria-hidden="true"></i> {{ item.Name }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- stock price -->
+<app-stockprice [StockDetail]="_stockdetail"></app-stockprice>
+
+<!-- inquire now -->
+<app-inquire [InquireNow]="inquirenow"></app-inquire>

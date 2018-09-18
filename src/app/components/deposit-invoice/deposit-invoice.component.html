@@ -1,0 +1,387 @@
+<div style="margin: 0px;text-align:right;position: fixed;width: 100%;">
+    <button class="btn btn-primary btn-success action-btns" style="display: none;" id="btnDownload" (click)="downloadPDF()">Download PDF</button>
+    <button class="btn btn-primary action-btns" id="btnGenerate" (click)="generatePDF()">Generate PDF</button>
+    <button class="btn btn-primary action-btns" id="btnSendEmail" (click)="sendEmail()" style="display: none">Send Email</button>
+</div>
+<div class="cont-pdfHTML">
+    <div class="mwrapper1">
+        <div class="mcontainerr" style="page-break-after: always;">
+        <div class="watermark-chj" style="position: absolute;z-index:-1;margin:-20px;width: 930px;
+            left: 4px;
+            top: 15px">
+                <img style=" width:100%;" src="https://www.autorod.com/Assets/images/invoic-bg.png" alt="Error">
+
+            </div>
+            <div class="mheaderr">
+                <div class="mhaed-rite mhaed-rite-2"><img src="https://www.autorod.com/Assets/images/invoice-logo.png" alt="Invoice Logo" />
+                    <div class="zontop-rite-2">
+                        <table>
+                            <tr>
+                                <td class="cus">Customer ID:</td>
+                                <td>{{ invoicedetails?.CustomerDetail?.CustomerId }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cus">Customer Name:</td>
+                                <td>
+                                    <!-- <input type="text" id="txtCustName" [(ngModel)]="Customer.Name" class="inputText cus" /> -->
+                                    <select class="sel-customer" id="ddlCustomer" [(ngModel)]="_selectedCustomer.Id" (change)="SelectedCustomer(3)">
+                                            <option selected disabled value="0">Select Customer</option>
+                                            <option *ngFor="let customers of invoicedetails?.ThirdPartyCustomersList;" [value]="customers.CustomerId">
+                                                {{ customers.CustomerName }}
+                                            </option>
+                                            </select>
+                                    <label class="lblShipment" id="hdnCustName" style="display: none;"></label>
+                                </td>
+                                <td>
+                                    <a id="btnAddNewCustomer" (click)="showPopUp()" title="Add new customer" style="margin-left: 10px;cursor: pointer;">
+                                        <i class="fa fa-plus fa-lg"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr *ngIf="invoicedetails?.CustomerDetail?.ShipmentCountryId == 78">
+                                <td class="cus">ID Number:</td>
+                                <td *ngIf="invoicedetails?.CustomerDetail?.IDNumber">{{invoicedetails?.CustomerDetail?.IDNumber}}</td>
+                            </tr>
+                            <tr *ngIf="invoicedetails?.CustomerDetail?.ShipmentCountryId == 184 || invoicedetails?.CustomerDetail?.ShipmentCountryId == 7">
+                                <td class="cus">Passport Number:</td>
+                                <td *ngIf="invoicedetails?.CustomerDetail?.PassportNumber">{{ invoicedetails?.CustomerDetail?.PassportNumber }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cus">Customer Address:</td>
+                                <td>
+                                    <input type="text" id="txtCustAddress" [(ngModel)]="Customer.Address" class="inputText" />
+                                    <label class="lblShipment" id="hdnAddress" style="display: none;"></label>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>TEL: +{{ invoicedetails?.CustomerDetail?.PhoneNumber }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="haed-left haed-left-2 haed-left-3">
+                        <table class="tab-pro">
+                                <tbody><tr>
+                                    <td class="inv"><strong>Invoice No</strong> <span>{{invoicedetails?.InvoiceNumber}}</span></td>
+                                    <td><strong>Date:</strong><span>{{currentDate | date: format }}</span></td>
+                                </tr>
+                            </tbody></table>
+                    <h1><span>Invoice</span></h1>
+                    <div class="cont-uper-rite">
+                        <div class="inv-stampp">
+                            <!-- <h4>Sign</h4> -->
+                            <div class="mhaed-rite"><img src="https://www.autorod.com/Assets/images/invoic-stampp.png" alt="Stamp Logo" /></div>
+                        </div>
+                        <div class="zontop-rite">
+                            <h4>Autorod CO., LTD.</h4>
+                            <p>Oak Minami Azabu Building 14F, 3-19-23 Minami
+                                <br/>Azabu, Minato-ku, Tokyo, Japan 106-0047</p>
+                            <p>Phone +81 3 4560 2331</p>
+                        </div>
+                        <div class="zontop-rite-bottom">
+                            <div class="col-md-6">
+                                <h4> Payment Plan:</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="sel-plan" id="ddlPlan" [(ngModel)]="_selectedPlan.Id" (change)="SelectedPlan()">
+                                        <option selected  value="-1">Auction Deposit</option>
+                                        <option *ngFor="let plans of invoicedetails?.PlansList;" [value]="plans.Id">
+                                            {{ plans.Percentage }}%
+                                        </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contentt">
+                
+                <div class="port-load">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Port of Loading<span>Any port of JAPAN</span></td>
+                                <td class="bor-port">Port of Discharge<span>{{ invoicedetails?.CustomerDetail?.ShipmentCountry }}, {{ invoicedetails?.CustomerDetail?.Port }}</span></td>
+                                <td>Ship Via<span>{{ invoicedetails?.CustomerDetail?.ShipmentType }}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="zoncont-botom">
+                    <div *ngIf="invoicedetails && invoicedetails.CustomerDetail && invoicedetails.CustomerDetail.ShipmentCountryId && invoicedetails.CustomerDetail.ShipmentCountryId != 239 && invoicedetails.CustomerDetail.ShipmentCountryId != 240">
+                        <ul>
+                            <li class="first">NOTE</li>
+                            <li class="second">Your Invoice Number
+                            <strong>"{{ invoicedetails.InvoiceNumber }}"</strong> must be on the TT-Slip. Without your invoice number, shipping
+                            will be delayed.</li>
+                        </ul>
+                        </div>
+                        <ul>
+                        <li class="theird light-bg" *ngIf="_selectedBank.id != '5' " style="background: rgba(212, 210, 210, 0.5);">
+                            Please transfer amount to
+                            <select class="sel-bank" id="ddlBank" [(ngModel)]="_selectedBank.id" (change)="selectedBank('')">
+                                    <option selected disabled value="">Select Bank</option>
+                                    <option *ngFor="let banks of invoicedetails?.BankDetailList" 
+                                        [hidden]="((banks.SwiftCode == '' ) && (
+                                        (invoicedetails?.CustomerDetail?.ShipmentCountryId == 220 ||
+                                        invoicedetails?.CustomerDetail?.ShipmentCountryId == 239 || 
+                                        invoicedetails?.CustomerDetail?.ShipmentCountryId == 240) &&
+                                         banks.CountryId != invoicedetails?.CustomerDetail?.ShipmentCountryId)) || 
+                                         (banks.CountryId != invoicedetails?.CustomerDetail?.ShipmentCountryId && banks.CountryId != 0)"
+                                        [value]="banks.Id">
+                                        {{banks.Bank}}
+                                    </option>
+                                    </select>
+                        </li>
+                        <li class="theird light-bg" *ngIf="_selectedBank.id == '5' " style="background: rgba(212, 210, 210, 0.5);">
+                                <select class="sel-bank" id="ddlBank" [(ngModel)]="_selectedBank.id" (change)="selectedBank('')">
+                                        <option selected disabled value="">Select Bank</option>
+                                        <option *ngFor="let banks of invoicedetails?.BankDetailList" [hidden]="(banks.SwiftCode == '' ) &&
+                                                                        ( invoicedetails?.CustomerDetail?.ShipmentCountryId != 239 && 
+                                                                        invoicedetails?.CustomerDetail?.ShipmentCountryId != 240 ) || invoicedetails?.CustomerDetail?.ShipmentCountryId != 220 " [value]="banks.Id">
+                                            {{banks.Bank}}
+                                        </option>
+                                        </select>
+                            </li>
+                        </ul>
+                    <table>
+                        <tbody>
+                            <tr *ngIf="invoicedetails && invoicedetails?.BankDetail && invoicedetails?.BankDetail.BankName &&  invoicedetails.BankDetail.SwiftCode ">
+                            <td class="alg-right">Bank Name</td>
+                            <td>{{ invoicedetails.BankDetail.BankName }} </td>
+                            </tr>
+                            <tr *ngIf="invoicedetails && invoicedetails?.BankDetail && !invoicedetails?.BankDetail?.BranchCode">
+                            <td>
+                                <h3 *ngIf="!invoicedetails?.BankDetail?.BranchCode  && ( invoicedetails?.CustomerDetail?.ShipmentCountryId == 239 ||  invoicedetails?.CustomerDetail?.ShipmentCountryId == 240 ) "
+                                style="padding-left:5px;font-size: 16px;font-weight: 600;">Payment through Zambia Postal Services Corporation (Zampost) </h3>
+                            </td>
+                            </tr>
+                            <tr class="bg-tr light-bg" *ngIf="invoicedetails?.BankDetail?.SwiftCode" style="background: rgba(212, 210, 210, 0.5) !important;">
+                            <td class="alg-right">Swift Code</td>
+                            <td>{{ invoicedetails?.BankDetail?.SwiftCode }}</td>
+                            </tr>
+                            <tr [ngClass]=" { 'bg-tr' : _selectedBank.id == '3' } " *ngIf="invoicedetails?.BankDetail?.Branch">
+                            <td class="alg-right">Branch Name</td>
+                            <td>{{ invoicedetails?.BankDetail?.Branch }} (Branch Code: {{invoicedetails?.BankDetail?.BranchCode}})</td>
+                            </tr>
+                            <tr class="bg-tr light-bg" *ngIf="invoicedetails?.BankDetail?.Address" style="background: rgba(212, 210, 210, 0.5) !important;">
+                            <td class="alg-right">Bank Address</td>
+                            <td>{{ invoicedetails?.BankDetail?.Address }} Zip:{{ invoicedetails?.BankDetail?.BankZipCode}}</td>
+                            </tr>
+                            <tr *ngIf="invoicedetails?.BankDetail?.BeneficiaryAccountNumber">
+                            <td class="alg-right">Account Number</td>
+                            <td id="bankAN">{{ invoicedetails?.BankDetail?.BeneficiaryAccountNumber }}</td>
+                            </tr>
+                            <tr class="bg-tr light-bg" *ngIf="invoicedetails?.BankDetail?.BeneficiaryName" style="background: rgba(212, 210, 210, 0.5) !important;">
+                            <td class="alg-right">Beneficiary Name</td>
+                            <td>{{ invoicedetails?.BankDetail?.BeneficiaryName }}
+                                <input type="hidden" id="hdnAccountNumber" value="{{ invoicedetails?.BankDetail?.BeneficiaryAccountNumber }} " />
+                                <input type="hidden" id="hdnCurrencyCode" value="{{ invoicedetails?.BankDetail?.CurrencyCode }} " />
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="main-desc main-desc2 main-desc3">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="des-th1">S.NO.</th>
+                                <th class="des-th2">Description</th>
+                                <th class="des-th3">Chassis</th>
+                                <th class="des-th3">Unit Price</th>
+                                <th class="des-th3">Service Charges</th>
+                                <th class="des-th3">FOB</th>
+                                <th class="des-th3">Freight</th>
+                                <th class="des-th3">Inspection</th>
+                                <th class="des-th3">CNF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let items of _modifiedUnitDetails; let count=index" class="back">
+                                <td class="des-td1">{{count+1}}</td>
+                                <td class="des-td2">{{items.Make}} {{items.Model}} {{items.Year}} </td>
+                                <td class="des-td3">{{items.ChassisNumber}}</td>
+                                <td>{{items.BidPrice | roundoffhtmlnumber | number}}</td>
+                                <td>{{items.ServiceCharges | roundoffhtmlnumber | number}}</td>
+                                <td>{{items.FOB | roundoffhtmlnumber | number}}</td>
+                                <td>{{items.FreightCharges | roundoffhtmlnumber | number}}</td>
+                                <td>{{items.InspectionCharges | roundoffhtmlnumber | number}}</td>
+                                <td>{{items.CNF | roundoffhtmlnumber | number}}</td>
+                            </tr>
+                            <tr class="sub-ttl">
+                                <td colspan="3"></td>
+                                <td colspan="6" class="scnd">
+                                    <ul>
+                                        <li>TOTAL</li>
+                                        <li>{{invoicedetails?.UnitDetails?.length}} UNIT(S)</li>
+                                        <li class="subttl-val">{{invoicedetails?.CustomerDetail?.CurrencyCode}} {{ _TotalCNFModified | roundoffhtmlnumber | number}}</li>
+                                    </ul>
+                                </td>
+                                <!-- <td></td>
+                                <td></td> -->
+                            </tr>
+                            <tr class="sub-ttl sub-ttl1">
+                                <td colspan="3"></td>
+                                <td colspan="6" class="scnd">
+                                    <ul>
+                                        <li>AMOUNT DUE</li>
+                                        <li id="lblAmountDue">50% of total CNF </li>
+                                        <li id="lblTotalAmount" class="subttl-val">{{invoicedetails?.CustomerDetail?.CurrencyCode}}  {{ _TotalAmountDueModified | roundoffhtmlnumber | number }}</li>
+                                    </ul>
+                                </td>
+                                <!-- <td></td>
+                                <td></td> -->
+                            </tr>
+                            <tr class="sub-ttl sub-ttl2" style="display:none;">
+                                <td colspan="3"></td>
+                                <td colspan="6" class="scnd">
+                                    <ul>
+                                        <li> </li>
+                                        <li>Auction Deposit Paid </li>
+                                        <li class="subttl-val">USD 500</li>
+                                    </ul>
+                                </td>
+                                <!-- <td></td>
+                                <td></td> -->
+                            </tr>
+                            <tr class="usd-amo usd-amo1 usd-amo2">
+                                <td colspan="3"></td>
+                                <td class="des-amo" colspan="4"></td>
+                                <td class="des-usd" colspan="2">{{invoicedetails?.CustomerDetail?.CurrencyCode}} {{ _TotalAuctionDepositModified | roundoffhtmlnumber | number }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="main-imp-note">
+                    <ul style="background: rgba(212, 210, 210, 0.5) !important;" class="light-bg">
+                        <li>
+                            <h3>important note:</h3>
+                        </li>
+                        <li>Remaining Payment Should Be Paid Within 7 Days After Bl Is Issued.</li>
+                        <li class="rd" *ngIf="invoicedetails && invoicedetails?.BankDetail && invoicedetails?.BankDetail?.BranchCode">Shipment will be arranged upon bank receipt.</li>
+                        <li class="rd" *ngIf="invoicedetails && invoicedetails?.BankDetail && !invoicedetails?.BankDetail?.BranchCode">Shipment will be arranged upon {{invoicedetails?.BankDetail?.BankName}} receipt.</li>
+                        <li>Penalty Fee Will Be Applied If Order Is Cancelled After Purchase.</li>
+                        <li *ngIf="invoicedetails && invoicedetails?.BankDetail && invoicedetails?.BankDetail?.BranchCode ">All bank charges must be paid by customer.</li>
+                        <li *ngIf="invoicedetails && invoicedetails?.BankDetail && !invoicedetails?.BankDetail?.BranchCode ">All {{invoicedetails?.BankDetail?.BankName}} charges must be paid by customer.</li>
+                        <li>Please Make The Payment Within 3 Days.</li>
+                    </ul>
+                    <div class="bottom-para">
+                        <p>The prices quoted are an estimate and will be finalized after the bid is won.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mwrapper2">
+        <div class="mcontainerr">
+                <div class="watermark-chj" style="position: absolute;z-index:-1;margin:-20px;width: 930px;
+                        left: 4px;
+                        top: 15px">
+                <img style=" width:100%;" src="https://www.autorod.com/Assets/images/invoic-bg.png" alt="Error">
+
+                </div>
+            <div class="mheaderr">
+                <div class="mhaed-rite"><img src="https://www.autorod.com/Assets/images/invoice-logo.png" alt="Invoice Logo" /></div>
+                <div class="zontop-rite">
+                    <h4>Autorod CO., LTD.</h4>
+                    <p>Oak Minami Azabu Building 14F, 3-19-23 Minami Azabu,
+                        <br>Minato-ku, Tokyo, Japan 106-0047</p>
+                    <p>Phone +81 3 4560 2331 | www.autorod.com </p>
+                </div>
+            </div>
+            <div class="mcontenttt mnotice_aw">
+                <h3><span>NOTICE</span></h3>
+                <h4>TERMS OF TRADE</h4>
+                <ul>
+                    <li>User has to sign up on our website before making a transaction (Registration is FREE!).</li>
+                    <li>Full or a fraction of payment is required within seven days of confirmation via Telegraphic Transfer (TT).</li>
+                    <li>User must submit the deposit as it is required before shipment with the remainder due prior to release of the original papers.</li>
+                    <li>You can view the prices with full car details once you have received the login credentials.</li>
+                    <li>Customers can pay in US Dollars and Japanese Yen.</li>
+                    <li>Prices are quoted in US dollars or Yen, either in FOB or C&F terms.</li>
+                    <li>Customer has to submit the remaining payment within the period of 7 days from shipment date, otherwise, Autorod has the right to re-sell the unit without any notice and no claim will be acceptable in such case.</li>
+                    <li>Please refill the oil and radiator coolant once you have received your vehicle(s) at your arrival port. Autorod does not provide these</li>
+                </ul>
+                <h4>SHIPPING</h4>
+                <ul>
+                    <li *ngIf="invoicedetails && invoicedetails?.BankDetail && invoicedetails?.BankDetail?.BranchCode ">Shipping arrangement will be done upon the receiving of the deposit receipt.</li>
+                    <li *ngIf="invoicedetails && invoicedetails?.BankDetail && !invoicedetails?.BankDetail?.BranchCode ">Shipping arrangement will be done upon the receiving of the {{invoicedetails?.BankDetail.BankName}} deposit receipt.</li>
+                </ul>
+                <h4>REMARKS</h4>
+                <ul>
+                    <li>Please confirm the import regulation with your local authorities. </li>
+                    <li *ngIf="invoicedetails && invoicedetails?.BankDetail && invoicedetails?.BankDetail?.BranchCode ">Bank charges or any additional costs are not included in the price that is stated on the invoice, which is payable
+                    to the bank. Thus, all the additional charges will be taken care of by the customer.</li>
+                    <li *ngIf="invoicedetails && invoicedetails?.BankDetail && !invoicedetails?.BankDetail?.BranchCode ">{{invoicedetails?.BankDetail?.BankName}} charges or any additional costs are not included in the price that is stated
+                    on the invoice, which is payable to the {{invoicedetails?.BankDetail?.BankName}} . Thus, all the additional charges
+                    will be taken care of by the customer.</li>
+                    <li>Kindly ensure that the full amount stated on the invoice is received by Autorod.</li>
+                    <li>We do not allow any shipping cancellation of the export license after by the circumstances of the consignees or customers.</li>
+                </ul>
+                <p>Autorod CO., LTD. has established a framework for the prevention of anti-social transactions and has been taking initiatives including the confirmation of anti-social affiliations of new corporate partners and the incorporation of clauses for the elimination of anti-social forces in basic procurement contracts and sales contracts</p>
+                <h4>SECURITY TRADE CONTROL</h4>
+                <p>Autorod CO., LTD. shall abide by all the applicable national and international laws, rules and regulations to make its contribution in the maintenance of international peace and security, and anti-terrorism including all applicable export controls such as List Controls and Catch-All Controls in the prevention of the development or manufacture of nuclear weapons or weapons of mass destruction. Any transaction against this is hereby outlawed.</p>
+                <div class="border-bottom"></div>
+            </div>
+            <!--<div class="footerr">
+                <p>The prices quoted are an estimate and will be ﬁnalized after the bid is won</p>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<div id="newthirdparty" class="modal fade new-consigneemodalpop profde " role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add New Third Party</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="consform">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="consformdv">
+                                    <label for="">Name
+                                        <span>*</span>
+                                    </label>
+                                    <input type="text" placeholder="Name Here"
+                                    class="name"
+                                     [(ngModel)]="customerDetailsThirdParty.Fullname" #Fullname="ngModel">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="consformdv">
+                                    <label for="">Email Address </label>
+                                    <input type="text" placeholder="Email here" class="email"
+                                     [(ngModel)]="customerDetailsThirdParty.Email" #Email="ngModel">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="consformdv">
+                                    <label for="">Phone Number </label>
+                                    <input type="text" placeholder="000 00 00 000" class="phone" [(ngModel)]="customerDetailsThirdParty.Contact" #Contact="ngModel">
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="consformdv">
+                                    <label for="">Address
+                                        <span>*</span>
+                                    </label>
+                                    <input type="text" placeholder="Address Here" class="address"
+                                    [(ngModel)]="customerDetailsThirdParty.Address" #Address="ngModel">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default cancelbtn" (click)="hidePopUp(4)">Cancel</button>
+                    <button type="button" class="btn btn-default savebtn" (click)="AddThirdPartyAddress(false)" >Save</button>
+                </div>
+            </div>
+        </div>
+    </div>

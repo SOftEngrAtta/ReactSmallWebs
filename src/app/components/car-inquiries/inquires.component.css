@@ -1,0 +1,114 @@
+.col-xs-5cl,
+.col-sm-5cl,
+.col-md-5cl,
+.col-lg-5cl {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-xs-5cl {
+    width: 20%;
+    float: left;
+}
+
+
+.cinqhddv{margin:25px 0px 0px 0px;}
+.cinqhddv h3{color:#2b388f;font-size:17px;font-weight: 700;margin:0px 0px 5px 0px;}
+.cinqhddv p{font-size:13px;font-weight: 700;color:#676498;margin:0px 0px 10px 0px;}
+.cinquir{background-color: #fff}
+.cinquir .addinq{margin:25px 0px 15px 0px;float:right;width:157px;height: 36px;border-radius:2px;background: #2b388f;border:1px solid #2b388f;color:#fff;}
+.cinquir .addinq:hover{color:#2b388f;background: #fff;}
+
+.cinquir-tbldv-inner{}
+.cinquir-tbldv-inner .cinquir-tbldvhd{list-style: none;display:table;width:100%;margin:0px;background: #ecebf4;border-bottom: 1px solid #e4e3f0;min-width: 1110px;}
+.cinquir-tbldv-inner .cinquir-tbldvhd>li{display:table-cell;color:#252160;font-size:11px;font-weight: 700;padding:12px 0px 12px 10px;}
+.cinquir-tbldv-inner .cinquir-tbldvhd>li:last-child{width:180px;}
+.cinquir-tbldv-inner .cinquir-tbldvhd>li:first-child{width:20%;padding-left:20px;}
+.cinquir-tbldv-inner .cinquir-tbldvhd>li:nth-child(2){width:105px;}
+.cinquir-tbldv-inner .cinquir-tbldvhd>li:nth-child(3){width:110px;}
+.cinquir-tbldv-inner .cinquir-tbldvhd>li:nth-child(4){width:93px;}
+.cinquir-tbldv-inner .cinquir-tbldvhd>li:nth-child(6){width:137px;}
+.cinquir-tbldv-inner .cinquir-tbldvhd>li:nth-child(7){width:150px;}
+.cinquir-tbldv-inner .cinquir-tbldvhd>li:nth-child(8){width:187px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet{display: table;width:100%;margin:5px 0px;min-width: 1110px;border-bottom: 1px solid #ecebf4;}
+.cinquir-tbldv-inner .cinquir-tbldvdet:nth-child(odd){background: #f6f6fb;}
+.cinquir-tbldv-inner .cinquir-tbldvdet>li{display: table-cell;padding:12px 0px 0px 10px;vertical-align: top;}
+.cinquir-tbldv-inner .cinquir-tbldvdet>li:first-child{width:8%;padding-right:5px;padding-left:20px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet>li:last-child{padding-left:0px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .imgbox{width:54px;display: inline-block;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .imgbox img{width:100%;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop{display:table;width:100%;margin:0px 0px 10px 0px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop>li{display: table-cell;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop>li:first-child{width:14%;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop>li:nth-child(2){width:74px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop>li:nth-child(3){width:78px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop>li:nth-child(4){width:65px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop>li:nth-child(5){width:78px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop>li:nth-child(6){width:80px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop>li:nth-child(7){width:117px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop>li:nth-child(8){width:125px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop>li span{color:#716e9a;font-size:13px;font-weight: 700;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop>li strong{font-size:13px;font-weight: 700;color:#252160;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listtop>li h4{font-size:13px;font-weight:700;color:#2b388f;margin:0px; }
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listbot{list-style:none;width:100%;border:1px solid #ecebf4;border-left:0px;border-right:0px;border-bottom: none;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listbot>li{display: inline-block;vertical-align: middle;border-right:1px solid #ecebf4;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listbot>li:first-child{width:130px;padding:10px 10px 10px 0px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listbot>li:nth-child(2){width:210px;padding:10px 10px 10px 20px;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listbot>li:nth-child(3){padding:10px 10px 10px 20px;border-right:none;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listbot>li .dmand{padding:4px 8px;font-size:11px;font-weight: 700;color:#fff;text-transform: uppercase;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listbot>li .dmand.high{background: #21c15e;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listbot>li .dthd{font-size:12px;font-weight: 500;color:#252160;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listbot>li .dtval{font-size:12px;font-weight: 700;color:#716e9a;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listbot>li p.inquriycount{margin: 0px;color:#716e9a;font-size:12px;font-weight: 500;}
+.cinquir-tbldv-inner .cinquir-tbldvdet .cinquir-tbldv-listbot>li p.inquriycount span.rd{color:#de3542;font-weight: 700;}
+.carslst{padding:0px 15px;-webkit-box-shadow: 0px 1px 8px 0px rgba(43, 56, 143, 0.15); -moz-box-shadow: 0px 1px 8px 0px rgba(43, 56, 143, 0.15); -ms-box-shadow: 0px 1px 8px 0px rgba(43, 56, 143, 0.15); box-shadow: 0px 1px 8px 0px rgba(43, 56, 143, 0.15); box-shadow: 0px 1px 8px 0px rgba(43, 56, 143, 0.15); margin-bottom: 30px;}
+.carslst .carslsthd{font-size:15px;font-weight: 700;color:#2b388f;padding:10px 0px 10px 0px;position: relative;margin:0px;}
+.carslst .carslsthd:before{position: absolute;left:-15px;top:0px;width:4px;background: #2b388f;height: 100%;content:"";}
+.recommendcarsdv{padding:20px 0px;}
+.recommendcarsdv img{width:100%;}
+.recommendcarsdv .recom h4{color:#303946;font-size:17px;font-weight: 700;padding:17px 0px 7px 0px;margin:0px;}
+.recommendcarsdv .recom p{color:#69788d;font-size:15px;font-weight: 500;margin:0px;}
+.recommendcarsdv .recom p span{color:#e9151c;font-size:15px;font-weight: 700;margin-left:10px;}
+.brd-bot{border-bottom: 1px solid #e4e7ea;}
+
+.total-count{
+    position: absolute;
+    text-align: center;
+    content: "";
+    color: #fff;
+    background: #9a9dc9;
+    margin-left: 5px;
+    border-radius: 3px;
+    padding: 2px 5px;
+    font-size: 15px;
+}
+.no-record-found{margin-top: 20px; font-weight: 500; color: #6764a8;}
+
+@media screen and (max-width: 1199px) {
+	.cinquir-tbldv-inner{overflow-x:scroll;}
+}
+
+
+
+@media screen and (max-width: 768px) {
+	.recommendcarsdv{padding:10px 0px;}
+	.recommendcarsdv .recom h4{padding:10px 0px;}
+
+}
+
+
+@media (min-width: 992px) {
+    .col-md-5cl {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 1200px) {
+    .col-lg-5cl {
+        width: 20%;
+        float: left;
+    }
+}

@@ -1,0 +1,297 @@
+<app-header></app-header>
+<!-- No records found -->
+<div class="col-lg-12 hglt upcpayt" *ngIf="completeOrder?.OrderItems?.length <= 0">
+	<br/>
+	<br/>
+	<div align="center" class="row">
+		No Record Found
+	</div>
+</div>
+<div class="container ordr-detail" *ngIf="completeOrder?.OrderItems?.length > 0">
+	<div class="row">
+		<div class="col-md-6 nopad_left">
+			<h1 class="ordrhd01">Order ID # {{completeOrder.OrderDisplayId}}</h1>
+		</div>
+		<div class="col-md-6 text-right nopad_right">
+			<!-- <button class="addmore-cars-btn hglt thrtynine">Add More Cars</button> -->
+		</div>
+	</div>
+
+	<!-- order Groupe -->
+	<div class="row" *ngIf="completeOrder.OrderItems.length > 1">
+		<div class="col-lg-12 ordr-panledetail1 hglt frty">
+			<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+				<li ngxSlickItem *ngFor="let OrderItem of completeOrder.OrderItems; let i=index;" class="order-detail-cars-list-items" [class.active]="i == groupIndex">
+					<span class="hdcarlist">Group {{i+1}}</span>
+					<a href="javascript:;" class="imganchors" (click)="selectedCarList(OrderItem.OrderDetails, i)">
+						<img src="{{OrderItem.OrderDetails[0].AuctionImage | splitimage}}">
+						<span class="carsitem">{{OrderItem.OrderItemCount}} Cars</span>
+					</a>
+				</li>
+			</ngx-slick>
+		</div>
+	</div>
+	<!-- Cars list -->
+	<div class="row" *ngIf="selectedOrderDetails.length > 0">
+		<div class="col-md-12 brdr-bot marginB0 shapetop hglt frtyone multiindiv nopad_right">
+			<div class="dtbl vTop">
+				<div class="ordr-box dtd paddingL0">
+					<div class="ordr-detail-cars">
+						<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+							<li ngxSlickItem [class.actvtab]="i == carIndex" *ngFor="let selectedOrderDetail of selectedOrderDetails; let i=index;" class="ordr-detail-cars-small">
+								<div>
+									<a href="javascript:;" title="" (click)="selectedModel(selectedOrderDetail, i)">
+										<span class="ordr-detail-carhold">
+											<img src="{{selectedOrderDetail.AuctionImage | splitimage}}" alt="">
+										</span>
+										<span class="ordr-detail-carinfo greentxt" [ngClass]="{'orange-color' : ( selectedOrderDetail.OrderDetailStatusId == 1000 || selectedOrderDetail.OrderDetailStatusId == 1020 || selectedOrderDetail.OrderDetailStatusId == 1040) , 
+										'green-color' : ( selectedOrderDetail.OrderDetailStatusId == 1080 || selectedOrderDetail.OrderDetailStatusId == 1090 || selectedOrderDetail.OrderDetailStatusId == 1100 || selectedOrderDetail.OrderDetailStatusId == 1110) , 
+										'red-color' : ( selectedOrderDetail.OrderDetailStatusId == 1120 || selectedOrderDetail.OrderDetailStatusId == 1130 || selectedOrderDetail.OrderDetailStatus == 1140 || selectedOrderDetail.OrderDetailStatusId == 1150 ) }">
+											{{selectedOrderDetail.OrderDetailCarStatus}}
+										</span>
+									</a>
+								</div>
+							</li>
+						</ngx-slick>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Selected Car Info -->
+	<div class="row" *ngIf="selectedCarModel">
+		<div class="col-md-12 col-sm-12 col-xs-12 ordr-panledetail hglt frtytwo ">
+			<div class="dtbl vTop">
+				<div class="ordr-box ordr-box01 dtd paddingL0">
+					<h2 class="ordrhd02">Make &amp; Model</h2>
+					<ul>
+						<li>
+							<p>Chassis No</p>
+							<p>{{selectedCarModel.Chassis}}</p>
+						</li>
+						<li>
+							<p>Year</p>
+							<p>{{selectedCarModel.Year}}</p>
+						</li>
+						<li>
+							<p>Make</p>
+							<p>{{selectedCarModel.Make}}</p>
+						</li>
+						<li>
+							<p>Mileage</p>
+							<p>{{selectedCarModel.Mileage}} KM</p>
+						</li>
+						<li>
+							<p>Model</p>
+							<p>{{selectedCarModel.Model}}</p>
+						</li>
+					</ul>
+				</div>
+				<div class="ordr-box ordr-box02 dtd">
+					<h2 class="ordrhd02">Shipping Details</h2>
+					<ul>
+						<li>
+							<p>Shipping Country</p>
+							<p>{{completeOrder.CountryName}}</p>
+						</li>
+						<li>
+							<p>Port</p>
+							<p>{{completeOrder.PortName}}</p>
+						</li>
+						<li>
+							<p>Shipment Type</p>
+							<p>{{completeOrder.ShipmentType}}</p>
+						</li>
+					</ul>
+				</div>
+				<div class="ordr-box ordr-box03 dtd">
+					<h2 class="ordrhd02">Pricing</h2>
+					<ul>
+						<li *ngIf="!isCustomerLogin && selectedCarModel.AuctionTypeId != 5">
+							<p *ngIf="completeOrder.PricingTypeId == 1">Bid Price</p>
+							<p *ngIf="completeOrder.PricingTypeId == 2">Max Bid Price</p>
+							<p>{{selectedCarModel.CurrencyCode}} {{selectedCarModel.BidPrice | roundoffhtmlnumber | number}}</p>
+						</li>
+						<li>
+							<p>FOB</p>
+							<p>{{selectedCarModel.CurrencyCode}} {{selectedCarModel.FOB | roundoffhtmlnumber | number}}</p>
+						</li>
+						<li *ngIf="completeOrder.PricingTypeId != 2 && selectedCarModel.BidWonPrice && selectedCarModel.BidWonPrice != null && selectedCarModel.AuctionTypeId != 5 && !isCustomerLogin">
+							<p>Won Price</p>
+							<p>{{selectedCarModel.CurrencyCode}} {{selectedCarModel.BidWonPrice | roundoffhtmlnumber | number}}</p>
+						</li>
+						<li>
+							<p>Freight Charges</p>
+							<p>{{selectedCarModel.CurrencyCode}} {{selectedCarModel.FreightCharges | roundoffhtmlnumber | number}}</p>
+						</li>
+						<li>
+							<p>CNF</p>
+							<p>{{selectedCarModel.CurrencyCode}} {{selectedCarModel.CNF | roundoffhtmlnumber | number}}</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row rebiddvsh">
+		<div class="col-md-12 rebiddv">
+			<div class="rebiddv-inner">
+				<div class="rebiddv1">
+					<p>You have rate low price thats why your unit is lost.</p>
+				</div>
+				<div class="rebiddv2">
+					<button>Re-bid</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row hglt frtythree" *ngIf="documentDetails.length > 0">
+		<div class="col-lg-12">
+			<div class="col-lg-5 col-sm-12">
+				<div class="details-timeline">
+					<ul>
+						<li *ngFor="let documentDetail of documentDetails; let i=index;" [class.active]="selectedBit?.selectedIndex == i" [class.disabled]="!documentDetail.IsEnabled"
+						 (click)="selectedBitHandler(documentDetail, i)">
+							<span class="timelinedot"></span>
+							<div class="details-tm-det">
+								<p *ngIf="documentDetail.IsEnabled">
+									<span class="dt">{{documentDetail.CreationDate | amUtc | amLocal | amDateFormat: 'DD'}}</span>
+									<span class="mnth">{{documentDetail.CreationDate | amUtc | amLocal | amDateFormat: 'MMM'}}</span>
+								</p>
+								<img src="/assets/images/check.png" alt="" class="ordr-detail-tck">
+								<h6>{{documentDetail.StatusType}}</h6>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-7 col-sm-12 tmcontent hglt frtytfr">
+				<!-- Right Null Div -->
+				<div *ngIf="showNullDiv" class="rightdt">
+					<h4 class="samplehd"></h4>
+					<a class="fancybox" href="/assets/images/blank-image.jpg" data-fancybox>
+						<img src="/assets/images/blank-image.jpg" class="order-det-image">
+					</a>
+				</div>
+				<!-- Right Div -->
+				<div *ngIf="showDocDiv" class="rightdt" style="display: block;" >
+					
+					<span *ngIf="displayPdfView.id == 2 && displayPdfView.isEnabled == true">
+						<div align="center" >
+							<button class="zoom-cls" (click)="zoom('in')" *ngIf="displayPdfView.format == 'PDF'">
+								Zoom In 
+							</button> 
+							<button class="zoom-cls" (click)="zoom('out')" *ngIf="displayPdfView.format == 'PDF'"> 
+								Zoom Out 
+							</button>
+							<a *ngIf="displayPdfView.format == 'PDF' " id="dwnldLnk" class="zoom-cls" href="javascript:;" download="download.pdf" (click)="donwloadpdf()">Download File</a>
+							<a *ngIf="displayPdfView.format == 'JPG' " id="dwnldLnk" class="zoom-cls" href="javascript:;" download="donwload-img.jpg" (click)="donwloadpdf()">Download File</a>
+							<a *ngIf="!isCustomerLogin && selectedDocumentDetail['selectedIndex'] != 8 "  class="zoom-cls" href="javascript:;" (click)="sendEmail()">Send Email</a>
+							
+						</div>
+						<pdf-viewer *ngIf="displayPdfView.format == 'PDF' " [(src)]="displayPdfView.url" [zoom]="zoom_number" [original-size]="true" [show-all]="true"></pdf-viewer>
+						<img *ngIf="displayPdfView.format == 'JPG' " [src]="displayPdfView.url" class="order-det-image">
+					</span>
+					<span *ngIf="displayPdfView.id != 2">
+						<img src="assets/images/blank-image.jpg" class="order-det-image">
+					</span>
+				</div>
+				<!-- Unit Image Slider -->
+
+				<div *ngIf="showImageSliderDiv" class="car-feature-slider">
+					<div style="text-align: center;">
+						<a *ngIf="!isCustomerLogin" class="zoom-cls" href="javascript:;" (click)="sendEmail()">Send Email</a>
+					</div>
+					<div class="car-images-big">
+						<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfigCarImageSlider">
+							<div ngxSlickItem *ngFor="let OrderDetailDocument of selectedBit.OrderDetailDocument; let i=index;">
+								<span>
+									<a href="{{OrderDetailDocument.SourcePath}}" data-fancybox="gallery1" fancybox-button--zoom="" data-caption="" (click)="slickModalSmall.slickGoTo(i)">
+										<img src="{{OrderDetailDocument.SourcePath}}">
+									</a>
+								</span>
+							</div>
+						</ngx-slick>
+					</div>
+					<div class="car-images-small">
+						<ngx-slick class="carousel" #slickModalSmall="slick-modal" [config]="slideConfigCarImageSliderSmall">
+							<!-- <ul class="car-images-small-list"> -->
+							<li ngxSlickItem class="car-images-small-list" *ngFor="let OrderDetailDocument of selectedBit.OrderDetailDocument; let i=index;"
+							 (click)="slickModal.slickGoTo(i)">
+								<span>
+									<img src="{{OrderDetailDocument.SourcePath}}">
+								</span>
+							</li>
+							<!-- </ul> -->
+						</ngx-slick>
+					</div>
+				</div>
+				<!-- Tracking Map -->
+				<div *ngIf="trackOrder" class="trackordrsect">
+					<div class="trackorderinner">
+						<div id="trackOrder">
+							<!-- <img (click)="open(content)" src="/assets/images/chj-map.png"> -->
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="trackordrsect3" *ngIf="trackOrderDone">
+					<div class="carshipped2">
+						<div class="carshipped2img">
+						  <img src="/assets/images/car-shipped-image.jpg" alt="">
+						</div>
+						<div class="flgimg" *ngIf="completeOrder.CountryFlag">
+							<span  class="flag-icon flag-icon-squared updated-flg-css " [ngClass]="completeOrder.CountryFlag"></span>
+						</div>
+						<div class="carshipped2det">
+						  <h3>{{ selectedOrderDetails[0]['Make'] || '--' }} {{ selectedOrderDetails[0]['Model'] || '--' }} {{ selectedOrderDetails[0]['Year'] || '--' }}</h3>
+						  <table>
+							<tbody>
+							  <tr>
+								<td><span>Chassis No.</span></td>
+								<td><strong>{{ selectedOrderDetails[0]['Chassis'] || '--' }}</strong></td>
+								<td><span>Drop off</span></td>
+								<td><strong>{{ completeOrder['CountryName'] }}, {{ completeOrder['PortName'] }}</strong></td>
+							  </tr>
+							  <tr>
+								<td><span>Color</span></td>
+								<td><strong>{{ selectedOrderDetails[0]['Color'] || '--' }}</strong></td>								
+							  </tr>
+							</tbody>
+						  </table>
+						</div>
+						<div class="btom">
+						  <h4>Your Car Shipped</h4>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<ng-template #content let-c="close" let-d="dismiss">
+			<div class="modal-header">
+				<h4 class="modal-title">Map</h4>
+				<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body" class="no_padding_left no_padding_right">
+				<iframe id="mapIframe" width="100%" height="530vh" [src]="vesselMapUrl" style="border: none;">
+				</iframe>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+			</div>
+		</ng-template>
+		<div style="display:none">
+			<a href="javascript:;" title="" class="greentxt" data-src="#view_invoice_auction-deposit" data-fancybox="">-</a>
+			<a href="javascript:;" title="" class="greentxt" data-src="#view_invoice_quotation" data-fancybox="">-</a>
+			<a href="javascript:;" title="" class="greentxt" data-src="#view_invoice_proforma1" data-fancybox="">-</a>
+			<a href="javascript:;" title="" class="greentxt" data-src="#view_invoice_proforma2" data-fancybox="">-</a>
+			<a href="javascript:;" title="" class="greentxt" data-src="#view_invoice_membership-purchase" data-fancybox="">-</a>
+
+		</div>

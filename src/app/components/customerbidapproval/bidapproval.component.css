@@ -1,0 +1,695 @@
+.parnt-aprroval-div{
+    background: #fff;
+}
+.no-pad-left{
+	padding-left: 0px;
+}
+.no-pad-right{
+	padding-right: 0px;
+}
+.no-pad-bottom{
+	padding-bottom: 0px;
+}
+.no-pad-top{
+	padding-top: 0px;
+}
+.no-pad{
+	padding: 0px;
+}
+.no-margin{
+	margin:0px; 
+}
+.no-mar-left{
+	margin-left: 0px;
+}
+.no-mar-right{
+	margin-right: 0px;
+}
+.no-mar-top{
+	margin-top: 0px;
+}
+.no-mar-bottom{
+	margin-bottom: 0px;
+}
+/*==============================================*/
+.customer_bid-approval_page{
+	overflow-x: hidden;
+}
+.custombidapprvohead{
+    float:right;
+}
+.custombidapprvohead>ul{
+    display: table;
+    width:100%;
+
+}
+.custombidapprvohead>ul>li{display: table-cell;vertical-align: middle;}
+.custombidapprvohead>ul>li:first-child{text-align: right ;}
+
+
+img{
+	max-width: 100%;
+}
+.headertopsect {
+    background: #fff;
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(37, 33, 96, 0.06);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(37, 33, 96, 0.06);
+    -ms-box-shadow: 0px 2px 4px 0px rgba(37, 33, 96, 0.06);
+    -o-box-shadow: 0px 2px 4px 0px rgba(37, 33, 96, 0.06);
+    box-shadow: 0px 2px 4px 0px rgba(37, 33, 96, 0.06);
+}
+.logo {
+    padding: 10px 0;
+}
+.img-responsive{
+    display: initial;
+    max-width: 100%;
+    height: auto;
+}
+.main-currency-sec ul {
+    margin-bottom: 0px;
+    font-size: 0px;
+    padding: 5px 0 0 0;
+    float: right;
+}
+.main-currency-sec ul li {
+    display: inline-block;
+    padding: 0 0 0 75px;
+}
+.main-currency-sec ul li:nth-child(1) {
+    padding-left: 0px;
+}
+.main-currency-sec ul li .time-sec {
+    position: relative;
+    text-align: right;
+}
+.main-currency-sec ul li .time-sec:before {
+    content: "\f017";
+    font-family: fontawesome;
+    position: absolute;
+    left: 75px;
+    top: -2px;
+    color: #d23548;
+    font-size: 18px;
+}
+.main-currency-sec ul li .time-sec .japan-time {
+    color: #d23548;
+    font-size: 14px;
+    font-weight: bold;
+}
+.main-currency-sec ul li .time-sec .time {
+    color: #54667a;
+    font-size: 14px;
+    font-weight: bold;
+}
+.main-currency-sec ul li .time-sec p {
+    color: #54667a;
+    font-size: 14px;
+    font-weight: bold;
+}
+.main-currency-sec ul li .time-sec p span {
+    color: #d23548;
+}
+.main-currency-sec ul li .time-sec:after {
+    content: "";
+    background: url(/assets/autorod-images/time-border.png) no-repeat;
+    position: absolute;
+    right: -19px;
+    top: 0px;
+    width: 1px;
+    height: 36px;
+}
+.main-currency-sec ul li .number {
+    position: relative;
+}
+.main-currency-sec ul li .number:before {
+    content: "\f095";
+    font-family: fontawesome;
+    position: absolute;
+    left: -35px;
+    top: 7px;
+    color: #d23548;
+    font-size: 16px;
+    border: 2px solid #d23548;
+    padding: 0px 4px;
+    border-radius: 50%;
+}
+.main-currency-sec ul li .number .tw27 {
+    color: #d23548;
+    font-size: 14px;
+}
+.main-currency-sec ul li .number .sales {
+    color: #565151;
+    font-size: 14px;
+}
+.main-currency-sec ul li .number p {
+    color: #1f295d;
+    font-size: 21px;
+    margin-bottom: 0;
+    line-height: 18px;
+}
+.customer-bid-heading_sec{
+     background-color: #f2f3f7;
+     padding: 20px 0;
+}
+.cus_heading-app h2{
+	margin:0px;
+	color: #16133a;
+	font-size: 21px;
+	font-weight: bold;
+}
+.oder_ID-sect{
+	background: rgb(172,54,88);
+    background: -moz-linear-gradient(left, rgba(172,54,88,1) 41%, rgba(62,56,135,1) 89%, rgba(62,56,135,1) 100%, rgba(32,124,202,1) 100%);
+    background: -webkit-linear-gradient(left, rgba(172,54,88,1) 41%,rgba(62,56,135,1) 89%,rgba(62,56,135,1) 100%,rgba(32,124,202,1) 100%);
+    background: linear-gradient(to right, rgba(172,54,88,1) 41%,rgba(62,56,135,1) 89%,rgba(62,56,135,1) 100%,rgba(32,124,202,1) 100%);
+    padding: 20px 0;
+}
+.oder_id-heading h2{
+	 margin:0px;
+	color: #fff;
+	font-size: 21px;
+	font-weight: bolder;
+}
+.oder-ID-list{
+	position: relative;
+}
+.oder-ID-list:before{
+	content: "";
+    position: absolute;
+    left: -25px;
+    top: -20px;
+    width: 1px;
+    height: 73px;
+    background-color: #80598b;
+}
+.oder-ID-list ul{
+	font-size: 0px;
+	list-style: none;
+	margin: 0px;
+}
+.oder-ID-list ul li{
+	display: inline-block;
+	margin-right: 47px;
+}
+.oder-ID-list ul li:last-child{
+    margin-right: 0px;
+}
+.oder-ID-list ul li p{
+     font-size: 13px;
+     font-weight: bold;
+     color: #fff;
+     margin: 0px;
+}
+.oder-ID-list ul li span{
+    font-size: 11px;
+    font-weight: bold;
+    color: #cfd3eb;
+    display: block;
+}
+.main-tbl-sec{
+	margin: 20px 0;
+}
+.main-tbl-sec table thead{
+	background-color: #ecebf4;
+	
+}
+.main-tbl-sec table thead th{
+	border-bottom: 2px solid #e4e3f0;
+	padding: 13px 0px 13px 20px;
+	font-weight: bold;
+	font-size: 11px;
+	color: #252160;
+}
+.main-tbl-sec table tbody tr:nth-child(even){
+	background-color: #fafafd;
+} 
+.main-tbl-sec table tbody tr td{
+	padding: 15px 0px 15px 20px;
+	font-weight: bold;
+	font-size: 13px;
+	color: #716e9a;
+	vertical-align: middle;
+	border-top: none;
+	border-bottom: 1px solid #e9e9f3;
+}
+.main-tbl-sec table tbody tr td span{
+	word-break: break-all;
+}
+.main-tbl-sec table tbody tr td:last-child{
+	text-align: right;
+	padding: 13px 20px 13px 20px;
+	width: 19%;
+}
+.main-tbl-sec table tbody tr td .bid-app-img{
+	display: inline-block;
+	padding: 0 7px 0 0;
+}
+.main-tbl-sec table tbody tr td .bid-app-content{
+	display: inline-block;
+	vertical-align: top;
+}
+.main-tbl-sec table tbody tr td .bid-app-content p{
+	font-size: 15px;
+	color: #2b388f;
+	font-weight: bold;
+	margin: 0px;
+}
+.main-tbl-sec table tbody tr td .bid-app-content p span{
+	display: block;
+	font-size: 13px;
+	font-weight: bold;
+	color: #252160;
+}
+.main-tbl-sec table tbody tr td.cha_noo{
+	font-size: 13px;
+	font-weight: bold;
+	color: #252160;
+	word-break: break-all;
+}
+.main-tbl-sec table tbody tr td span.gr-bid{
+	font-weight: bold;
+	font-size: 17px;
+	color: #21c15e;
+}
+.main-tbl-sec table tbody tr td button{
+	font-weight: bold;
+	font-size: 13px;
+	color: #fff;
+	border: 1px solid transparent;
+	padding: 6px 20px;
+	border-radius: 3px;
+}
+.main-tbl-sec table tbody tr td button.re-bnt{
+	background-color: #ee282f;
+	margin-right: 10px;
+}
+.main-tbl-sec table tbody tr td button.re-bnt:hover{
+	background-color: transparent;
+	color: #ee282f;
+	border: 1px solid #ee282f;
+}
+.main-tbl-sec table tbody tr td button.ac-bnt{
+	background-color: #21c15e;
+}
+.main-tbl-sec table tbody tr td button.ac-bnt:hover{
+	background-color: transparent;
+	color: #21c15e;
+	border: 1px solid #21c15e;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:1024px){
+    .oder-ID-list ul li {
+    margin-right: 23px;
+}
+.main-tbl-sec table tbody tr td button {
+    font-size: 13px;
+    padding: 6px 20px;
+}
+.main-tbl-sec table tbody tr td:last-child {
+    padding: 13px 5px 13px 5px;
+}
+
+}
+
+
+@media screen and (max-width: 768px){
+     .oder-ID-list ul li {
+    display: inline-block;
+    margin-right: 11px;
+}
+.oder-ID-list ul li p {
+    font-size: 11px;
+}
+.oder-ID-list ul li span {
+    font-size: 9px;
+}
+.oder-ID-list ul li {
+    margin-right: 11px;
+}
+.oder_id-heading h2 {
+    font-size: 18px;
+}
+.cus_heading-app h2{
+	font-size: 18px;
+}
+.oder-ID-list:before{
+	height: 67px;
+}
+.main-tbl-sec table tbody tr td button {
+    font-size: 12px;
+    padding: 6px 10px;
+}
+.main-tbl-sec table tbody tr td:last-child {
+    padding: 13px 5px 13px 5px;
+}
+
+}
+
+
+@media screen and (max-width: 736px){
+   .main-tbl-sec table thead{
+	display: none;
+}
+.main-tbl-sec table tbody tr td:first-child{
+	width: 35%;
+	display:initial;
+	    padding-bottom: 26px;
+}
+.main-tbl-sec table tbody{
+	width: 100%;
+	display: block;
+}
+.main-tbl-sec table tbody tr{
+	width: 100%;
+	display:table;
+}
+.main-tbl-sec table tbody tr td{
+	width: 17.5%;
+	display: inline-block;
+}
+.main-tbl-sec table tbody tr td:nth-child(5){
+	padding-left: 85px;
+}
+.main-tbl-sec table tbody tr td:nth-child(6){
+	padding-left: 35px;
+}
+.main-tbl-sec table tbody tr td:nth-child(7){
+	padding-left: 35px;
+}
+.main-tbl-sec table tbody tr td:last-child {
+    text-align: left;
+    padding: 13px 0px 22px 20px;
+    width: 21%;
+}
+.main-tbl-sec table tbody tr td .bid-app-content p span{
+    display:block;
+}
+.customer-bid-heading_sec{
+	text-align: center;
+}
+.oder_id-heading{
+	text-align: center;
+	padding-bottom: 15px;
+}
+.oder-ID-list ul li {
+    margin-right: 150px;
+}
+.logo a:nth-child(2) {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+.main-currency-sec ul {
+    width: 100%;
+    text-align: center;
+    float: none;
+}
+.main-tbl-sec table tbody tr td span.gr-bid {
+    font-size: 13px;
+}
+.main-tbl-sec table tbody tr td strong.clnhd{
+	padding-right: 20px;
+	display: block;
+}
+.main-tbl-sec table tbody tr td .bid-app-content {
+    vertical-align: middle;
+}
+
+}
+
+
+@media screen and (max-width: 667px){
+    .oder-ID-list ul li {
+    margin-right: 128px;
+}
+.main-tbl-sec table tbody tr td:nth-child(5) {
+    padding-left: 85px;
+}
+.main-tbl-sec table tbody tr td:nth-child(6) {
+    padding-left: 52px;
+}
+.main-tbl-sec table tbody tr td:nth-child(7) {
+    padding-left: 50px;
+}
+.main-tbl-sec table tbody tr td:last-child {
+    text-align: left;
+    padding: 13px 20px 22px 52px;
+    width: 31%;
+}
+.main-tbl-sec table tbody tr td {
+    width: 16.5%;
+    display: inline-block;
+}
+.main-tbl-sec table tbody tr td:last-child {
+    text-align: left;
+    padding: 13px 20px 22px 20px;
+    width: 25%;
+}
+
+}
+
+
+@media screen and (max-width: 640px){
+.oder-ID-list ul li {
+    margin-right: 120px;
+}
+.main-tbl-sec table tbody tr td:nth-child(6) {
+    padding-left: 58px;
+}
+.main-tbl-sec table tbody tr td:nth-child(7) {
+    padding-left: 58px;
+}
+.main-tbl-sec table tbody tr td:last-child {
+    text-align: center;
+    padding: 13px 0px 13px 20px;
+    width: 100%;
+}
+.main-tbl-sec table tbody tr td strong.clnhd {
+    padding-right: 0px;
+    display: block;
+}
+.main-tbl-sec table tbody tr td {
+    width: 23.5%;
+    display: inline-block;
+}
+.main-tbl-sec table tbody tr td button {
+    font-size: 12px;
+    padding: 6px 20px;
+}
+
+}
+
+
+/* iPhone 5 */
+	/* Landscape */
+	@media only screen
+	and (max-height: 320px)
+	and (max-width: 568px)
+	and (orientation:landscape){
+.oder-ID-list ul li {
+    margin-right: 95px;
+}
+.main-tbl-sec table tbody tr td:last-child {
+   text-align: center;
+    padding: 13px 0px 13px 20px;
+    width: 100%;
+}
+
+.main-tbl-sec table tbody tr td strong.clnhd {
+    padding-right: 0px;
+    display: block;
+}
+.main-tbl-sec table tbody tr td {
+    width: 23.5%;
+    display: inline-block;
+}
+.main-tbl-sec table tbody tr td button {
+    font-size: 12px;
+    padding: 6px 20px;
+}
+
+	}
+
+@media screen and (max-width: 480px){
+     .main-currency-sec ul {
+    text-align: center;
+    padding: 0 0 10px 0;
+}
+.main-currency-sec ul li:nth-child(1) {
+    padding-left: 0px;
+}
+.main-currency-sec ul li {
+    margin: 0 0 0 0;
+}
+.main-currency-sec ul li .time-sec {
+    text-align: center;
+}
+.customer-bid-heading_sec{
+	text-align: center;
+}
+.oder_id-heading{
+	text-align: center;
+	padding-bottom: 15px;
+}
+.oder-ID-list ul li {
+    margin-right: 25px;
+}
+.main-tbl-sec table thead{
+	display: none;
+}
+.main-tbl-sec table tbody tr td:first-child{
+	width: 100%;
+	display: block;
+}
+.main-tbl-sec table tbody{
+	width: 100%;
+	display: block;
+}
+.main-tbl-sec table tbody tr{
+	width: 100%;
+	display:table;
+}
+.main-tbl-sec table tbody tr td{
+	width: 33.3%;
+	display: inline-block;
+}
+.main-tbl-sec table tbody tr td strong.clnhd{
+	padding-right: 20px;
+}
+.main-tbl-sec table tbody tr td:last-child {
+    text-align: center;
+    padding: 13px 20px 13px 20px;
+    width: 100%;
+}
+.main-currency-sec ul li .number:before{
+	left: 80px;
+}
+.main-currency-sec ul li .time-sec:before{
+	left: 100px;
+}
+.main-currency-sec ul li .time-sec:after{
+	display: none;
+}
+.main-tbl-sec table tbody tr td span.gr-bid {
+    font-size: 13px;
+}
+.main-tbl-sec table tbody tr td .bid-app-content p span {
+    display:block;
+}
+.main-tbl-sec table tbody tr td button {
+    font-size: 12px;
+    padding: 6px 20px;
+}
+.main-tbl-sec table tbody tr td:nth-child(5) {
+    padding-left: 20px;
+}
+.main-tbl-sec table tbody tr td:nth-child(7) {
+    padding-left: 20px;
+}
+.main-tbl-sec table tbody tr td:nth-child(6) {
+    padding-left: 20px;
+}
+.main-tbl-sec table tbody tr td:first-child{
+	padding-bottom: 15px;
+}
+
+}
+
+@media screen and (max-width: 414px){
+  .main-currency-sec ul li {
+    padding: 0 0 0 0;
+    width: 100%;
+}
+.oder-ID-list ul li {
+    margin-right: 43px;
+}
+.main-tbl-sec table tbody tr td:first-child{
+	padding-bottom: 15px;
+}
+
+}
+
+@media screen and (max-width: 375px){
+     .oder-ID-list ul li {
+    margin-right: 30px;
+}
+
+}
+
+@media screen and (max-width: 360px){
+     .oder-ID-list ul li {
+    margin-right: 26px;
+}
+
+}
+
+@media screen and (max-width: 320px){
+    .oder-ID-list ul li {
+    margin-right: 13px;
+}
+.main-currency-sec ul li .time-sec:before {
+    left: 70px;
+}
+.main-currency-sec ul li .number:before {
+    left: 50px;
+}
+.main-tbl-sec table tbody tr td strong.clnhd {
+    padding-right: 0px;
+}
+}
+.hide-time{visibility: hidden;}

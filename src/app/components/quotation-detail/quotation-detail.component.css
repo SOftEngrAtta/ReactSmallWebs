@@ -1,0 +1,24 @@
+.agnt-shorthd + .record_table .table_head{
+    font-size:0;
+}
+.prod-det h3{
+    max-width:83px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.table_body.agent_shortlist li:nth-child(5){
+    max-width:120px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.edit-icon{
+    background: none;
+    border: none;
+}
+.img-css{
+    height:46px;
+    width:46px;
+}

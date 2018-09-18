@@ -1,0 +1,152 @@
+<div class="parnt-aprroval-div">
+    <!-- header  -->
+    <section class="headertopsect">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12 nopad_xs_right ">
+                    <div class="logo">
+                        <a class="responsenav icon-menu-mob toggle-menu menu-left jPushMenuBtn" href="javascript:;">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            <!--<img src="/assets/images/menu.png">-->
+                        </a>
+                        <a href="javascript:;">
+                            <img src="/assets/images/autorod-images/logo.png" alt="" class="img-responsive" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 nopad_xs_left nopad_sm_right nopad_sm_left">
+                    <div class="main-currency-sec">
+                        <ul>
+                            <li class="hide-time">
+                                <div class="time-sec">
+                                    <span class="japan-time">JAPAN TIME:</span>
+                                    <span class="time">9:45:21</span>
+                                    <P>CURRENCY RATE:1 USD =
+                                        <span>109.10 JPY</span>
+                                    </P>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="number">
+                                    <span class="tw27">24/7</span>
+                                    <span class="sales">Sales and Support</span>
+                                    <p>+81 3 4560 2331</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end -->
+    <section class="customer-bid-heading_sec" *ngIf="isListActive">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="cus_heading-app">
+                        <h2>Customer Bid Approval</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="oder_ID-sect">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                    <div class="oder_id-heading">
+                        <h2>Order ID - {{ orderDetailRecords['OrderDisplayId'] }}</h2>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    <div class="oder-ID-list">
+                        <ul>
+                            <li>
+                                <p>
+                                    <span>Shipment Country</span>{{ orderDetailRecords['CountryName'] }}</p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span>Shipment Port</span>{{ orderDetailRecords['PortName'] }}</p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span>Shipment Type</span>{{ orderDetailRecords['ShipmentTypeName'] }}</p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span>Freight Type</span>{{ orderDetailRecords['ShipmentTermName'] }}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="main-table-section">
+        <div class="container">
+            <div class="row" >
+                <div class="main-tbl-sec">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Vehicle Specification</th>
+                                <th>Chassis No.</th>
+                                <!-- <th>Lot No.</th> -->
+                                <th>Bid Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of orderDetailRecords?.list">
+                                <td>
+                                    <div class="bid-app-img">
+                                        <a [href]="item?.AuctionImage[0] | splitimage" data-fancybox="gallery1" class="imgbox">
+                                            <img [src]="item?.AuctionImage[0] | splitimage" alt="" width="50"/>
+                                        </a>
+                                    </div>
+                                    <div class="bid-app-content">
+                                        <p>{{ item?.Make || '--' }} {{ item?.Model || '--' }}<span>{{ item?.Year || '--' }}</span></p>
+                                    </div>
+                                </td>
+                                <td class="cha_noo">
+                                    <span data-dt="Chassis-No">{{ item?.ChassisId || '--' }}</span>
+                                </td>
+                                <!-- <td>
+                                    <span data-dt="Lot-No">{{ item?.LotNo || '--' }}</span>
+                                </td> -->
+                                <td>
+                                    <span class="gr-bid" data-dt="Bid-Price">JPY {{ item?.BidPrice | number }}</span>
+                                </td>
+                                <td>
+                                    <button class="re-bnt" data-fancybox data-src="#display_message" *ngIf="item['StatusId'] == 1000 || item['StatusId'] == 1001 || item['StatusId'] == 1006 || item['StatusId'] == 1020 " (click)="accept_reject['Id'] = item.Id ; accept_reject['Status'] = 0; accept_reject['Action'] = 'reject' ">Reject</button>
+                                    <span *ngIf="item['StatusId'] != 1000 && item['StatusId'] != 1001 && item['StatusId'] != 1006 && item['StatusId'] != 1020" [ngClass]="{'orange-color' : (item.StatusId == 1040) , 
+                                        'green-color' : ( item.StatusId == 1080 || item.StatusId == 1090 || item.StatusId == 1100 || item.StatusId == 1110) , 
+                                        'red-color' : ( item.StatusId == 1120 || item.StatusId == 1130 || item.StatusId == 1140 || item.StatusId == 1150 || item.StatusId == 1002 || item.StatusId == 1007) }"> 
+                                        {{ item.OrderDetailStatus }} 
+                                    </span>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <div class="row" *ngIf="!isListActive">
+        No Record Found
+    </div>
+</div>
+
+<!-- modal -->
+<div class="delete_order remove_box_one" id="display_message" style="display:none;">
+    <div class="remove_incomplete_order">
+        <h3>Are you sure you want to {{ accept_reject['Action'] }}?</h3>
+        <button class="login_btn3" onclick="$.fancybox.close();">No</button>
+        <button class="login_btn3 deletecurrent" onclick="$.fancybox.close();" (click)="acceptreject()">Yes</button>
+    </div>
+</div>
+<!-- end -->

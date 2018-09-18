@@ -1,0 +1,250 @@
+<app-header></app-header>
+
+<section class="contentexist active">
+  <div class="clearfix"></div>
+  <div class="container">
+    <div class="agent_s_sec_two bidding-page1">
+      <div class="row">
+        <div class="col-lg-12 nopad_left">
+          <div class="col-lg-5 resutl">
+            <h5>
+              <strong>Incomplete Orders </strong>
+              <span>{{ objIncompleteOrders.length }}</span>
+            </h5>
+          </div>
+          <div class="col-lg-7 text-right nopad_right">
+            <button class="gnrt-invce" *ngIf="!isCustomerLogin" (click)="GenerateAuctionDepositInvoice()">Generate Invoice</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="agent_s_sec_three bidding-page incordr">
+    <div class="container">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="record_table">
+          <div class="accordion">
+            <div class="hglt ordrinpro" *ngFor="let order of objIncompleteOrders; let i = index">
+              <h4 class="accordion-toggle active">
+                <span class="orderidnum">Order ID -
+                  <span class="orderidval"> {{ order.OrderDisplayId }} </span>
+                </span>
+                <div class="order_history_tab_info">
+                  <button class="view-bid-order" href="javascript:;" tabindex="0" [routerLink]="['/view-confirm-order']" [queryParams]="{id : order.EncryptedOrderId}">Continue</button>
+                </div>
+              </h4>
+              <div class="accordion-content" style="display:block">
+
+                <div class="group-items" [ngClass]="{ 'green-border' : numberEven(k) , 'purple-border' : numberOdd(k) }" *ngFor="let group of order.CarGroups; let k = index">
+                  <ul class="carw-odhd carw-items">
+                    <li class="car-grp-1">{{ group.GroupName }} {{ k + 1}}</li>
+                    <li class="grp-items">
+                      <span class="order-date">
+                        <strong>{{ group.ItemsRequired }} out of </strong> {{ group.GroupItems.length }} </span>
+                    </li>
+                  </ul>
+
+                  <div class="group-items-dt" *ngFor="let item of group.GroupItems; let j = index">
+                    <div class="group-items-dt-top">
+                      <div class="group-items-dt-top-lft">
+                        <div class="group-items-dt-top-lft-mn">
+                          <div>
+                            <span class="selct-itms" *ngIf="!isCustomerLogin">
+                              <input type="checkbox" class="chkOrderDetail" value="{{item.EncryptedOrderDetailId}}">
+                              <i class="fa fa-check chcktck" aria-hidden="true"></i>
+                            </span>
+                            <span class="grpitems-imgtg">
+                              <a class="img-zoom" data-fancybox [href]=" item.CarImage | splitimage " *ngIf="item.CarImage">
+                                <img height="46" width="46" [src]=" item.CarImage | splitimage ">
+                              </a>
+                              <a data-fancybox href="./assets/images/no-image.png" *ngIf="!item.CarImage">
+                                <img src="./assets/images/no-image.png" style="width: 90%; margin-bottom: 5px; ">
+                              </a>
+                            </span>
+                          </div>
+                          <div class="group-items-dt-top-dtdv">
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <span>Make</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.MakerName }}</strong>
+                                  </td>
+                                  <td>
+                                    <span>Chassis No.</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.ChassisNumber }}</strong>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <span>Model</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.ModelName }}</strong>
+                                  </td>
+                                  <td>
+                                    <span>Mileage</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.Mileage | roundoffhtmlnumber | number }} KM</strong>
+                                  </td>
+                                </tr>
+                                <tr>
+
+                                  <td>
+                                    <span>M3 of Car</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.M3 | number }} m
+                                      <sup>3</sup>
+                                    </strong>
+                                  </td>
+                                  <td>
+                                    <span>Year</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.ModelYear }}</strong>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="item.AuctionTypeId != 5">
+                                  <td>
+                                    <span>Auction House</span>
+                                  </td>
+                                  <td>
+                                    <strong> {{ item.AuctionHouse }}</strong>
+                                  </td>
+                                  <td>
+                                    <span>Auction Date</span>
+                                  </td>
+                                  <td title="{{ item.AuctionDate | date : 'dd.MM.yyyy' }} {{ item.AuctionDate | customtime }}">
+                                    <strong class="tmhd">{{ item.AuctionDate | date : 'dd.MM.yyyy' }} {{ item.AuctionDate | customtime }}</strong>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="item.AuctionTypeId != 5">
+                                  <td>
+                                    <span>LotNo</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.LotNo || '--' }}</strong>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="group-items-dt-top-cen">
+                        <div class="group-items-dt-top-cen-main">
+                          <div>
+                            <table>
+                              <tbody>
+                                <tr *ngIf="item.AuctionTypeId != 5">
+                                  <td>
+                                    <span *ngIf="item.PricingTypeId != 2">Bid Price</span>
+                                    <span *ngIf="item.PricingTypeId == 2">Max Bid Price</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.CurrencySymbol }} {{ item.BidPrice | roundoffhtmlnumber | number }}</strong>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="!isCustomerLogin && item.ServiceCharges && item.ServiceCharges != null && item.AuctionTypeId != 5">
+                                  <td>
+                                    <span>Service Char.</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.CurrencySymbol }} {{ item.ServiceCharges | roundoffhtmlnumber | number }}</strong>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="item.PricingTypeId != 2 && item.AlterationCharges && item.AlterationCharges != null && !isCustomerLogin && item.AuctionTypeId != 5">
+                                  <td>
+                                    <span>Alteration Char.</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.CurrencySymbol }} {{ item.AlterationCharges | roundoffhtmlnumber | number }}</strong>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="item.PricingTypeId != 2 && item.InspectionCharges && item.InspectionCharges != null && !isCustomerLogin">
+                                  <td>
+                                    <span>Inspection Char.</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.CurrencySymbol }} {{ item.InspectionCharges | roundoffhtmlnumber | number }}</strong>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="item.PricingTypeId != 2  && item.OnePriceFee && item.OnePriceFee != null && !isCustomerLogin && item.AuctionTypeId != 5">
+                                  <td>
+                                    <span>One Price</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.CurrencySymbol }} {{ item.OnePriceFee | roundoffhtmlnumber | number }}</strong>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="item.NegotiationCharges && item.NegotiationCharges != null && item.AuctionTypeId != 5">
+                                  <td>
+                                    <span>Negotiation Char.</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.CurrencySymbol }} {{ item.NegotiationCharges | roundoffhtmlnumber | number }}</strong>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <span>FOB</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.CurrencySymbol }} {{ item.FOB | roundoffhtmlnumber | number }}</strong>
+                                  </td>
+                                </tr>
+                            </table>
+                          </div>
+                          <div>
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <span>Freight</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.CurrencySymbol }} {{ item.FreightCharges | roundoffhtmlnumber | number }}</strong>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="!isCustomerLogin && item.RikusoFee && item.RikusoFee != null && item.AuctionTypeId != 5">
+                                  <td>
+                                    <span>Rikuso</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.CurrencySymbol }} {{ item.RikusoFee | roundoffhtmlnumber | number }}</strong>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <span>Total Price (CNF)</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item.CurrencySymbol }} {{ item.CNF | roundoffhtmlnumber | number }}</strong>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="objIncompleteOrders.length == 0 " align="center" class="no-record-found">
+    No Record found 
+  </div>
+</section>

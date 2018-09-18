@@ -1,0 +1,162 @@
+<app-header></app-header>
+
+<section class="notify-me-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-7">
+                    <div class="notif-hdsect">
+                        <h3>Notify Me</h3>
+                        <p>It notifies you when your requested vehicle arrives in our stock as per your given price and other specifications.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-5 text-right">
+                    <button class="notif-button notifbuttons" data-toggle="modal" data-target="#notifyme-popup">Notify Me</button>
+                </div>
+            </div>
+            <div class="row " *ngIf="notifyMeList && notifyMeList.length">
+                <div class="col-md-12">
+                    <div class="notifyme-data">
+                        <table class="">
+                            <thead>
+                                <tr>
+                                    <th>Vehicle Specification</th>
+                                    <th>Country</th>
+                                    <th>Port</th>
+                                    <th>Date Inquired</th>
+                                    <!-- <th>Status</th> -->
+                                    <th>Desired Price Including CNF</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of notifyMeList">
+                                    <td>
+                                        <div class="notify-car-det">
+                                            <div style="display: none;">
+                                                <a href="/assets/images/list-img-big.jpg" class="img-zoom" data-fancybox="gallery1">
+                                                    <img src="/assets/images/list-img-big.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <h4>{{ item.Make }} {{ item.Model }}</h4>
+                                                <h5>{{ item.YearFrom }} - {{ item.YearTo }}</h5>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><strong>{{ item.Country }}</strong></td>
+                                    <td><span>{{ item.Port }}</span></td>
+                                    <td><strong>{{ item.CreationDate }}</strong></td>
+                                    <!-- <td><span class="pending_status">Pending</span></td> -->
+                                    <td>
+                                        <span>JPY {{ item.PriceMin | roundoffhtmlnumber | number}}  TO  JPY {{ item.PriceMax | roundoffhtmlnumber | number}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row no-record-found" align="center" *ngIf="notifyMeList && notifyMeList.length == 0">
+                No Record Found
+            </div>
+        </div>
+    </section>
+
+
+<div class="modal fade notifyme-popup" id="notifyme-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Notify Me</h5>
+                <button type="button" class="close" aria-label="Close"  (click)="HidePopUp()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 nopad_right">
+                            <div class="selctbox">
+                                <label for="make">Make</label>
+                                <select class="valid-check" id="ddlMake" [(ngModel)]="notifyMeModel.MakeId" (change)="getModels()">
+                                    <option selected disabled value="0">Select Make</option>
+                                    <option *ngFor="let make of makes" [ngValue]="make.Id">{{make.Title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 nopad_right">
+                            <div class="selctbox">
+                                <label for="model">Model</label>
+                                <select class="valid-check" id="ddlModel" [(ngModel)]="notifyMeModel.ModelId">
+                                    <option selected disabled value="0">Select Model</option>
+                                    <option *ngFor="let model of models" [ngValue]="model.id">{{model.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="years_det">
+                                <div>
+                                    <label for="">Year From</label>
+                                    <input class="valid-check" id="txtYearFrom" type="number" [(ngModel)]="notifyMeModel.YearFrom" placeholder="Enter Year" [maxLength]="4">
+                                </div>
+                                <div>
+                                    <label for="">Year To</label>
+                                    <input class="valid-check" id="txtYearTo" type="number" [(ngModel)]="notifyMeModel.YearTo" placeholder="Enter Year" [maxLength]="4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 nopad_right">
+                            <div class="selctbox-mid">
+                                <label for="make">Country of Origin</label>
+                                <select class="sel-invc" id="ddlCountry" [(ngModel)]="customerShipmentDetail.ShipmentCountry"
+                                 (change)="selectedShipmentCountry(customerShipmentDetail.ShipmentCountry)">
+                                    <option [ngValue]="undefined" [disabled]="true" [selected]="true">Select Shipment Country</option>
+                                    <option *ngFor="let country of shipmentDetail.country" [ngValue]="country">{{country.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 ">
+                            <div class="selctbox-mid">
+                                <label for="model">Origin Port</label>
+                                <select class="sel-invc" id="ddlPort" [(ngModel)]="customerShipmentDetail.ShipmentPort" [disabled]="filteredShipmentPorts.length <= 0">
+                                    <option [ngValue]="undefined" [disabled]="true" [selected]="true">Select Shipment Port</option>
+                                    <option *ngFor="let port of filteredShipmentPorts" [ngValue]="port">{{port.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <h4 class="hd-notifypop">Desired Price Including CNF</h4>
+                        </div>
+                        <div class="col-md-6 col-sm-6 nopad_right">
+                            <div class="prc-detail">
+                                <label for="">Min From</label>
+                                <input class="valid-check" type="number" [(ngModel)]="notifyMeModel.PriceMin" id="txtPriceFrom"
+                                placeholder="Enter Price in JPY" [maxLength]="8">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="prc-detail">
+                                <label for="">Max To</label>
+                                <input class="valid-check" type="number" [(ngModel)]="notifyMeModel.PriceMax" id="txtPriceTo"
+                                placeholder="Enter Price in JPY" [maxLength]="8">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-footer-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-secondary notifycancel" (click)="HidePopUp()">Cancel</button>
+                            <button type="button" class="btn btn-primary notifybtn" (click)="Insert_NotifyMeData()" >Notify Me When Available</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

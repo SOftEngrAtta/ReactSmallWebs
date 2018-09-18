@@ -1,0 +1,858 @@
+
+
+/*unit details*/
+
+
+
+.breadcrumb-cstm{    background-color: transparent;    margin-bottom: 0;    padding: 20px 15px 0 0; }
+.breadcrumb-cstm li{}
+.breadcrumb-cstm li a{font-size: 17px; font-weight: bold;color:#100e2c;}
+.breadcrumb-cstm li:nth-child(3) a{
+        color: #4246a4;
+}
+.breadcrumb-cstm.breadcrumb>li+li:before{content: "\f054";font-family: "fontawesome";color: #100e2c;    font-size: 10px;}
+
+
+.pr-fav{font-size: 0;text-align: right;    margin: 0;    padding: 20px 0 0 0;}
+.pr-fav li{display: inline-block;}
+.pr-fav li:first-child{margin-right: 16px;}
+.pr-fav li a{font-size: 11px;}
+.pr-fav li a i{    padding-right: 10px;}
+.pr-fav li a.fav{color: #fff; background: #8688b7; border: 1px solid transparent; padding: 6px 16px; border-radius: 2px;font-size: 11px;}
+.pr-fav li a.fav:hover{color:#8688b7;border-color:#8688b7;background: #fff;}
+.pr-fav li a.print{color: #fff;border: 1px solid transparent;background: #bfc2d6;padding: 6px 15px;    border-radius: 2px;}
+
+.pr-fav .sprites{background: url(/assets/images/search-arean-images/search-area-sprite.png); background-repeat: no-repeat; display: inline-block; width: 11px; height: 13px; vertical-align: middle; margin-right: 10px;}
+.pr-fav .sprites.prnt{background-position: -278px -256px; }
+
+
+
+
+
+
+.car-slides-main{    background: #fff;    margin-top: 14px;border-top-left-radius: 4px;border-top-right-radius: 4px;box-shadow: 0px 3px 6px 0px rgba(97, 103, 121, 0.1); border:1px solid #d6d7e8;}
+
+.car-slides-main-hd{padding: 10px 20px;}
+.car-slides-main-hd h3{font-size: 21px; margin: 0; font-weight: 900;color:#191642;}
+.car-slides-main-hd p{margin: 0;font-size: 17px;font-weight: 700;   }
+.car-slides-main-hd p span{color: #444c73;}
+.car-slides-main-hd p strong{color: #e61013;}
+
+
+
+.car-slides-main-cont{width: 100%;    padding: 0 20px 10px;}
+
+
+
+.big-slide-images{width: 100%;}
+.big-slide-images .item{height: 1%;position: relative;overflow:hidden;}
+.big-slide-images img{width: 100%;max-height: 445px;}
+
+.big-slide-images .item .labls.inn{  
+	width: 200px;
+    position: absolute;
+    text-align: center;
+    line-height: 50px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    background: #e43;
+    top: 15px;
+    left: -64px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    
+}
+
+.big-slide-images .item .labls.sld{background: red;}
+.big-slide-images .item .labls.rsrvd{background: #ff8213;}
+.small-slide-images .item{position: relative;overflow:hidden;}
+.small-slide-images .item .sld{width: 90px;
+	font-size:10px;
+    position: absolute;
+    text-align: center;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    background: #e43;
+    top: 10px;
+    left: -20px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    background: red;
+    text-align: center;
+}
+.small-slide-images .item .rsrvd{ width: 90px;
+	font-size:10px;
+    position: absolute;
+    text-align: center;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    background: #e43;
+    top: 10px;
+    left: -20px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    background: #ff8213;
+}
+
+
+.car-image-bx .sld{
+	width: 90px;
+	font-size:12px;
+    position: absolute;
+    text-align: center;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    background: #e43;
+    top: 15px;
+    left: -20px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    background: red;
+    text-align: center;
+}
+.car-image-bx .rsrvd{
+ width: 90px;
+	font-size:12px;
+    position: absolute;
+    text-align: center;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    background: #e43;
+    top: 15px;
+    left: -20px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    background: #ff8213;
+}
+
+.small-slide-images{width: 100%;position: relative;margin-top: 15px;}
+.small-slide-images .item img{border: 2px solid transparent;border-radius: 5px;width: 100%;}
+.small-slide-images .item.slick-current.slick-active img{border: 2px solid #e61013;border-radius: 5px;}
+
+/*.small-slide-images > div{margin: 0 0 0 10px;}*/
+
+.small-slide-images .slick-arrow{font-size: 0px;position: absolute;width: 14px;height: 100%;background: #ebedf5;position: absolute;top: 37px;    border: 1px solid #ebedf5;}
+.small-slide-images .slick-arrow.slick-prev{left: -20px;}
+.small-slide-images .slick-arrow.slick-prev:before{position: absolute; content: "\f053"; font-family: "fontawesome"; font-size: 13px; top: 26px; bottom: 0; margin: auto; width: 5px; left: 1px; color: #7f8fa7;}
+.small-slide-images .slick-arrow.slick-next{right: -20px;}
+.small-slide-images .slick-arrow.slick-next:before{position: absolute; content: "\f054"; font-family: "fontawesome"; font-size: 13px; top: 26px; bottom: 0; margin: auto; width: 5px; right: 4px; color: #7f8fa7;}
+
+
+.price-calculator-main{    margin-top: 14px;box-shadow: 0px 3px 6px 0px rgba(97, 103, 121, 0.1); }
+.price-calculator-main .price-calculator-main-hd{background: #d6d7e8; padding: 16px 20px;border-top-left-radius: 4px; border-top-right-radius: 4px;}
+.price-calculator-main .price-calculator-main-hd h3{font-size: 17px; color: #fff; margin: 0;}
+.price-calculator-main .price-calculator-mid{background: #fff;padding: 0;border-left:1px solid #d6d7e8;border-right:1px solid #d6d7e8;}
+.price-calculator-main .price-calculator-mid > div{}
+.price-calculator-main .price-calculator-mid .vprce{display: block;height: 65px;border-bottom: 1px solid #d6d7e8;    padding: 15px 20px;font-size: 0px;}
+.price-calculator-main .price-calculator-mid .vprce span.hdprce{color: #444c73; font-size: 15px; font-weight: 600;display: inline-block;width: 50%;}
+.price-calculator-main .price-calculator-mid .vprce strong{color: #110e2d;font-size: 20px;display: inline-block;width: 50%;text-align: right;}
+.price-calculator-main .price-calculator-mid .price-selfields{padding: 20px;    border-bottom: 1px solid #d6d7e8;}
+.price-calculator-main .price-calculator-mid .price-selfields select{padding: 0; display: inline-block; width: 48%; color: #9a9dca; font-size: 12px;padding: 5px 10px; height: auto;border: 1px solid #9a9dca; border-radius: 3px;    background-image: none;position: relative;background-image: url("/assets/images/search-arean-images/select-bg.png");background-position: 177px;}
+.price-calculator-main .price-calculator-mid .price-selfields select.ccoun{margin-right:12px;    margin-bottom: 13px;}
+.price-calculator-main .price-calculator-mid .price-selfields select:focus{border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;box-shadow: none;}
+.price-calculator-main .price-calculator-mid .shptype{}
+.price-calculator-main .price-calculator-mid .shptype span{color: #7279a0;font-size: 13px;}
+.price-calculator-main .price-calculator-mid .shptype span label span{color: #4b596c;font-size: 13px;font-weight: 700;}
+.price-calculator-main .price-calculator-mid div.shptype input[type="radio"]{
+    opacity: 0;
+    width: 0;
+    position: absolute;
+    z-index: 3;
+    height: 25px;
+    margin: 0px;
+    cursor: pointer;
+
+}
+.price-calculator-main .price-calculator-mid div.shptype input[type="radio"] + .rdbtn {
+    width: 10px;
+        margin-top: -1px;
+    height: 10px;
+    background: #c0c0d8;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.price-calculator-main .price-calculator-mid div.shptype input[type="radio"]:checked + .rdbtn {
+    background: #e9151c;
+}
+
+
+
+.price-calculator-main .price-calculator-mid div.shptype input[type="radio"]:checked + i + span{color: #e61013;}
+/*.price-calculator-main .price-calculator-mid .shptype input[type="radio"]:checked{
+	    background-position: unset;
+    background: #e61013;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin-right: 4px;
+    margin-left: 10px;
+}
+*/
+
+.price-calculator-main .price-calculator-mid div.shptype .radioss{margin: 0 0 0 20px;}
+.price-calculator-main .price-calculator-mid div.shptype .radioss + span{margin: 0 0 0 10px;}
+
+
+.price-calculator-main .adntnol-optn{padding: 20px;    border-bottom: 1px solid #ebedf5;}
+.price-calculator-main .adntnol-optn .mnhd{font-size: 13px; font-weight: 600;margin: 0 0 15px 0;}
+.price-calculator-main .adntnol-optn .addition-option{    margin-bottom: 0;}
+.price-calculator-main .adntnol-optn .addition-option li{display: inline-block;}
+.price-calculator-main .adntnol-optn .addition-option li i{color: #8494aa;}
+.price-calculator-main .adntnol-optn .addition-option li:first-child{margin: 0 37px 0 0; }
+.price-calculator-main .adntnol-optn .addition-option li label{}
+.price-calculator-main .adntnol-optn .addition-option li label input[type="checkbox"]{/* opacity: 0; */ width: 15px; height: 16px; background: #fff; margin: 0; vertical-align: middle; border: 1px solid #becad9; font-size: 0;}
+.price-calculator-main .adntnol-optn .addition-option li label input[type="checkbox"]:checked{}
+.price-calculator-main .adntnol-optn .addition-option li label input[type="checkbox"] + i{width: 15px; height: 16px; background: #fff; margin: 0; vertical-align: middle; border: 1px solid #a6a9d0; font-size: 11px; position: relative; left: -16px; color: #a6a9d0; padding: 2px 1px;border-radius: 3px;}
+.price-calculator-main .adntnol-optn .addition-option li label input[type="checkbox"]:checked + i{border: 1px solid #e61013;font-size: 11px;padding: 2px 1px;color: #e61013;}
+.price-calculator-main .adntnol-optn .addition-option li label span{    font-size: 12px;color: #444c73;    margin-left: -9px;    margin-right: 10px;}
+
+.price-calculator-main .adntnol-optn .mnhd2{margin: 20px 0 20px}
+.price-calculator-main .adntnol-optn .gov-requirem {    margin-bottom: 0;}
+.price-calculator-main .adntnol-optn .gov-requirem  li{display: block;}
+.price-calculator-main .adntnol-optn .gov-requirem  li:first-child{margin: 0; }
+.price-calculator-main .adntnol-optn .gov-requirem  li label{margin-bottom: 15px;}
+.price-calculator-main .adntnol-optn .gov-requirem  li label input[type="checkbox"]{/* opacity: 0; */ width: 15px; height: 16px; background: #fff; margin: 0; vertical-align: middle; border: 1px solid #becad9; font-size: 0;}
+.price-calculator-main .adntnol-optn .gov-requirem  li label input[type="checkbox"]:checked{}
+.price-calculator-main .adntnol-optn .gov-requirem  li label input[type="checkbox"] + i{width: 15px; height: 16px; background: #fff; margin: 0; vertical-align: middle; border: 1px solid #a6a9d0; font-size: 11px; position: relative; left: -16px; color: #a6a9d0; padding: 2px 1px;border-radius: 3px;}
+.price-calculator-main .adntnol-optn .gov-requirem  li label input[type="checkbox"]:checked + i{border: 1px solid #e61013;font-size: 11px;padding: 2px 1px;color: #e61013;}
+.price-calculator-main .adntnol-optn .gov-requirem  li label span{    font-size: 12px;color: #444c73;margin-left: -10px;    display: inline-block;vertical-align: top;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span + i{color: #8494aa;}
+
+/*.gov-requirem{}
+.gov-requirem li{}
+.gov-requirem li i{}
+.price-calculator-main .addition-option li label i{}*/
+
+
+.price-calculator-bot{border:1px solid #e73640;border-top:none;border-radius:0px 0px 2px 2px;}
+.price-calculator-bot .total-prices{display: block;background: #f6fbfe;padding: 20px;    border-bottom: 1px solid #d6d7e8;border-top:1px solid #d6d7e8;}
+.price-calculator-bot .total-prices .ttl-prchd{margin: 0;}
+.price-calculator-bot .total-prices .ttl-prchd span{display: inline-block;width: 48%;}
+.price-calculator-bot .total-prices .ttl-prchd span.left{margin: 0;font-size: 15px; color: #110e2d; font-weight: 600;text-align: left;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp{text-align: right;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp span{color: #4146a4;margin-right: 9px;display: inline-block;width: auto; font-size: 15px;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp strong{color: #e61013;font-size: 21px;font-weight: 900;}
+
+.price-calculator-bot .butnss{background: #fff;padding: 20px;border-radius:0px 0px 2px 2px;}
+.price-calculator-bot .butnss button{font-size: 17px;color: #fff;font-weight: 700;text-transform: uppercase;border-radius: 4px;}
+.price-calculator-bot .butnss .prcbtn{background: #4247a3;padding: 7px 20px;border: 1px solid transparent;margin-right: 8px;}
+.price-calculator-bot .butnss .prcbtn:hover{background: #fff;color: #4247a3;border-color: #4247a3; }
+.price-calculator-bot .butnss .buynow-btn{width: 140px; padding: 7px 20px;}
+.price-calculator-bot .butnss .buynow-btn:hover{color: #e9151c;}
+
+
+
+
+.vehicle-spec-det{margin-top: 28px;}
+.vehicle-spec-det .vehicle-spec-hd{background: #fff; padding: 16px;position: relative;border-top:1px solid #dddeed;border-right:1px solid #dddeed;}
+.vehicle-spec-det .vehicle-spec-hd:before{position: absolute;content: "";border-left: 3px solid #e61013;height: 100%;top: 0;left: 0;}
+.vehicle-spec-det .vehicle-spec-hd h3{margin: 0;color: #191642;font-size: 17px;font-weight: 700;}
+.vehicle-spec-det .vehicle-spec-det-mn{}
+.vehicle-spec-det .vehicle-spec-det-mn table{display: table;width: 100%;border-collapse: collapse; box-shadow: 0px 3px 6px 0px rgba(97, 103, 121, 0.1); }
+.vehicle-spec-det .vehicle-spec-det-mn table tbody{}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr{}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td{font-size: 13px;padding: 11px 12px;border: 1px solid #dddeed;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td:first-child,
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td:nth-child(3)
+{background: #fafafd;font-weight: 700;color: #303946;}
+
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td:nth-child(2),
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td:last-child
+{background: #fff;font-weight: 500;color: #444c73;}
+
+
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites {background: url(/assets/images/search-arean-images/search-area-sprite.png);background-repeat: no-repeat;display: inline-block; width: 23px; height: 13px; vertical-align: middle; margin-right: 10px;}
+
+
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.ref{background-position: -22px -226px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.cha{background-position:  -87px -226px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.moco{background-position: -143px -229px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.engsize{background-position: -209px -226px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.drv{background-position: -272px -226px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.trm{background-position: -330px -226px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.ryg{background-position: -22px -252px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.mym{background-position: -22px -252px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.loc{background-position: -127px -253px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.vc{background-position: -202px -258px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.mle{background-position: -241px -255px;}
+
+
+/*end row of table*/
+
+
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.engcod{background-position: -56px -226px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.str{background-position: -114px -226px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.ecol{background-position: -180px -226px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.fue{background-position: -241px -225px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.sea{background-position: -302px -225px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.dor{background-position: -355px -225px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.dim{background-position: -57px -252px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.m3{background-position: -88px -253px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.wgh{background-position: -161px -252px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span.sprites.mcap{background-position: -88px -253px;}
+
+
+
+
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td img{}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td span{}
+
+
+.stand-feature{margin-top: 15px;}
+.stand-feature .stand-feature-hd{    border-bottom: 1px solid #d6d7e8;border-top: 1px solid #d6d7e8;background: #fff; padding: 16px;position: relative;border-right:1px solid #d6d7e8;}
+.stand-feature .stand-feature-hd:before{position: absolute;content: "";border-left: 3px solid #e61013;height: 100%;top: 0;left: 0;}
+.stand-feature .stand-feature-hd h3{margin: 0;color: #000;font-size: 17px;font-weight: 700;}
+.stand-feature .stand-feature-mid{display: block;font-size: 0;border-left:1px solid #d6d7e8;border-right:1px solid #d6d7e8;border-bottom:1px solid #d6d7e8;}
+.stand-feature .stand-feature-mid .stand-feature-listt{display: inline-block;font-size: 0;width: 50%;vertical-align: top;box-shadow: 0px 3px 6px 0px rgba(97, 103, 121, 0.1); margin:0px;}
+.stand-feature .stand-feature-mid .stand-feature-listt li{display: block; width: 100%; /*background: #e5e9ed;*/ font-size: 13px; color: #a3a9c4; border: 1px solid #fff; padding: 10px 0px 8px 20px; min-height: 39px; vertical-align: top;font-weight: 600;}
+.stand-feature .stand-feature-mid .stand-feature-listt li{background: #f8fafb;}
+.stand-feature .stand-feature-mid .stand-feature-listt li:nth-child(1){border-top: none;}
+.stand-feature .stand-feature-mid .stand-feature-listt li:nth-child(2){border-top: none;}
+.stand-feature .stand-feature-mid .stand-feature-listt li i{color:#becad6;}
+.stand-feature .stand-feature-mid .stand-feature-listt li:last-child{border-bottom: none;}
+
+
+
+.stand-feature .stand-feature-mid .stand-feature-listt li.red{color: #e73640;background: #eeeff7;}
+.stand-feature .stand-feature-mid .stand-feature-listt li.red i{color: #e73640;}
+.stand-feature .stand-feature-mid .stand-feature-listt2.stand-feature-listt  li.red{color: #e73640;background: #eeeff7 !important;}
+
+
+.stand-feature .stand-feature-mid .stand-feature-listt2.stand-feature-listt li{background: #f4f7fb;}
+/*.stand-feature .stand-feature-mid .stand-feature-listt2.stand-feature-listt li:nth-child(odd){background: #e5e9ed;}*/
+
+
+
+
+.sim-cars{margin-top: 28px;    margin-bottom: 20px;}
+.sim-cars .sim-cars-hd{    background: #fff;padding: 16px;position: relative;border: 1px solid #ebedf5;}
+.sim-cars .sim-cars-hd:before {position: absolute;content: "";border-left: 3px solid #e61013;height: 100%;top: 0;left: 0;}
+.sim-cars .sim-cars-hd h3{    margin: 0;color: #191642;font-size: 17px;font-weight: 700;}
+.sim-cars .sim-cars-mid{border: 1px solid #ebedf5;background: #fff;box-shadow: 0px 3px 6px 0px rgba(97, 103, 121, 0.1); }
+.sim-cars .sim-cars-mid ul{display: block;font-size: 0px;padding: 20px; margin: 0;}
+.sim-cars .sim-cars-mid ul li{display: inline-block;width: 19%;font-size: 15px;margin-right: 13px;}
+.sim-cars .sim-cars-mid ul li .sim-img{}
+.sim-cars .sim-cars-mid ul li .sim-img img{width: 100%;}
+.sim-cars .sim-cars-mid ul li .sim-lab{padding-top: 12px;}
+.sim-cars .sim-cars-mid ul li .sim-lab h4{font-size: 17px;color: #444c73;margin: 0;font-weight: 700;}
+.sim-cars .sim-cars-mid ul li .sim-lab h5{margin: 0;font-weight: 400;color: #616786;font-size: 15px;text-transform: uppercase;padding-top: 7px;}
+.sim-cars .sim-cars-mid ul li .sim-lab h5 span.rght{color: #e9151c;font-weight: 700;padding-left: 20px;}
+.sim-cars .sim-cars-mid ul li:last-child{margin-right: 0;}
+.line-bt{height:20px;width:97.4%;border-bottom:1px solid #d6d7e8;margin:0px 15px 0px 15px;clear: both;}
+@media (max-width: 1366px) {
+.price-calculator-bot .total-prices{
+	padding: 22px 20px;
+}
+.stand-feature .stand-feature-mid .stand-feature-listt li{
+	min-height: 41px;
+}
+
+}
+
+@media (min-width: 1200px) {
+    .col-lg-5cl {
+        width: 20%;
+        float: left;
+    }
+}
+
+
+
+
+@media (max-width: 1024px){
+	.big-slide-images .item{height: 1%;}
+.price-calculator-main .adntnol-optn{}
+.price-calculator-main .price-calculator-mid .price-selfields select{    width: 47%;}
+.price-calculator-bot .total-prices{padding: 10px 20px;}
+.price-calculator-bot .butnss{padding: 10px 20px;}
+.price-calculator-bot .butnss button{font-size: 12px;padding: 4px 20px;}
+.price-calculator-bot .butnss .buynow-btn {width: 120px;padding: 4px 20px;}
+.price-calculator-main .adntnol-optn{    padding: 12px 20px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td{    font-size: 12px;    padding: 9px 12px;}
+.stand-feature .stand-feature-mid .stand-feature-listt li{    min-height: 42px;}
+.sim-cars .sim-cars-mid ul li{    width: 18%;    margin-right: 22px;}
+.pr-fav li a.fav{padding: 6px 15px;}
+.pr-fav li a.print{padding: 6px 15px;}
+
+
+.price-calc-dv{padding: 20px 10px;}
+.price-calc-in ul li:first-child{width: 56%;}
+.price-calc-in ul li:nth-child(2), .price-calc-in ul li:last-child{    width: 22%;}
+.price-calc-in ul li{font-size: 10px;}
+.show-reshd{    font-size: 14px;}
+
+
+
+
+} 
+
+@media (min-width: 992px) {
+    .col-md-5cl {
+        width: 20%;
+        float: left;
+    }
+}
+
+
+
+
+
+
+
+
+@media (min-width: 768px) {
+    .col-sm-5cl {
+        width: 20%;
+        float: left;
+    }
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    
+
+.car-slides-main{margin-top: 58px;}
+.small-slide-images .slick-prev:before,.small-slide-images .slick-next:before{top: 45px;}
+.big-slide-images img{width: 100%;}
+.big-slide-images .item{    height: 1%;}
+.sim-cars .sim-cars-mid ul li{    width: 18%;    margin-right: 17px;}
+.sim-cars .sim-cars-mid ul li .sim-lab h4{    font-size: 12px;}
+.sim-cars .sim-cars-mid ul li .sim-lab h5{    font-size: 13px;}
+.sim-cars .sim-cars-mid ul li .sim-lab h5 span.rght{    padding-left: 7px;}
+.car-image-bx{    width: 90px;}
+.car-ref span {    font-size: 12px;}
+.car-ref strong{    font-size: 11px;}
+.car-ttl{    font-size: 17px;    }
+.price-info .price-info-hd1{font-size: 16px;margin: 0 0 6px;}
+.price-info .price-info-val{font-size: 16px;}
+.price-info .price-info-hd2{font-size: 16px;margin: 0 0 6px;}
+.price-info .price-info-val2{font-size: 16px;}
+.favourite-btn{    padding: 8px 12px;}
+.price-calc-dv select{padding-left: 6px;}
+.price-calc-in ul li{    font-size: 10px;}
+.price-calc-in ul li:nth-child(2), .price-calc-in ul li:last-child{}
+.price-calc-in ul li label input[type='radio'] + .rdbtn{    width: 10px;height: 10px;margin-right: 10px}
+.price-calc-in ul li label input[type='radio'] + i + span{font-size: 9px;}
+.tabs-new-search-cont .btn-apply{    font-size: 8px;}
+.search-bar-notif.search-bar-area select{width: 39%;}
+.search-bar-notif.search-bar-area input{    width: 59%;}
+.search-filt-options .selctbox{    top: 11px;}
+.search-filt-options .filt-options li a{    padding: 4px 11px;    font-size: 14px;}
+.show-reshd{text-align: center;    margin-bottom: 10px;}
+.price-calc-dv{padding: 10px;}
+.logo a:nth-child(2) {display: inline-block;width: 80%;margin-left: 11px;}
+.main-cent-content .tbl-data table tr td{display: inline-block;width: 50%;vertical-align: top;margin-bottom: 5px;}
+.main-cent-content .tbl-data table tr td:first-child,.main-cent-content .tbl-data table tr td:last-child{}
+.main-cent-content .tbl-data table tr td >span{    font-size: 15px;}
+.main-cent-content .tbl-data table tr td strong{  font-size: 16px;}
+.main-cent-content .tbl-data table.scnd-table tr td:first-child{width: 50%;}
+.shopbyprice-dv .shopbyprice-list li{    padding:10px 0 10px 10px}
+.shopbyprice-dv .shopbyprice-list li span{    width: 25%;}
+.makelst li span{    font-size: 7px;}
+.price-calculator-main .price-calculator-mid .vprce span.hdprce{    font-size: 19px;}
+.price-calculator-main .price-calculator-mid .price-selfields select{    font-size: 15px;    background-position: 96%;}
+.price-calculator-main .price-calculator-mid .shptype span{font-size: 17px;}
+.price-calculator-main .price-calculator-mid .shptype span label span{    font-size: 16px;}
+.price-calculator-main .adntnol-optn .mnhd{font-size: 17px;}
+.price-calculator-main .adntnol-optn .addition-option li label span{font-size: 14px;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span{    font-size: 14px;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span br{display: none;}
+.cbp-spmenu-vertical > ul.responsenav > li > a{padding: 10px 20px 10px 30px;    font-size: 12px;}
+.notifi{    right: -15px;}
+
+
+
+}
+
+@media (max-width: 736px){
+.search-results-disp .mnpage{padding-top: 5px; float: none; margin: auto; text-align: center; display: block; width: 100%;}
+.main-cent-content .tbl-data table tr td >span{font-size: 16px;}
+.main-cent-content .tbl-data table tr td strong{font-size: 14px;}
+.opt-button{float: left;}
+.main-content>div{vertical-align: top;}
+.inquiry-btn{width:149px;}
+}
+
+@media (max-width: 667px){
+.inquiry-btn{width:130px;}
+.buynow-btn{width:140px;}
+.search-filt-options .selctbox{margin-bottom: 10px;}
+.main-content>div:first-child{padding:10px 0px 0px 0px;}
+
+}
+
+
+
+
+@media (max-width: 568px){
+
+.main-content table tr td{width: 34%;}
+.main-content table tr td:nth-child(2),.main-content table tr td:nth-child(3){ width: 15%;vertical-align: top;}
+.main-content table tr td:nth-child(4){width: 49%;}
+.main-cent-content .tbl-data table.scnd-table tr td{width: 48%;}
+.main-cent-content .tbl-data table.scnd-table tr td:first-child{width: 50%;}
+.main-content>div{    padding: 20px 20px 20px 10px;vertical-align: top;}
+.main-content>div:last-child{padding-left:0px;width:29%;}
+.price-info .price-info-hd1,.price-info .price-info-hd2{    font-size: 16px;}
+.price-info-val,.price-info-val2{}
+.favourite-btn{float: left;}
+.inquiry-btn{vertical-align: top;display: inline-block;    margin-top: 0px;    width: 120px;padding: 8px 10px;}
+.bottom-content{padding:10px;}
+.buynow-btn{vertical-align: top;display: inline-block;    margin-top: 0px;width:105px;}
+.main-cent-content .tbl-data table tr td >span{font-size: 16px;}
+.main-cent-content .tbl-data table tr td strong{font-size: 16px;}
+.search-results-disp .mnpage{margin: auto; display: block; width: 100%;}
+.price-calc-in ul li{    font-size: 14px;}
+.price-calc-in ul li label input[type='radio'] + i + span{    font-size: 14px;}
+.price-calc-in ul li label input[type='radio'] + .rdbtn{width: 10px; height: 10px; margin: 0 5px 0 0px;}
+.search-filt-options .filt-options li a{    font-size: 14px;}
+.car-ref span{font-size: 18px;}
+.car-ref strong {font-size: 19px;}
+.main-content table tr td:nth-child(2), .main-content table tr td:nth-child(3){    width: 50%;}
+.price-info .price-info-val{font-size: 16px;}
+.price-info .price-info-val2{font-size: 16px;}
+.breadcrumb-cstm{display: none;}
+.car-slides-main-hd h3{    font-size: 14px;}
+.pr-fav{text-align: center;}
+.big-slide-images img{width: 100%;}
+.big-slide-images .item {    height: 1%;}
+.small-slide-images{}
+.small-slide-images .item{margin: 0 10px;}
+.small-slide-images .item img{width: 100%;}
+.small-slide-images .slick-prev:before,.small-slide-images .slick-next:before{top: 42px;}
+.price-calculator-main .price-calculator-mid .price-selfields select{width: 46%;}
+.price-calculator-main .price-calculator-mid .shptype span{    font-size: 18px;}
+.price-calculator-main .price-calculator-mid div.shptype .radioss{    margin: 0 0 0 10px;}
+.price-calculator-main .price-calculator-mid .shptype span label span{    font-size: 18px;}
+.price-calculator-main .price-calculator-mid div.shptype input[type="radio"] + .rdbtn{    margin-top: -3px;    width: 18px;height: 18px;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span{    font-size: 15px;width: 90%;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span br{display: none;}
+.price-calculator-main .adntnol-optn .gov-requirem li{position: relative;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span + i{position: absolute;}
+.price-calculator-bot .total-prices .ttl-prchd span.left{    font-size: 18px;width: unset;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp{text-align: right;width: 70%;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp span{margin: 0 10px; font-size: 25px;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp strong{    font-size: 26px;}
+.price-calculator-bot .butnss button{font-size: 16px;margin-right: 0;padding: 7px 20px;display: block; margin: auto;}
+.price-calculator-bot .butnss .buynow-btn{display: block; margin: auto;}
+.price-calculator-bot .butnss .prcbtn{    margin-bottom: 10px;}
+.vehicle-spec-det .vehicle-spec-hd h3{    font-size: 16px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td{width: 50%;display: inline-block;vertical-align: top;font-size: 16px;}
+.stand-feature .stand-feature-hd h3{font-size: 16px;}
+.stand-feature .stand-feature-mid .stand-feature-listt li{padding: 8px 0px 8px 10px;font-size: 13px;}
+.sim-cars .sim-cars-hd h3{font-size: 16px;}
+.sim-cars .sim-cars-mid ul li{    width: 46%;margin: 0 12px 30px 0px;}
+.price-calculator-main .adntnol-optn .mnhd{    font-size: 17px;}
+.price-calculator-main .adntnol-optn .addition-option li label span{font-size: 17px;}
+.price-calculator-bot .butnss button{width: 100%; margin: auto; text-align: center; float: none; }
+.price-calculator-main .price-calculator-mid .price-selfields select{    font-size: 15px;    background-position: 197px;}
+.search-bar-notif.search-bar-area{border: none;}
+
+.opt-button{    float: left;margin-right: 20px;}
+.search-btn{float: left;}
+
+}
+
+
+
+
+
+
+@media (max-width: 430px) {
+
+
+/*.big-slide-images .item {height: 1%;}
+.breadcrumb-cstm{display: block;}
+.car-slides-main-hd h3{    font-size: 14px;}
+.pr-fav{text-align: center;}
+.big-slide-images img{width: 100%;}
+.small-slide-images{}
+.small-slide-images .item{margin: 0 10px;}
+.small-slide-images .item img{width: 100%;}
+.small-slide-images .slick-prev:before,.small-slide-images .slick-next:before{top: 13px;}
+.price-calculator-main .price-calculator-mid .price-selfields select{width: 46%;}
+.price-calculator-main .price-calculator-mid .shptype span{    font-size: 13px;}
+.price-calculator-main .price-calculator-mid div.shptype .radioss{    margin: 0 0 0 10px;}
+.price-calculator-main .price-calculator-mid .shptype span label span{    font-size: 13px;}
+.price-calculator-main .price-calculator-mid div.shptype input[type="radio"] + .rdbtn{    margin-top: -3px;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span{    font-size: 13px;width: 90%;}
+.price-calculator-main .adntnol-optn .gov-requirem li{position: relative;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span + i{position: absolute;}
+.price-calculator-bot .total-prices .ttl-prchd span.left{    font-size: 12px;width: unset;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp{text-align: left;width: 70%;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp span{margin: 0 10px; font-size: 15px;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp strong{    font-size: 16px;}
+.price-calculator-bot .butnss button{font-size: 13px;margin-right: 0;    padding: 7px 20px;display: block; margin: auto;}
+.price-calculator-bot .butnss .buynow-btn{display: block; margin: auto;}
+.price-calculator-bot .butnss .prcbtn{    margin-bottom: 10px;}
+.vehicle-spec-det .vehicle-spec-hd h3{    font-size: 13px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td{width: 50%;    display: inline-block;vertical-align: top;    font-size: 10px;}
+.stand-feature .stand-feature-hd h3{font-size: 13px;}
+.stand-feature .stand-feature-mid .stand-feature-listt li{    padding: 8px 0px 8px 10px;    font-size: 12px;}
+.sim-cars .sim-cars-hd h3{font-size: 13px;}
+.sim-cars .sim-cars-mid ul li{    width: 100%;    margin: 0 0 30px;}
+.price-calculator-main .adntnol-optn .mnhd{    font-size: 15px;}
+.price-calculator-main .adntnol-optn .addition-option li label span{font-size: 14px;}
+.price-calculator-bot .butnss button{    width: 100%;}*/
+.search-bar-notif.search-bar-area{    border: none;}
+.search-bar-notif.search-bar-area select{width: 55%;}
+.search-bar-notif.search-bar-area input{    width: 40%;}
+.tabs-new-search{width: 100%;}
+.tabs-new-search>li{min-height: 10px;width: 100%;}
+.adv-searcbtn{text-align: center;}
+.tabs-new-search-cont .searc-sel{    margin: 0 0 10px 0;}
+.show-reshd{    font-size: 12px;}
+.show-reshd span{    font-size: 11px;    padding: 2px 6px;}
+.search-results-disp .mnpage{    padding: 10px 0;}
+.search-results-disp .mnpage .pagination-sm.pagination li a{    margin: 0px 0 5px 3px;}
+.search-filt-options{}
+.search-filt-options .filt-options li{    margin-bottom: 11px;}
+.search-filt-options .filt-options li a{    padding: 3px 11px;    font-size: 10px;}
+.car-image-bx{display: block;width: 100%;}
+.main-content>div:first-child{padding: 20px 20px 0px 20px;}
+.main-cent-content .tbl-data table tr td >span{    font-size: 13px;}
+.main-cent-content .tbl-data table tr td strong{  font-size: 14px;}
+.main-cent-content .tbl-data table.scnd-table tr td:first-child{width: 50%;}
+.main-content>div{padding: 10px 10px 10px 20px;}
+.search-result-lists ul li > div{display: block;width: 100%;}
+.main-content{width: 100%;}
+.bottom-content{width: 100%;}
+.car-image-bx img{margin: auto;}
+.main-content>div{width: 100%;    display: block;}
+.price-info{width: 100%;    padding: 0;}
+.main-content>div:last-child{display: block;width: 100%;}
+.main-content{}
+.main-content table{}
+.main-content table tr{}
+.main-content table tr td{width: 50%;display: inline-block;margin: 0 0 10px;}
+.price-info .price-info-hd1,.price-info-val{display: inline-block;width: 49%;    vertical-align: middle;}
+.price-info-hd2,.price-info-val2{display: inline-block;width: 49%;    vertical-align: middle;}
+.favourite-btn{    margin: auto;width: 150px;display: block;}
+.inquiry-btn{margin: auto;width: 150px;display: block;margin-top: 0px;}
+.buynow-btn{margin: auto;width: 150px;display: block;margin-top: 5px;}
+.opt-button{width:100%;margin-bottom: 10px;}
+
+
+/*unit-details page*/
+
+
+.breadcrumb-cstm{display: none;}
+.car-slides-main-hd h3{    font-size: 14px;}
+.pr-fav{text-align: center;}
+.big-slide-images img{width: 100%;}
+.big-slide-images .item {height: 175px;}
+.small-slide-images{}
+.small-slide-images .item{margin: 0 10px;}
+.small-slide-images .item img{width: 100%;}
+.small-slide-images .slick-prev:before,.small-slide-images .slick-next:before{top: 13px;}
+.price-calculator-main .price-calculator-mid .price-selfields select{width: 46%;}
+.price-calculator-main .price-calculator-mid .shptype span{    font-size: 11px;}
+.price-calculator-main .price-calculator-mid div.shptype .radioss{    margin: 0 0 0 10px;}
+.price-calculator-main .price-calculator-mid .shptype span label span{    font-size: 11px;}
+.price-calculator-main .price-calculator-mid div.shptype input[type="radio"] + .rdbtn{    margin-top: -3px;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span{    font-size: 8px;}
+.price-calculator-main .adntnol-optn .gov-requirem li{position: relative;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span + i{position: absolute;}
+.price-calculator-bot .total-prices .ttl-prchd span.left{    font-size: 12px;width: unset;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp{text-align: left;width: 70%;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp span{margin: 0 10px; font-size: 15px;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp strong{    font-size: 16px;}
+.price-calculator-bot .butnss button{font-size: 13px;margin-right: 0;    padding: 7px 20px;display: block; margin: auto;}
+.price-calculator-bot .butnss .buynow-btn{display: block; margin: auto;width: 100%;}
+.price-calculator-bot .butnss .prcbtn{    margin-bottom: 10px;}
+.vehicle-spec-det .vehicle-spec-hd h3{    font-size: 13px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td{width: 50%;    display: inline-block;vertical-align: top;    font-size: 10px;}
+.stand-feature .stand-feature-hd h3{font-size: 13px;}
+.stand-feature .stand-feature-mid .stand-feature-listt li{    padding: 8px 0px 8px 10px;    font-size: 12px;}
+.sim-cars .sim-cars-hd h3{font-size: 13px;}
+.sim-cars .sim-cars-mid ul li{width: 48%;margin: 0 5px 30px 0px;}
+.sim-cars .sim-cars-mid ul li:nth-child(even){margin-right: 0;}
+
+
+}
+
+
+
+
+
+
+@media (max-width: 414px) {
+	.main-content>div:last-child{padding:20px;}
+}
+
+
+
+
+
+@media (max-width: 375px) {
+	.opt-button{width:100%;margin-bottom: 10px;}
+.car-slides-main{margin-top: 20px;}
+.big-slide-images .item {height: 1%;}
+.breadcrumb-cstm{}
+.car-slides-main-hd h3{    font-size: 14px;}
+.pr-fav{text-align: center;}
+.big-slide-images img{width: 100%;}
+.small-slide-images{}
+.small-slide-images .item{margin: 0 10px;}
+.small-slide-images .item img{width: 100%;}
+.small-slide-images .slick-prev:before,.small-slide-images .slick-next:before{top: 13px;}
+.price-calculator-main .price-calculator-mid .price-selfields select{width: 46%;}
+	.price-calculator-main .price-calculator-mid .shptype span{    font-size: 13px;}
+.price-calculator-main .price-calculator-mid div.shptype .radioss{    margin: 0 0 0 10px;}
+.price-calculator-main .price-calculator-mid .shptype span label span{    font-size: 13px;}
+.price-calculator-main .price-calculator-mid div.shptype input[type="radio"] + .rdbtn{    margin-top: -3px;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span{    font-size: 13px;width: 90%;}
+.price-calculator-main .adntnol-optn .gov-requirem li{position: relative;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span + i{position: absolute;}
+.price-calculator-bot .total-prices .ttl-prchd span.left{    font-size: 12px;width: unset;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp{text-align: left;width: 70%;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp span{margin: 0 10px; font-size: 15px;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp strong{    font-size: 16px;}
+.price-calculator-bot .butnss button{font-size: 13px;margin-right: 0;    padding: 7px 20px;display: block; margin: auto;}
+.price-calculator-bot .butnss .buynow-btn{display: block; margin: auto;}
+.price-calculator-bot .butnss .prcbtn{    margin-bottom: 10px;}
+.vehicle-spec-det .vehicle-spec-hd h3{    font-size: 13px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td{width: 50%;    display: inline-block;vertical-align: top;    font-size: 10px;}
+.stand-feature .stand-feature-hd h3{font-size: 13px;}
+.stand-feature .stand-feature-mid .stand-feature-listt li{    padding: 8px 0px 8px 10px;    font-size: 12px;}
+.sim-cars .sim-cars-hd h3{font-size: 13px;}
+.sim-cars .sim-cars-mid ul li{    width: 100%;    margin: 0 0 30px;}
+.price-calculator-main .adntnol-optn .mnhd{    font-size: 15px;}
+.price-calculator-main .adntnol-optn .addition-option li label span{font-size: 14px;}
+.price-calculator-bot .butnss button{    width: 100%;}
+.inquiry-btn{margin-top:0px;}
+}
+
+
+@media (max-width: 360px) {
+	.opt-button{width:100%;margin-bottom: 10px;}
+	.search-btn{float: left;width:140px;}
+.search-bar-notif.search-bar-area{    border: none;}
+.search-bar-notif.search-bar-area select{width: 55%;}
+.search-bar-notif.search-bar-area input{    width: 40%;}
+.tabs-new-search{width: 100%;}
+.tabs-new-search>li{min-height: 10px;width: 100%;}
+.adv-searcbtn{text-align: center;}
+.tabs-new-search-cont .searc-sel{    margin: 0 0 10px 0;}
+.show-reshd{    font-size: 12px;}
+.show-reshd span{    font-size: 11px;    padding: 2px 6px;}
+.search-results-disp .mnpage{    padding: 10px 0;}
+.search-results-disp .mnpage .pagination-sm.pagination li a{    margin: 0px 0 5px 3px;}
+.search-filt-options{}
+.search-filt-options .filt-options li{    margin-bottom: 11px;}
+.search-filt-options .filt-options li a{    padding: 3px 11px;    font-size: 10px;}
+.car-image-bx{display: block;width: 100%;}
+.main-content>div:first-child{padding: 20px 20px 0px 20px;}
+.main-cent-content .tbl-data table tr td >span{    font-size: 13px;}
+.main-cent-content .tbl-data table tr td strong{  font-size: 14px;}
+.main-cent-content .tbl-data table.scnd-table tr td:first-child{width: 50%;}
+.main-content>div{padding: 10px 10px 10px 20px;}
+.search-result-lists ul li > div{display: block;width: 100%;}
+.main-content{width: 100%;}
+.bottom-content{width: 100%;}
+.car-image-bx img{margin: auto;}
+.main-content>div{width: 100%;    display: block;}
+.price-info{width: 100%;    padding: 0;}
+.main-content>div:last-child{display: block;width: 100%;}
+.main-content{}
+.main-content table{}
+.main-content table tr{}
+.main-content table tr td{width: 50%;display: inline-block;margin: 0 0 10px;}
+.price-info .price-info-hd1,.price-info-val{display: inline-block;width: 49%;    vertical-align: middle;}
+.price-info-hd2,.price-info-val2{display: inline-block;width: 49%;    vertical-align: middle;}
+.favourite-btn{ margin:5px  auto;width: 150px;display: block;float:none;}
+.inquiry-btn{margin: auto;width: 150px;display: block;margin-top: 5px;}
+.buynow-btn{margin: auto;width: 150px;display: block;margin-top: 5px;}
+
+
+
+/*unit-details page*/
+
+
+.breadcrumb-cstm{display: none;}
+.car-slides-main-hd h3{    font-size: 14px;}
+.pr-fav{text-align: center;}
+.big-slide-images img{width: 100%;}
+.big-slide-images .item {height: 175px;}
+.small-slide-images{}
+.small-slide-images .item{margin: 0 10px;}
+.small-slide-images .item img{width: 100%;}
+.small-slide-images .slick-prev:before,.small-slide-images .slick-next:before{top: 13px;}
+.price-calculator-main .price-calculator-mid .price-selfields select{width: 46%;}
+.price-calculator-main .price-calculator-mid .shptype span{    font-size: 11px;}
+.price-calculator-main .price-calculator-mid div.shptype .radioss{    margin: 0 0 0 10px;}
+.price-calculator-main .price-calculator-mid .shptype span label span{    font-size: 11px;}
+.price-calculator-main .price-calculator-mid div.shptype input[type="radio"] + .rdbtn{    margin-top: -3px;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span{    font-size: 8px;}
+.price-calculator-main .adntnol-optn .gov-requirem li{position: relative;}
+.price-calculator-main .adntnol-optn .gov-requirem li label span + i{position: absolute;}
+.price-calculator-bot .total-prices .ttl-prchd span.left{    font-size: 12px;width: unset;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp{text-align: left;width: 70%;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp span{margin: 0 10px; font-size: 15px;}
+.price-calculator-bot .total-prices .ttl-prchd span.ttl-prchd-sp strong{    font-size: 16px;}
+.price-calculator-bot .butnss button{font-size: 13px;margin-right: 0;    padding: 7px 20px;display: block; margin: auto;}
+.price-calculator-bot .butnss .buynow-btn{display: block; margin: auto;width: 100%;}
+.price-calculator-bot .butnss .prcbtn{    margin-bottom: 10px;}
+.vehicle-spec-det .vehicle-spec-hd h3{    font-size: 13px;}
+.vehicle-spec-det .vehicle-spec-det-mn table tbody tr td{width: 50%;    display: inline-block;vertical-align: top;    font-size: 10px;}
+.stand-feature .stand-feature-hd h3{font-size: 13px;}
+.stand-feature .stand-feature-mid .stand-feature-listt li{    padding: 8px 0px 8px 10px;    font-size: 12px;}
+.sim-cars .sim-cars-hd h3{font-size: 13px;}
+.sim-cars .sim-cars-mid ul li{width: 48%;margin: 0 5px 30px 0px;}
+.sim-cars .sim-cars-mid ul li:nth-child(even){margin-right: 0;}
+
+
+}
+
+@media (max-width: 320px) {
+.search-btn{width:100px;}
+.favourite-btn{float: left;width:130px;}
+.buynow-btn{float: right; width:128px;}
+.bottom-content{padding:10px 0px;}
+.search-filt-options .filt-options li a{padding:6px 11px;}
+.inquiry-btn{width:127px;}
+
+}
+
+.buynow-btn{
+	padding:8px 20px;
+	text-transform: uppercase;
+	color:#fff;
+	background: #e9151c;
+	border:1px solid transparent;
+	text-align: center;
+	width: 100%;
+	border-radius: 3px;
+	font-size: 13px;
+    font-weight: 500;
+    margin-top: 15px;
+}
+.car-detail-content{background: #f4f7fb; border: 1px solid #d1d2e4; font-weight: 700; color: #303946; border-top: none;}
+.car-detail-content div{padding: 10px 10px 10px 10px;}.car-detail-content div strong{float: right; font-size: 20px;}
+.inquiry-btn{
+    padding: 2%;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    background: #4246a4;
+    border: 1px solid transparent;
+    text-align: center;
+    border-radius: 3px;
+    font-weight: 500;
+    margin-right: 10px;
+}

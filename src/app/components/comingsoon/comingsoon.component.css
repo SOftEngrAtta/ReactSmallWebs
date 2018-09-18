@@ -1,0 +1,32 @@
+.mndv{padding-top: 50%;
+    padding-left: 50px;
+    margin-top: -60px;}
+    .cmng-soon{background-image:url('/assets/images/coming-soon-back.jpg');background-size:cover;}
+
+    .lightimg img{width:100%;}
+    .logodv{padding:20px 0px;position: relative;}
+    .logodv:before{width:85%;background: #91557b;height: 1px;position: absolute;bottom: 0px;left:0px;content:"";}
+    .logodv:after{height: 7px;width: 180px;background: #fd887e;left:0px;bottom: -4px;position: absolute;content:"";}
+
+    .coming-soonhd{font-size:46px;font-weight: 900;color:#fff;padding:40px 0px;margin:0px;text-transform: uppercase;}
+
+    .counttbl{}
+    .counttbl table{width:100%;}
+    .counttbl table tbody tr{}
+    .counttbl table tbody tr td{border-left:1px solid #8c4872;padding-left:10px;}
+    .counttbl table tbody tr td span{font-size:30px;font-weight: 900;color:#fff;display: block;line-height: 24px;}
+    .counttbl table tbody tr td strong{font-size:21px;font-weight: 900;color:#000;opacity: 0.7;}
+
+@media screen and (max-width: 1024px){
+.coming-soonhd br{display: none;}
+}
+@media screen and (max-width: 768px){
+    .mndv{padding-left:20px;padding-bottom: 20px;}
+    .coming-soonhd{font-size:20px;}
+    .coming-soonhd br{display: none;}
+}
+
+@media screen and (max-width: 568px){
+.counttbl table tbody tr td span{font-size:15px;}
+.counttbl table tbody tr td strong{font-size:13px;}
+}

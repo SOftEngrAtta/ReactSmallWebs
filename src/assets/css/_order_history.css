@@ -1,0 +1,647 @@
+ /* Bid Request Popup Css Start */
+
+ .bidrqst-popdet {
+    width: 950px;
+    margin: 0px;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+.bidrqst-popdet .bidrqst-hd {
+    padding: 0px 0px 20px 0px;
+}
+
+.bidrqst-popdet .bidrqst-hd h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #3c3c3c;
+    margin: 0px;
+
+}
+
+.bidrqst-bd-top {
+    background: #eaeaea;
+    padding: 15px 20px;
+
+}
+
+.bidrqst-popdet .bidrqst-bd {
+    padding: 0px;
+}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl {
+    width: 70%;
+}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl tbody tr td {}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl tbody tr td:first-child {
+    padding-left: 0px;
+    width: 175px;
+}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl tbody tr td:nth-child(2) {
+    width: 120px;
+}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl tbody tr td:nth-child(3) {
+    width: 235px;
+}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl tbody tr td:first-child {
+    padding-left: 0px;
+}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl tbody tr td span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #7a7a7a;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner {
+    display: table;
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ededed;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div {
+    display: table-cell;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-invid {
+    background: #ecf7f1;
+    padding: 10px 20px;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-invid>h4 {
+    color: #7a7a7a;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+.consigneedet-pop .intl-tel-input.allow-dropdown .flag-container,
+.consigneedet-pop .intl-tel-input.separate-dial-code .flag-container {
+    height: 25px;
+
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-invid>h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #343333;
+    margin: 0px;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-vehdet {}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-vehdet>table {
+    width: 100%;
+    border-bottom: 1px solid #ededed;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-vehdet>table:last-child {
+    border-bottom: 0px;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-vehdet>table>tbody>tr>td>span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #a1a1a1;
+    padding: 5px 0px 5px 10px;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-vehdet>table>tbody>tr>td>strong {
+    font-size: 13px;
+    font-weight: 700;
+    color: #343333;
+}
+
+/* Bid Request Popup Css End */
+
+/* Consgineed Detail Popup Start */
+
+.consigneedet-pop {
+    width: 900px;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 10px;
+}
+
+.consigneedet-pop .consigneedet-hd {
+    padding: 10px 19px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.consigneedet-pop .consigneedet-hd h3 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #3c3c3c;
+}
+
+.consigneedet-pop .consigneedet-mn {
+    padding: 0px 10px;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px 5px;
+
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div {
+    display: table-cell;
+    border: 1px solid #e7e7e7;
+    border-radius: 5px;
+    vertical-align: top;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right {
+    background: #f8f8f8;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right>div>table {
+    width: 100%;
+}
+
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft {
+    padding: 0px 10px;
+    width: 30%;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #000;
+    margin: 0px;
+    padding-bottom: 5px;
+}
+
+.consigneedet-lft-mn {
+    display: block;
+    width: 220px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft .slick-prev.slick-arrow {
+    font-size: 0;
+    width: 24px;
+    height: 24px;
+    top: 0px;
+    right: 20px;
+    position: absolute;
+    background: url(/assets/images/slck-prev-icn.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 200;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft .slick-prev.slick-arrow:hover {
+
+    background: url(/assets/images/slck-prev-icn-hvr.png);
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft .slick-next.slick-arrow {
+    font-size: 0;
+    position: absolute;
+    width: 24px;
+    top: 0px;
+    right: -10px;
+    height: 24px;
+    background: url(/assets/images/slck-next-icn.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 201;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft .slick-next.slick-arrow:hover {
+    background: url(/assets/images/slck-next-icn-hvr.png);
+    background-size: cover;
+}
+
+.consigneedet-lft-inn {
+    width: 220px;
+}
+
+.consigneedet-lft-inn .consigneedet-lft-inn-mn {
+    width: 220px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft table {
+    width: 100%;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft table tr td {
+    padding: 1px 0px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft table tr td span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #858585;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft table tr td strong {
+    color: #3c3c3c;
+    font-size: 13px;
+    font-weight: 500;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft table tr td textarea {
+    display: block;
+    resize: none;
+    border-radius: 5px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft table tr td:last-child {
+    padding-left: 10px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft div button {
+    width: 100%;
+    padding: 3px;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background: #666666;
+    color: #fff;
+    margin-top: 10px;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft strong.emailid {
+    color: #38b078;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft button:hover {
+    border: 1px solid #666666;
+    background: #fff;
+    color: #666666;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right {
+    padding: 10px 20px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3 {
+    font-size: 15px;
+    margin: 0px;
+    font-weight: 500;
+    color: #262626;
+    position: relative;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3 span {
+    color: #4477df;
+    font-size: 12px;
+    font-weight: 700;
+    position: absolute;
+    right: 0px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3 span.verif {
+    display: none;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3.verif span.verif {
+    color: #38b078;
+    display: block;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3 span.unverif {
+    display: none;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3.unverif span.unverif {
+    color: red;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #858585;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right input {
+    height: 25px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td:first-child {
+    padding-left: 0px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td:last-child {
+    padding-left: 15px;
+}
+
+.consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div:not(.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3) {
+    font-size: 0px;
+    display: table;
+    width: 100%;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div.intl-tel-input {
+    width: 100%;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div.intl-tel-input .selected-flag .iti-flag {
+    left: 10px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div>div {
+    display: table-cell;
+    width: 50%;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div>div:last-child {
+    padding-left: 15px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div>div>input {
+
+    display: block;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr:last-child td {
+    padding-left: 0px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td textarea {
+    height: auto;
+    width: 100%;
+    resize: none;
+    border-radius: 10px;
+    padding-top: 5px;
+}
+
+.consigneedet-pop .consigneedet-bot {
+    padding: 10px 20px;
+}
+
+.consigneedet-bot-rt {
+    text-align: right;
+}
+
+.consigneedet-pop .consigneedet-bot label {
+    position: relative;
+    margin: 0px;
+
+}
+
+.consigneedet-pop .consigneedet-bot label input[type="checkbox"] {
+    opacity: 0;
+    width: 15px;
+    position: absolute;
+    z-index: 3;
+    height: 15px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.consigneedet-pop .consigneedet-bot label input[type="checkbox"]+i.chcktck {
+
+    border: 1px solid #aeaeae;
+    border-radius: 2px;
+    width: 15px;
+    height: 15px;
+    color: transparent;
+    padding-left: 1px;
+    padding-top: 1px;
+    font-size: 10px;
+    vertical-align: top;
+    text-align: center;
+    margin-top: 3px;
+
+}
+
+.consigneedet-pop .consigneedet-bot label input[type="checkbox"]:checked+i.chcktck {
+    border: 1px solid #6f6f6f;
+    color: #6f6f6f;
+    transition: 0.2s ease-in-out;
+}
+
+.consigneedet-pop .consigneedet-bot span {
+    color: #262626;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.consigneedet-pop .consigneedet-bot .sndcustomer {
+    padding: 3px 20px;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background: #4477df;
+    color: #fff;
+    margin: 0px 5px 0px 10px;
+}
+
+.consigneedet-pop .consigneedet-bot .sndcustomer:hover {
+    color: #4477df;
+    border-color: #4477df;
+    background: #fff;
+}
+
+.consigneedet-pop .consigneedet-bot .submtbtn {
+    padding: 3px 20px;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background: #38b078;
+    color: #fff;
+    margin: 0px 5px 0px 5px;
+}
+
+.consigneedet-pop .consigneedet-bot .submtbtn:hover {
+    border-color: #38b078;
+    background: white;
+    color: #38b078;
+}
+
+
+
+
+
+
+
+/* Consignee Detail Popup End */
+
+@media screen and (max-width:768px) {
+
+    /* Consignee Detail Popup start */
+    .consigneedet-pop {
+        width: 740px;
+    }
+
+
+    /* Consignee Detail Popup End */
+    /* Bid Request Popup Css Start */
+    .bidrqst-popdet .bidrqst-bd {
+        overflow-x: scroll;
+    }
+    .bidrqst-popdet .bidrqst-bd>div {
+        min-width: 910px;
+    }
+    .bidrqst-popdet {
+        width: 730px;
+    }
+
+    /* Bid Request Popup Css End */
+}
+ @media screen and (max-width:736px) {
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf{float: left !important;}
+ }
+
+@media screen and (max-width:568px) {
+    /* Consginee Detail popup css */
+    .consigneedet-pop {
+        width: 540px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr{    display: block;
+width: 217px;}
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td{    display: block;
+width: 100%;}
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td:last-child{padding-left: 0px;}
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3 span{    top: 19px;}
+.myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf, .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .order_hist_tbinf{
+display: block;width: 100%;    padding-top: 10px;
+}
+.myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf>li>span{padding-bottom: 0;}
+
+.myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf>li{    width: 35%;padding: 1px;}
+    /* Consginee Detail popup css end */
+    /* Bid Request Popup Css Start */
+    .bidrqst-popdet {
+        width: 530px;
+    }
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn{    right: 30px;bottom: 10px;}
+    .order_hist_tbinf>li>span.infhd{    width: 108px;}
+
+    /* Bid Request Popup Css End */
+}
+
+@media screen and (max-width:414px) {
+    /* Consginee Detail popup css */
+    .consigneedet-pop {
+        width: 390px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft {
+        display: block;
+        width: 100%;
+    }
+    .consigneedet-pop .consigneedet-bot .sndcustomer{
+        margin-bottom:5px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right {
+        width: 100%;
+        display: block;
+    }
+    .consigneedet-bot-rt {
+        text-align: center;
+    }
+    /* Consginee Detail popup css end */
+    /* Bid Request Popup Css Start */
+    .bidrqst-popdet {
+        width: 390px;
+    }
+
+    /* Bid Request Popup Css End */
+}
+
+@media screen and (max-width:375px) {
+
+    /* Consginee Detail popup css */
+    .consigneedet-pop {
+        width: 350px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right {
+        width: 100%;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .consigneedet-bot-rt {
+        text-align: center;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div>div:last-child {
+        padding-left: 5px;
+    }
+    .consigneedet-lft-mn {
+        width: 255px;
+    }
+    .consigneedet-pop .consigneedet-bot label {
+        margin-bottom: 5px;
+    }
+    /* Consginee Detail popup css end */
+    /* Bid Request Popup Css Start */
+    .bidrqst-popdet {
+        width: 360px;
+    }
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn, .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .mk-payment-btn, .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn:hover{right: 15px;}
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf>li, .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .order_hist_tbinf>li{width: 38%;min-width: 90px;}    
+
+    /* Bid Request Popup Css End */
+}
+
+@media screen and (max-width:320px) {
+    /* Consginee Detail popup css */
+    .consigneedet-pop {
+        width: 300px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right {
+        width: 100%;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .consigneedet-bot-rt {
+        text-align: center;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div>div:last-child {
+        padding-left: 5px;
+    }
+    .consigneedet-lft-mn {
+        width: 255px;
+    }
+    .consigneedet-pop .consigneedet-bot label {
+        margin-bottom: 5px;
+    }
+    /* Consginee Detail popup css end */
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf>li{    width: 40%;}
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn{    right: 3px;padding: 6px 11px;}
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf>li, .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .order_hist_tbinf>li{width: 40%;}
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn, .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .mk-payment-btn{    right: 3px;
+padding: 6px 11px;}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr{
+    width:235px;
+}
+
+    /* Bid Request Popup Css Start */
+    .bidrqst-popdet {
+        width: 300px;
+    }
+    /* Bid Request Popup Css End */
+}

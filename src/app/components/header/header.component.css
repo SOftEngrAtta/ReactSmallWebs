@@ -1,0 +1,7 @@
+.user-img{
+    width: 29px;
+}
+.japan-time{color: #d23548;font-size: 14px;font-weight: bold;}
+.time{ color: #54667a;font-size: 14px;font-weight: bold;}
+.time-sec{position: relative;text-align: right;}
+.time-sec p{color: #54667a;font-size: 14px;font-weight: bold;}

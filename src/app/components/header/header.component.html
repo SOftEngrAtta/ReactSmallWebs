@@ -1,0 +1,230 @@
+<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
+  <div class="profile-sect">
+    <ul>
+      <li>
+        <img src="/assets/images/user-placeholder.png">
+      </li>
+      <li>
+        <h4 [title]="customerInformation?.FullName">
+          {{ customerInformation?.FullName }}
+        </h4>
+        <div class="profilecompst">
+          <div class="progress">
+            <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+              aria-valuemax="100" style="width:20%">
+            </div>
+          </div>
+          <span>{{customerInformation?.ProfileComplete}}%</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <ul class="responsenav">
+    <li class="resp-dashboard">
+      <a href="javascipt:;" [routerLink]="['/dashboard']" [routerLinkActive]="'nav-active'">Dashboard</a>
+    </li>
+    <li class="resp-incomplete-orders" *ngIf="!isCustomerLogin || bidCustomer ">
+      <a href="javascipt:;" [routerLink]="['/incomplete-order']" [routerLinkActive]="'nav-active'">Incomplete orders</a>
+    </li>
+    <li class="resp-order-history">
+      <a href="javascipt:;" [routerLink]="['/my-orders']" [queryParams]="{  status : 'All'}" [routerLinkActive]="'nav-active'">My Order</a>
+    </li>
+    <li class="resp-payment-history"> 
+      <a href="javascipt:;" [routerLink]="['/payment-history']" [routerLinkActive]="'nav-active'">Payment</a>
+    </li>
+    <li class="resp-membership-plans">
+      <a href="javascipt:;" [routerLink]="['/membership']" [routerLinkActive]="'nav-active'">Membership plans</a>
+    </li>
+    <li class="resp-membership-plans">
+      <a href="javascipt:;" [routerLink]="['/car-inquiries']" [routerLinkActive]="'nav-active'">Car Inquiries</a>
+    </li>
+    <li class="resp-membership-plans">
+        <a href="javascipt:;" [routerLink]="['/notify-me']" [routerLinkActive]="'nav-active'">Notify Me</a>
+    </li>
+    <li class="resp-membership-plans" *ngIf="isCustomerLogin">
+      <a href="javascipt:;" [routerLink]="['/auction-car-search']" [queryParams]="{  action : 'stock' }" [routerLinkActive]="'nav-active'">Stock</a>
+    </li>
+    <li>
+      <a href="javascript:;" data-fancybox="" data-src="#dash-change-password">
+        <span>Change Password</span>
+      </a>
+    </li>
+    <li class="logoutb">
+      <a href="javascript:;" (click)="logoutUser()">Logout
+        <img href="javascipt:;">
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<section class="headertopsect">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-xs-7 col-sm-7 nopad_xs_right ">
+        <div class="logo">
+          <a class="responsenav icon-menu-mob toggle-menu menu-left jPushMenuBtn" href="javascript:;">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </a>
+          <a href="javascript:;" [routerLink]="['/dashboard']">
+            <img src="/assets/images/logo.png" alt="" class="img-responsive" />
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xs-5 col-sm-5 nopad_xs_left nopad_sm_right nopad_sm_left">
+        <div class="header_top">
+          <ul class="alert_pane">
+            <li *ngIf="customerInformation?.japantime && customerInformation?.currencyrate">
+              <div class="time-sec">
+                <span class="japan-time">JAPAN TIME:</span> 
+                <span class="time">{{ customerInformation?.japantime }} </span><p>CURRENCY RATE: 1USD = <span>{{ customerInformation?.currencyrate }} JPY</span></p>
+              </div>
+            </li>
+            <li class="favourite" [routerLink]="['/favourite']"><span class="second-stp hand-tool">favourite</span></li>
+            <li class="alert" [routerLink]="['/notifications']"><span class="alt thrd-stp hand-tool"></span></li>
+          </ul>
+          <div class="profnav frth-step  ">
+            <ul class="ta_buttons">
+              <li>Welcome</li>
+              <li>
+                <a href="javascipt:;">
+                  <span class="login_username" title="{{ customerInformation?.FirstName }} {{ customerInformation?.LastName }}">
+                    {{ customerInformation?.FirstName}} {{ customerInformation?.LastName }}
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <ul class="user_img">
+              <li>
+                <img src="/assets/images/user-placeholder.png" class="user-img" alt="">
+                <i class="fa fa-caret-down navarrow" aria-hidden="true"></i>
+              </li>
+            </ul>
+            <div class="dropnav">
+              <ul>
+                <li>
+                  <a href="javascript:;" (click)="openProfile()">
+                    <i class="profil">&nbsp;</i>
+                    <span>Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;" data-fancybox="" data-src="#dash-change-password">
+                    <i class="changepass"> &nbsp;</i>
+                    <span>Change Password</span>
+                  </a>
+                </li>
+                <li (click)="logoutUser()">
+                  <a href="javascript:;">
+                    <i class="logout"> &nbsp;</i>
+                    <span >Logout</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</section>
+<div class="navbar">
+  <div class="nav_wapper">
+    <ul>
+      <li class="product-dashboardn dashboardn-bg">
+        <a [routerLink]="['/dashboard']" [queryParams]="{data : queryparam }" [routerLinkActive]="'nav-active'">Dashboard</a>
+      </li>
+      <li class="membership-plann" *ngIf="!isCustomerLogin">
+        <a [routerLink]="['/my-quotation']" [routerLinkActive]="'nav-active'">My Quotation</a>
+      </li>
+      <li class="notice_nv incomplete-ordern" *ngIf="!isCustomerLogin || bidCustomer ">
+        <a href="javascipt:;" [routerLink]="['/incomplete-order']" [routerLinkActive]="'nav-active'">Incomplete Orders
+        </a>
+      </li>
+      <li class="order-historyn">
+        <a href="javascipt:;" [routerLink]="['/my-orders']" [queryParams]="{  status : 'All'}" [routerLinkActive]="'nav-active'">My Order</a>
+      </li>
+      <li class="pay-completedn">
+        <a href="javascipt:;" [routerLink]="['/payment-history']" [routerLinkActive]="'nav-active'">Payment</a>
+      </li>
+      <li class="membership-plann">
+        <a [routerLink]="['/membership']" [routerLinkActive]="'nav-active'">Membership plans</a>
+      </li>
+      <li class="resp-membership-plans">
+        <a href="javascipt:;" [routerLink]="['/car-inquiries']" [routerLinkActive]="'nav-active'">Car Inquiries</a>
+      </li>
+      <li class="resp-membership-plans">
+          <a href="javascipt:;" [routerLink]="['/notify-me']" [routerLinkActive]="'nav-active'">Notify Me</a>
+      </li>
+      <li class="resp-membership-plans" *ngIf="isCustomerLogin">
+        <a href="javascipt:;" [routerLink]="['/auction-car-search']" [queryParams]="{  action : 'stock' }" [routerLinkActive]="'nav-active'">Stock</a>
+      </li>
+      <li class="search_bar" (click)="opendemo()" title="Autorod Demo">
+        <a href="javascript:;" id="btnhlp">
+          <i class="fa fa-question-circle hlpbtn fifth" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- CHange Password Popup -->
+<div class="upc-paypop upc-pay-page dash-change-password" id="dash-change-password" style="display:none;" >
+    <div class="dep-heading-pop"> 
+      <h3>Change Password</h3>
+    </div>
+    <form>
+      <div class="main-mid-div main-mid-div-2">  
+        <div class="current-popup">
+          <label>
+            <p>
+              Current Password
+            </p>
+            <i class="change-key-icon"></i>
+            <input type="password" 
+              required  
+              name="CurrentPassword" 
+              [(ngModel)]="passwordChange.CurrentPassword"
+              #CurrentPassword="ngModel"
+              placeholder="Enter Your Current Password"/>
+          </label>
+        </div>
+        <div class="current-popup">
+          <label>
+            <p>
+              New Password
+            </p>
+            <i class="change-key-icon"></i>
+            <input type="password" 
+              name="NewPassword" 
+              [(ngModel)]="passwordChange.NewPassword"
+              #NewPassword="ngModel"
+              required 
+              placeholder="Enter Your New Password"/>
+          </label>
+        </div>
+       <div class="current-popup">
+          <label>
+            <p>Verify New Password</p>
+            <i class="change-key-icon"></i>
+            <input type="password" 
+              required 
+              name="VerifyNewPassword"
+              [(ngModel)]="passwordChange.VerifyNewPassword"
+              #VerifyNewPassword="ngModel"
+              placeholder="Enter Your Verify Password"/>
+          </label>
+       </div>
+     </div>
+     <div class="change-pass-btn">
+       <button (click)="changePassword()" class="updt-gnr-btn">Change Password</button>
+     </div>  
+    </form>         
+</div>
+<!-- end -->
+
+<!-- modals -->
+<div class="submittedpop" id="comingsoon" style="display:none;">
+  <h3>Coming Soon</h3>
+</div>
+
+<!-- end -->

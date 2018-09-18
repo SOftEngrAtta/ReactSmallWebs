@@ -1,0 +1,128 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?crb9wo');
+  src:  url('fonts/icomoon.eot?crb9wo#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?crb9wo') format('truetype'),
+    url('fonts/icomoon.woff?crb9wo') format('woff'),
+    url('fonts/icomoon.svg?crb9wo#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-res-fund:before {
+  content: "\e912";
+}
+.icon-tickcheck:before {
+  content: "\e915";
+}
+.icon-userclck:before {
+  content: "\e914";
+}
+.icon-dolrhand:before {
+  content: "\e90c";
+}
+.icon-chngpass:before {
+  content: "\e90f";
+}
+.icon-logout:before {
+  content: "\e910";
+}
+.icon-user:before {
+  content: "\e911";
+}
+.icon-atm-ic:before {
+  content: "\e901";
+}
+.icon-car-ic-2:before {
+  content: "\e902";
+}
+.icon-certificate-ic:before {
+  content: "\e903";
+}
+.icon-funds-ic:before {
+  content: "\e904";
+}
+.icon-mitter-ic:before {
+  content: "\e905";
+}
+.icon-nav-ic-1:before {
+  content: "\e906";
+}
+.icon-nav-ic-2:before {
+  content: "\e907";
+}
+.icon-nav-ic-3:before {
+  content: "\e908";
+}
+.icon-nav-ic-4:before {
+  content: "\e909";
+}
+.icon-nav-ic-5:before {
+  content: "\e90a";
+}
+.icon-nav-ic-6:before {
+  content: "\e90b";
+}
+.icon-pig-ic:before {
+  content: "\e913";
+}
+.icon-question-mark-ic:before {
+  content: "\e90d";
+}
+.icon-unit-ic:before {
+  content: "\e90e";
+}
+.icon-car-ic:before {
+  content: "\e900";
+}
+.icon-auc-icon:before {
+  content: "\e916";
+}
+.icon-Chassis-icon:before {
+  content: "\e917";
+}
+.icon-color-icon:before {
+  content: "\e918";
+}
+.icon-condition-icon:before {
+  content: "\e919";
+}
+.icon-dim-icon:before {
+  content: "\e91a";
+}
+.icon-drive-icon:before {
+  content: "\e91b";
+}
+.icon-eng-icon:before {
+  content: "\e91c";
+}
+.icon-equ-icon:before {
+  content: "\e91d";
+}
+.icon-fuel-icon:before {
+  content: "\e91e";
+}
+.icon-Lot-icon:before {
+  content: "\e91f";
+}
+.icon-milege-icon:before {
+  content: "\e920";
+}
+.icon-transmission-icon:before {
+  content: "\e921";
+}

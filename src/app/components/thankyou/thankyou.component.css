@@ -1,0 +1,128 @@
+
+.thanks-img {
+    width: 100%;
+}
+
+.gen-lg {
+   text-align: center;
+     padding: 60px 0px 0px 0px;
+}
+
+/*.thank-page-n .thank-inner-dv {
+
+    padding: 30px 20px;
+    border-radius: 10px;
+}*/
+
+.thankdv{
+    position: relative;
+    margin-top:150px;
+
+}
+.thankdv .thank-inner-dv{
+    padding-left:50px;
+    /*position: absolute;
+    top:0px;*/
+}
+.thank-page-n {
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+   
+   /* background: rgb(172,54,88);
+    background: -moz-linear-gradient(left, rgba(172,54,88,1) 41%, rgba(62,56,135,1) 89%, rgba(62,56,135,1) 100%, rgba(32,124,202,1) 100%);
+    background: -webkit-linear-gradient(left, rgba(172,54,88,1) 41%,rgba(62,56,135,1) 89%,rgba(62,56,135,1) 100%,rgba(32,124,202,1) 100%);
+    background: linear-gradient(to right, rgba(172,54,88,1) 41%,rgba(62,56,135,1) 89%,rgba(62,56,135,1) 100%,rgba(32,124,202,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ac3658', endColorstr='#207cca',GradientType=1 );*/
+}
+.tnk{
+     background: url(/assets/images/autorod-images/thank-image-3.png);
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width:100%
+}
+.thank-inner-dv h2{
+    color:#fff;
+    text-align: left;
+    font-size:37px;
+    font-weight: 700;
+    margin:0px;
+}
+.thank-inner-dv p{
+    font-size:18px;
+    font-weight: 400;
+    color:#fff;
+    text-align: left;
+    margin:0px;
+}
+.thank-inner-dv p span{
+font-weight: 700;
+}
+/*.thnkimg img{width:100%;}*/
+/*.thank-page-n h2 {
+    font-size: 34px;
+    font-weight: 900;
+    color: #ed2530;
+    margin: 0px;
+    padding-top: 35px;
+    text-transform: uppercase;
+}
+
+.thank-page-n h4 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #3a3a39;
+    text-transform: uppercase;
+}
+*/
+@media screen and (max-width: 736px) {
+    .thnkimg img{width:100%;}
+    .thankdv{margin-top:110px;}
+    .thank-inner-dv h2{font-size:20px;}
+.thank-inner-dv p{font-size:12px;}
+.gen-lg{padding:40px 0px 10px 0px;}
+}
+@media screen and (max-width: 667px) {
+.thnkimg img{width:100%;}
+.thankdv{margin-top: 90px;}
+.thank-inner-dv h2{font-size:20px;}
+.thank-inner-dv p{font-size:12px;}
+.gen-lg{padding:20px 0px 40px 0px;}
+}
+@media screen and (max-width: 580px) {
+    .gen-lg img {
+        width: 40%;
+        text-align: center;
+    }
+    .thank-page-n{
+        height: 50%;
+        background-size: contain;
+        background-position: left center;
+
+    }
+    .thankdv .thank-inner-dv{
+        padding-left:20px;
+    }
+    .thank-inner-dv h2{
+        font-size: 18px;
+
+    }
+    .thank-inner-dv p{
+        font-size:11px;
+
+    }
+}
+@media screen and (max-width: 414px) {
+.thankdv {
+    margin-top: 50px;
+}
+.gen-lg{padding:40px 0px 0px 0px;}
+}
+@media screen and (max-width: 375px) {
+.thankdv{
+        margin-top: 45px;
+}
+}

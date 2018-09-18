@@ -1,0 +1,880 @@
+<app-header></app-header>
+<div *ngIf="hidepage" class="display-msg">
+  No Record Found
+</div>
+<section [hidden]="hidepage" class="view-confirm-act-det main-view-new edit-carhub">
+  <div class="container">
+    <div class="view-confirm-act-det-in">
+      <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 cre-left">
+          <div class="availbalancedet">
+            <ul>
+              <li class="balance">
+                <span>Credit Balance</span>
+                <strong>
+                  <span>¥ </span>
+                  <span>
+                    {{ creditLimit }}
+                  </span>
+                </strong>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 text-right suz-right">
+          <div class="unit-prc-det">
+            <ul>
+              <li class="balance-cre">
+                <span>Shipment Country</span>
+                <strong>
+                  {{ orderDetail?.CountryName }}
+                </strong>
+              </li>
+              <li class="balance-cre">
+                <span>Shipment Port</span>
+                <strong>
+                  {{ orderDetail?.PortName }}
+                </strong>
+              </li>
+              <li class="balance-cre">
+                <span>Shipment Type</span>
+                <strong>
+                  {{ orderDetail?.ShipmentType }}
+                </strong>
+              </li>
+              <li class="balance-cre">
+                <span>Freight Type</span>
+                <strong>
+                  {{ orderDetail?.ShipmentTerm }}
+                </strong>
+              </li>
+              <li class="balance-cre">
+                <span>Package Plan</span>
+                <strong>
+                  {{ orderDetail?.PlanName || '--' }}
+                </strong>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section [hidden]="hidepage" class="agent_s_sec_two resutl edit-carhub">
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 view-left">
+        <h5>
+          <strong>Agent Shortlist - View and Confirm  </strong>
+        </h5>
+
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right ad-new-right">
+        <button class="email_btn" (click)="addnewgroup()" *ngIf="hideshownewgroupbtn && hidefieldInStockorder != 5">Add New Group</button>
+        <button class="email_btn  genlink" (click)="placeOrder()" *ngIf="hidefieldInStockorder != 5">Place Order</button>
+        <button class="email_btn  genlink" (click)="placeorderstock()" *ngIf="hidefieldInStockorder == 5">Place Order</button>        
+        <a href="javascript:;" class="back-scr-incm" [routerLink]="['/incomplete-order']">Back</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section [hidden]="hidepage" class="agent_s_sec_two resutl edit-carhub" [style.margin-top.px]="0" *ngIf="!isCustomerLogin && hidefieldInStockorder != 5">
+  <div class="container updatefields" >
+    <div>
+      <input type="text" placeholder="Enter Price" class="bidprice-fld" [(ngModel)]="_saveBidPrice.BidPrice" name="BidPrice" #BidPrice="ngModel" maxlength="9" pattern="[0-9]{9,}" (keypress)="onlyNumberKey($event)" (focusout)="focusOutPrice($event)"/>
+      <button class="email_btn  genlink" (click)="savebidprice()">Apply All</button>
+    </div>
+    
+    <div class="selectbidd plan-drpdown" >
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+          {{ plan.parent_plan }}
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let _plan of getallplans" (click)="selectedplan(_plan)">
+            <a href="javascript:;"> {{ _plan.plan.name }} ( {{ _plan.plan.percentOff }}% ) </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="selectbidd plan-drpdown" >
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            {{ pricingtypes.pricingTypeName }}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li (click)="pricingtypes.pricingTypeId = 1;pricingtypes.pricingTypeName = 'Service Based' "> 
+              <a href="javascript:;">Service Based</a>
+            </li>    
+            <li (click)="pricingtypes.pricingTypeId = 2;pricingtypes.pricingTypeName = 'CNF Based' ">
+              <a href="javascript:;">CNF Based</a>  
+            </li>    
+          </ul>
+        </div>
+    </div>
+    <button class="email_btn  genlink" (click)="saveplanfororder()">Update Order</button>
+  </div>
+</section>
+
+<div [hidden]="hidepage" class="agent_s_sec_three bidding-page car-won customer-short edit-carhub viewcnf">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="record_table">
+          <div class="accordion" *ngFor="let order of orderDetail?.OrderItems; index as i">
+            <h4 class="accordion-toggle active">
+              <span class="orderidnum">
+                <span class="orderidval">Car Group {{ i + 1 }}</span>
+              </span>
+              <div class="order_history_tab_info order_history_tab_info1">
+                <span class="numberofitems">Number of car to be Purchased</span>
+
+                <div class="input-group plus-minus-input" (click)="stoptoggle($event)">
+                  <div class="input-group-button down">
+                    <button type="button" class="button hollow circle decr" data-quantity="minus" data-field="quantity" (click)="decNumber(i)">
+                      <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <input class="input-group-field" type="text" name="quantity" value="" data-length="0" [(ngModel)]="order.OrderPurchaseCount"
+                    (ngModelChange)="itemCountChange($event , order?.OrderPurchaseCount , order?.OrderDetails.length , order?.OrderItemId)"
+                    (keypress)="onlyNumberKey($event)">
+                  <div class="input-group-button up">
+                    <button type="button" class="button hollow circle incr" data-quantity="plus" data-field="quantity" (click)="incNumber(i)">
+                      <i class="fa fa-caret-up" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </h4>
+            <div class="accordion-content" style="display:block">
+
+              <div class="accordion-tab">
+                <div class="group-items ">
+
+                  <div class="group-items-dt" *ngFor="let item of order?.OrderDetails; let k = index;">
+                    <div class="group-items-dt-top">
+                      <div class="group-items-dt-top-lft">
+                        <div class="group-items-dt-top-lft-mn">
+                          <div>
+                            <span *ngIf="item.AuctionTypeId != 5" class="selct-itms checkitem" [style.margin-top.px]="10" (click)="checkOrderDetailId(item.OrderDetailId)">
+                              <input type="checkbox" class="chkOrderDetail">
+                              <i class="fa fa-check chcktck" aria-hidden="true"></i>
+                            </span>
+                            <span class="grpitems-imgtg" [style.margin-left.px]="4">
+                              <a class="img-zoom" data-fancybox [href]="item?.AuctionImage | splitimage">
+                                <img [src]="item?.AuctionImage | splitimage" width="40" [style.margin-top.px]="7">
+                              </a>
+                            </span>
+                          </div>
+                          <div class="group-items-dt-top-dtdv">
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <span>Make</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item?.Make || '--' }}</strong>
+                                  </td>
+                                  <td>
+                                    <span>Chassis No.</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item?.Chassis || '--' }}</strong>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <span>Model</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item?.Model || '--' }}</strong>
+                                  </td>
+                                  <td>
+                                    <span>Mileage</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item?.Mileage || '--' }} KM</strong>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <span>M3 of Car</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item?.Dimension || '--' }} m
+                                      <sup>3</sup>
+                                    </strong>
+                                  </td>
+                                  <td>
+                                    <span>Year</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item?.Year || '--' }}</strong>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="item.AuctionTypeId != 5">
+                                  <td>
+                                    <span>Auction Date</span>
+                                  </td>
+                                  <td>
+                                    <strong class="tmhd" title="{{ item?.AuctionDate | date : 'dd.MM.yyyy' }}{{ item?.AuctionDate | customtime }}"> {{ item?.AuctionDate | date : 'dd.MM.yyyy' }} {{ item?.AuctionDate | customtime }}</strong>
+                                  </td>
+                                  <td>
+                                    <span>Auction House</span>
+                                  </td>
+                                  <td>
+                                    <strong class="tmhd" title="{{ item?.AuctionHouse }}"> {{ item?.AuctionHouse }}</strong>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="item.AuctionTypeId != 5">
+                                  <td>
+                                    <span>LotNo</span>
+                                  </td>
+                                  <td>
+                                    <strong> {{ item?.LotNo }} </strong>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="group-items-dt-top-cen">
+                        <div class="group-items-dt-top-cen-main">
+                          <div>
+                            <table>
+                              <tbody>
+                                <tr *ngIf="item.AuctionTypeId != 5">
+                                  <td>
+                                      <span *ngIf="order.PricingTypeId != 2">Bid Price</span>
+                                      <span *ngIf="order.PricingTypeId == 2">Max Bid Price</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item?.CurrencyCode }} {{ item?.BidPrice | roundoffhtmlnumber | number }}</strong>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="item.AuctionTypeId != 5">
+                                  <td>
+                                    <span>Service Char.</span>
+                                  </td>
+                                  <td>
+                                    <strong>{{ item?.CurrencyCode }} {{ item?.ServiceCharges | roundoffhtmlnumber | number }}</strong>
+                                  </td>
+                                </tr>
+                                <tr *ngIf="order?.PricingTypeId != 2 && item?.AlterationCharges && item?.AlterationCharges != null && !isCustomerLogin && item.AuctionTypeId != 5">
+                                    <td>
+                                      <span>Alteration Char.</span>
+                                    </td>
+                                    <td>
+                                      <strong>{{ item?.CurrencyCode }} {{ item?.AlterationCharges | roundoffhtmlnumber | number }}</strong>
+                                    </td>
+                                  </tr>
+                                  <tr *ngIf="order?.PricingTypeId != 2 && item?.InspectionCharges && item?.InspectionCharges != null && !isCustomerLogin">
+                                    <td>
+                                      <span>Inspection Char.</span>
+                                    </td>
+                                    <td>
+                                      <strong>{{ item?.CurrencyCode }} {{ item?.InspectionCharges | roundoffhtmlnumber | number }}</strong>
+                                    </td>
+                                  </tr>
+                                  <tr *ngIf="order.PricingTypeId != 2  && item?.OnePriceFee && item?.OnePriceFee != null && !isCustomerLogin && item.AuctionTypeId != 5">
+                                    <td>
+                                      <span>One Price</span>
+                                    </td>
+                                    <td>
+                                      <strong>{{ item?.CurrencyCode }} {{ item?.OnePriceFee | roundoffhtmlnumber | number }}</strong>
+                                    </td>
+                                  </tr>
+                                  <tr *ngIf="item?.NegotiationCharges && item?.NegotiationCharges != null && item.AuctionTypeId != 5">
+                                    <td>
+                                      <span>Negotiation Char.</span>
+                                    </td>
+                                    <td>
+                                      <strong>{{ item?.CurrencyCode }} {{ item?.NegotiationCharges | roundoffhtmlnumber | number }}</strong>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <span>FOB</span>
+                                    </td>
+                                    <td>
+                                      <strong>{{ item?.CurrencyCode }} {{ item?.FOB | roundoffhtmlnumber | number }}</strong>
+                                    </td>
+                                  </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div>
+                            <table>
+                              <tbody>
+                                  <tr>
+                                    <td>
+                                      <span>Freight</span>
+                                    </td>
+                                    <td>
+                                      <strong>{{ item?.CurrencyCode }} {{ item?.FreightCharges | roundoffhtmlnumber | number }}</strong>
+                                    </td>
+                                  </tr>
+                                  <tr *ngIf="!isCustomerLogin && item?.RikusoFee && item?.RikusoFee != null && item.AuctionTypeId != 5">
+                                    <td>
+                                      <span>Rikuso</span>
+                                    </td>
+                                    <td>
+                                      <strong>{{ item?.CurrencyCode }} {{ item?.RikusoFee | roundoffhtmlnumber | number }}</strong>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td><span>Total Price (CNF)</span></td>
+                                    <td>
+                                      <strong>{{ item?.CurrencyCode }} {{ item?.CNF | roundoffhtmlnumber | number }}</strong>
+                                    </td>
+                                  </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <span (click)="openorderupdatepopup( item , k , i )" *ngIf="!isCustomerLogin && item.AuctionTypeId != 5" class="btns">
+                          <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit">
+                            <img src="/assets/images/edit-icn.png">
+                          </a>
+                        </span>
+                        <span class="mvmenu btns" *ngIf="groupsdetail.length > 1">
+                          <a href="javascript:;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Move">
+                            <img src="/assets/images/move-icon.png">
+                          </a>
+                          <ul class="inner-menu">
+                            <li [ngClass]="{'hidden-grp' : (i+1 == j+1) }" *ngFor="let group of groupsdetail; index as j" data-fancybox data-src="#move_item"
+                              (click)="movegroupselected(group?.OrderItemId , item.OrderDetailId)">    
+                                <a href="javascript:;">
+                                  {{ group?.Title }}
+                                </a>
+                            </li>
+                          </ul>
+                        </span>
+                        <span class="btns">
+                          <a href="javascript:;" class="deletethis" data-toggle="tooltip" data-placement="bottom" title="Delete" (click)="selectdeletekey(order.OrderItemId , item.OrderDetailId)">
+                            <img src="/assets/images/delete_icon.png" data-fancybox data-src="#delete_order">
+                          </a>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- model -->
+<div class="delete_order remove_box_one" id="move_item" style="display:none;">
+  <div class="remove_incomplete_order">
+    <h3>Are you sure you want to move?</h3>
+    <button class="login_btn3" onclick="$.fancybox.close();">No</button>
+    <button class="login_btn3 deletecurrent" onclick="$.fancybox.close();" (click)="moveditem()">Yes</button>
+  </div>
+</div>
+<div class="delete_order remove_box_one" id="delete_order" style="display:none;">
+  <div class="remove_incomplete_order">
+    <h3>Are you sure you want to remove?</h3>
+    <button class="login_btn3" onclick="$.fancybox.close();">No</button>
+    <button class="login_btn3 deletecurrent" onclick="$.fancybox.close();" (click)="deleteItem()">Yes</button>
+  </div>
+</div>
+<div class="submittedpop membplansubmit gold submittedpopmemb" id="submittedpopmemb" style="display:none;">
+  <img src="/assets/images/submitted-tick.png">
+  <h2>Thank you for placing order.</h2>
+  <h3>Our agent will get back to you soon!</h3>
+</div>
+<div class="delete_order remove_box_one" id="credit_skip" style="display:none;">
+  <div class="remove_incomplete_order">
+    <h3>Are you sure you want to place request for skipping credit limit check for this order?</h3>
+    <textarea [(ngModel)]="requestSkipComment" style="height: 90px;width: 425px;" maxlength="500" placeholder="Enter Comment Here"></textarea>
+    <button class="login_btn3" onclick="$.fancybox.close();">No</button>
+    <button class="login_btn3 deletecurrent" onclick="$.fancybox.close();" (click)="PlaceCreditCheckSkipRequest()">Yes</button>
+  </div>
+</div>
+<div class="delete_order remove_box_one" id="credit_error" style="display:none;">
+  <div class="remove_incomplete_order">
+    <div style="padding: 10px;background: #313131; border-radius: 5px;-webkit-box-shadow: 0px 3px 6px 3px rgba(233, 233, 240, 1); box-shadow: 0px 3px 6px 3px rgba(233, 233, 240, 1);">
+      <!-- <h2 style="    padding: 2px;font-size: 24px; color: white;margin: 0px;">
+        Your Current Bidding Limit : {{ objCreditLimit.OrderCurrencySymbol }}{{ objCreditLimit.AvailableCreditLimit | roundoffhtmlnumber
+        | number }} -->
+      <h2 style="padding: 2px;font-size: 24px; color: white;margin: 0px;">
+        ERROR: INSUFFICIENT BIDDING POWER
+      </h2>
+    </div>
+    <br />
+    <!-- <h2 style="margin: 0px; padding: 10px; font-size: 20px;">ERROR: INSUFFICIENT BIDDING POWER</h2> -->
+    <!-- <h3 style="margin: 0px; padding:0 0 20px 0px; font-size: 17px; font-weight: 500;line-height:23px;">In order to place this bid you will need to deposit an additional {{ objCreditLimit.OrderCurrencySymbol }}{{ objCreditLimit.RequiredAuctionDeposit
+      | roundoffhtmlnumber | number }} to increase your credit limit to {{ objCreditLimit.OrderCurrencySymbol }}{{ objCreditLimit.CreditLimitAfterMinAuctionDeposit
+      | roundoffhtmlnumber | number }}</h3> -->
+      <h3 *ngIf="this.objCreditLimit.AvailedMinimumAuctionDeposit == 0 && (this.objCreditLimit.RemainingCreditLimit >= 0 || this.objCreditLimit.CustomerAvailableFunds <= 0)" style="margin: 0px; padding:0 0 20px 0px; font-size: 17px; font-weight: 500;line-height:23px;">In order to place this bid you will need to deposit an additional {{ objCreditLimit.OrderCurrencySymbol }}{{ objCreditLimit.RequiredAuctionDeposit
+        | roundoffhtmlnumber | number }} in your account.</h3>
+      <h3 *ngIf="this.objCreditLimit.AvailedMinimumAuctionDeposit > 0 && (this.objCreditLimit.RemainingCreditLimit >= 0 || this.objCreditLimit.CustomerAvailableFunds <= 0)" style="margin: 0px; padding:0 0 20px 0px; font-size: 17px; font-weight: 500;line-height:23px;">In order to place this bid you have to pay previous balance of amount: {{ objCreditLimit.OrderCurrencySymbol }}{{ objCreditLimit.AvailedMinimumAuctionDeposit
+        | roundoffhtmlnumber | number }} and current auction deposit of amount: {{ objCreditLimit.OrderCurrencySymbol }}{{
+        objCreditLimit.MinimumAuctionDepositAmount | roundoffhtmlnumber | number }}
+        <br />
+        <br /> Total Amount Required: {{ objCreditLimit.OrderCurrencySymbol }}{{ objCreditLimit.RequiredAuctionDeposit | roundoffhtmlnumber
+        | number }}</h3>
+      <h3 *ngIf="this.objCreditLimit.RemainingCreditLimit < 0 && this.objCreditLimit.CustomerAvailableFunds > 0">Credit limit reached.</h3>
+    <button class="login_btn3 deletecurrent" onclick="$.fancybox.close();" style="padding: 6px 0px; text-align: center;">Close</button>    
+    <button class="login_btn3" *ngIf="!this.isCustomerLogin && !this.objCreditLimit.IsOrderCreditCheckSkipRequested" onclick="$.fancybox.close();" (click)="RequestCreditCheckSkip()" style="padding: 6px 0px; text-align: center;width:185px;background:#43c88c;">Request Credit Check Skip</button>
+    <button routerLink="/payment-history" style="padding: 6px 0 !important;" class="login_btn3" onclick="$.fancybox.close();">Add Funds</button>
+  </div>
+</div>
+
+<!-- open order update popup -->
+<div class="slpop-main main-sl" id="updateorderpopup" style="display:none;">
+  <div class="slpop-hd">
+    <h3>Bid Price</h3>
+  </div>
+  <div class="slpop-innerdv">
+    <div class="slpopdet-top">
+      <div class="slpopdet-top-in">
+
+        <a class="img-zoom" data-fancybox="gallery1" [href]="selectedorder?.carImages[0]" [style.margin-left.px]="5">
+          <img [src]="selectedorder?.carImages[0] | splitimage " [style.width.px]="54" [style.height.px]="40">
+        </a>
+        <a class="img-zoom" data-fancybox="gallery1" [href]="selectedorder?.carImages[1]" [style.margin-left.px]="5">
+          <img [src]="selectedorder?.carImages[1] | splitimage " [style.width.px]="54" [style.height.px]="40">
+        </a>
+        <a class="img-zoom" data-fancybox="gallery1" [href]="selectedorder?.AuctionSheet" [style.margin-left.px]="5">
+          <img [src]="selectedorder?.AuctionSheet | splitimage" [style.width.px]="54" [style.height.px]="40">
+        </a>
+
+      </div>
+      <div class="slpopdet-top-inrt">
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <h3>
+                  {{ selectedorder?.Make }}
+                </h3>
+                <span>
+                  {{ selectedorder?.Model }} - {{ selectedorder?.Year }}
+                </span>
+              </td>
+              <td>
+                <span>Chassis#</span>
+                <strong>
+                  {{ selectedorder?.Chassis }}
+                </strong>
+              </td>
+              <td>
+                <span>Lot No.</span>
+                <strong>
+                  {{ selectedorder?.LotNo }}
+                </strong>
+              </td>
+              <td>
+                <span>Auction House</span>
+                <strong>
+                  {{ selectedorder?.AuctionHouse }}
+                </strong>
+              </td>
+              <td>
+                <span>Auction Date</span>
+                <strong class="dt">
+                  {{ selectedorder?.AuctionDate | date }}
+                </strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="main-section" [style.margin-top.px]="0">
+      <div class="main-left-side-section" [style.margin-top.px]="0" [style.padding-top.px]="5">
+        <p >Select Plan
+          <span span class="mad-fields"> * </span>
+        </p>
+        <select name="selectedplanId" id="" [(ngModel)]="plan.selectedplanId" (change)="calculateOnPlanSelect()" [disabled]="isDefaultPlanIdActive"
+          [ngClass]=" { 'disable-plans' : isDefaultPlanIdActive } " class="slct-plan">
+          <option selected disabled value="">Select Plan</option>
+          <option *ngFor="let plan of getallplans" [value]="plan.plan.id">
+            {{ plan['plan']['name'] }} ( {{ plan.upFrontAmount }} % )
+          </option>
+        </select>
+        <div class="main-bid-price-nego" [style.margin-top.px]="5">
+          <div class="nego-box-1 bid-price-css">
+            <p >Bid Price
+              <span class="mad-fields"> * </span>
+            </p>
+            <input type="text" name="bidprice" [(ngModel)]="orderUpdate.bidprice" #bidprice="ngModel" placeholder="Enter Bid Price" (keypress)="onlyNumberKey($event)"
+            (focusout)="focusOut($event)" [disabled]="displayloader">
+          </div>
+
+          <div class="nego-box-2">
+            <p >Chassis Number <span class="mad-fields">*</span></p>
+            <input type="text" 
+              name="chassisnumber" 
+              [(ngModel)]="orderUpdate.chassisnumber" 
+              #chassisnumber="ngModel" 
+              placeholder="Enter Chassiss Number"
+              [disabled]="displayloader"
+              class="chassis-input-css"
+              (keypress)="openAuctionHouseSheet()"
+              (click)="openAuctionHouseSheet()">
+          </div>
+        </div>
+        <div class="main-manu-year">
+          <div class="manu-box-1" [style.width.%]="37">
+            <p >Manufacturing Month / Year
+              <span span class="mad-fields" *ngIf="orderDetail?.CountryCode != 'NZL' "> * </span>
+            </p>
+            <select class="sel-mon" [(ngModel)]="orderUpdate.selectedmonth">
+              <option selected disabled value="">Select Month</option>
+              <option [value]="month.id" *ngFor="let month of orderUpdate.months">
+                {{ month.name }}
+              </option>
+            </select>
+            <select [(ngModel)]="orderUpdate.selectedYear">
+              <option selected disabled value="">Select Year</option>
+              <option [value]="year" *ngFor="let year of orderUpdate.years  ">
+                {{ year }}
+              </option>
+            </select>
+          </div>
+          <div class="manu-box-2 popup-commnt">
+            <p >Comments</p>
+            <textarea placeholder="Enter Comments" name="comment" [(ngModel)]="orderUpdate.comment" #comment="ngModel"></textarea>
+          </div>
+        </div>
+        <div class="main-num-chass">
+          <div class="nego-box-2 nego-boxx-2">
+            <p >Interested in Negotiation</p>
+            <label class="rdbtninput rdbtninput-are-u" (change)="activecheckornot('negotiation')" >
+              <input type="checkbox" class="inpst" [checked]="orderUpdate.isNegotiationActive">
+              <i class="fa fa-check rdbtn"></i>
+              <span class="hand-tool txt-neg-css">Are you interested in Negotiation?</span>
+            </label>
+          </div>
+          <div class="nego-box-1 nego-boxx-1">
+            <p >Number Plate</p>
+            <div class="nego-box-inner">
+              <label class="rdbtninput rdbtnputee rdbtninput-are-u">
+                <input type="checkbox" class="inpst" [checked]="orderUpdate.isNumberPlateActive" (change)="orderUpdate.isNumberPlateActive = !orderUpdate.isNumberPlateActive; orderUpdate.numberplate = (!orderUpdate.isNumberPlateActive)?'':orderUpdate.numberplate; ">
+                <i class="fa fa-check rdbtn"></i>
+              </label>
+              <input type="text" name="numberplate" [(ngModel)]="orderUpdate.numberplate" #numberplate="ngModel" [disabled]="!orderUpdate.isNumberPlateActive"
+                placeholder="Enter Number Plate">
+            </div>
+          </div>
+          <div class="nego-box-2 nego-boxx-2 mgtp" *ngIf="orderDetail?.CountryCode == 'PAK' " (change)="calculate()">
+            <p >Non-Drivable </p>
+            <label class="rdbtninput rdbtninput-are-u rdbtninput-are-u2">
+              <input type="checkbox" class="inpst" [checked]="orderUpdate.isDrivableActive" (change)="orderUpdate.isDrivableActive = !orderUpdate.isDrivableActive">
+              <i class="fa fa-check rdbtn"></i>
+              <span class="hand-tool">This vehicle is not drivable</span>
+            </label>
+          </div>
+          <div class="nego-box-2 nego-boxx-2 mgtp" *ngIf="orderDetail?.CountryCode == 'NZL' ">
+            <p >Preferred Shipping Line</p>
+            <select [(ngModel)]="orderUpdate.PreferredShipping">
+              <option selected disabled value="">Select Shipping Line</option>
+              <option [value]="ship_line.id" *ngFor="let ship_line of preferred_shipping">
+                {{ ship_line.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="main-allte">
+          <ng-select [items]="alertationdata" bindLabel="title" bindValue="id" [addTag]="addCustomUser" [multiple]="true" placeholder="Alteration"
+            [(ngModel)]="selectedalteration" (change)="addremovealteration()">
+          </ng-select>
+        </div>
+        <div class="main-metter-rever">
+          <div class="metter-box-1">
+            <p *ngIf="displayMeterReversal">Meter Reversal</p>
+            <input type="text" name="meterReversal" [(ngModel)]="orderUpdate.meterReversal" #meterReversal="ngModel" placeholder="Meter Reversal"
+              *ngIf="displayMeterReversal">
+          </div>
+          <div class="metter-box-2">
+            <p>Total Alternation Amount</p>
+            <span>
+              JPY {{ orderUpdate.totalalterationamount | number }}
+            </span>
+          </div>
+        </div>
+
+      </div>
+      <div class="main-right-side-section" *ngIf=" displayPlanDetail && !displayerrormsg ">
+        <div class="slpopdet-sel-pck slpopdet-sel-pckdfr slpopdet-sel-pck1">
+          <table>
+            <tbody>
+              <tr>
+                <td [class]="orderUpdate.PlanClass | lowercase ">
+                  <div class="hd">
+                    <h3> {{ orderUpdate.PlanName }} </h3>
+                    <h4> {{ orderUpdate.PlanAmount }} % Upfront Payment</h4>
+                    <a class="colpexp-ic" href="javascript:;">
+                      <i class="fa fa-angle-right tp" aria-hidden="true"></i>
+                      <i class="fa fa-angle-down dwn" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="dtl">
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <span>Bid Price</span>
+                          </td>
+                          <td>
+                            <strong class="qtcrn">JPY</strong>
+                            <strong> {{ orderUpdate['prices']['BidPrice'] || '0' | number }} </strong>
+                          </td>
+                        </tr>
+                        <tr *ngIf="orderUpdate.prices.ServiceCharges">
+                          <td>
+                            <span>Services Charges</span>
+                          </td>
+                          <td>
+                            <strong class="qtcrn">JPY</strong>
+                            <strong> {{ orderUpdate['prices']['ServiceCharges'] || '0' | number }}</strong>
+                          </td>
+                        </tr>
+
+                        <tr *ngIf="orderUpdate['prices']['AlterationCharges'] || orderUpdate['prices']['RikusoFee'] || orderUpdate['prices']['ExtraFee']">
+                          <td>
+                            <span>Additional Charges</span>
+                          </td>
+                          <td>
+                            <strong class="qtcrn">JPY</strong>
+                            <strong>
+                              <span> {{ orderUpdate['prices']['AlterationCharges'] + orderUpdate.prices.RikusoFee + orderUpdate.prices.ExtraFee
+                                || '0' | number }}</span>
+                              <span class="hlp-icon">
+                                <a href="javascript:;">
+                                  <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                </a>
+                              </span>
+                              <div class="popshd" style="margin-left:25px;">
+                                <div class="popshd-inner">
+                                  <a class="close-popshd" href="javascript:;">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                  </a>
+                                  <table>
+                                    <tbody>
+                                      <tr *ngIf="orderUpdate['prices']['AlterationCharges'] && orderUpdate['prices']['AlterationCharges'] != null">
+                                        <td>ALTERATION CHARGES</td>
+                                        <td>
+                                          <span class="current-currency">JPY</span> {{ orderUpdate['prices']['AlterationCharges'] || '0' | number }} </td>
+                                      </tr>
+                                      <tr *ngIf="orderUpdate['prices']['RikusoFee'] && orderUpdate['prices']['RikusoFee'] != null">
+                                        <td>ADDITIONAL RIKUSO</td>
+                                        <td>
+                                          <span class="current-currency">JPY</span> {{ orderUpdate['prices']['RikusoFee'] || '0' | number }}</td>
+                                      </tr>
+                                      <tr *ngIf="orderUpdate['prices']['ExtraFee'] && orderUpdate['prices']['ExtraFee'] != null">
+                                        <td>AUCNET CHARGES</td>
+                                        <td>
+                                          <span class="current-currency">JPY</span> {{ orderUpdate['prices']['ExtraFee'] || '0' | number }} </td>
+                                      </tr>
+                                    </tbody>
+                                    <tfoot>
+                                      <tr *ngIf="orderUpdate['prices']['AlterationCharges'] || orderUpdate['prices']['RikusoFee'] || orderUpdate['prices']['ExtraFee']">
+                                        <th>TOTAL</th>
+                                        <th>
+                                          <span class="current-currency">JPY</span> {{ orderUpdate['prices']['AlterationCharges'] + orderUpdate['prices']['RikusoFee']
+                                          + orderUpdate['prices']['ExtraFee'] || '0' | number }}</th>
+                                      </tr>
+                                    </tfoot>
+                                  </table>
+                                </div>
+                              </div>
+                            </strong>
+                          </td>
+                        </tr>
+                        <tr *ngIf="orderUpdate['prices']['InspectionCharges'] && orderUpdate['prices']['InspectionCharges'] != null">
+                          <td>
+                            <span>Inspection</span>
+                          </td>
+                          <td>
+                            <strong class="qtcrn">JPY</strong>
+                            <strong> {{ orderUpdate['prices']['InspectionCharges'] || '0' | number }}</strong>
+                          </td>
+                        </tr>
+                        <tr *ngIf="orderUpdate['prices']['OnePriceFee'] > 0 ">
+                          <td>
+                            <span>One Price</span>
+                          </td>
+                          <td>
+                            <strong class="qtcrn">JPY</strong>
+                            <strong> {{ orderUpdate['prices']['OnePriceFee'] || '0' | number }}</strong>
+                          </td>
+                        </tr>
+                        <tr *ngIf="orderUpdate['prices']['VanningCharges'] && orderUpdate['prices']['VanningCharges'] != null ">
+                          <td>
+                            <span>Vanning Charges</span>
+                          </td>
+                          <td>
+                            <strong class="qtcrn">JPY</strong>
+                            <strong> {{ orderUpdate['prices']['VanningCharges'] || '0' | number }}</strong>
+                          </td>
+                        </tr>
+                        <tr *ngIf="orderUpdate['prices']['NegotiableAmount'] && orderUpdate['prices']['NegotiableAmount'] != null ">
+                          <td>
+                            <span>Negotiable Char.</span>
+                          </td>
+                          <td>
+                            <strong class="qtcrn">JPY</strong>
+                            <strong> {{ orderUpdate['prices']['NegotiableAmount'] || '0' | number }}</strong>
+                          </td>
+                        </tr>
+                        <tr *ngIf="orderUpdate['prices']['FOB'] && orderUpdate['prices']['FOB'] != null ">
+                          <td>
+                            <span>FOB of Unit</span>
+                          </td>
+                          <td>
+                            <strong class="qtcrn">JPY</strong>
+                            <strong> {{ orderUpdate['prices']['FOB'] || '0' | number }}</strong>
+                          </td>
+                        </tr>
+
+                        <tr *ngIf="orderUpdate['prices']['FreightCharges'] && orderUpdate['prices']['FreightCharges'] != null">
+                          <td>
+                            <span>Freight Charges</span>
+                          </td>
+                          <td>
+                            <strong class="qtcrn"> JPY </strong>
+                            <strong> {{ orderUpdate['prices']['FreightCharges'] || '0' | number }} </strong>
+                          </td>
+                        </tr>
+                      </tbody>
+
+                    </table>
+                  </div>
+                  <div class="ft">
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>Total CNF Price</td>
+                          <td> JPY {{ orderUpdate['prices']['CNF'] || '0' | number }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="par-currency">
+          <span class="currencyrate">
+              Currency Rate : 1 USD = {{ orderUpdate.CurrencyRate }} JPY
+          </span>
+          <br />
+          <span class="currencyrate" *ngIf="orderUpdate['prices']['FOB']">
+              FOB : {{  orderUpdate['prices']['FOB'] / orderUpdate.CurrencyRate || '0' | roundoffhtmlnumber  }} USD
+          </span>
+          <br />
+          <span class="currencyrate" *ngIf="orderUpdate['prices']['CNF']">
+              Total CNF Price : {{  orderUpdate['prices']['CNF'] / orderUpdate.CurrencyRate || '0' | roundoffhtmlnumber  }} USD
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="slpop-ftrdv slpop-ftrdvdv-2" [style.margin-top.px]="10">
+      <div *ngIf="displayerrormsg" class="error-msg">
+        Bid price is invalid, kindly update the price and evaluate again.
+      </div>
+      <span *ngIf="displayloader">
+        <img src="/assets/images/sml-loader.gif" alt="" [style.width.px]="25" [style.margin-right.px]="130">
+      </span>
+      <button class="calcu-amon calculate-amount" href="javascript:;" (click)="calculate()" [disabled]="displayloader">
+        <img src="/assets/images/eval-ref-icon.png"> Calculate Amount
+      </button>
+      <button class="addquote addquoteadded" (click)="saveandnextorder()" *ngIf="!last_index">Save And Next</button>
+      <button class="addquote addquoteadded" (click)="saveandnextorder()" *ngIf="last_index">Save And Close</button>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="auctionsheetpopn" id="auctionsheetchassis" style="display: none;">
+  <div class="auctionsheetpopnhd" [style.padding.px]="7">
+      <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-12">
+              <h4 class="auctionsheetpopnhdh">Auction Sheet</h4>
+          </div>
+          <div class="col-md-8 col-sm-6 col-xs-12" style="text-align: right; font-size: 12px;">
+            <span style="padding:1%;cursor: pointer;" onclick="$.fancybox.close();">X</span>
+        </div>
+      </div>
+  </div>
+  <div class="top">
+      <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12 nopad_xs_right">
+              <div class="enterchass">
+                <input type="text" 
+                name="chassisnumber" 
+                [(ngModel)]="orderUpdate.chassisnumber" 
+                #chassisnumber="ngModel" 
+                placeholder="Enter Chassiss Number"
+                [disabled]="displayloader"
+                (focusout)="alphabeticCapsOn($event)"
+                class="chassis-input-css">
+                <button class="check-chassis-css" (click)="checkchassis()">Check</button>
+              </div>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="row">
+                  <div class="col-md-4 col-sm-4  col-xs-12 nopad_right nopad_xs_right">
+                    <select class="sel-mon" [(ngModel)]="orderUpdate.selectedmonth">
+                      <option selected disabled value="">Select Month</option>
+                      <option [value]="month.id" *ngFor="let month of orderUpdate.months">
+                        {{ month.name }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-xs-12 nopad_right nopad_xs_right">
+                    <select [(ngModel)]="orderUpdate.selectedYear">
+                      <option selected disabled value="">Select Year</option>
+                      <option [value]="year" *ngFor="let year of orderUpdate.years  ">
+                        {{ year }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-xs-12 nopad_right nopad_xs_right">
+                      <button class="svbtn"  onclick="$.fancybox.close();">Save</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div align="center" *ngIf="checkChassiValueLoader"><img class="chassis-val-loader" src="/assets/images/sml-loader.gif" alt="" width="12"></div>
+      <span *ngIf="manufact_detail['message']" class="error-msg">Message : {{ manufact_detail['message'] }}</span>
+  </div>
+  <div class="bot">
+      <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="auctshetimg">
+                  <img [src]="selectedorder?.AuctionSheet | splitimage" alt="">
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- end -->

@@ -1,0 +1,69 @@
+<app-header></app-header>
+
+<section class="cinquir">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="cinqhddv">
+                    <h3 class="cinqhd">Car Inquiries <span class="total-count">{{ getinquires.length }}</span></h3>
+                    <p class="cinqp">It provides all the Vehicles and their quotations which you have inquired about.</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="row" *ngIf="getinquires.length">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="cinquir-tbldv">
+                    <div class="cinquir-tbldv-inner">
+                        <ul class="cinquir-tbldvhd">
+                            <li>Vehicle Specification</li>
+                            <li>Date Inquired</li>
+                            <li>Mileage</li>
+                            <li>Engine</li>
+                            <li>Color</li>
+                            <li>Transmission</li>
+                            <li>Price</li>
+                            <li>Country</li>
+                        </ul>
+                        <ul class="cinquir-tbldvdet" *ngFor="let inquire of getinquires | paginate: { itemsPerPage: 10, currentPage: p }">
+                            <li>
+                                <a [href]=" inquire.singleImage | splitimage " data-fancybox="gallery1" class="imgbox" *ngIf="inquire.singleImage">
+                                    <img [src]="inquire.singleImage | splitimage" alt="">
+                                </a>
+                                <a href="./assets/images/no-image.png" data-fancybox="gallery1" class="imgbox" *ngIf="!inquire.singleImage">
+                                    <img src="./assets/images/no-image.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <div class="">
+                                    <ul class="cinquir-tbldv-listtop">
+                                        <li><h4 class="cinquirchd">{{ inquire.Make || '--' }} {{ inquire.Model || '--' }} {{ inquire.Year || '--' }}</h4></li>
+                                        <li><strong>{{ inquire.InquiryDate | date : 'd, MMMM, y'}}</strong></li>
+                                        <li><span>{{ inquire.Mileage | number }} KM</span></li>
+                                        <li><strong>{{ inquire.EngineCC | number }} CC</strong></li>
+                                        <li><strong>{{ inquire.Color }}</strong></li>
+                                        <li><span>{{ inquire.Transmission }}</span></li>
+                                        <li><strong>{{ inquire.CurrencyCode }} {{ inquire.Price | roundoffhtmlnumber | number }}</strong></li>
+                                        <li><span>{{ inquire.CountryName }}</span></li>
+                                    </ul>
+                                </div>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" align="center">
+            <div class="col-md-12 col-sm-12 col-xs-12 no-record-found" *ngIf="getinquires.length == 0">
+                No Record Found 
+            </div>
+        </div>
+        <div class="row" align="right" *ngIf="getinquires.length">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+    
+</section>

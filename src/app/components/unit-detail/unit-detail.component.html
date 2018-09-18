@@ -1,0 +1,1143 @@
+<app-header></app-header>
+
+<section class="dashboardn-sect">
+    <div class="container">
+
+        <div class="dashboardn-sect-main">
+
+            <!-- <div class="dashboardn-header">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
+                        <h2>Dashboard >
+                            <span>Toyota Corolla 2017</span>
+                        </h2>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
+                        <ul class="dash-inf">
+                            <li>
+                                <span>Japan Date &amp; Time: </span>
+                            </li>
+                            <li class="dash-inf-time">
+                                <strong>16 Oct, 2017 - 3:33</strong>
+                            </li>
+                            <li class="padd10">
+                                <span>Today’s rate: </span>
+                            </li>
+                            <li>
+                                <strong>107.16 JPY</strong>
+                            </li>
+                            <li class="adfvtlst">
+                                <a href="javascript:;" class="add-fav adfvt hglt twentysix">Add to Favourite</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+            <div class="dashboardn-header">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
+                        <h2>
+                            <span class="hand-tool" [routerLink]="['/dashboard']">Dashboard</span> >
+                            <span>
+                                {{ item_detail?.Make }} {{ item_detail?.Model }} {{ item_detail?.Year }}
+                            </span>
+                        </h2>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
+                        <ul class="dash-inf">
+                            <li>
+                                <span>Japan Date &amp; Time : </span>
+                            </li>
+                            <li >
+                                <strong [style.margin-left.px]="5"> {{ item_detail?.CurrentDateTime | date : 'MMM d, y, h:mm'}}</strong>
+                            </li>
+                            <li class="adfvtlst">
+                                <a href="javascript:;" class="add-fav adfvt hglt twentysix" (click)="addtofavourite(1)">Add to Favourite</a>
+                                <a href="javascript:;" class="add-fav fav-added adfvt hglt twentysix" (click)="addtofavourite(0)">Favourite Added</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-xs-12 hglt twentysvn" *ngIf="item_detail && item_detail.Images && item_detail?.Images.length">
+                        <div class="main-images preview1" >
+                        <a href="{{ carImg | splitimage }}" data-fancybox="gallery1" fancybox-button--zoom="" *ngFor="let carImg of item_detail?.Images">
+                            <img src="{{ carImg | splitimage }}">
+                        </a>
+                    </div>
+                    <ul class="car-sm-image-list">
+                        <li *ngFor="let carImg of item_detail?.Images">
+                            <span>
+                                <img [src]="carImg | splitimage ">
+                            </span>
+                        </li>
+                    </ul>
+                    <div class="sheet-imagesect hglt twentynine">
+                        <a [href]=" item_detail?.AuctionSheet | splitimage " data-fancybox data-src="#sheetbig">
+                            <img [src]=" item_detail?.AuctionSheet | splitimage " class="img-responsive">
+                        </a>
+                        <div class="sheeticons">
+                            <div class="requestsheetsect">
+                                <div class="requestsheet" *ngIf="!item_detail?.AuctionSheetTranslated && !isCustomerLogin">    
+                                    <a class="redddbtn" href="javascript:;" (click)="openTranSheet()">Request Translation of Inspection Sheet</a>                                    
+                                    <p class="note-trans">Auction and Remarks cannot be modifited after 7 AM</p>
+                                </div>
+                                <div class="requestsheet opentranslatedsheet" *ngIf="item_detail?.AuctionSheetTranslated" >
+                                    <a  [href]="item_detail?.AuctionSheetTranslated | splitimage " data-fancybox data-src="#translationsheet" >Open Translation sheet</a>    
+                                </div>
+                                <div class="viewrequestsheet">
+                                    <img src="/assets/images/view-trans.png">
+                                    <span>
+                                        <a href="javascript:;" data-fancybox data-src="#sheetbig">View Translated Auction Sheet</a>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <a href="javascript:;" class="dwnload-icon">
+                                <img src="/assets/images/download-icon.png">
+                            </a>
+                            <a href="javascript:;" class="zoomicon" data-fancybox data-src="#sheetbig">
+                                <img src="/assets/images/zoom-icon.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7 col-xs-12 hglt twentysvn" *ngIf="!item_detail || !item_detail.Images || !item_detail.Images == null">
+                    <div class="main-images preview1" >
+                        <a href="/assets/images/NoImage.png" >
+                            <img src="/assets/images/no-image.gif">
+                        </a>
+                    </div>
+                    
+
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-12 hglt twentyeght">
+                    <div class="vehicle-bid-main hglt thrty">
+                        <h3>Car Details</h3>
+                        <h4>
+                            {{ item_detail?.Make }} {{ item_detail?.Model }}
+                        </h4>
+                        <div class="bid-vehicle-inf">
+                            <ul>
+                                <li>
+                                    <span>Year</span>
+                                </li>
+                                <li>
+                                    <strong [title]="item_detail?.Year">
+                                        {{ item_detail?.Year }}
+                                    </strong>
+                                </li>
+                                <li>
+                                    <span>Auction Grade</span>
+                                </li>
+                                <li>
+                                    <strong [innerHTML]="item_detail?.Grade" [title]="item_detail?.Grade">
+                                    </strong>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <span>Equipment</span>
+                                </li>
+                                <li>
+                                    <strong [title]="item_detail?.Equipment">
+                                        {{ item_detail?.Equipment || '--' }}
+                                    </strong>
+                                </li>
+                                <li>
+                                    <span>Mileage </span>
+                                </li>
+                                <li>
+                                    <strong [title]="item_detail?.Mileage ">
+                                        <span>
+                                            {{ item_detail?.Mileage || '--' }}
+                                        </span>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <span>M3 of Car</span>
+                                </li>
+                                <li>
+                                    <strong>
+                                        {{ item_detail?.Metercube || '--' }}
+                                    </strong>
+                                </li>
+                                <li>
+                                    <span>Transmission</span>
+                                </li>
+                                <li>
+                                    <strong [title]="item_detail?.Transmission">
+                                        {{ item_detail?.Transmission }}
+                                    </strong>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <span>Color</span>
+                                </li>
+                                <li>
+                                    <strong [title]="item_detail?.Color">
+                                        {{ item_detail?.Color }}
+                                    </strong>
+                                </li>
+                                <li>
+                                    <span>Condition</span>
+                                </li>
+                                <li>
+                                    <strong [title]="item_detail?.Condition">
+                                        {{ item_detail?.Condition || '--' }}
+                                    </strong>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <span>Chassis</span>
+                                </li>
+                                <li>
+                                    <strong [title]="item_detail?.Chassis">
+                                        <span> {{ item_detail?.Chassis || '--' }}</span>
+                                    </strong>
+                                </li>
+                                <li>
+                                    <span>Drive</span>
+                                </li>
+                                <li>
+                                    <strong [title]="item_detail?.PRIV">
+                                        {{ item_detail?.PRIV || '--' }}
+                                    </strong>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <span>Engine</span>
+                                </li>
+                                <li>
+                                    <strong [title]="item_detail?.Engine">
+                                        <span>
+                                            {{ item_detail?.Engine || '--' }}
+                                        </span>
+                                        <span>CC</span>
+                                    </strong>
+                                </li>
+                                <li>
+                                    <span>Lot Number</span>
+                                </li>
+                                <li>
+                                    <strong [title]="item_detail?.LotNo">
+                                        {{ item_detail?.LotNo || '--' }}
+                                    </strong>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="prcng-bot">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:;" class="salesstats-lnk" data-fancybox data-src="#sales-statistics">
+                                            <img src="/assets/images/sales-stats-icon.png"> Sales Statistics</a>
+                                    </td>
+
+                                    <td class="text-right" [hidden]="viewfavourite" >
+                                        <button class="snd-link-pop" (click)="quotationGenerate()" *ngIf="!isCustomerLogin && new_order_or_quotation == 'quotation' ">Send Link</button>
+                                        <button class="snd-link-pop" (click)="addOrder()" *ngIf="!isCustomerLogin && new_order_or_quotation == 'order' ">Add Order</button>
+                                    </td>
+                                    <td class="text-right" [hidden]="viewfavourite" *ngIf="isCustomerLogin">
+                                        <button class="inquire-btn inquire-now" (click)="openInquireNowPopUp()">Inquire Now</button>
+                                        <button class="snd-link-pop" (click)="openpriceorderbox()" *ngIf="_bitallow">Add To Bid </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="shipment-sect hglt thrtyone" [hidden]="viewfavourite">
+                        <h3>Shipment Details</h3>
+                        <ul>
+                            <li>
+                                <span>Shipping Country</span>
+                            </li>
+                            <li>
+                                <strong>{{ shipmentDetail?.ShipmentCountry?.name || '--' }}</strong>
+                            </li>
+                            <li>
+                                <span>Port</span>
+                            </li>
+                            <li>
+                                <strong >
+                                    {{ shipmentDetail?.ShipmentPort?.name || '--' }}
+                                </strong>
+                            </li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="manuf-check hglt thrtyfr">
+                        <h3>Manufacture Year Check</h3>
+                        <ul class="manuf-car">
+                            <li>
+                                <select class="selectpicker chassis-cls" [(ngModel)]="manufactureYearCheck.makerId">
+                                    <option selected disabled value="">Select Option</option>
+                                    <option value="0,9">Toyota</option>
+                                    <option value="1,6">Nissan</option>
+                                    <option value="2,5">Mitsubishi</option>
+                                    <option value="3,3">Isuzu</option>
+                                    <option value="4,8">Suzuki</option>
+                                    <option value="5,7">Subaru</option>
+                                    <option value="6,1">Daihatsu</option>
+                                    <option value="7,4">Mazda</option>
+                                    <option value="8,2">Honda</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class="manuf-chassis">
+                            <li>
+                                <input placeholder="Chassiss No" type="text" [(ngModel)]="manufactureYearCheck.chassisNo" />
+                            </li>
+                            <li>
+                                <button class="button-primary cancel" (click)="checkmanu()">Check</button>
+                            </li>
+                        </ul>
+                        <div *ngIf="productionloader"  align="center" >
+                            <img src="/assets/images/quotation-page-loader.gif" alt="" [style.width.px]="70"> 
+                        </div>
+                        <div id="displaymessage"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+            <div class="row">
+                
+                <div class="col-lg-12 col-md-12 col-xs-12 ">
+                    <div class="market-price hglt thrtytwo" *ngIf="item_detail && item_detail.SimilarVehicles && item_detail.SimilarVehicles.length">
+                        <h3>Market Price (Same Car and Year and Mileage 30,000KM Below)</h3>
+                        <div class="market-price-inner">
+                            <ul class="market-pricehd">
+                                <li>Auction</li>
+                                <li>Maker Name Model (Lot No.)</li>
+                                <li>Grade, Year Color</li>
+                                <li>Transmission Chassis</li>
+                                <li>Km(x1,000) Auction Grade</li>
+                                <li>Start Price (X 1,000 JPY)</li>
+                                <li>Result Price (X 1,000 Jpy)</li>
+                            </ul>
+                            <ul class="market-pricedet" *ngFor="let car of item_detail?.SimilarVehicles">
+                                <li>
+                                    <div class="auct1"> {{ car?.AuctionHouse }} </div>
+                                    <div class="auct2">{{ car?.AuctionDate | date }}</div>
+                                </li>
+                                <li>
+                                    <div class="auct1"> {{ car?.Make }} </div>
+                                    <div class="auct2">{{ car?.LotNo }}</div>
+                                </li>
+                                <li>
+                                    <div class="auct1"></div>
+                                    <strong> {{ car?.Year }} </strong>
+                                    <span>- {{ car?.Color }}</span>
+                                </li>
+                                <li>
+                                    <strong> {{ car?.Transmission || '--' }} </strong>
+                                    <div>
+                                        <span> {{ car?.Chassis || '--' }} </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <strong>{{ car?.Mileage | number }}</strong>
+                                </li>
+                                <li>
+                                    <strong>¥</strong>
+                                    <strong>{{ car?.StartPrice | number }}</strong>
+                                </li>
+                                <li>
+                                    <strong>¥</strong>
+                                    <strong>{{ car?.SoldPrice | number }}</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- hide and view taskbar list -->
+<section class="vehicle-add-sect hglt thrtyfv" *ngIf="hideshowtaskList">
+    <div class="container-fluid">
+      <div class="container nopad_xs_left">
+        <div class="container">
+          <div class="row caritemslist colp">
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 nopad_sm_right nopad_left nopad_xs_right nopad_xs_left">
+              <ngx-slick class="carousel addmorebox" #slickModal="slick-modal" [config]="slideConfig">
+                  <li ngxSlickItem *ngFor="let quotationSlide of quotationSlideData; let i = index" [class.current]="i == 0">
+                    <div class="carimagespar" [ngClass]="{'active-ft-car' : quotationSlide.active }" (click)="activeftrCar(i)">
+                      <div class="carimagespar-inner">
+                        <div class="cart-prd-image">
+                          <img src="{{quotationSlide.AuctionImage | splitimage}}" class="ftr-width">
+                        </div>
+                        <div class="cart-prd-det">
+                          <h4 title="{{ quotationSlide.Make }} {{ quotationSlide.Model }}" class="taskbar-heading">{{quotationSlide.Make}} {{(quotationSlide.Model.length>5)? (quotationSlide.Model | slice:0:5)+'..':(quotationSlide.Model) }}</h4>
+                          <h5>{{quotationSlide.Year}}</h5>
+                          <a href="javascript:;" class="itemscount" tabindex="-1">{{quotationSlide.LotNo}}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+              </ngx-slick>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 text-right">
+                <div class="viewquotebtn">
+                    <button [routerLink]="['/quotation-detail']" [queryParams]="{id: quotationId}" *ngIf="new_order_or_quotation == 'quotation'">View Quotation</button>
+                    <button [routerLink]="['/view-confirm-order']" [queryParams]="{id : quotationSlideData[0]['OrderId'] }" *ngIf="new_order_or_quotation == 'order'">Confirm Order</button>
+                    <!-- <a class="update-act-btn" [routerLink]="['/quotation-detail']" [queryParams]="{id: quotationId}" *ngIf="new_order_or_quotation == 'quotation'">View Quotation</a>
+                    <a class="update-act-btn" href="javascript:;" [routerLink]="['/view-confirm-order']" [queryParams]="{id : quotationSlideData[0]['OrderId'] }" *ngIf="new_order_or_quotation == 'order'">Confirm Order</a>
+                    <a class="update-act-btn" href="javascript:;" [routerLink]="['/view-confirm-order']" [queryParams]="{id : quotationSlideData[0]['OrderId'] }" *ngIf="isCustomerLogin">Confirm Order</a>             -->
+                </div>          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<!-- end -->
+
+<app-bidprice [quotationPricingInput]="selectedQuotationPricing" (updated)="updatequotationtaskbar($event)"></app-bidprice>
+
+<!-- inquire now -->
+<app-inquire [InquireNow]="inquirenow"></app-inquire>
+
+<!-- models -->
+<div id="sales-statistics" class="OrderCreation sheetdetail" style="display:none;">
+    <div class="sheetdethd">
+        <h3>The Average Price of the Car Sales in Japan, Depending on the year, Evaluation, Mileage and the body</h3>
+    </div>
+    <div class="sheetdetdet">
+        <div class="col-lg-12">
+            <div class="">
+                <div class="row topsrchrow">
+                    <div class="col-md-2 col-xs-12">
+                        <div class="form-group">
+                            <label for="">Year
+                                <span class="mand-fields"> *</span>
+                            </label>
+                            <select name="" [(ngModel)]="_salesStatistics.year">
+                                <option disabled selected [ngValue]="null">Select Value</option>
+                                <option [ngValue]="salesStatistics.year.Min" *ngIf="salesStatistics.year.Min">
+                                    {{ salesStatistics.year.Min }}
+                                </option>
+                                <option [(ngValue)]="salesStatistics.year.Max" *ngIf="salesStatistics.year.Max">
+                                    {{ salesStatistics.year.Max }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-xs-12">
+                        <div class="form-group">
+                            <label for="">Min Mileage
+                                <span class="mand-fields"> *</span>
+                            </label>
+                            <input type="number" clas="lotval" placeholder="Enter Mileage" [(ngModel)]="_salesStatistics.minMileage" (keypress)="onlyNumberKey($event)">
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-12">
+                        <div class="form-group">
+                            <label for="">Max Mileage
+                                <span class="mand-fields"> *</span>
+                            </label>
+                            <input type="number" clas="lotval" placeholder="Enter Mileage" [(ngModel)]="_salesStatistics.maxMileage" (keypress)="onlyNumberKey($event)">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                            <label for="">Condition</label>
+                            <select name="" [(ngModel)]="_salesStatistics.condition">
+                                <option selected disabled [ngValue]="null">Select Value</option>
+                                <option [ngValue]="condition" *ngFor="let condition of salesStatistics.consditions">
+                                    {{ condition }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row topsrchrow">
+                    <div>
+                        <div class="col-md-2 col-xs-6">
+                            <label>&nbsp;</label>
+                            <button class="search-button" (click)="chooseData()">Choose</button>
+                        </div>
+                        <div class="col-md-4 col-xs-6 text-right det-total">
+                            <label>Average Price</label>
+                            <span> {{ salesStatistics.averageValue | number }}
+                                <span class="curtag">¥</span>
+                                <span>/ {{ page.TotalRecords }}</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12 pagination-cls">
+                        <div class="record_table indxcarlist list-customer">
+                            <ngx-datatable class="bootstrap ngx-datatable fixed-header" [rows]="salesStatistics.data" [columnMode]="'standard'" [headerHeight]="40"
+                                [footerHeight]="40" [rowHeight]="'auto'" [scrollbarH]="true" [externalPaging]="true" [count]="page.TotalRecords"
+                                [offset]="page.Index" [limit]="page.Size" (page)='setPage($event)' (sort)="sorting($event)">
+                                <ngx-datatable-column name="Lot Number Auction" [width]="150">
+                                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                                        <span>Lot Number Auction </span>
+                                    </ng-template>
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        {{ row.LotNo }}
+                                        <br> {{ row.AuctionHouse }}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="Auction Date" [width]="100">
+                                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                                        <span>Auction Date</span>
+                                    </ng-template>
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        {{ row.AuctionDate | date }}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="Auction Date" [width]="100">
+                                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                                        <span>V,Engine CC</span>
+                                    </ng-template>
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        {{ row.Engine }}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="Chassis ID " [width]="100">
+                                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                                        <span>Chassis ID </span>
+                                    </ng-template>
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        {{ row.Chassis }}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="Mileage" [width]="40">
+                                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                                        <span>Mileage </span>
+                                    </ng-template>
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        {{ row.Mileage }}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="Condition" [width]="100">
+                                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                                        <span>Condition</span>
+                                    </ng-template>
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="Start Sold For" [width]="100">
+                                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                                        <span>Start Sold For</span>
+                                    </ng-template>
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        {{ row.StartPrice }}
+                                        <br> {{ row.SoldPrice }}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="Colour" [width]="100">
+                                    <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                                        <span>Colour</span>
+                                    </ng-template>
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        {{ row.Color }}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                            </ngx-datatable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="sheetbig" class="OrderCreation  sheetdetail" style="display:none;">
+    <div class="sheetdethd" align="center">
+        <h3>Auction Sheet</h3>
+    </div>
+    <div class="sheetdetdet" align="center">
+        <div class="col-lg-12">
+            <img [src]="item_detail?.AuctionSheet" class="img-responsive">
+        </div>
+    </div>
+</div>
+
+
+<div id="translationsheet" class="OrderCreation  sheetdetail" style="display:none;">
+    <div class="sheetdethd" align="center">
+        <h3>Translated Sheet</h3>
+    </div>
+    <div class="sheetdetdet" align="center">
+        <div class="col-lg-12">
+            <img [src]="item_detail?.AuctionSheetTranslated" class="img-responsive">
+        </div>
+    </div>
+</div>
+
+<div id="manufyear" class="OrderCreation  manufyear" style="display:none;">
+    <button data-fancybox-close="" class="fancybox-close-small" title="Close"></button>
+    <div class="sheetdethd">
+        <h3>Manufacturing Year Check</h3>
+    </div>
+    <div class="manuf-product">
+        <div class="col-lg-12">
+            <h4>Month of Production</h4>
+            <h5>
+                {{ manufactureDetail.month || '' }} {{ manufactureDetail.year || ''}}
+            </h5>
+
+            <div class="manuf-product-det">
+                <ul>
+                    <li>
+                        <span>Catalogue Number</span>
+                    </li>
+                    <li>
+                        <strong>{{ manufactureDetail.catalogNo || '--' }}</strong>
+                    </li>
+                    <li>
+                        <span>Description</span>
+                    </li>
+                    <li>
+                        <strong>{{ manufactureDetail.spec || '--' }}</strong>
+                    </li>
+                    <li>
+                        <span>Color Code</span>
+                    </li>
+                    <li>
+                        <strong>{{ manufactureDetail.colorCode || '--' }}</strong>
+                    </li>
+                    <!-- <li><span>Compatible Models</span></li><li><strong>{{ manufactureDetail.modelName || '--' }}</strong></li> -->
+                    <li>
+                        <span>Engine</span>
+                    </li>
+                    <li>
+                        <strong>{{ manufactureDetail.engineNo || '--' }}</strong>
+                    </li>
+                    <li>
+                        <span>Model Code</span>
+                    </li>
+                    <li>
+                        <strong>{{ manufactureDetail.modelCode || '--' }}</strong>
+                    </li>
+                    <li>
+                        <span>Model</span>
+                    </li>
+                    <li>
+                        <strong>{{ manufactureDetail.modelName }}</strong>
+                    </li>
+                    <!-- <li><span>Code of Upholstery</span></li><li><strong>FE11</strong></li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end -->
+
+<!-- request alteration charges -->
+<div id="translate-inspect" class="OrderCreation translate-inspect">
+    <div class="translate-inspect-hd">
+    <h3>Request Translationof Auction Sheet</h3>		
+    </div>
+    <div class="req-auct-det">
+        <ul>
+            <li><span>Make</span></li><li><strong>{{ item_detail?.Make }}</strong></li>
+            <li><span>Year</span></li><li><strong>{{ item_detail?.Year}}</strong></li>
+        </ul>
+        <ul>
+            <li><span>Model</span></li><li><strong>{{ item_detail?.Model }}</strong></li>
+            <li><span>Chassis</span></li><li><strong>{{ item_detail?.Chassis }} </strong></li>
+        </ul>
+    </div>
+
+    <div class="trans-features">
+        <ul>
+            <li>
+                <label class="hand-tool"  (change)="selectalltrans(requesttranslationOptions[0]['isSelected'])">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[0]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[0]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                
+            </li>
+        </ul>
+        
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[1]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[1]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[2]['isSelected']">
+                    <i class="rdbtn"></i>
+                    <span>
+                        {{ requesttranslationOptions[2]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[3]['isSelected']">
+                    
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[3]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[4]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[4]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[5]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[5]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[6]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[6]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[7]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[7]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[8]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[8]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[9]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[9]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[10]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[10]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[11]['isSelected']">
+                    <i class="rdbtn"></i> <span>
+                        {{ requesttranslationOptions[11]['name'] }}    
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[12]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[12]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[13]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[13]['name'] }}        
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[14]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[14]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[15]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[15]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[16]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[16]['name'] }}
+                    </span>
+                </label>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[17]['isSelected']">
+                    <i class="rdbtn"></i><span>
+                        {{ requesttranslationOptions[17]['name'] }}
+                    </span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[18]['isSelected']">
+                    <i class="rdbtn"></i><span>{{ requesttranslationOptions[18]['name'] }}</span>
+                </label>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[19]['isSelected']">
+                    <i class="rdbtn"></i><span>{{ requesttranslationOptions[19]['name'] }}</span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[20]['isSelected']">
+                    <i class="rdbtn"></i><span>{{ requesttranslationOptions[20]['name'] }}</span>
+                </label>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[21]['isSelected']">
+                    <i class="rdbtn"></i><span>{{ requesttranslationOptions[21]['name'] }}</span>
+                </label>
+            </li>
+            <li>
+                <label class="hand-tool">
+                    <input type="checkbox" [(ngModel)]="requesttranslationOptions[22]['isSelected']">
+                    <i class="rdbtn"></i><span>{{ requesttranslationOptions[22]['name'] }}</span>
+                </label>
+            </li>
+        </ul>
+    
+    </div>
+    <div class="trans-bottom">
+        <button class="submitbtn-request" (click)="reqTranslatedSheet()">Submit Request</button>
+    </div>
+</div>
+
+<!-- end -->
+
+<!-- bidpriceorder modal -->
+<div class="slpop-main main-sl" id="sendlinkpopup">
+    <div class="slpop-hd">
+          <h3>Bid Price</h3>
+    </div>
+    <div class="slpop-innerdv">
+        <div class="slpopdet-top">
+            <div class="slpopdet-top-in">
+                  
+                <a class="img-zoom" data-fancybox="gallery1" [href]="item_detail?.Images[0]" [style.margin-left.px]="5">
+                    <img [src]="item_detail?.Images[0] | splitimage " [style.width.px]="54" [style.height.px]="40">
+                </a>
+                <a class="img-zoom" data-fancybox="gallery1" [href]="item_detail?.Images[1]" [style.margin-left.px]="5">
+                    <img [src]="item_detail?.Images[1] | splitimage " [style.width.px]="54" [style.height.px]="40">
+                </a>
+                <a class="img-zoom" data-fancybox="gallery1" [href]="item_detail?.AuctionSheet" [style.margin-left.px]="5">
+                    <img [src]="item_detail?.AuctionSheet | splitimage" [style.width.px]="54" [style.height.px]="40">
+                </a>
+                    
+            </div>
+            <div class="slpopdet-top-inrt">
+                <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <h3>
+                              {{ item_detail?.Make }}
+                          </h3>
+                          <span>
+                              {{ item_detail?.Model }} - {{ item_detail?.Year }}
+                          </span>
+                        </td>
+                        <td>
+                            <span>Chassis#</span>
+                            <strong>
+                                {{ item_detail?.Chassis }}
+                            </strong>
+                        </td>
+                        <td>
+                            <span>Lot No.</span>
+                            <strong>
+                                {{ item_detail?.LotNo }}
+                            </strong>
+                        </td>
+                        <td>
+                            <span>Auction House</span>
+                            <strong>
+                                {{ item_detail?.AuctionHouse }}
+                            </strong>
+                        </td>
+                        <td>
+                            <span>Auction Date</span>
+                            <strong class="dt">
+                                {{ item_detail?.AuctionDate | date }}
+                            </strong>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="main-section">
+            <div class="main-left-side-section" [style.margin-top.px]="0" [style.padding-top.px]="5">
+                <p>Select Plan <span span class="mad-fields"> * </span> </p>
+                <select name="selectedplanId" id="" [(ngModel)]="userdetail.selectedplanId" (change)="calculateOnPlanSelect()">
+                    <option selected disabled value="">Select Plan</option>
+                    <option  *ngFor="let plan of getallplans" [value]="plan.plan.id">
+                        {{ plan['plan']['name'] }} ( {{ plan.upFrontAmount }} % )
+                    </option>
+                </select>
+                <div class="main-bid-price-nego">
+                    <div class="nego-box-1 bid-price-css" >
+                        <p>Bid Price <span class="mad-fields"> * </span></p>
+                        <input type="text" 
+                            name="bidprice" 
+                            [(ngModel)]="userdetail.bidprice"
+                            #bidprice="ngModel"
+                            placeholder="Enter Bid Price"
+                            (focusout)="focusOut($event)"
+                            (keypress)="onlyNumberKey($event)"
+                            [disabled]="displayloader">
+                    </div>
+                    <div class="nego-box-2" [style.margin-top.px]="10">
+                        <p>Comment</p>
+                        <textarea placeholder="Enter Comments"
+                            name="comment"
+                            [(ngModel)]="userdetail.comment"
+                            #comment="ngModel" style="height:60px;border-radius: 6px;"></textarea>
+                    </div>
+
+                    <div class="nego-box-1 nego-boxx-1 mgtp" *ngIf=" shipmentDetail?.ShipmentCountry?.code == 'NZL' ">
+                        <p>Preferred Shipping Line</p>
+                        <select [(ngModel)]="userdetail.PreferredShipping">
+                            <option selected disabled value="">Select Shipping Line</option>
+                            <option [value]="ship_line.id" *ngFor="let ship_line of preferred_shipping">
+                                {{ ship_line.name }}
+                            </option>
+                        </select>
+                    </div>
+            </div>
+        </div>
+        <div class="main-right-side-section" *ngIf=" displayPlanDetail && !displayerrormsg ">
+               <div class="slpopdet-sel-pck slpopdet-sel-pckdfr slpopdet-sel-pck1">
+                    <table>
+                        <tbody>
+                          <tr>
+                            <td [class]="userdetail.PlanClass | lowercase ">
+                              <div class="hd hd-2">
+                                  <h3> {{ userdetail.PlanName }} </h3>
+                                  <h4> {{ userdetail.PlanAmount }} % Upfront Payment</h4>
+                                  <a class="colpexp-ic" href="javascript:;"><i class="fa fa-angle-right tp" aria-hidden="true"></i><i class="fa fa-angle-down dwn" aria-hidden="true"></i></a>
+                              </div>
+                                <div class="dtl">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td><span>Bid Price</span></td>
+                                                <td><strong class="qtcrn">JPY</strong><strong> {{ userdetail['prices']['BidPrice'] || '0'  | number }} </strong></td>
+                                            </tr>
+                                            <tr *ngIf="userdetail.prices.ServiceCharges">
+                                                <td><span>Services Charges</span></td>
+                                                <td><strong class="qtcrn">JPY</strong><strong> {{ userdetail['prices']['ServiceCharges'] || '0'  | number  }}</strong></td>
+                                            </tr>
+                                            
+                                            <tr *ngIf="userdetail['prices']['AlterationCharges'] || userdetail['prices']['RikusoFee'] || userdetail['prices']['ExtraFee']">
+                                                <td><span>Additional Charges</span></td>
+                                                <td><strong class="qtcrn">JPY</strong><strong><span> {{ userdetail['prices']['AlterationCharges'] + userdetail.prices.RikusoFee + userdetail.prices.ExtraFee || '0' | number }}</span><span class="hlp-icon">
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                                </a>
+                                                </span><div class="popshd">
+                                                <div class="popshd-inner">
+                                                    <a class="close-popshd" href="javascript:;">
+                                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                                    </a>
+                                                    <table>
+                                                        <tbody>
+                                                            <tr *ngIf="userdetail['prices']['AlterationCharges'] && userdetail['prices']['AlterationCharges'] != null">
+                                                                <td>ALTERATION CHARGES</td>
+                                                                <td><span class="current-currency">JPY</span> {{ userdetail['prices']['AlterationCharges'] || '0'  | number  }} </td>
+                                                            </tr>
+                                                            <tr *ngIf="userdetail['prices']['RikusoFee'] && userdetail['prices']['RikusoFee'] != null">
+                                                                <td>ADDITIONAL RIKUSO</td>
+                                                                <td><span class="current-currency">JPY</span> {{ userdetail['prices']['RikusoFee'] || '0'  | number  }}</td>
+                                                            </tr>
+                                                            <tr *ngIf="userdetail['prices']['ExtraFee'] && userdetail['prices']['ExtraFee'] != null">
+                                                                <td>AUCNET CHARGES</td>
+                                                                <td><span class="current-currency">JPY</span> {{ userdetail['prices']['ExtraFee'] || '0'  | number  }} </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <tfoot>
+                                                            <tr *ngIf="userdetail['prices']['AlterationCharges'] || userdetail['prices']['RikusoFee'] || userdetail['prices']['ExtraFee']">
+                                                                <th>TOTAL</th>
+                                                                    <th><span class="current-currency">JPY</span> {{ userdetail['prices']['AlterationCharges'] + userdetail['prices']['RikusoFee'] + userdetail['prices']['ExtraFee'] || '0' | number  }}</th>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                                </div></strong></td>
+                                            </tr>
+                                            <tr *ngIf="userdetail['prices']['InspectionCharges'] && userdetail['prices']['InspectionCharges'] != null">
+                                                <td><span>Inspection</span></td>
+                                                <td><strong class="qtcrn">JPY</strong><strong> {{ userdetail['prices']['InspectionCharges'] || '0'  | number  }}</strong></td>
+                                            </tr>
+                                            <tr *ngIf="userdetail['prices']['OnePriceFee'] > 0 ">
+                                                <td><span>One Price</span></td>
+                                                <td><strong class="qtcrn">JPY</strong><strong> {{ userdetail['prices']['OnePriceFee'] || '0' | number }}</strong></td>
+                                            </tr>
+                                            <tr *ngIf="userdetail['prices']['VanningCharges'] && userdetail['prices']['VanningCharges'] != null ">
+                                                <td><span>Vanning Charges</span></td>
+                                                <td><strong class="qtcrn">JPY</strong><strong> {{ userdetail['prices']['VanningCharges'] || '0'  | number }}</strong></td>
+                                            </tr>
+                                            <tr *ngIf="userdetail['prices']['FOB'] && userdetail['prices']['FOB'] != null ">
+                                                <td><span>FOB of Unit</span></td>
+                                                <td><strong class="qtcrn">JPY</strong><strong> {{ userdetail['prices']['FOB'] || '0'  | number  }}</strong></td>
+                                            </tr>
+                                              
+                                            <tr *ngIf="userdetail['prices']['FreightCharges'] && userdetail['prices']['FreightCharges'] != null">
+                                                <td><span>Freight Charges</span></td>
+                                                <td><strong class="qtcrn"> JPY </strong><strong> {{ userdetail['prices']['FreightCharges'] || '0'  | number  }} </strong></td>
+                                            </tr>
+                                        </tbody>
+                                        
+                                    </table>
+                                </div>
+                                <div class="ft">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                              <td>Total CNF Price</td>
+                                              <td> JPY {{ userdetail['prices']['CNF'] || '0'  | number  }}</td>
+                                            </tr>
+                                          </tbody>
+                                    </table>
+                                  </div>
+                            </td>
+                            
+                                    
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+          </div>
+        </div>
+        <div class="slpop-ftrdv slpop-ftrdvdv-2" [style.margin-top.px]="45">
+            <div *ngIf="displayerrormsg" class="error-msg">
+                Bid price is invalid, kindly update the price and evaluate again.
+            </div>
+            <span *ngIf="displayloader">
+                <img src="/assets/images/sml-loader.gif" alt="" [style.width.px]="25" [style.margin-right.px]="130">  
+            </span>
+            <button class="calcu-amon calculate-amount" href="javascript:;" (click)="calculate()" [disabled]="displayloader">
+                <img src="/assets/images/eval-ref-icon.png">
+                Calculate Amount
+            </button>
+            <button class="addquote addquoteadded" (click)="proceedtobid()">Proceed to Bid</button>
+        </div>
+    </div>
+          
+  </div>
+
+<div class="history password_reset_con" id="order_incomplete" style="display:none;">
+    <div class="signup_success_popup">
+        <img src="assets/images/green_circel_chk.png">
+        <h3>Success</h3>
+        <h4 id="qi_success_body">Incomplete order created for this vehicle.</h4>
+        <button class="search-button" data-fancybox-close="" onclick="javascript:;">Close</button>
+    </div>
+</div>
+
+<div class="newzealand-block" id="restrictionpopup" style="display:none;padding: 0px;margin: 0px;">
+    <div class="modal-dialog" role="document" style="padding: 0px;margin: 0px;">
+      <div class="modal-content">
+        <div class="modal-header errodv">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="notifhd-main">
+                <div>
+                  <i class="fa fa-exclamation-circle notifc" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <p>This car can not be shipped to
+                    <span class="rd"> {{shipmentDetail?.ShipmentCountry?.name}} </span>kindly choose another one.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+</div>
+<!-- end -->
+

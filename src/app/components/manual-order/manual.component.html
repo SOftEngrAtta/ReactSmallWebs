@@ -1,0 +1,195 @@
+<app-header></app-header>
+<div id="manualOrder">
+
+    <div class="container manual">
+        <h3>Manual Order</h3>
+        <div class="row">
+            <div class="col-lg-12 nopad_left nopad_right boordrrr-bt">
+                <div class="man-top">
+                    <ul>
+                        <li>Shipment Country
+                            <span>{{ shipmentdetail?.ShipmentCountry?.name || '--' }}</span>
+                        </li>
+                        <li>Shipment Port
+                            <span> {{ shipmentdetail?.ShipmentPort?.name || '--' }} </span>
+                        </li>
+                        <li>Shipment Type
+                            <span> {{ shipmentdetail?.ShipmentType?.name || '--' }} </span>
+                        </li>
+                        <li>Freight Type
+                            <span> {{ shipmentdetail?.ShipmentTerm?.name || '--' }} </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-12 ">
+                <div class="mkemdl">
+                    <h3 class="mannhd">Make &amp; Model</h3>
+
+                    <div class="">
+                        <div class="selefields">
+                            <label for="select1">Make <span class="mad-field">*</span></label>
+                            <select [(ngModel)]="manualOrder.MakeId" (change)="getModels()">
+                                <option selected disabled value="">Select Make</option>
+                                <option *ngFor="let make of makes" [ngValue]="make.Id">{{make.Title}}</option>
+                            </select>
+                        </div>
+
+                        <div class="selefields">
+                            <label for="select2">Model <span class="mad-field">*</span></label>
+                            <select [(ngModel)]="manualOrder.ModelId">
+                                <option selected disabled value="">Select Model</option>
+                                <option *ngFor="let model of models" [ngValue]="model.id">{{model.name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="selefields">
+                            <label for="select3">Year <span class="mad-field">*</span></label>
+                            <input type="text" name="text" placeholder="Enter Year" [(ngModel)]="manualOrder.Year" (keypress)="onlyNumberKey($event)">
+                        </div>
+
+                        <div class="selefields">
+                            <label for="select4">Select Any Color</label>
+                            <select [(ngModel)]="manualOrder.ColorId">
+                                <option selected disabled value="">Select Color</option>
+                                <option *ngFor="let color of colors" [ngValue]="color.Id">{{ color.Title }}</option>
+                            </select>
+                        </div>
+
+                        <div class="selefields">
+                            <label for="select5">Transmission</label>
+                            <input type="text" name="text" placeholder="Enter Transmission" [(ngModel)]="manualOrder.Transmission">
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <h3 class="mannhd">Vehicle Information</h3>
+
+                        <div class="entrfields">
+                            <label for="entr1">Chassis ID <span class="mad-field">*</span></label>
+                            <input type="text" name="text" id="entr1" placeholder="Enter Chassis No." [(ngModel)]="manualOrder.ChassisId">
+                        </div>
+
+                        <div class="entrfields">
+                            <label for="entr2">Engine CC</label>
+                            <input type="text" name="text" id="entr2" placeholder="Enter Engine CC" [(ngModel)]="manualOrder.EngineCC" (keypress)="onlyNumberKey($event)">
+                        </div>
+
+                        <div class="entrfields">
+                            <label for="entr3">Drive</label>
+                            <input type="text" name="text" id="entr3" placeholder="Enter Steering Side" [(ngModel)]="manualOrder.Drive">
+                        </div>
+
+                        <div class="entrfields">
+                            <label for="entr4">Mileage</label>
+                            <input type="text" name="text" id="entr4" placeholder="Type Mileage Here" [(ngModel)]="manualOrder.Mileage" (keypress)="onlyNumberKey($event)">
+                        </div>
+
+                        <div class="entrfields">
+                            <label for="entr5">Equipment</label>
+                            <input type="text" name="text" id="entr5" placeholder="Enter Equipments" [(ngModel)]="manualOrder.Equipment">
+                        </div>
+
+                        <div class="entrfields">
+                            <label for="entr6">Lot Number <span class="mad-field">*</span></label>
+                            <input type="text" name="text" id="entr6" placeholder="Enter Lot Number" [(ngModel)]="manualOrder.LotNumber">
+                        </div>
+
+                        <div class="entrfields">
+                            <label for="entr7">Select Auction House <span class="mad-field">*</span></label>
+                            <select [(ngModel)]="manualOrder.AuctionHouseId">
+                                <option selected disabled value="">Select Auction House</option>
+                                <option *ngFor="let auctionhouse of auctionhouses" [ngValue]="auctionhouse.Id">{{ auctionhouse.Title }}</option>
+                            </select>
+                        </div>
+                        <div class="entrfields">
+                            <label for="entr9">Grade</label>
+                            <input type="text" name="text" id="entr9" placeholder="Enter Grade Here" [(ngModel)]="manualOrder.Grade">
+                        </div>
+
+                        <div class="entrfields">
+                            <label for="entr10">Rate</label>
+                            <input type="text" name="text" id="entr10" placeholder="Enter Rate Here" [(ngModel)]="manualOrder.Rate">
+                        </div>
+
+                        <div class="entrfields">
+                            <label for="entr11">PW</label>
+                            <input type="text" name="text" id="entr11" placeholder="Enter PW Here" [(ngModel)]="manualOrder.PW" (keypress)="onlyNumberKey($event)">
+                        </div>
+
+                        <div class="entrfields">
+                            <label for="entr12">Price Start</label>
+                            <input type="text" name="text" id="entr12" placeholder="Enter Start Price Here" [(ngModel)]="manualOrder.StartPrice" (keypress)="onlyNumberKey($event)">
+                        </div>
+
+                        <div class="entrfields">
+                            <label for="entr13">Price Finish</label>
+                            <input type="text" name="text" id="entr13" placeholder="Enter Finish Price Here" [(ngModel)]="manualOrder.FinishPrice" (keypress)="onlyNumberKey($event)">
+                        </div>
+                        <div class="entrfields update-datepicker-css">
+                            <label for="entr8">Auction Date <span class="mad-field">*</span></label>
+                            <angular2-date-picker [(ngModel)]="manualOrder.AuctionDate" [settings]="settings"></angular2-date-picker>
+                        </div>
+                        <div class="entrfields entrfields-txtarea">
+                            <label for="entr13">Information</label>
+                            <textarea placeholder="Type  Information Here..." [(ngModel)]="manualOrder.Information"></textarea>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="vehinfo">
+                        
+                        <div class="col-md-7 nopad_left nopad_right">
+                            <label for="upload_image">Select Car Images <span class="mad-field">*</span></label>
+                            <image-upload class="image-car-uploader"
+                                [uploadedFiles]="carImages"
+                                (removed)="onRemoved($event)"
+                                (uploadFinished)="onUploadFinished($event)"
+                                (uploadStateChanged)="onUploadStateChanged($event)">
+                            </image-upload>
+                            
+                        </div>
+                        <div class="col-md-5">
+                            <label for="upload_auc_sheet">Select Auction Sheet <span class="mad-field">*</span></label>
+                            <image-upload class="image-car-uploader"
+                                [uploadedFiles]="auctionSheetImages"
+                                (removed)="onRemovedAuc($event)"
+                                (uploadFinished)="onUploadFinishedAuc($event)"
+                                (uploadStateChanged)="onUploadStateChangedAuc($event)"
+                                >
+                            </image-upload>
+                            <br />
+                            <!-- <span *ngIf="auctionSheetImages.length > 0" class="display-auc-msg">
+                                Only 1 Auction Sheet image allow
+                            </span> -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="mau-bot">
+                        <p>
+                            <span class="red">Note:</span> The Price shared in this quotation are etimations and are subject to change with
+                            time and car specification</p>
+                        <ul>
+                            <li [routerLink]="['/dashboard']">
+                                <a href="javascript:;" class="bck">Back</a>
+                            </li>
+                            <li (click)="submit()"  >
+                                <a href="javascript:;" class="sub" [ngClass]="{ 'disabled-sub' : hidesubbtn }" >Submit</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+
+</div>

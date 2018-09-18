@@ -1,0 +1,9 @@
+.notifdet{
+    text-align: left;
+}
+.notifdet li:nth-child(2)>span{
+    max-width:unset;text-overflow: initial;overflow: visible;
+}
+.notifhd li{
+    text-align: left;
+}

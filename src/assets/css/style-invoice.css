@@ -1,0 +1,312 @@
+
+/* Auction Deposit Invoice Start */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,800');
+.invc{
+    background:#fff !important;
+    font-family: 'Open Sans', sans-serif !important;
+}
+.notice_aw p{
+font-size: 15px;
+    color: #58595b;
+	line-height:21px !important;
+	margin:10px 0 0 0;
+	
+	}
+
+
+.notice_aw ul{
+	margin-left:0px;
+	padding-left:0px;
+	margin-top:1px;
+	padding-top:0px;
+	}
+.notice_aw ul li{
+	padding-left:0px;
+	margin-left:5px;
+	padding-bottom:1px;
+	line-height:18px !important;
+	}
+	
+
+.containerr p {color: #47484a;margin:10px 0px 0px 0px;}
+
+.containerr {
+    width: 890px;
+    overflow: hidden;
+    margin: 22px auto;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid #cccccc;
+    position: relative;
+    background-size: cover;
+	padding: 38px 31px 20px;
+    height: auto;    
+    box-sizing: border-box;
+}
+
+.headerr {clear: both;width: 100%;min-height: 68px;}
+
+.haed-left h1{font-size: 23px;font-weight: 700; margin-top: 4px;}
+.haed-left h1 span:nth-child(1) {color: #EE282F;}
+.haed-left h1 span:nth-child(2) {margin-left: 9px;color: #58595B;}
+
+.haed-rite img {float: left;margin-left: 40px;width: 82%;}
+
+.inv-stampp .haed-rite img {
+    width: 68px;
+    height: 68px;
+    margin: 5px auto 0;
+    text-align: center;
+    float: none;
+}
+
+.top-rite {
+    padding: 4px 0px 0px 22px;
+    width: 240px;
+    float: left;
+}
+.top-rite p {
+    padding: 0;
+    line-height: 1.3;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 0;
+    font-weight: 600;
+}
+
+.top-lft {
+    margin-top: 77px;
+}
+.top-lft h3 {font-size: 15px; font-weight: 700; color: #58595B; margin-bottom: 6px;}
+.top-lft table tr td:nth-child(2) {font-weight:500;}
+.top-lft, .top-rite-2 table {font-size: 12px;color: #58595B;}
+.top-lft, .top-rite-2 table tr > td:nth-child(1){font-weight:700;vertical-align: top;}
+
+
+.top-rite-2 {
+    margin-top: 32px;
+    margin-left: 20px;
+    float: left;
+}
+.top-rite-2 table tr > td:nth-child(2) {padding-left: 32px;font-weight: 500;line-height: 1.2;}
+.top-rite-2 table tr:nth-child(3) > td:nth-child(2) {line-height: 1.5;}
+
+.top-lft table tr td {line-height: 1.5;}
+.top-lft table tr > td:nth-child(2) {padding-left: 19px;}
+
+.haed-left, .haed-rite{float:left;width:50%;}
+
+.cont-uper-lft table tbody > tr:nth-child(1) {position:relative; line-height: 2;}
+.cont-uper-lft > table tbody > tr:nth-child(1)::after {
+    content: '';
+    position: absolute;
+    margin: auto;
+    left: 0px;
+    top: 30px;
+    border-bottom: 3px solid #231F20;
+    width: 375px;
+    display: block;
+}
+.inv-stampp {
+    width: 81px;
+    height: 98px;
+    float: left;
+    border: 1px solid #e8e8e8;
+    margin-left: 24px;
+    text-align: center;
+    margin-top: 5px;
+}
+.inv-stampp h4 {
+    color: #6b6d6f;
+    margin: 0;
+    text-align: center;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 12px;
+    padding: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.inv-stampp .haed-rite {
+    text-align: center;
+    margin: auto;
+    display: block;
+    float: none;
+    width: 100%;
+}
+.cont-uper, .cont-middle {clear: both;position:relative;}
+
+.cont-uper-lft, .cont-uper-rite {width: 52%;float: left;position: relative;}
+.cont-uper-rite {width: 48%;}
+.cont-uper-lft:after {
+    content: "";
+    position: absolute;
+    border-right: 1px solid #ebecec;
+    top: -57px;
+    right: 0;
+    height: 117%;
+}
+
+.cont-uper-lft > table td:nth-child(2) {padding-left: 132px;}
+.cont-uper:before {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid #ebecec;
+    top: 116px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    display: block;
+}
+
+.cont-uper-lft > table tr td {color: #58595B;font-size:16px;}
+.cont-uper-lft > table tr:nth-of-type(1) td {font-weight: 700;line-height: 35px;}
+
+.imp-note {
+    background-color: #EACED0;
+    padding: 2px 22px;
+    border-radius: 5px;
+    float: left;
+    background-size: cover;
+    width: 786px;
+    margin: 41px 0;
+}
+.imp-note h3 {font-size: 14px;}
+.imp-note ul {padding: 0;}
+.imp-note ul li {list-style:none; font-size:12px;}
+.imp-note ul li::before {
+    content: "•";
+    color: red;
+    padding-right: 7px;
+    font-size: 18px;
+}
+
+ul.imp-note-lst1, ul.imp-note-lst2 {float: left; margin-top: 6px;}
+ul.imp-note-lst2 {margin-left: 86px;}
+
+.imp-note h3 {color: #ED1D24; font-weight: 700; margin-bottom: 0;}
+.imp-note p {color: #231F20;font-weight: 600;font-size: 12px;margin-top: 4px;}
+
+.cont-uper-lft table > tr:nth-child(1) td {font-size: 15px;}
+.cont-uper-lft table > tr:nth-child(2) td {font-size: 14px;}
+
+.cont-botom th:last-child {
+    border-right: 0;
+}
+
+.cont-botom table {width: 100%;position: relative;}
+.cont-botom {clear: both;margin-top: 22px;text-align: left; font-size: 15px;margin-bottom:15px;}
+.cont-botom table {width: 100%;position: relative;border-collapse: collapse;}
+.cont-botom thead tr {height: 27px;}
+.cont-botom th {
+    padding-left: 21px;
+    font-size: 16px;
+    font-weight: 700;
+	border-right: 1px solid gray;
+}
+.cont-botom table td {
+    padding: 17px 12px 11px;
+}
+.cont-botom thead {
+    background: #152020;
+    color: #fff;
+    padding: 5px 6px;
+    border-radius: 4px;
+    display: block;
+    width: 826px;
+}
+.cont-botom table tbody tr {
+    border-bottom: 1px solid #c3caca;
+}
+.cont-botom tbody {display: block;width: 826px;min-height: 300px;}
+.cont-botom tfoot {display: block;width:826px;}
+.cont-botom tr td {vertical-align: top;}
+.cont-botom > table tr:nth-child(1) > td:nth-child(1) {padding-left: 25px;}
+.cont-botom > table tr:nth-child(2) > td:nth-child(1) {padding-left: 25px;}
+.cont-botom > table tr:nth-child(3) > td:nth-child(1) {padding-left: 25px;}
+.cont-botom > table tr:nth-child(4) > td:nth-child(1) {padding-left: 25px;}
+.cont-botom > table tr:nth-child(5) > td:nth-child(1) {padding-left: 25px;}
+.cont-botom > table tr:nth-child(6) > td:nth-child(1) {padding-left: 25px;}
+.cont-botom > table tr > td:nth-child(1){padding-left:25px;}
+.cont-botom tr td:nth-child(3) {
+    border-right: 0;
+    width: 174px;
+}
+.cont-botom table tfoot tr td:nth-child(2) {text-align: right;font-weight: 700;}
+.cont-botom table tfoot {position:relative; margin: 30px 0px;}
+.cont-botom table tfoot:after {
+    content: "";
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    border-top: 2px solid #152020;
+    width: 826px;
+}
+.cont-botom tfoot td:nth-child(1), .cont-botom tfoot td:nth-child(2) {display: inline-block;}
+.cont-botom tfoot td:nth-child(3) {
+    background-color: #152020;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: 1px;
+    padding: 15px 3px 15px 16px !important;
+    border-radius: 0px 4px 4px 0px;
+    display: inline-block;
+    left: 11px;
+    text-align: left;
+    width: 265px;
+    font-weight: 700;
+}
+
+.contentt > h3 {color: #ee282f;margin-top: 47px;margin-bottom: 35px;font-size: 25px;}
+
+.wrapper2 .haed-rite img {margin-left: 0;width:100%;}
+
+.wrapper2 .top-rite {
+    width: 38%;
+    min-height: 57px;
+    float: right;
+    margin-top: -15px;
+    padding-right: 0;
+}
+.wrapper2 .contentt ul li {
+    list-style: none;
+    line-height: 1.4;
+    font-size: 15px;
+    color: #58595b;
+    display: table;
+}
+.wrapper2 .contentt ul li::before {
+    content: "•";
+    color: rgb(238, 40, 47);
+    padding-right: 7px;
+    display: table-cell;
+    font-size: 24px;
+    position: relative;
+    top: 4px;
+    line-height: 1.2;
+}
+.wrapper2 .contentt ul li ul li {line-height: 1.6;font-size: 15px;color: #58595b;list-style: disc;}
+
+.wrapper2 .contentt h4 {clear: both;color: #58595b; margin: 36px auto 3px;}
+.wrapper2 ul.imp-note-lst1, .wrapper2 ul.imp-note-lst2 {float: none;margin-top: 6px;padding-left: 0;}
+
+.wrapper2 .contentt p {line-height: 1.5;font-size: 15px;color: #58595b;}
+ul.imp-note-lst1.third_page {margin-top: 41px;}
+ul.imp-note-lst1.third_page > li ul {margin-top: 10px;}
+
+.footerr {
+    text-align: center;
+    
+    border-top: 1px solid #d8d5d5;
+    clear: both;
+    position: relative;
+    right: 0;
+    left: 0;
+    
+    width: 100%;
+    margin: auto;
+	font-size: 12px;
+}
+
+/* Auction Deposit Invoice End */

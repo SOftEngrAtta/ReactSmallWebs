@@ -1,0 +1,569 @@
+<div class="slpop-main" id="sendlinkpop">
+  <div class="slpop-hd">
+    <h3>Bid Price</h3>
+  </div>
+  <div class="slpop-innerdv">
+    <div class="slpopdet-top">
+      <div class="slpopdet-top-in">
+        <span>
+          <a class="img-zoom" data-fancybox="gallery1" [href]="quotationPricing?.Images[0]?.Title | splitimage ">
+            <img [src]="quotationPricing?.Images[0]?.Title | aucsplitimage ">
+          </a>
+        </span>
+        <span *ngIf="quotationPricing?.Images[1]">
+          <a class="img-zoom" data-fancybox="gallery1" [href]="quotationPricing?.Images[1]?.Title | splitimage ">
+            <img [src]="quotationPricing?.Images[1]?.Title | aucsplitimage ">
+          </a>
+        </span>
+        <span>
+          <a class="img-zoom" data-fancybox="gallery1" [href]="quotationPricing.AuctionSheet | splitimage ">
+            <img [src]="quotationPricing.AuctionSheet | aucsplitimage ">
+          </a>
+        </span>
+      </div>
+      <div class="slpopdet-top-inrt">
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <h3>{{quotationPricing.Make}}</h3>
+                <span>{{quotationPricing.Transmission}}-{{quotationPricing.Year}}</span>
+              </td>
+              <td>
+                <span>Chassis#</span>
+                <strong>{{quotationPricing.Chassis || '--' }}</strong>
+              </td>
+              <td>
+                <span>Lot No.</span>
+                <strong>{{quotationPricing.LotNo}}</strong>
+              </td>
+              <td>
+                <span>Auction Date</span>
+                <strong class="dt">
+                  {{quotationPricing.AuctionDate | date : 'dd.MM.yyyy'}}
+                  <span>
+                    {{ quotationPricing.AuctionDate | customtime }}
+                  </span>
+                </strong>
+              </td>
+              <td>
+                <span>Auction House</span>
+                <strong>{{quotationPricing.AuctionHouse}}</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="slpopdet-sel">
+      <ul>
+        <li>
+          <label (click)="displayCNFQuotation('SCQ')">
+            <input type="radio" name="quote-type" checked class="servrd">
+            <i class="rdsrv"></i>
+            <span>Service Chart Based Quotation</span>
+          </label>
+        </li>
+
+        <li *ngIf="!hideAndDisplayCnf">
+          <label (click)="displayCNFQuotation('CBQ')">
+            <input type="radio" name="quote-type" class="cnfrd">
+            <i class="rdsrv"></i>
+            <span>CNF Based Quotation</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+    <!-- Service Chart Based Quatation -->
+    <div class="serv-char">
+      <div class="slpopdet-sel-inner">
+        <label>Bid Price</label>
+        <div class="slpopdet-sel-eval">
+          <div class="slpopdet-sel-eval-inner">
+            <select [(ngModel)]="selectedBidPriceCurrencyName" >
+              <option [value]="selectedBidPriceCurrencyName"> {{ selectedBidPriceCurrencyName }} </option>
+            </select>
+            <input type="text" 
+              [(ngModel)]="unitPrice" 
+              name="unitPrice" 
+              placeholder="0" 
+              maxlength="9" 
+              pattern="[0-9]{9,}" 
+              (keypress)="onlyNumberKey($event)"
+              (focusout)="focusOut($event)"
+              [disabled]="showloader">
+            <button class="btn btn-default calcu-amon" (click)="evaluate()" [disabled]="showloader">
+              <img src="/assets/images/eval-ref-icon.png"> Calculate
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="calculateloader" align="center" [style.margin-bottom.px]="10">
+        <img src="/assets/images/sml-loader.gif" alt="" [style.width.px]="25">
+      </div>
+      <div class="slpopdet-sel-pck" *ngIf="showSCBQuotation && !displayerrormessage && !displayerrormessageSB">
+        <table>
+          <tbody>
+            <tr>
+              <td class="{{pricePlan.planClass | lowercase}}" *ngFor="let pricePlan of pricePlans">
+                <div class="hd">
+                  <h3>{{pricePlan.planName}}
+                    <!-- <span>Saver</span> -->
+                  </h3>
+                  <h4>{{pricePlan.plan_Amount}}% Upfront Payment</h4>
+                  <a class="colpexp-ic" href="javascript:;">
+                    <i class="fa fa-angle-right tp" aria-hidden="true"></i>
+                    <i class="fa fa-angle-down dwn" aria-hidden="true"></i>
+                  </a>
+                </div>
+                <div class="dtl">
+                  <table>
+                    <tbody>
+                      <tr *ngIf="pricePlan.customerOrders[0].unitPrice != null">
+                        <td>
+                          <span>Bid Price</span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlan.currencySymbol}}</strong>
+                          <strong>{{pricePlan.customerOrders[0].unitPrice | number }}</strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlan.customerOrders[0].serviceCharges != null">
+                        <td>
+                          <span>Services Charges</span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlan.currencySymbol}}</strong>
+                          <strong>{{pricePlan.customerOrders[0].serviceCharges | number }}</strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlan.customerOrders[0].inspectionCharges != null">
+                        <td>
+                          <span>Inspection</span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlan.currencySymbol}}</strong>
+                          <strong>{{pricePlan.customerOrders[0].inspectionCharges | number }}</strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlan.customerOrders[0].auctionTypeAmount != null">
+                        <td>
+                          <span>
+                            One Price
+                          </span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlan.currencySymbol}}</strong>
+                          <strong>{{pricePlan.customerOrders[0].auctionTypeAmount | number }}</strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlan.customerOrders[0].vanningCharges && pricePlan.customerOrders[0].vanningCharges != null">
+                        <td>
+                          <span>
+                            Vanning Charges
+                          </span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlan.currencySymbol}}</strong>
+                          <strong>{{pricePlan.customerOrders[0].vanningCharges | number }}</strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlan.customerOrders[0].totalAdditionalCharges && pricePlan.customerOrders[0].auctionHouseAmount != null">
+                        <td>
+                          <span>Additional Charges</span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlan.currencySymbol}}</strong>
+                          <strong>
+                            {{ pricePlan.customerOrders[0].totalAdditionalCharges | number }}
+                            <span class="hlp-icon" *ngIf="pricePlan.customerOrders[0].alterationCharges || pricePlan.customerOrders[0].rikusoFee || pricePlan.customerOrders[0].extraFee">
+                              <a href="javascript:;">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                              </a>
+                            </span>
+                            <div class="popshd">
+                              <div class="popshd-inner">
+                                <a class="close-popshd" href="javascript:;">
+                                  <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                                <table>
+                                  <tbody>
+                                    <tr *ngIf="pricePlan.customerOrders[0].alterationCharges">
+                                      <td>ALTERATION CHARGES</td>
+                                      <td>
+                                        <span class="current-currency">
+                                          JPY
+                                        </span>
+                                        {{ pricePlan.customerOrders[0].alterationCharges }}
+                                      </td>
+                                    </tr>
+                                    <tr *ngIf="pricePlan.customerOrders[0].rikusoFee">
+                                      <td>
+                                        ADDITIONAL RIKUSO
+                                      </td>
+                                      <td>
+                                        <span class="current-currency">
+                                          JPY
+                                        </span>
+                                        {{ pricePlan.customerOrders[0].rikusoFee }}
+                                      </td>
+                                    </tr>
+                                    <tr *ngIf="pricePlan.customerOrders[0].extraFee">
+                                      <td>AUCNET CHARGES</td>
+                                      <td>
+                                        <span class="current-currency">
+                                          JPY
+                                        </span>
+                                        {{ pricePlan.customerOrders[0].extraFee }}
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                      <th>TOTAL</th>
+                                      <th>
+                                        <span class="current-currency">JPY</span>
+                                        {{ pricePlan.customerOrders[0].totalAdditionalCharges }}
+                                      </th>
+                                    </tr>
+                                  </tfoot>
+                                </table>
+                              </div>
+                            </div>
+                          </strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlan.customerOrders[0].fobCharges != null">
+                        <td>
+                          <span>FOB of Unit</span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlan.currencySymbol}}</strong>
+                          <strong>{{pricePlan.customerOrders[0].fobCharges | number }}</strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlan.customerOrders[0].freightCharges != null">
+                        <td>
+                          <span>Freight Charges</span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlan.currencySymbol}}</strong>
+                          <strong>{{pricePlan.customerOrders[0].freightCharges | number }}</strong>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="ft">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>{{pricePlan.transactionType}}</td>
+                        <td class="pull-right">{{pricePlan.currencySymbol}} {{pricePlan.customerOrders[0].finalPrice | number }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="displayerrormessage" align="center" style="font-size: 16px; color: #ee282f; font-weight: bold;">
+        <span>
+          Freight charges are not available, Please coordinate with support team.
+        </span>
+      </div>
+      <div *ngIf="displayerrormessageSB" align="center" style="font-size: 16px; color: #ee282f; font-weight: bold;">
+          <span>
+            Bid price is invalid, kindly update the price and evaluate again.
+          </span>
+      </div>
+      <div class="slpop-ftrdv" *ngIf="showSCBQuotation && !displayerrormessage && !displayerrormessageSB && pricePlans.length">
+        <span [style.margin-right.px]="70" *ngIf="showloader">
+          <img src="/assets/images/sml-loader.gif" alt="" [style.width.px]="25">
+        </span>
+        <button *ngIf="!isUpdate" class="gen-lnk" data-src="#generate_bid_popup-1" (click)="submitQuotation(1)" [disabled]="showloader">Generate Link</button>
+        <button *ngIf="!isUpdate" class="addquote addquoteadded" (click)="submitQuotation(2)" [disabled]="showloader">Add to Quotation</button>
+        <button *ngIf="isUpdate" class="addquote addquoteadded" (click)="updateQuotation()" [disabled]="showloader">Update Quotation</button>
+      </div>
+
+    </div>
+    <!-- CNF Price Paln -->
+    <div class="cnfbsed">
+      <div class="slpopdet-sel-inner slpopdet-sel-inner1">
+        <div class="slpopdet-sel-eval-inner slpopdet-sel-eval-inner1">
+          <div>
+            <label>CNF Price</label>
+            <select [(ngModel)]="selectedBidPriceCurrencyName">
+              <option [value]="selectedBidPriceCurrencyName"> {{ selectedBidPriceCurrencyName }} </option>
+            </select>
+            <input type="text" 
+              [(ngModel)]="unitPrice" 
+              name="unitPrice" 
+              placeholder="0" 
+              maxlength="9" 
+              pattern="[0-9]{9,}" 
+              (focusout)="focusOut($event)"
+              (keypress)="onlyNumberKey($event)"
+              [disabled]="showloader">
+          </div>
+          <div class="slpopdet-sel-eval-inner slpopdet-sel-eval-inner2">
+            <label>Payment Plan</label>
+            
+            <select [(ngModel)]="selectedPaymentPlan" *ngIf="paymentPlans && paymentPlans.length">
+              <option value="0">Select Payment Plan</option>
+              <option *ngFor="let item of paymentPlans" value="{{ item.plan.id }}">{{ item.plan.name }} ({{ item.plan.description }})</option>
+            </select>
+            <button class="btn btn-default evalBtn" (click)="evaluateCnf()" [disabled]="showloader">
+              <img src="/assets/images/eval-ref-icon.png"> Evaluate
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="calculateloader" align="center" [style.margin-bottom.px]="10">
+        <img src="/assets/images/sml-loader.gif" alt="" [style.width.px]="25">
+      </div>
+      <!-- SCB Price Paln -->
+      <div class="slpopdet-sel-pck slpopdet-sel-pck1" *ngIf="showCNFQuotation && !displayerrormessage ">
+        <table *ngIf="pricePlans && pricePlans.length">
+          <tbody>
+            <tr>
+              <td class="{{pricePlans[0].planClass | lowercase}}">
+                <div class="hd">
+                  <h3>{{pricePlans[0].planName}}
+                    
+                  </h3>
+                  <h4>{{pricePlans[0].plan_Amount}}% Upfront Payment</h4>
+                  <a class="colpexp-ic" href="javascript:;">
+                    <i class="fa fa-angle-right tp" aria-hidden="true"></i>
+                    <i class="fa fa-angle-down dwn" aria-hidden="true"></i>
+                  </a>
+                </div>
+                <div class="dtl">
+                  <table >
+                    <tbody>
+                      <tr *ngIf="pricePlans[0].customerOrders[0].unitPrice != null">
+                        <td>
+                          <span *ngIf="!isCnfBasedActive">Bid Price</span>
+                          <span *ngIf="isCnfBasedActive">Max Bid Price</span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlans[0].currencySymbol}}</strong>
+                          <strong>{{pricePlans[0].customerOrders[0].unitPrice | number }}</strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlans[0].customerOrders[0].serviceCharges != null">
+                        <td>
+                          <span>Services Charges</span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlans[0].currencySymbol}}</strong>
+                          <strong>{{pricePlans[0].customerOrders[0].serviceCharges | number }}</strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlans[0].customerOrders[0].inspectionCharges != null">
+                        <td>
+                          <span>Inspection</span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlans[0].currencySymbol}}</strong>
+                          <strong>{{pricePlans[0].customerOrders[0].inspectionCharges | number }}</strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlans[0].customerOrders[0].auctionTypeAmount != null">
+                        <td>
+                          <span>
+                            One Price
+                          </span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlans[0].currencySymbol}}</strong>
+                          <strong>{{pricePlans[0].customerOrders[0].auctionTypeAmount | number }}</strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlans[0].customerOrders[0].vanningCharges && pricePlans[0].customerOrders[0].vanningCharges != null">
+                        <td>
+                          <span>
+                            Vanning Charges
+                          </span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlans[0].currencySymbol}}</strong>
+                          <strong>{{pricePlans[0].customerOrders[0].vanningCharges | number }}</strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlans[0].customerOrders[0].totalAdditionalCharges && pricePlans[0].customerOrders[0].auctionHouseAmount != null">
+                        <td>
+                          <span>Additional Charges</span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlans[0].currencySymbol}}</strong>
+                          <strong>
+                            {{ pricePlans[0].customerOrders[0].totalAdditionalCharges | number }}
+                            <span class="hlp-icon" *ngIf="pricePlans[0].customerOrders[0].alterationCharges || pricePlans[0].customerOrders[0].rikusoFee || pricePlans[0].customerOrders[0].extraFee">
+                              <a href="javascript:;">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                              </a>
+                            </span>
+                            <div class="popshd">
+                              <div class="popshd-inner">
+                                <a class="close-popshd" href="javascript:;">
+                                  <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                                <table>
+                                  <tbody>
+                                    <tr *ngIf="pricePlans[0].customerOrders[0].alterationCharges">
+                                      <td>ALTERATION CHARGES</td>
+                                      <td>
+                                        <span class="current-currency">
+                                          JPY
+                                        </span>
+                                        {{ pricePlans[0].customerOrders[0].alterationCharges }}
+                                      </td>
+                                    </tr>
+                                    <tr *ngIf="pricePlans[0].customerOrders[0].rikusoFee">
+                                      <td>
+                                        ADDITIONAL RIKUSO
+                                      </td>
+                                      <td>
+                                        <span class="current-currency">
+                                          JPY
+                                        </span>
+                                        {{ pricePlans[0].customerOrders[0].rikusoFee }}
+                                      </td>
+                                    </tr>
+                                    <tr *ngIf="pricePlans[0].customerOrders[0].extraFee">
+                                      <td>AUCNET CHARGES</td>
+                                      <td>
+                                        <span class="current-currency">
+                                          JPY
+                                        </span>
+                                        {{ pricePlans[0].customerOrders[0].extraFee }}
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                      <th>TOTAL</th>
+                                      <th>
+                                        <span class="current-currency">JPY</span>
+                                        {{ pricePlans[0].customerOrders[0].totalAdditionalCharges }}
+                                      </th>
+                                    </tr>
+                                  </tfoot>
+                                </table>
+                              </div>
+                            </div>
+                          </strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlans[0].customerOrders[0].fobCharges != null">
+                        <td>
+                          <span>FOB of Unit</span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlans[0].currencySymbol}}</strong>
+                          <strong>{{pricePlans[0].customerOrders[0].fobCharges | number }}</strong>
+                        </td>
+                      </tr>
+                      <tr *ngIf="pricePlans[0].customerOrders[0].freightCharges != null">
+                        <td>
+                          <span>Freight Charges</span>
+                        </td>
+                        <td>
+                          <strong class="qtcrn">{{pricePlans[0].currencySymbol}}</strong>
+                          <strong>{{pricePlans[0].customerOrders[0].freightCharges | number }}</strong>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="ft">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>{{pricePlans[0].transactionType}}</td>
+                        <td class="pull-right">{{pricePlans[0].currencySymbol}} {{pricePlans[0].customerOrders[0].finalPrice | number }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="displayerrormessage" align="center" style="font-size: 16px; color: #ee282f; font-weight: bold;">
+        <span>
+          CNF price is invalid, kindly update the price and evaluate again.
+        </span>
+      </div>
+      <div class="slpop-ftrdv" *ngIf="showCNFQuotation && !displayerrormessage">
+          <button *ngIf="!isUpdate" class="gen-lnk" data-src="#generate_bid_popup-1" (click)="SubmitCnfBased(1)" [disabled]="showloader">Generate Link</button>
+          <button *ngIf="isUpdate" class="addquote addquoteadded" (click)="SubmitCnfBased(2)" [disabled]="showloader">Update Quotation</button>
+        <!--<button class="gen-lnk">Generate Link</button>
+         <button class="addquote addquoteadded">Add to Quotation</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!------------------------------------Generate link Popup-------------------------------------------->
+<div id="generate_bid_popup-1" class="OrderCreation em-compose-main em-compose-main-agent-bid">
+  <div class="em-compose1 em-compose1-agent-bid em-compose1-agent-gen">
+    <div class="popup_top">
+      <h3>Copy Link</h3>
+      <div class="agent-bid">
+        <ul>
+          <li>
+            <a data-fancybox [href]="quotationPricing?.Images[0]?.Title | splitimage  ">
+              <img [src]=" quotationPricing?.Images[0]?.Title | splitimage  " alt="" />
+            </a>
+            <a data-fancybox [href]="quotationPricing?.Images[1]?.Title | splitimage  ">
+              <img [src]="quotationPricing?.Images[1]?.Title | splitimage  " alt="" />
+            </a>
+          </li>
+          <li>
+            <p>Make</p>
+            <span>Model</span>
+          </li>
+          <li>
+            <p>{{quotationPricing.Make}}</p>
+            <span>{{quotationPricing.Model}}</span>
+          </li>
+          <li>
+            <p>Year</p>
+            <span>Chassis</span>
+          </li>
+          <li>
+            <p>{{quotationPricing.Year}}</p>
+            <span>{{quotationPricing.Chassis}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="generate-bid-field">
+        <p>To Share this file with other, Copy and paste this link.</p>
+        <label>
+          <input type="text" name="" #inputTarget readonly [value]="quotationResponse.ShortUrl" />
+        </label>
+      </div>
+      <div class="agent-gen-btns">
+        <button class="gene-btn" id="" onclick="$.fancybox.close();">Cancel</button>
+        <button class="save-bid-btn copied" id="copy-bid-agent" [ngxClipboard]="inputTarget" (click)="copylink()">Copy to Clipboard</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--- ------------------------------------- -------------------------------------- -->
+
+
+
+<!---------------------------Update Quotation Popup-------------------------------------->
+<div class="delete_order remove_box_one" id="q_update" style="display:none;">
+  <div class="remove_incomplete_order">
+    <h3 class="text-size-data">Quotation price has been updated successfully</h3>
+    <button class="login_btn3 updtd-txt-pstn" onclick="$.fancybox.close();">Close</button>
+  </div>
+</div>
+<!--------------------------------------------------------------------------------------->

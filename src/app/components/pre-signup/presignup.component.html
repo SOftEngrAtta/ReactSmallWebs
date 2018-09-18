@@ -1,0 +1,88 @@
+<div id="loginParent" [style.margin-top.px]="-25">
+    <div id="loginForm">
+
+        <div class="col-lg-12 col-xs-12 text-center">
+            <div class="login_logo">
+                <img src="/assets/login/login-logo.png">
+            </div>
+        </div>
+
+        <div class="row" [hidden]="displaypresignbtn">
+            <div class="col-lg-12 col-xs-12" align="right">
+                <button class="pre-signup" [ngClass]=" { 'pre-signup-active' : (presignup == true) } " (click)="activesignup()">Pre Sign Up</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <div class="memb-inner">
+                    <ul class="membership_type">
+                        <li *ngFor="let customerType of customerTypes; let i=index" >
+                            <label class="individualform">
+                                <input type="radio" name="buyer" (change)="onCustomerSeleted(customerType)" class="individualbuyer{{i}}" id="individualbuyer{{i}}" [checked]="customerType.Selected">
+                                <i class="rdbtn"></i>
+                                <span>{{customerType.Title}}</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-xs-12">
+            <div class="login_username1">
+                <div class="display-inline">
+                    <div><label class="label-txt">Full Name</label></div>
+                </div>
+                <input type="text" 
+                    name="FullName"
+                    [(ngModel)]="signupdata.FullName"
+                    #FullName = "ngModel"
+                    placeholder="Enter Full Name" 
+                    autocomplete="off">
+            </div>
+
+        </div>
+
+        <div class="col-lg-12 col-xs-12">
+            <div class="login_password1">
+                <div class="display-inline">
+                    <div><label class="label-txt">Email Address</label></div>
+                </div>
+                <input type="text"
+                    name="Email"
+                    [(ngModel)]="signupdata.Email"
+                    #Email="ngModel" 
+                    placeholder="Enter Email Address" 
+                    autocomplete="off">
+            </div>
+        </div>
+        <div class="col-lg-12 col-xs-12">
+            <div class="login_password1">
+                <div class="display-inline">
+                    <div><label class="label-txt">Contact Number</label></div>
+                </div>
+                <br>
+                <!-- <input type="text" placeholder="Enter Password" autocomplete="off"> -->
+                <input type="text" 
+                    placeholder="Phone Number" 
+                    class="phone"
+                    name="ContactNo"
+                    [(ngModel)]="signupdata.ContactNo"
+                    #ContactNo="ngModel" 
+                    [style.width.%]="124"
+                    (keypress)="onlyNumberKey($event)">
+                <i class="fa fa-check pas_confirm" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-xs-12">
+            <div class="signup_btn">
+                <button type="submit" *ngIf="presignup == false" (click)="signup()">
+                    Sign Up
+                </button>
+                <button type="submit" *ngIf="presignup == true" (click)="_presignup()">
+                    Pre Sign Up
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

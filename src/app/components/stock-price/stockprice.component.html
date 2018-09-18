@@ -1,0 +1,232 @@
+
+<div  class="slpop-main main-sl" id="stockpricepopup">
+    <div  class="slpop-hd">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-4">
+                    <h3 class="stckpop-hd">Stock Price</h3>
+                </div>
+                <div class="col-md-6 offset-md-2" >
+                    <table class="stck-shp-hd">
+                        <tr>
+                            <td>Shipment Country</td>
+                            <td>Shipment Port</td>
+                        </tr>
+                        <tr>
+                            <td><span class="shp-hd">{{ getStockDetailFromParents.ShipmentCountryName }}</span></td>
+                            <td><span class="shp-hd">{{ getStockDetailFromParents.ShipmentPortName }}</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <div  class="slpop-innerdv">
+        <div  class="slpopdet-top">
+            <div  class="slpopdet-top-in" [style.width.%]="25">
+                <span *ngIf="vehicleImages && vehicleImages.length">
+                    <a *ngFor="let carimg of vehicleImages; let i = index" class="img-zoom" data-fancybox="gallery1" [href]="carimg | splitimage" >
+                        <img  *ngIf="i < 2" [src]="carimg | splitimage" style="width: 54px; height: 40px;" style="margin-left: 5px;width:40px;">            
+                    </a>
+                </span>
+                <span *ngIf="vehicleImages && vehicleImages.length == 0">
+                    <a class="img-zoom" data-fancybox="gallery1" href="./assets/images/no-image.png" style="margin-left: 5px;">
+                        <img   src="./assets/images/no-image.png" style="width: 54px; height: 40px;">            
+                    </a>
+                </span>
+                
+                <a  *ngIf="stockdetails && stockdetails.AuctionSheet" class="img-zoom" data-fancybox="gallery1" [href]="stockdetails.AuctionSheet | splitimage" style="margin-left: 5px;">
+                    <img  [src]="stockdetails?.AuctionSheet | splitimage" style="width: 54px; height: 40px;">
+                </a>
+                <a  *ngIf="stockdetails && !stockdetails.AuctionSheet" class="img-zoom" data-fancybox="gallery1" href="./assets/images/no-image.png" style="margin-left: 5px;">
+                    <img  src="./assets/images/no-image.png" style="width: 54px; height: 40px;">
+                </a>
+            </div>
+            <div  class="slpopdet-top-inrt">
+                <table >
+                    <tbody >
+                        <tr>
+                            <td [style.width.%]="15" [style.padding-top.px]="5">
+                                <h3 >
+                                    {{ stockdetails?.Make || '--' }}
+                                </h3>
+                                <span class="mdl-yr">
+                                    {{ stockdetails?.Model || '--' }} {{ stockdetails?.Year || '--' }}
+                                </span>
+                            </td>
+                            <td [style.width.%]="15">
+                                <span title="Chassis Number">Chass. No</span>
+                                <strong >
+                                    {{ stockdetails?.ChassisNumber || '--' }}
+                                </strong>
+                            </td>
+                            <td [style.width.%]="10">
+                                <span >Color</span>
+                                <strong >
+                                    {{ stockdetails?.Color || '--' }}
+                                </strong>
+                            </td>
+                            <td [style.width.%]="10">
+                                <span >Grade</span>
+                                <strong >
+                                    {{ stockdetails?.Grade || '--' }}
+                                </strong>
+                            </td>
+                            <td [style.width.%]="10">
+                                <span >Fuel</span>
+                                <strong >
+                                    {{ stockdetails?.Fuel || '--' }}
+                                </strong>
+                            </td>
+                            <td [style.width.%]="10">
+                                <span title="Engine CC">Eng. CC</span>
+                                <strong >
+                                    {{ stockdetails?.EngineCC || '--' }}
+                                </strong>
+                            </td>
+                            <td [style.width.%]="10">
+                                <span >Mileage</span>
+                                <strong >
+                                    {{ stockdetails?.Mileage || '--' }}
+                                </strong>
+                            </td>
+                            <td [style.width.%]="15">
+                                <span title="Manufacture Date">Manf. Date</span>
+                                <strong  class="dt" *ngIf="stockdetails?.ManufactureDate">
+                                    {{ stockdetails?.ManufactureDate | date : 'dd.mm.yyyy'  }}
+                                </strong>
+                                <strong  class="dt" *ngIf="!stockdetails?.ManufactureDate">
+                                    --
+                                </strong>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div  class="main-section">
+            <div  class="main-left-side-section" style="margin-top: 0px; padding-top: 5px;">
+                <div  class="main-bid-price-nego">
+                    <p>Select Plan</p>
+                    <select [(ngModel)]="stockInputObj.SelectedPlan" (change)="changePlan()">
+                        <option selected="" disabled="" value="">Select Plan</option>
+                        <option value="11">100%</option>
+                        <option value="10">50%</option>
+                    </select>
+                    <div  class="nego-box-1" >
+                        <p>Vehicle Price<span  class="mad-fields"> * </span></p>
+                        <input  name="StockPrice" placeholder="Enter Stock Price" type="text" #StockPrice="ngModel" [(ngModel)]="stockInputObj.StockPrice" (keypress)="onlyNumberKey($event)" (focusout)="focusOut($event)">
+                    </div>
+                    <div class="manu-box-2" >
+                        <p>Comments</p>
+                        <textarea placeholder="Enter Comments" name="Comment" #Comment="ngModel" [(ngModel)]="stockInputObj.Comment" [style.height.px]="55"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div  class="main-right-side-section" *ngIf="displanPackageAmount">
+                <div  class="slpopdet-sel-pck slpopdet-sel-pckdfr slpopdet-sel-pck1">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td  [class]="stockInputObj.PlanClass | lowercase ">
+                                    <div  class="hd">
+                                        <h3 > {{ stockInputObj.PlanName}}  </h3>
+                                        <h4 *ngIf="stockInputObj.SelectedPlan == '10'"> 50% Upfront Payment</h4>
+                                        <h4 *ngIf="stockInputObj.SelectedPlan == '11'"> 100% Upfront Payment</h4>                                        
+                                        <a  class="colpexp-ic" href="javascript:;">
+                                            <i  aria-hidden="true" class="fa fa-angle-right tp"></i>
+                                            <i  aria-hidden="true" class="fa fa-angle-down dwn"></i>
+                                        </a>
+                                        
+                                    </div>
+                                    <div  class="dtl">
+                                        <table >
+                                            <tbody >
+                                                <tr *ngIf="stockInputObj.InspectionCharges && stockInputObj.InspectionCharges != null ">
+                                                    <td>
+                                                        <span >Vehicle Price</span>
+                                                    </td>
+                                                    <td>
+                                                        <strong  class="qtcrn"> JPY </strong>
+                                                        <strong> {{ stockInputObj.VehiclePrice || '0'  | number }} </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf="stockInputObj.InspectionCharges && stockInputObj.InspectionCharges != null ">
+                                                    <td >
+                                                        <span >Inspection Charges</span>
+                                                    </td>
+                                                    <td >
+                                                        <strong  class="qtcrn"> JPY </strong>
+                                                        <strong> {{ stockInputObj.InspectionCharges || '0' | number }} </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td >
+                                                        <span >FOB Charges</span>
+                                                    </td>
+                                                    <td >
+                                                        <strong  class="qtcrn"> JPY </strong>
+                                                        <strong> {{ stockInputObj.FOB || '0'  | number }} </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span >Freight Charges</span>
+                                                    </td>
+                                                    <td>
+                                                        <strong  class="qtcrn"> JPY </strong>
+                                                        <strong> {{ stockInputObj.FreightCharges || '0' | number }} </strong>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div  class="ft">
+                                        <table >
+                                            <tbody >
+                                                <tr >
+                                                    <td>Total CNF Price</td>
+                                                    <td>{{ stockInputObj.CNF  | number }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div  class="par-currency">
+                    <span class="currencyrate">
+                        Currency Rate : 1 USD = {{ stockInputObj.CurrencyRate }} JPY
+                    </span>
+                    <br />
+                    <span class="currencyrate" *ngIf="stockInputObj.FOB">
+                        FOB : USD {{  stockInputObj.FOB / stockInputObj.CurrencyRate || '0' | roundoffhtmlnumber  }}
+                    </span>
+                    <br />
+                    <span class="currencyrate" *ngIf="stockInputObj.CNF">
+                        Total CNF Price : USD {{  (stockInputObj.FOB + stockInputObj.FreightCharges) / stockInputObj.CurrencyRate || '0' | roundoffhtmlnumber | number  }}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div  class="slpop-ftrdv slpop-ftrdvdv-2" style="margin-top: 10px;">
+            <button  class="calcu-amon calculate-amount" href="javascript:;" (click)="calculateAmount()">
+                <img  src="/assets/images/eval-ref-icon.png">Calculate Amount
+            </button>
+            <button  class="addquote addquoteadded" (click)="reserveStockOrder()">Reserve Order</button>
+        </div>
+    </div>
+<button data-fancybox-close="" class="fancybox-close-small" title="Close"></button></div>
+
+<div class="history autorod-popup password_reset_con" id="stockorder_incomplete" style="display:none;">
+    <div class="signup_success_popup" align="center">
+        <h3>Success</h3>
+        <h4 id="qi_success_body">Incomplete order created for this vehicle.</h4>
+        <button class="close-btn" data-fancybox-close="" onclick="javascript:;">Close</button>
+    </div>
+</div>

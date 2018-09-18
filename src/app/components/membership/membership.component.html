@@ -1,0 +1,179 @@
+<app-header></app-header>
+
+<section class="silver-member-page">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+        <h1 class="silvmainhd">Upgrade Membership Plan</h1>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 hidden-xs text-right no-pad-right">
+        <a href="javascript:;" class="silvback-button" [routerLink]="['/dashboard']">Back to Home</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="membplan-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="membership membership_popup" id="membership">
+          <h2>MEMBERSHIP TIERS AT AUTOROD </h2>
+          <p>Our buyer program has three rewarding membership tiers, starting with Starter and progressing through Standard and Deluxe.</p>
+
+            <section class="main_member-ship-plane_sec">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 no-pad-left">
+                          <div class="member_ship-box">
+                              <i *ngIf="membershipList && membershipList[0]?.IsCurrentMemberShip" class="fa fa-check" [ngClass]="{'check_mem' : membershipList[0]?.IsCurrentMemberShip}"></i>
+                              <div class="mdm_heading">
+                                  <h2 *ngIf="membershipList && membershipList.length"> {{ membershipList[0]['MembershipName'] }}  <span>Membership</span></h2>
+                              </div>
+                              <div class="member_ship-free_0">
+                                  <p>FREE $ 0</p>
+                              </div>
+                              <div class="main-credit_discount">
+                                  <div class="memb_dix_count">
+                                      <p>Discount</p>
+                                      <span>0%</span>
+                                  </div>
+                                  <div class="memb_cred_limts">
+                                      <p>Credit Limit</p>
+                                      <span>On Deposit</span>
+                                  </div>
+                              </div>
+                              <div class="mem_ship_list-down">
+                                  <ul>
+                                      <li><i class="fa fa-check"></i>Basic Payment Term Flexibility</li>
+                                      <li><i class="fa fa-check"></i>Round the clock support</li>
+                                      <li><i class="fa fa-check"></i>Service Charges Discount</li>
+                                      <li><i class="fa fa-check"></i>Free Dock Yard Stay</li>
+                                  </ul>
+                              </div>
+                              <div class="memb_ship-btns-plans">
+                                <button *ngIf="membershipList && membershipList.length && membershipList[0].IsCurrentMemberShip">Default Activated</button>
+                                <button *ngIf="membershipList && membershipList.length && !membershipList[0].IsCurrentMemberShip">--</button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 no-pad-left">
+                          <div class="member_ship-box member_ship-box-stndef">
+                              <i *ngIf="membershipList && membershipList[1]?.IsCurrentMemberShip" class="fa fa-check" [ngClass]="{'check_mem' : membershipList[1]?.IsCurrentMemberShip}"></i>
+                              <div class="mdm_heading">
+                                <h2 *ngIf="membershipList && membershipList.length"> {{ membershipList[1]['MembershipName'] }}  <span>Membership</span></h2>
+                              </div>
+                              <div class="member_ship-free_0">
+                                  <p>$ 1,000</p>
+                              </div>
+                              <div class="main-credit_discount">
+                                  <div class="memb_dix_count">
+                                      <p>Discount</p>
+                                      <span>5%</span>
+                                  </div>
+                                  <div class="memb_cred_limts">
+                                      <p>Credit Limit</p>
+                                      <span>$ 10,000</span>
+                                  </div>
+                              </div>
+                              <div class="mem_ship_list-down">
+                                  <ul>
+                                      <li><i class="fa fa-check"></i>Payment Terms Flexibility</li>
+                                      <li><i class="fa fa-check"></i>Moderately Flexible Terms</li>
+                                      <li><i class="fa fa-check"></i>Priority Over Starter Members</li>
+                                      <li><i class="fa fa-check"></i>Account Manager Service</li>
+                                  </ul>
+                              </div>
+                              <div class="memb_ship-btns-plans" (click)="ShowUpgradePopup(membershipList[1])">
+                                  <button type="button" *ngIf="RequestedMemberShipId != '0' && membershipList && membershipList.length && !membershipList[1].IsRequestedMemberShip && !membershipList[1].IsCurrentMemberShip">--</button>
+                                  <button type="button" *ngIf="RequestedMemberShipId == '0' && membershipList && membershipList.length && !membershipList[1].IsCurrentMemberShip && CurrentMemberShipId < membershipList[1].MembershipId">Upgrade</button>
+                                  <button type="button" *ngIf="RequestedMemberShipId == '0' && membershipList && membershipList.length && !membershipList[1].IsCurrentMemberShip && CurrentMemberShipId > membershipList[1].MembershipId">--</button>                                  
+                                  <button type="button" *ngIf="RequestedMemberShipId != '0' && membershipList && membershipList.length && membershipList[1].IsRequestedMemberShip">Requested</button>
+                                  <button type="button" *ngIf="membershipList && membershipList.length && membershipList[1].IsCurrentMemberShip">Activated</button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 no-pad-left">
+                          <div class="member_ship-box member_ship-box_dexemem">
+                              <i *ngIf="membershipList && membershipList[2]?.IsCurrentMemberShip" class="fa fa-check" [ngClass]="{'check_mem' : membershipList[2]?.IsCurrentMemberShip}"></i>
+                              <div class="mdm_heading">
+                                <h2 *ngIf="membershipList && membershipList.length"> {{ membershipList[2]['MembershipName'] }}  <span>Membership</span></h2>
+                              </div>
+                              <div class="member_ship-free_0">
+                                  <p>$ 5,000</p>
+                              </div>
+                              <div class="main-credit_discount">
+                                  <div class="memb_dix_count">
+                                      <p>Discount</p>
+                                      <span>10%</span>
+                                  </div>
+                                  <div class="memb_cred_limts">
+                                      <p>Credit Limit</p>
+                                      <span>$ 25,000</span>
+                                  </div>
+                              </div>
+                              <div class="mem_ship_list-down">
+                                  <ul>
+                                      <li><i class="fa fa-check"></i>Payment Terms Flexibility: Extremely Flexible Terms</li>
+                                      <li><i class="fa fa-check"></i>Provision of Potential Buyers from Member’s Region.</li>
+                                      <li><i class="fa fa-check"></i>Priority over Starter & Standard members</li>
+                                      <li><i class="fa fa-check"></i>Lucky Draw Entry</li>
+                                  </ul>
+                              </div>
+                              <div class="memb_ship-btns-plans" (click)="ShowUpgradePopup(membershipList[2])">
+                                  <button type="button" *ngIf="RequestedMemberShipId != '0' && membershipList && membershipList.length && !membershipList[2].IsRequestedMemberShip && !membershipList[2].IsCurrentMemberShip">--</button>
+                                  <button type="button" *ngIf="RequestedMemberShipId == '0' && membershipList && membershipList.length && !membershipList[2].IsCurrentMemberShip && CurrentMemberShipId < membershipList[2].MembershipId">Upgrade</button>
+                                  <button type="button" *ngIf="RequestedMemberShipId == '0' && membershipList && membershipList.length && !membershipList[2].IsCurrentMemberShip && CurrentMemberShipId > membershipList[2].MembershipId">--</button>                                  
+                                  <button type="button" *ngIf="RequestedMemberShipId != '0' && membershipList && membershipList.length && membershipList[2].IsRequestedMemberShip">Requested</button>
+                                  <button type="button" *ngIf="membershipList && membershipList.length && membershipList[2].IsCurrentMemberShip">Activated</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+
+          <div class="tier-lst">
+            <h2>Explore Tier Benefits</h2>
+            <p>Once you are a member at autorod, you can avail multiple benefits offered at each membership tier and unlock
+              multiple opportunities of buying top-notch japanese used vehicles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- modal -->
+<div class="upc-paypop upc-pay-page upc-pay-page-2 upc-pay-page-3 upc-pay-page-4 member_ship-pup-pup" id="upgrademembershipplan" style="display:none;">
+    <div class="main-mid-div main-mid-div-2">
+        <h2 *ngIf="objAvailableCurrency.length == 1">Are you sure you want to upgrade your membership?</h2>
+        <p *ngIf="objAvailableCurrency.length > 1">Select payment type</p>
+        <ul class="frttypesel">
+            <li  *ngFor="let item of objAvailableCurrency; let i = index">
+                <label class="radio-label">
+                    <input type="radio" name="stocktype" checked="" [value]="item.EncryptedCurrencyId" [(ngModel)]="selectedCurrency" required>
+                    <i class="prepay-radio"></i>
+                    <span>{{ item.CurrencyName }}</span>
+                </label>
+            </li>
+        </ul>
+        <div class="upc-paypop-bot gene-can-funds se-send">
+            <button class="nobtn se-send-1 gen-bn" (click)="UpgradeMembership();">Yes</button>
+            <button class="nobtn se-send-2" onclick="$.fancybox.close();">No</button>
+        </div>
+    </div>
+</div>
+
+<div class="submittedpop membplansubmit gold" id="submittedpop1" style="display:none;">
+  <img src="/assets/images/submitted-tick.png">
+  <h2>Thank you for choosing
+  <span>{{ SelectedMemberShipName }} membership</span> plan your request has been submitted.</h2>
+  <h3>Our agent will get back to you soon!</h3>
+  <p>Your invoice has been generated in invoice section</p>
+  <p><a href="javascript:;" target="_blank"  [routerLink]="['/membership-invoice']" [queryParams]="{id : encryptedMembershipId}">Click Here</a> to view invoice.</p>  
+  <br />
+  <button class="sbm close-popup cls-sbm" onclick="$.fancybox.close();">Close</button>
+</div>
+
+<!-- end -->

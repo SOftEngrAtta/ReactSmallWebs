@@ -1,0 +1,151 @@
+<div class="container">
+
+	<div class="signup_box_one" >
+		<div class="signup_box_top_col">
+			<div class="row">
+				<div class="col-lg-12 col-xs-12 ">
+					<h2 class="signuphd">Member Sign-Up
+						<span class="circle_left_icon">
+							<a href="javascript:;" [routerLink]="['/login']">
+								<img src="/assets/images/left_circle.png">
+							</a>
+						</span>
+					</h2>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-xs-12">
+					<div class="memb-inner">
+						<h3 class="membership_titl">Membership Type</h3>
+						<ul class="membership_type">
+							<li *ngFor="let customerType of customerTypes; let i=index">
+								<label class="individualform">
+									<input type="radio" name="buyer" (change)="onCustomerSeleted(customerType)" class="individualbuyer{{i}}" id="individualbuyer{{i}}" [checked]="customerType.Selected">
+									<i class="rdbtn"></i>
+									<span>{{customerType.Title}}</span>
+								</label>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-lg-12 ">
+				<div class="signup_box_body individualform">
+
+					<div class="col-lg-12 col-xs-12 nopad_left nopad_right">
+						<ul class="signup_form_one">
+							<li>
+								<label>First Name</label>
+								<input type="text" 
+								[(ngModel)]="signup.FirstName" 
+								name="FirstName" 
+								maxlength="50" 
+								placeholder="Enter First Name" 
+								#FirstName="ngModel" 
+								required
+								autocomplete="off">
+							</li>
+							<li>
+								<label>Last Name</label>
+								<input type="text" 
+									[(ngModel)]="signup.LastName" 
+									name="LastName" 
+									maxlength="50" 
+									placeholder="Enter Last Name" 
+									#LastName="ngModel" 
+									required>
+							</li>
+						</ul>
+						<ul class="signup_form_one">
+							<li>
+								<label>Contact</label>
+								<input type="text" 
+									[(ngModel)]="signup.ContactNo" 
+									name="ContactNo" 
+									maxlength="50" 
+									placeholder="Phone Number" 
+									class="phone" 
+									#ContactNo="ngModel" 
+									(keypress)="onlyNumberKey($event)"
+									required>
+							</li>
+							<li>
+								<label>Email</label>
+								<input type="email" 
+									name="Email" 
+									[(ngModel)]="signup.Email" 
+									maxlength="50" 
+									placeholder="Enter Email" 
+									#Email="ngModel" 
+									required>
+							</li>
+						</ul>
+						<ul class="signup_form_one">
+							<li>
+								<label>Password</label>
+								<input type="password" 
+									name="Password" 
+									[(ngModel)]="signup.Password" 
+									minlength="8"
+									maxlength="50" 
+									placeholder="Password" 
+									[(ngModel)]="signup.Password" 
+									#Password="ngModel" 
+									required>
+									<span class="text-display">
+										(minimum 8 characters e.g : 12345678 )
+									</span>
+							</li>
+							<li>
+								<label>Confirm Password</label>
+								<input type="password" 
+								name="ConfirmPassword" 
+								[(ngModel)]="signup.ConfirmPassword" 
+								minlength="8"
+								placeholder="Password" 
+								[(ngModel)]="signup.ConfirmPassword" 
+								#ConfirmPassword="ngModel" 
+								required>
+								<span class="text-display">
+									(minimum 8 characters e.g : 12345678 )
+								</span>
+							</li>
+						</ul>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="signup_box_bottom_col">
+					<div class="col-lg-6 col-xs-12">
+						<a class="xs_already_acc" href="javascript:;" [routerLink]="['/login']">Already have an auction account? </a>
+					</div>
+					<div class="col-lg-6  col-xs-12">
+						<div class="signup_box_one_btns2">
+							<button class="cancle_btn">Cancel</button>
+							<button class="submit_btn" (click)="customerSignup()">Submit</button>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- modal -->
+<div class="history autorod-popup signup_success" id="signup_success" style="display:none;">
+    <div class="signup_success_popup">
+        <img src="/assets/images/thank-icon.png">
+        <h3>Thank you for sign up.</h3>
+        <h5>Your account has been created.</h5>
+        <p>A link has been sent to your email <span> {{ signup.Email }} </span>
+            <br>If no email has arrived, check your spam folder and
+            <br>Verify your account.</p>
+    </div>
+</div>
+
+<!-- end -->

@@ -1,0 +1,759 @@
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-PAGES-START=======*/
+.main-my-order-page .main-my-invo table{
+	width: 100%;
+}
+.main-my-order-page .main-my-invo table thead{
+	
+}
+.main-my-order-page .main-my-invo table thead tr th{
+    padding: 20px 0 15px 15px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #2c2c2c;
+    background: #c8c8c8;
+}
+.main-my-order-page .main-my-invo table thead tr th:nth-child(1){
+	border-radius: 10px 0 0 0;
+}
+.main-my-order-page .main-my-invo table thead tr th:nth-child(9){
+	border-radius: 0px 10px 0 0;
+}
+.main-my-order-page .main-my-invo table thead tr{
+	
+}
+.main-my-order-page .main-my-invo table tbody{
+	border-bottom: #efeff0 3px solid;
+}
+.main-my-order-page .main-my-invo table tbody tr{
+	background: #fff;
+    border-bottom: 1px; 
+}
+.main-my-order-page .main-my-invo table tbody tr td{
+	 padding: 20px 0 15px 15px;
+    font-size: 13px;
+    color: #545454;
+    font-weight: 600;
+}
+.main-my-order-page .main-my-invo table tbody tr td strong{
+	font-size: 15px;
+    color: #000000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 190px;
+    overflow: hidden;
+    display: block;
+}
+.main-my-order-page .main-my-invo table tbody tr td strong.auc-dep-si{
+	font-size: 13px;
+}
+.main-my-order-page .main-my-invo table tbody tr td strong span{
+	padding-right: 5px;
+}
+.main-my-order-page .main-my-invo table tbody tr td.yes{
+	color: #38b078;
+}
+.main-my-order-page .main-my-invo table tbody tr td.no{
+	color: #ee282f;
+}
+.main-my-order-page .main-my-invo table tbody tr button.viewse-1 {
+    background: transparent;
+    color: #4477df;
+    border: none;
+	border:1px solid #4477df;
+    font-size: 13px;
+    padding: 6px 25px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.main-my-order-page .main-my-invo table tbody tr button.viewse-1:hover{
+    background: #4477df;
+    color: white;
+}
+.main-my-order-page .main-my-invo table tbody tr button.viewse-2 {
+    background: #545454;
+    color: #fff;
+    border: none;
+    font-size: 13px;
+    padding: 7px 25px;
+    border-radius: 20px;
+}
+.main-my-order-page .back-to-order{
+	    background: #858585;
+	    color: #fff;
+    border-radius: 20px;
+    padding: 5px 15px;
+    display:inline-block;
+    margin-top: 20px;
+    margin-left: 5px;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 500;
+}
+.back-to-order.dep{
+	background: #38b078;
+}
+.main-mid-div .upc-paypop-bot.gene-can-funds{
+	text-align: right;
+	margin-top: 20px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2{
+	width: 620px;
+    padding: 0px 0px;
+}
+.main-mid-div{
+	 padding: 15px 25px;
+}
+.main-mid-div.main-mid-div-2{
+	 padding: 15px 20px;
+}
+.upc-paypop .dep-heading-pop h3{
+	color: #2c2c2c;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0px;
+    padding: 13px 25px;
+    border-bottom: #dadada 1px solid;
+}
+.upc-pay-page-2 .am-fu-box-1 p, .upc-pay-page-2 .am-fu-box-2 p, .main-disc-area p{
+	font-size: 12px;
+    color: #4f4f4f;
+    font-weight: bold;
+}
+.upc-pay-page-2 .am-fu-box-1 {
+    display: inline-block;
+    width: 48.5%;
+    margin-right: 13px;
+    position: relative;
+}
+.upc-pay-page-2 .am-fu-box-1 input {
+    position: absolute;
+    width: 70%;
+    color:#6b6b6b;
+    border: #bcbcbc 1px solid;
+    font-size: 13px;
+    border-radius: 0 15px 16px 0;
+    padding: 5px 10px 5px 10px;
+    height: auto;
+}
+.upc-pay-page-2 .am-fu-box-1 select {
+    width: 30%;
+    font-size: 13px;
+    color:#6b6b6b;
+    padding: 4px 14px 6px 14px;
+    height: auto;
+    border: #bcbcbc 1px solid;
+    border-radius: 16px 0 0px 16px;
+}
+.upc-pay-page-2 .am-fu-box-1 select:focus{
+	box-shadow:0px 3px 6px 0px rgba(44, 44, 44, 0.3);
+	border-color: #2d2d2d;
+	border-radius: 7px 0px 0px 0px;
+}
+.upc-pay-page-2 .am-fu-box-2 select{
+	font-size: 13px;
+    border-radius:16px;
+    color:#6b6b6b;
+    border: #bcbcbc 1px solid;
+    padding: 3px 17px 5px 15px;
+}
+.upc-pay-page-2 .am-fu-box-2 select:focus{
+	box-shadow:0px 3px 6px 0px rgba(44, 44, 44, 0.3);
+	border-color: #2d2d2d;
+	border-radius: 7px 7px 0px 0px;
+}
+.upc-pay-page-2 .am-fu-box-2 {
+    display: inline-block;
+    width: 48.5%;
+}
+.main-amount-fund-type {
+    margin-bottom: 20px;
+}
+.main-disc-area textarea {
+    border-radius: 7px;
+    height: 110px;
+    width: 100%;
+    color:#6b6b6b;
+    font-size: 13px;
+    padding: 10px 15px;
+	border: #bcbcbc 1px solid;
+	resize:none;
+}
+.main-disc-area {
+    border-bottom: #bcbcbc 1px solid;
+    padding-bottom: 15px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3{
+	width: 735px;
+    padding: 0px 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4{
+	width: 930px;
+    padding: 0px 0px;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 p{
+	    display: inline-block;
+	        margin-right: 10px;
+	        font-size: 13px;
+            color: #858585;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area p{
+	    display: inline-block;
+    margin-right: 45px;
+    vertical-align: top;
+    font-size: 13px;
+            color: #858585;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area{
+	margin-top: 15px;
+	    border-bottom: none;
+    padding-bottom: 0;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea{
+	display: inline-block;
+	width: 83%;
+	    height: 70px;
+}
+.amou-box-fu {
+    display: inline-block;
+        width: 30%;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1{
+	width: 100%;
+}
+.upc-pay-page-2 .am-fu-box-1 .amou-box-fu select{
+	display:inline-block;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input{
+	width: 40%;
+}
+.availbalancedet>ul>li>strong {
+	font-weight: 700;
+	font-size: 15px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    display: inline-block;
+    width: 49%;
+    padding: 15px 15px 20px 15px;
+    vertical-align: top;
+     min-height: 196px;
+    background-color: #f5f5f5;
+}
+.upc-pay-page-3 .fund-sum-box-1 {
+    display: inline-block;
+    width: 49%;
+    margin-right: 8px;
+    padding: 15px 15px 20px 15px;
+    vertical-align: top;
+     min-height: 196px;
+    background-color: #f5f5f5;
+}
+.upc-pay-page-3 .fund-sum-box-1 h5, .upc-pay-page-3 .fund-sum-box-2 h5{
+	font-size: 15px;
+    color: #3c3c3c;
+    font-weight: bold;
+}
+.upc-pay-page-3 .main-fund-summery {
+    padding-bottom: 20px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    float: left;
+    width: 47%;
+    font-size: 13px;
+    color: #767676;
+    line-height: 25px;
+    margin-right: 9px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li strong, .upc-pay-page-3 .fund-sum-box-2 ul li strong{
+	color:#343333;
+	margin-right: 0px;
+	
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li:nth-child(even), .upc-pay-page-3 .fund-sum-box-2 ul li:nth-child(even){
+	text-align:right;
+}
+.upc-pay-page-3 .main-mid-div .upc-paypop-bot button.nobtn {
+    background: #38b078;
+}
+.upc-pay-page-3 .main-mid-div .upc-paypop-bot button.nobtn:hover{    -webkit-box-shadow: 2px 5px 19px 3px rgba(24, 160, 27, 0.18);
+    box-shadow: 2px 5px 19px 3px rgba(24, 160, 27, 0.18);}
+.upc-pay-page-4 .main-yard-images h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: #3c3c3c;
+}
+.upc-pay-page-4 .main-yard-images span {
+    font-size: 11px;
+    font-weight: bold;
+    color: #727272;
+    display: block;
+    margin-bottom: 10px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li i{
+	position: absolute;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    color: #fff;
+    margin: auto;
+    top: 20px;
+    font-size: 16px;
+    width: 15px;
+    display:none;
+}
+.main-yard-images ul li input[type="checkbox"] {
+    opacity: 0;
+    width: 80px;
+    position: absolute;
+    z-index: 1;
+    height: 57px;
+    margin: 0px;
+    cursor: pointer;
+}
+.main-yard-images ul li input[type="checkbox"]:checked + img{
+	webkit-filter: brightness(.4);
+    filter: brightness(.4);
+}
+.main-yard-images ul li input[type="checkbox"]:checked + img + i{
+	display:block;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img{
+	    width: 80px;
+    margin-right: 6px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li:nth-child(10) img{
+	margin-right: 0px;
+}
+.upc-pay-page-4 .main-yard-images.main-yard-images-aucti h4{
+    padding: 5px 0 10px 0;
+    border-bottom: #e7e7e7 1px solid;
+    margin-bottom: 10px;
+}
+.upc-pay-page-4 .main-yard-images.main-yard-input-field h4{
+	padding: 5px 0 10px 0;
+}
+.upc-pay-page-4 .main-yard-images.main-yard-input-field input{
+	font-size: 13px;
+    color: #b5b5b5;
+    font-weight: 500;
+    width: 100%;
+}
+.upc-pay-page-4 .upc-paypop-bot.se-send button.nobtn.se-send-1{
+    background: #4477df;
+    padding: 3px 30px;
+}
+.upc-pay-page-4 .upc-paypop-bot.se-send button.nobtn.se-send-1:hover{
+	box-shadow: none;
+}
+.upc-pay-page-4 .upc-paypop-bot.se-send button.nobtn.se-send-2{
+    background: #38b078;
+    padding: 3px 30px;	
+}
+.upc-pay-page-4 .upc-paypop-bot.se-send button.nobtn.se-send-2:hover{
+	box-shadow: none;
+}  
+.payment-div.border { border-top: 1px solid #dadada; border-bottom: 1px solid #dadada;}
+	.payment-div { padding: 10px 0px 10px 20px;}
+	.payment-div .selct-itms { margin-top: 13px;}
+	.payment-div.last .selct-itms { margin-top: 5px;}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-PAGES-END=======*/
+
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and   (-webkit-min-device-pixel-ratio: 1)  {
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.resutl h5 span {
+    bottom: 17px;
+    right: 210px;
+}
+.bidding-page1 h5 {
+    margin: 0px 0px 20px 0px;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+}
+
+@media screen and (max-width:1024px){ 
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 750px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+    width: 63px;
+    margin-right: 5px;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+}
+
+@media screen and (max-width: 736px){
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.resutl h5 span {
+    bottom: 15px;
+    right: 115px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 0px;
+}
+.main-my-order-page .pay-ment-321 .back-to-order {
+    margin-top: 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 725px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+    width: 63px;
+    margin-right: 2px;
+}
+.main-yard-images ul li input[type="checkbox"] {
+    width: 64px;
+    height: 40px;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+}
+
+@media screen and (max-width: 667px){
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/ 
+   .resutl h5 span {
+    bottom: 17px;
+    right: 100px;
+}
+.pay-ment-321 .resutl h5 span {
+    bottom: 17px;
+    right: 92px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 0px;
+}
+ .main-my-order-page .pay-ment-321 .back-to-order {
+    margin-top: 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 655px;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea {
+    width: 80%;
+}
+.main-mid-div {
+    padding: 25px 10px;
+}
+.upc-pay-page-3 .fund-sum-box-1, .upc-pay-page-3 .fund-sum-box-2 {
+    padding: 15px 10px 20px 10px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    width: 46%;
+    min-height: 36px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 645px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+    margin-right: 0px;
+    width: 57px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    width: 46%;
+    min-height: 50px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    min-height: 320px;
+}
+.main-yard-images ul li input[type="checkbox"] {
+    width: 58px;
+    height: 40px;
+}
+.myordrscndpage.order-history-page .accordion-content {
+    max-width: 636px;
+    overflow-x: scroll;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input {
+    width: 71%;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+}
+
+/* iPhone 5 */
+    /* Landscape */
+    @media only screen
+    and (max-height: 320px)
+    and (max-width: 568px)
+    and (orientation:landscape){
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.resutl h5 span {
+    bottom: 16px;
+    right: 45px;
+}
+.pay-ment-321 .resutl h5 span {
+    bottom: 8px;
+    right: 40px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 0px;
+}
+.upc-pay-page-2 .am-fu-box-1 {
+    display:block;
+    width: 100%;
+    margin-right: 0px;
+}   
+.upc-pay-page-2 .am-fu-box-2 {
+    display:block;
+    width: 100%;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2 {
+    width: 545px;
+    padding: 0px 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 545px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 550px;
+}
+.upc-pay-page-3 .fund-sum-box-1 {
+    width: 48%;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    width: 46%;
+    min-height: 50px;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea {
+    width: 78%;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    min-height: 322px;
+}
+.main-yard-images ul li input[type="checkbox"] {
+    width: 58px;
+    height: 40px;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input {
+    width: 50%;
+}
+.myordrscndpage.order-history-page .accordion-content{
+        max-width:538px;
+        overflow-x:scroll;  
+    }
+
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+}
+
+@media screen and (max-width:414px){
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.resutl h5 span {
+    bottom: 15px;
+    right: -15px;
+}
+.pay-ment-321 .resutl h5 span {
+    bottom: 8px;
+    right: -25px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 0px;
+}
+.upc-pay-page-2 .am-fu-box-1 {
+    display:block;
+    width: 100%;
+    margin-right: 0px;
+}   
+.upc-pay-page-2 .am-fu-box-2 {
+    display:block;
+    width: 100%;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2 {
+    width: 390px;
+    padding: 0px 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 395px;
+        margin: 30px 0 0;
+}
+.upc-pay-page-3 .fund-sum-box-1 {
+    display: inline-block;
+    width: 100%;
+    margin-right: 0px;
+        margin-bottom: 10px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    display: inline-block;
+    width: 100%;
+    margin-right: 0px;
+}
+.upc-pay-page-3 .main-mid-div .upc-paypop-bot.gene-can-funds {
+    text-align: center;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 390px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+    margin-right: 0px;
+    width: 55px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    min-height: 196px;
+}
+.myordrscndpage.order-history-page .accordion-content{
+        max-width:384px;
+        overflow-x:scroll;  
+    }
+.amou-box-fu {
+    display: inline-block;
+    width: 100%;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea {
+    width: 100%;
+}
+
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+}
+
+@media screen and (max-width: 375px){
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.resutl h5 span {
+    bottom: 15px;
+    right: -30px;
+}
+.pay-ment-321 .resutl h5 span{
+    bottom: 16px;
+    right: -40px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 2px;
+}
+.upc-pay-page-2 .am-fu-box-1 {
+    display:block;
+    width: 100%;
+    margin-right: 0px;
+}   
+.upc-pay-page-2 .am-fu-box-2 {
+    display:block;
+    width: 100%;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2 {
+    width: 355px;
+    padding: 0px 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 356px;
+}
+.upc-pay-page-3 .fund-sum-box-1 {
+    display: inline-block;
+    width: 100%;
+    margin-right: 0px;
+    margin-bottom: 10px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    display: inline-block;
+    width: 100%;
+    margin-right: 0px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    float: left;
+    width: 46%;
+    font-size: 11px;
+    color: #767676;
+    min-height: 25px;.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 300px;
+}
+.main-mid-div {
+    padding: 25px 10px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    float: left;
+    width: 46%;
+    font-size: 11px;
+    color: #767676;
+    min-height: 50px;
+}
+    margin-right: 9px;
+}   
+  .upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 355px;
+} 
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea {
+    width: 65%;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    min-height: 150px;
+}
+.myordrscndpage.order-history-page .accordion-content {
+    max-width: 345px;
+    overflow-x: scroll;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input {
+    width: 57%;
+}
+.agent_s_sec_two.order-history-page1.myordrscndpage-hd .gen-invo-2 {
+    width: 100%;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+}
+
+@media screen and (max-width: 320px){
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/    
+.resutl h5 span {
+    bottom: 15px;
+    right: -5px;
+}
+.pay-ment-321 .resutl h5 span {
+    bottom: 15px;
+    right: -5px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 13px;
+}
+.main-my-order-page .pay-ment-321 .back-to-order {
+    margin-top: 13px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2 {
+    width: 300px;
+    padding: 0px 0px;
+}
+.upc-paypop-bot button {
+    padding: 8px 26px;
+}
+  .upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 300px;
+}
+.main-mid-div {
+    padding: 25px 10px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    min-height: 20px;
+}
+.fund-sum-box-1 li.reqstut-1{
+    width: 50% !important;
+} 
+.fund-sum-box-1 li.reqstut-2{
+    width: 40% !important;
+} 
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 300px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+    width: 58px;
+    margin-right: 4px;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea {
+    width: 100%;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 .amou-box-fu {
+    display: inline-block;
+    width: 100%;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input {
+    width: 70%;
+}
+.upc-pay-page-3 .main-mid-div .upc-paypop-bot.gene-can-funds {
+    text-align: right;
+}
+.myordrscndpage.order-history-page .accordion-content {
+    max-width: 289px;
+    overflow-x: scroll;
+}
+.agent_s_sec_two.order-history-page1.myordrscndpage-hd .gen-invo-2 {
+    width: 100%;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+}

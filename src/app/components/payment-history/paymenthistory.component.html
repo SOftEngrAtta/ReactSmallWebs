@@ -1,0 +1,186 @@
+<app-header></app-header>
+<div class="clearfix"></div>
+<div class="container main-my-order-page">
+
+  <div class="agent_s_sec_two bidding-page1 pay-ment-321 ">
+    <div class="row">
+      <div class="col-lg-12 nopad_left">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 resutl ">
+          <h5>
+            <strong>Payment History </strong>
+            <span *ngIf="objPaymentHistoryModel">{{ objPaymentHistoryModel.length }}</span>
+            <span *ngIf="!objPaymentHistoryModel">0</span>
+          </h5>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 text-right nopad_right" *ngIf="!isCustomerLogin">
+          
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 text-right nopad_right">
+            <a href="" class="back-to-order dep" [routerLink]="['/generalinvoice']" *ngIf="!isCustomerLogin" target="_blank">Generate Invoice</a>
+          <a href="" class="back-to-order dep" data-fancybox="" data-src="#upc-pay-page-2">Deposit Amount</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="agent_s_sec_three upcoming-payment-page main-my-order-page">
+  <div class="container">
+
+    <div class="col-lg-12 hglt upcpayt">
+      <div class="row">
+        <div class="record_table upcomingpaypg">
+
+          <div class="main-my-invo" *ngIf="this.objPaymentHistoryModel">
+            <table>
+              <thead>
+                <tr>
+                  <th>S.no</th>
+                  <th>Order ID</th>
+                  <th>Order Date</th>
+                  <th>Payment Amount</th>
+                  <th>Payment Method</th>
+                  <th>Pre Confirm Date</th>
+                  <th>Confirm Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of objPaymentHistoryModel; let i = index">
+                <tr>
+                  <td>{{ i + 1 }} </td>
+                  <td>
+                    <strong>{{ item.PaymentOrderDisplayId }}</strong>
+                  </td>
+                  <td>{{ item.OrderDate | date }}</td>
+                  <td>
+                    <strong class="auc-dep-si">
+                      <span>{{ item.CurrencySymbol }}</span> {{ item.OrderAmount }}</strong>
+                  </td>
+                  <td>{{ item.PaymentMethodName }}</td>
+                  <td>
+                    <strong class="auc-dep-si">{{ item.PreConfirmDate | date }}</strong>
+                  </td>
+                  <td>{{ item.ConfirmDate | date }}</td>
+                  <td class="no">{{ item.PaymentStatus }}</td>
+                  <td>
+                    <button *ngIf="item.PaymentStatusCode == 70000 || item.PaymentStatusCode == 60000
+                     || item.PaymentStatusCode == 550000 || item.PaymentStatusCode == 570100" class="pay-order-btn viewse-2" (click)="getPaymentUrl(item.EncryptedPaymentOrderId, item.EncryptedPaymentMethodId);">View Link</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row no-record-found" align="center" *ngIf="!this.objPaymentHistoryModel">
+      No Record Found
+    </div>
+  </div>
+</div>
+
+
+<!-----------------------------------------Upcoming Payments Popup------------------------------------------------>
+<div class="upc-paypop upc-pay-page upc-pay-page-2" id="upc-pay-page-2" style="display:none;">
+  <div class="dep-heading-pop">
+    <h3>Deposit Fund</h3>
+  </div>
+  <div class="main-mid-div">
+    <div class="main-amount-fund-type">
+      <div class="am-fu-box-1">
+        <p>Amount</p>
+        <select [(ngModel)]="objFundDepositRequestModel.EncryptedCurrencyId">
+          <option *ngFor="let item of objAvailableCurrency;" value="{{ item.EncryptedCurrencyId }}">{{ item.CurrencyCode }}</option>
+        </select>
+        <input type="text" OnlyNumber="true" [(ngModel)]="objFundDepositRequestModel.Amount" placeholder="Enter Amount Here" value="" />
+      </div>
+      <div class="am-fu-box-2">
+        <p>Fund Type</p>
+        <select [(ngModel)]="objFundDepositRequestModel.EncryptedFundDepositTypeId">
+          <option value="0">Select Fund Type</option>
+          <option *ngFor="let item of objDepositFundType; let i = index" value="{{ item.EncryptedDepositTypeId }}">{{ item.DepositTypeName }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="main-disc-area">
+      <p>Description</p>
+      <textarea [(ngModel)]="objFundDepositRequestModel.Description" placeholder="Enter Description Here"></textarea>
+    </div>
+    <div class="dep-heading-pop">
+      <h3>Pay Through</h3>
+    </div>
+    <div *ngFor="let method of objPaymentMethod">
+    <div class="payment-div" *ngIf="method.PaymentMethodName == 'Card'">
+      <span class="selct-itms ">
+        <input type="radio" name="SelectedPaymentMethod" (click)="showOrderList('CARD');" [value]="method.EncryptedPaymentMethodId" [(ngModel)]="objFundDepositRequestModel.EncryptedPaymentMethodId" required>
+        <i class="fa fa-circle chcktck" aria-hidden="true" style="visibility: hidden;"></i>
+      </span>
+      <img src="/assets/images/payment-cart1.jpg" alt="" />
+    </div>
+    <div class="payment-div border" *ngIf="method.PaymentMethodName == 'Wire Transfer'">
+      <span class="selct-itms">
+        <input type="radio" name="SelectedPaymentMethod" (click)="showOrderList('WIRE');" [value]="method.EncryptedPaymentMethodId" [(ngModel)]="objFundDepositRequestModel.EncryptedPaymentMethodId" required>
+        <i class="fa fa-circle chcktck" aria-hidden="true" style="visibility: hidden;"></i>
+      </span>
+      <img src="/assets/images/payment-cart3.jpg" alt="" [style.margin-top.px]="20" />
+    </div>
+    <div class="payment-div border" *ngIf="method.PaymentMethodName == 'Third Party - PayPal'">
+      <span class="selct-itms">
+        <input type="radio" name="SelectedPaymentMethod" (click)="showOrderList('PAYPAL');" [value]="method.EncryptedPaymentMethodId" [(ngModel)]="objFundDepositRequestModel.EncryptedPaymentMethodId" required>
+        <i class="fa fa-circle chcktck" aria-hidden="true" style="visibility: hidden;"></i>
+      </span>
+      <img src="/assets/images/payment-cart2.jpg" alt="" />
+    </div>
+    <div class="payment-div border" *ngIf="method.PaymentMethodName == 'LC Transfer'">
+      <span class="selct-itms">
+        <input type="radio" name="SelectedPaymentMethod" (click)="showOrderList('LC');" [value]="method.EncryptedPaymentMethodId" [(ngModel)]="objFundDepositRequestModel.EncryptedPaymentMethodId" required>
+        <i class="fa fa-circle chcktck" aria-hidden="true" style="visibility: hidden;"></i>
+      </span>
+      <img src="/assets/images/lc-transfer.jpg" alt="" />
+    </div>
+    <div class="payment-div  last" *ngIf="method.PaymentMethodName == 'Crypto Method'">
+      <span class="selct-itms">
+        <input type="radio" name="SelectedPaymentMethod" (click)="showOrderList('CRYPTO');" [value]="method.EncryptedPaymentMethodId" [(ngModel)]="objFundDepositRequestModel.EncryptedPaymentMethodId" required>
+        <i class="fa fa-circle chcktck" aria-hidden="true" style="visibility: hidden;"></i>
+      </span>
+      <img src="/assets/images/btc.png" height="37"  alt="" />
+    </div>
+  </div>
+  <div class="am-fu-box-2" *ngIf="paymentMethord.payThrough == 'LC'">
+    <br>
+    <p>Order</p>
+    <select [(ngModel)]="objFundDepositRequestModel.OrderDetailId">
+      <option value="0">Select Order For LC</option>
+      <option *ngFor="let item of objOrderDetail; let i = index" value="{{ item.OrderDetailId }}">{{ item.OrderDetailDisplayId }}</option>
+    </select>
+  </div>
+    <div class="upc-paypop-bot gene-can-funds">
+      <button class="nobtn" onclick="$.fancybox.close();">Cancel</button>
+      <button class="yesbtn" (click)="generateFundDeposit();">Generate Link</button>
+    </div>
+  </div>
+</div>
+
+<div id="payment_link" class="OrderCreation em-compose-main em-compose-main-agent-bid">
+  <div class="em-compose1 em-compose1-agent-bid em-compose1-agent-gen">
+    <button data-fancybox-close="" class="fancybox-close-small" title="Close"></button>
+    <div class="popup_top">
+      <h3>Payment Link</h3>
+      <div class="generate-bid-field">
+        <p>To share this payment url with others, copy and paste this link.</p>
+        <label>
+          <input type="text" #inputTarget readonly name="" [value]=" paymentUrl " />
+        </label>
+      </div>
+      <div class="agent-gen-btns" style="display: flex;justify-content: center;">
+
+        <button class="save-bid-btn copied" id="copy-bid-agent" [style.margin-right.px]="5" (click)="openurl(paymentUrl)">View</button>  
+        <button class="save-bid-btn copied" id="copy-bid-agent" [ngxClipboard]="inputTarget" (click)="copylink()">Copy to Clipboard</button>  
+ 
+        <!-- <button class="save-bid-btn copied" id="copy-bid-agent">Copy to Clipboard</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!----------------------------------------------------------------------------------------->

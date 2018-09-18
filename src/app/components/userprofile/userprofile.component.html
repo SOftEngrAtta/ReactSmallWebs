@@ -1,0 +1,1551 @@
+<app-header [CustomerInformation]="HeaderInformation"></app-header>
+
+<div class="parnt-profile">
+    <section class="main-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 no-pad-right">
+                    <div class="del-left-section">
+                        <div class="main-img-upload">
+                            <div class="upload-img">
+                                <input type="file" id="upload_image">
+                                <div class="view_pic">
+                                    <img src="/assets/images/min-profile-image-3.png" alt="your image" id="uploadimage">
+                                    <img src="/assets/images/autorod-images/user-pick.png" alt="" />
+                                </div>
+                                <p>Upload Picture</p>
+                                <span>Max Size 1MB</span>
+                            </div>
+                        </div>
+                        <div class="main-membership">
+                            <div class="member-type">
+                                <div class="mem-type-img">
+                                    <img src="assets/images/member-type-img.png" alt="">
+                                </div>
+                                <div class="mem-type-content">
+                                    <p>Profile Type</p>
+                                    <span>{{ profileTypeMembershipPackage.profileType || '--'}}</span>
+                                    <span class="hvr-icon_pro">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                        <div class="dropnav dropnav-caret dropnav-caret-dealer">
+                                            <ul>
+                                                <li (click)="changeType(1)">
+                                                    <a href="javascript:;">
+ 
+                                                        <span [ngClass]="{'activeType' : (profileTypeMembershipPackage.profileType == 'Individual')}">Individual</span>
+                                                        <!-- <i class="fa fa-check tick-css" *ngIf="profileTypeMembershipPackage.profileType == 'Individual'" [ngClass]="{'activeType' : (profileTypeMembershipPackage.profileType == 'Individual')}"></i> -->
+                                                    </a>
+                                                </li>
+                                                <li (click)="changeType(2)">
+                                                    <a href="javascript:;">
+
+                                                        <span [ngClass]="{'activeType' : (profileTypeMembershipPackage.profileType == 'Dealer')}">Dealer</span>
+                                                        <!-- <i class="fa fa-check tick-css" *ngIf="profileTypeMembershipPackage.profileType == 'Dealer'" [ngClass]="{'activeType' : (profileTypeMembershipPackage.profileType == 'Dealer')}"> </i> -->
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="member-level">
+                                <div class="mem-level-img">
+                                    <img src="assets/images/member-level.png" alt="" />
+                                </div>
+                                <div class="mem-level-content">
+                                    <p>Membership Level</p>
+                                    <span>{{ profileTypeMembershipPackage.membershipPackage }} Membership</span>
+                                </div>
+                            </div>
+                            <div class="upg-btn">
+                                <button [routerLink]="['/membership']">Upgrade</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9">
+                    <div class="main-tabs-section">
+                        <ul class="nav nav-tabs">
+                            <li class="active" (click)="changetabs(1)">
+                                <a data-toggle="tab" href="#home" aria-expanded="true">Personal Information</a>
+                            </li>
+                            <li class="" (click)="changetabs(2)">
+                                <a data-toggle="tab" href="#menu1" aria-expanded="false">Preferences</a>
+                            </li>
+                            <li class="" (click)="changetabs(3)">
+                                <a data-toggle="tab" href="#menu3" aria-expanded="false">Business Details</a>
+                            </li>
+                            <li class="" (click)="changetabs(4)">
+                                <a data-toggle="tab" href="#menu2" aria-expanded="false">Courier Details</a>
+                            </li>
+                            <li class="" (click)="changetabs(5)">
+                                <a data-toggle="tab" href="#menu4" aria-expanded="false">Consignee Details</a>
+                            </li>
+                            <li class="" (click)="changetabs(6)">
+                                <a data-toggle="tab" href="#menu5" aria-expanded="false" *ngIf="paramType == 1">Customer Info</a>
+                                <a data-toggle="tab" href="#menu5" aria-expanded="false" *ngIf="paramType != 1">Third Party Info</a>                                
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane fade active in">
+                                <div class="top-barr">
+                                    <div class="del-right-section">
+                                        <div class="main-pers-information">
+                                            <div class="row per-bg">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="per-info">
+                                                        <p>Personal Information</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="main-info-feilds-sec">
+                                           
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mob-wd no-pad-right">
+                                                            <div class="c_name">
+                                                                <p>First Name
+                                                                    <span class="star">*</span>
+                                                                </p>
+                                                                <input type="text" placeholder="Enter First Name" [(ngModel)]="customerProfile.FirstName" #FirstName="ngModel" name="FirstName">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mob-wd">
+                                                            <div class="c_name">
+                                                                <p>Last Name<span class="star">*</span></p>
+                                                                <input type="text" placeholder="Enter Last Name" [(ngModel)]="customerProfile.LastName" #LastName="ngModel" name="LastName">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mob-wd">
+                                                            <div class="c_name ">
+                                                                <p>Gender<span class="star">*</span></p>
+                                                                <select [(ngModel)]="customerProfile.Gender">
+                                                                    <option selected disabled value="">Select Gender</option>
+                                                                    <option value="male">Male</option>
+                                                                    <option value="female">Female</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mob-wd no-pad-right">
+                                                            <div class="c_name pad-top">
+                                                                <p>Country <span class="star">*</span> <img class="personal-profile-loader" src="/assets/images/quotation-page-loader.gif" alt="" *ngIf="loaders.CountryLoader"></p>
+                                                                <select [(ngModel)]="shipmentCountryPort.country" [disabled]="(CustomerInformation && CustomerInformation.CountryId) || (CustomerInformation && CustomerInformation.ShipmentCountryId)" [ngClass]="{'disabled-cls' : (CustomerInformation && CustomerInformation.CountryId) || (CustomerInformation && CustomerInformation.ShipmentCountryId)}">
+                                                                    <option [ngValue]="undefined" [disabled]="true" [selected]="true">Select Country</option>
+                                                                    <option *ngFor="let country of countrieswithport?.country" [ngValue]="country">{{country.name}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 mob-wd">
+                                                            <div class="c_name pad-top">
+                                                                <p>Address
+                                                                    <span class="star">*</span>
+                                                                </p>
+                                                                <input type="text" name="lname" placeholder="Address here..." [(ngModel)]="customerProfile.Address" #Address="ngModel" name="Address">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mob-wd no-pad-right">
+                                                            <div class="c_name pad-top">
+                                                                <p>Destination Port <span class="star">*</span> <img class="personal-profile-loader" src="/assets/images/quotation-page-loader.gif" alt="" *ngIf="loaders.DestinationPortLoader"> </p>
+                                                                <select [(ngModel)]="shipmentCountryPort.port" >
+                                                                    <option [ngValue]="undefined" [disabled]="true" [selected]="true">Select Shipment Port</option>
+                                                                    <option *ngFor="let port of filteredShipmentPorts" [ngValue]="port">{{port.name}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mob-wd no-pad-right" *ngIf="profileTypeMembershipPackage.profileType == 'Dealer' ">
+                                                            <div class="c_name pad-top">
+                                                                <p>Company Name
+                                                                    <span>(If Corporate/Dealer)</span>
+                                                                </p>
+                                                                <input type="text" name="cname" placeholder="Jhone Andores" [(ngModel)]="customerProfile.CompanyName" name="CompanyName" #CompanyName="ngModel">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="main-other-information">
+                                            <div class="row per-bg">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="per-info">
+                                                        <p>Other Information</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="main-ohr-feilds-sec">
+                                                <div class="row">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mob-wd no-pad-right">
+                                                            <div class="f_cont">
+                                                                <p>First Contact
+                                                                    <span class="star">*</span>
+                                                                </p>
+                                                                <input class="phone1" type="text" name="" placeholder="Enter Phone Number" [(ngModel)]="customerProfile.Phone1No" #Phone1No="ngModel" name="Phone1No" (keypress)="onlyNumberKey($event)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mob-wd no-pad-right">
+                                                            <div class="f_cont">
+                                                                <p>Alternate Number
+                                                                    <span class="star">*</span>
+                                                                </p>
+                                                                <input class="phone1" type="text" name="" placeholder="Enter Phone Number" [(ngModel)]="customerProfile.Phone2No" #Phone2No="ngModel" name="Phone2No" (keypress)="onlyNumberKey($event)">                                                                
+                                                                <!-- <input class="phone" type="text" name="" placeholder="Enter Phone Number" [(ngModel)]="customerProfile.Phone2No" #Phone2No="ngModel" name="Phone2No" (keypress)="onlyNumberKey($event)"> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mob-wd">
+                                                            <div class="f_cont">
+                                                                <p>Alternate Number</p>
+                                                                <input class="phone1" type="text" name="" placeholder="Enter Phone Number" [(ngModel)]="customerProfile.TelephoneNo" #TelephoneNo="ngModel" name="TelephoneNo" (keypress)="onlyNumberKey($event)">
+                                                                
+                                                                <!-- <input class="phone" type="text" name="" placeholder="Enter Phone Number" [(ngModel)]="customerProfile.TelephoneNo" #TelephoneNo="ngModel" name="TelephoneNo" (keypress)="onlyNumberKey($event)"> -->
+                                                            </div>
+                                                        </div> 
+                                                        <div class="clearfix"></div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 no-pad-right">
+                                                            <div class="f_cont dateb pad-top">
+                                                                <p>Date of Birth
+                                                                    <span class="star">*</span>
+                                                                </p>
+                                                                <select [(ngModel)]="selected_date_of_birth.day">
+                                                                    <option selected disabled value="">Day</option>
+                                                                    <option *ngFor="let day of date_of_birth.day" [value]="day"> {{ day }} </option>
+                                                                </select>
+                                                                <select [(ngModel)]="selected_date_of_birth.month">
+                                                                    <option selected disabled value="">Month</option>
+                                                                    <option *ngFor="let month of date_of_birth.month" [value]="month"> {{ month }} </option>  
+                                                                </select>
+                                                                <select class="yy" [(ngModel)]="selected_date_of_birth.year">
+                                                                    <option selected disabled value="">Year</option>
+                                                                    <option *ngFor="let year of date_of_birth.year" [value]="year"> {{ year }} </option>  
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 no-pad-right">
+                                                            <div class="c_name pad-top">
+                                                                <p>Occupation<span class="star">*</span></p>
+                                                                <input type="text" placeholder="Enter Occupation" [(ngModel)]="customerProfile.Occupation" #Occupation="ngModel" name="Occupation">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-bor-top">
+                                                            <div class="canc-udt-btns canc-sent-bnts">
+                                                                <ul>
+                                                                    <li class="canc">
+                                                                        <button>Cancel</button>
+                                                                    </li>
+                                                                    <li class="udt">
+                                                                        <button (click)="saveInfo()">Save</button>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu1" class="tab-pane fade">
+                                <div class="top-barr">
+                                    <div class="del-right-section">
+                                        <div class="main-perf-information">
+                                            <div class="row per-bg">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="per-info" >
+                                                        <p>Preferences</p>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <!-- individual -->
+                                            <div class="main-pref-feilds-sec" *ngIf="profileTypeMembershipPackage.profileTypeId == 1" >
+                                                <div class="row">
+                                                        <div class="main-used-car">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mob-wd">
+                                                                <div class="info-opt info_opt-indi">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>- Is this your first time importing used Japanese
+                                                                                car?
+                                                                                <span>*</span>
+                                                                                <img src="assets/images/help.png" alt="" />
+                                                                            </p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>- Preferred Steering</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>- Do You Prefer Buying from Stock or Auction?
+                                                                                <span>*</span>
+                                                                                <img src="assets/images/help.png" alt="" />
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mob-wd">
+                                                                <div class="yn-opt">
+                                                                    <ul class="frttypesel">
+                                                                        <li>
+                                                                            <label class="radio-label hand-tool" (click)=" customerProfile.FirstTimeImport = 'Yes' ">
+                                                                                <input type="radio" name="firsttime" [checked]="customerProfile.FirstTimeImport == 'Yes' ">
+                                                                                <i class="prepay-radio"></i>
+                                                                                <span>Yes</span>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label class="radio-label hand-tool" (click)=" customerProfile.FirstTimeImport = 'No' ">
+                                                                                <input type="radio" name="firsttime" [checked]="customerProfile.FirstTimeImport == 'No' ">
+                                                                                <i class="prepay-radio"></i>
+                                                                                <span>No</span>
+                                                                            </label>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <ul class="frttypesel">
+                                                                        <li>
+                                                                            <label class="radio-label hand-tool" (click)=" customerProfile.PreferedSteering = 'RHD' ">
+                                                                                <input type="radio" name="rhd" [checked]="customerProfile.PreferedSteering == 'RHD'">
+                                                                                <i class="prepay-radio"></i>
+                                                                                <span>RHD</span>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label class="radio-label hand-tool" (click)=" customerProfile.PreferedSteering = 'LHD' ">
+                                                                                <input type="radio" name="rhd" [checked]="customerProfile.PreferedSteering == 'LHD'">
+                                                                                <i class="prepay-radio"></i>
+                                                                                <span>LHD</span>
+                                                                            </label>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <ul class="frttypesel">
+                                                                        <li>
+                                                                            <label class="radio-label hand-tool" (click)=" customerProfile.PreferBuying = 'Stock' ">
+                                                                                <input type="radio" name="stocktype" [checked]="customerProfile.PreferBuying == 'Stock'">
+                                                                                <i class="prepay-radio"></i>
+                                                                                <span>Stock</span>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label class="radio-label hand-tool" (click)=" customerProfile.PreferBuying = 'Auction' ">
+                                                                                <input type="radio" name="stocktype" [checked]="customerProfile.PreferBuying == 'Auction'">
+                                                                                <i class="prepay-radio"></i>
+                                                                                <span>Auction</span>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label class="radio-label hand-tool" (click)=" customerProfile.PreferBuying = 'Both' ">
+                                                                                <input type="radio" name="stocktype" [checked]="customerProfile.PreferBuying == 'Both'">
+                                                                                <i class="prepay-radio"></i>
+                                                                                <span>Both</span>
+                                                                            </label>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div *ngFor="let vehiclelist of preferenceVehicleList; let i = index">
+                                                            <div class="pad-top">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mob-wd no-pad-right">
+                                                                    <div class="c_name v_imp indi_make">
+                                                                        <p>Make </p><img class="preference-profile-loader" src="/assets/images/quotation-page-loader.gif" alt="" *ngIf="loaders.makeLoader">
+                                                                        <select [(ngModel)]="preferenceVehicleList[i]['MakeId']" (change)="getModels(i)">
+                                                                            <option selected disabled value=''>Select Make</option>
+                                                                            <option *ngFor="let make of makes" [ngValue]="make.Id">{{make.Title}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mob-wd no-pad-right">
+                                                                    <div class="c_name v_imp indi_model">
+                                                                        <p>Model </p> <img class="preference-profile-loader" src="/assets/images/quotation-page-loader.gif" alt="" *ngIf="loaders.modelloader">
+                                                                        <select [(ngModel)]="preferenceVehicleList[i]['ModelId']" (change)="getmodelname(i)">
+                                                                            <option selected disabled value=''>Select Model</option>
+                                                                            <option *ngFor="let model of vehiclelist['Models']" [ngValue]="model.id">{{model.name}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mob-wd">
+                                                                    <div class="c_name v_imp indi_year">
+                                                                        <p>Year</p>
+                                                                        <select [(ngModel)]="preferenceVehicleList[i]['Year']">
+                                                                            <option selected disabled value=''>Select Year</option>
+                                                                            <option *ngFor="let year of preferYears" [value]="year"> {{ year }} </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div class="main-budget">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 no-pad-right">
+                                                                    <div class="yr_budy">
+                                                                        <p>- Your Budget for {{ preferenceVehicleList[i]['MakeName'] || '--' }} {{ preferenceVehicleList[i]['ModelName'] || '--' }} {{ preferenceVehicleList[i]['Year'] || '--' }}<span>*</span></p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 no-pad-right">
+                                                                    <div class="jpy-cur">
+
+                                                                        <span *ngIf="preferenceVehicleList[i]['CurrencyId'] == 1">$</span>
+                                                                        <span *ngIf="preferenceVehicleList[i]['CurrencyId'] == 2">¥</span>
+                                                                        
+                                                                        <select [(ngModel)]="preferenceVehicleList[i]['CurrencyId']">
+                                                                            <option *ngFor="let currency of CurrencyNameWitdIds" [ngValue]="currency.id">{{ currency.key }}</option>  
+                                                                        </select>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-4">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div class="main-add-more">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mob-wd no-pad-right">
+                                                                    <div class="min-amn">
+                                                                        
+                                                                        <span *ngIf="preferenceVehicleList[i]['CurrencyId'] == 1">$</span>
+                                                                        <span *ngIf="preferenceVehicleList[i]['CurrencyId'] == 2">¥</span>
+
+                                                                        <input type="text" name="BudgetMinAmount" value="" placeholder="Min Amount" [(ngModel)]="preferenceVehicleList[i]['BudgetMinAmount']" #BudgetMinAmount="ngModel" (keypress)="onlyNumberKey($event)">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mob-wd no-pad-right">
+                                                                    <div class="max-amn">
+                                                                        
+                                                                        <span *ngIf="preferenceVehicleList[i]['CurrencyId'] == 1">$</span>
+                                                                        <span *ngIf="preferenceVehicleList[i]['CurrencyId'] == 2">¥</span>
+                                                                        
+                                                                        <input type="text" name="BudgetMaxAmount" value="" placeholder="Max Amount" [(ngModel)]="preferenceVehicleList[i]['BudgetMaxAmount']" #BudgetMaxAmount="ngModel" (keypress)="onlyNumberKey($event)">
+                                                                    
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mob-wd">
+                                                                     <div class="ad_mo-re" (click)="addMoreVehicleOption()">
+                                                                        <a href="javascript:;">
+                                                                            <p><img src="assets/images/individual-add-more.png" /></p>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mob-wd">
+                                                                   <div class="sb_mo-re " (click)="deleteVehicleList(i)" *ngIf="preferenceVehicleList.length > 1">
+                                                                       <a href="javascript:;">
+                                                                            <p><img src="assets/images/individual-remove-icon.png" /></p>
+                                                                       </a>
+                                                                   </div>
+                                                               </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="main-type-of-permit" >
+                                                            <div class="row" *ngIf="customerProfile.CountryCode == 'MM' "> 
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4 mob-wd">
+                                                                    <div class="per-type">
+                                                                        <p>- What Type of Permit Do You Have?</p>
+                                                                    </div>
+                                                                    <div class="perm-valid">
+                                                                        <p>Permit Valid Until
+                                                                            <span class="star">*</span>
+                                                                        </p>
+                                                                        <input type="text" name="indpermitdate" value="10/24/2018" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8 mob-wd">
+                                                                    <div class="perm-opt">
+                                                                        <ul class="frttypesel">
+                                                                            <li>
+                                                                                <label class="radio-label hand-tool" (click)=" customerProfile.PermitType = 'Free Permit'">
+                                                                                    <input type="radio" name="fpermit" [checked]="customerProfile.PermitType == 'Free Permit'">
+                                                                                    <i class="prepay-radio"></i>
+                                                                                    <span>Free Permit</span>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="radio-label hand-tool" (click)=" customerProfile.PermitType = 'Texi Permit'">
+                                                                                    <input type="radio" name="fpermit" [checked]="customerProfile.PermitType == 'Texi Permit'">
+                                                                                    <i class="prepay-radio"></i>
+                                                                                    <span>Taxi Permit</span>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="radio-label hand-tool" (click)=" customerProfile.PermitType = 'Old Car Permit'">
+                                                                                    <input type="radio" name="fpermit" [checked]="customerProfile.PermitType == 'Old Car Permit'">
+                                                                                    <i class="prepay-radio"></i>
+                                                                                    <span>Old Car Permit</span>
+                                                                                </label>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="text-area" >
+                                                            <textarea placeholder="Enter Specific Requirement Box" [(ngModel)]=" customerProfile.Message "></textarea>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-bor-top">
+                                                            <div class="canc-udt-btns canc-sent-bnts">
+                                                                <ul>
+                                                                    <li class="canc hand-tool">
+                                                                        <button>Cancel</button>
+                                                                    </li>
+                                                                    <li class="udt hand-tool" (click)="savePreference()">
+                                                                        <button>Save</button>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- dealer -->
+                                            <div class="main-pref-feilds-sec" *ngIf="profileTypeMembershipPackage.profileTypeId == 2" >
+                                                <div class="row">
+                                                        <div class="main-used-car">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mob-wd">
+                                                                <div class="info-opt">
+                                                                    <ul>
+                                                                        <li><p>- Is this your first time importing used Japanese car?<span>*</span><img src="assets/images/help.png" alt="" /></p></li>
+                                                                        <li><p>-  Do You Prefer Buying from Stock or Auction?<span>*</span><img src="assets/images/help.png" alt="" /></p></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mob-wd">
+                                                                <div class="yn-opt">
+                                                                    <ul class="frttypesel">
+                                                                        <li>
+                                                                            <label class="radio-label hand-tool" (click)=" customerProfile.FirstTimeImport = 'Yes' ">
+                                                                                <input type="radio" name="firsttime" [checked]="customerProfile.FirstTimeImport == 'Yes'">
+                                                                                <i class="prepay-radio yesy"></i>
+                                                                                <span>Yes</span>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label class="radio-label hand-tool" (click)=" customerProfile.FirstTimeImport = 'No' ">
+                                                                                <input type="radio" name="firsttime" [checked]="customerProfile.FirstTimeImport == 'No'">
+                                                                                <i class="prepay-radio"></i>
+                                                                                <span>No</span>
+                                                                            </label>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <ul class="frttypesel">
+                                                                        <li>
+                                                                            <label class="radio-label hand-tool" (click)="customerProfile.PreferBuying = 'Stock'">
+                                                                                <input type="radio" name="stocktype" [checked]="customerProfile.PreferBuying == 'Stock'">
+                                                                                <i class="prepay-radio"></i>
+                                                                                <span>Stock</span>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label class="radio-label hand-tool" (click)="customerProfile.PreferBuying = 'Auction'">
+                                                                                <input type="radio" name="stocktype" [checked]="customerProfile.PreferBuying == 'Auction'">
+                                                                                <i class="prepay-radio"></i>
+                                                                                <span>Auction</span>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label class="radio-label hand-tool" (click)="customerProfile.PreferBuying = 'Both'">
+                                                                                <input type="radio" name="stocktype" [checked]="customerProfile.PreferBuying == 'Both'">
+                                                                                <i class="prepay-radio"></i>
+                                                                                <span>Both</span>
+                                                                            </label>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="pad-top">
+                                                            <div class="col-lg-4 col-md-4 col-sm-4 no-pad-right">
+                                                                <div class="c_name b_name">
+                                                                    <p>Enter Your Company / Business Name</p>
+                                                                    <input type="text" name="BusinessName" placeholder="Enter Company / Business Name" [(ngModel)]="customerProfile.BusinessName" #BusinessName="ngModel">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-4 no-pad-right">
+                                                                <div class="c_name w_name">
+                                                                    <p>Website Name</p>
+                                                                    <input type="text" name="CompanyWebsite" placeholder="Enter Website Name" [(ngModel)]="customerProfile.CompanyWebsite" #CompanyWebsite="ngModel">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                                                <div class="c_name v_imp">
+                                                                    <p>Vehicle Import Frequency per Month</p>
+                                                                    <select [(ngModel)]="customerProfile.MonthlyVehicles">
+                                                                        <option selected disabled value="">Select Frequency</option>
+                                                                        <option value="No">Vehicle Import Frequency per Month*</option>
+                                                                        <option value="less  than 10 Vehicles">less  than 10 Vehicles</option>
+                                                                        <option value="10 - 20 Vehicles">10 - 20 Vehicles</option>
+                                                                        <option value="21 - 30 Vehicles">21 - 30 Vehicles</option>
+                                                                        <option value="Above 30 Vehicles">Above 30 Vehicles</option>  
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="main-type-of-permit">
+                                                            <div class="row">
+                                                                <div class="col-lg-6 col-md-6 col-sm-6  col-xs-4 mob-wd">
+                                                                    <div class="per-type">
+                                                                        <p>-  What Type of Permit Do You Have?</p>
+                                                                    </div>
+                                                                    <div class="perm-valid">
+                                                                        <p>Permit Valid Until <span class="star">*</span></p>
+                                                                        <input type="text" name="dealpermitdate" value="10/24/2018" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-6 col-sm-6  col-xs-8 mob-wd">
+                                                                    <div class="perm-opt">
+                                                                        <ul class="frttypesel">
+                                                                            <li>
+                                                                                <label class="radio-label hand-tool" (click)=" customerProfile.PermitType = 'Free Permit'">
+                                                                                    <input type="radio" name="fpermit" [checked]="customerProfile.PermitType == 'Free Permit'">
+                                                                                    <i class="prepay-radio"></i>
+                                                                                    <span>Free Permit</span>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="radio-label hand-tool" (click)=" customerProfile.PermitType = 'Taxi Permit'">
+                                                                                    <input type="radio" name="fpermit" [checked]="customerProfile.PermitType == 'Taxi Permit'">
+                                                                                    <i class="prepay-radio"></i>
+                                                                                    <span>Taxi Permit</span>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="radio-label hand-tool" (click)=" customerProfile.PermitType = 'Old Car Permit'">
+                                                                                    <input type="radio" name="fpermit" [checked]="customerProfile.PermitType == 'Old Car Permit'">
+                                                                                    <i class="prepay-radio"></i>
+                                                                                    <span>Old Car Permit</span>
+                                                                                </label>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="text-area">
+                                                            <textarea placeholder="Enter Specific Requirement Box" [(ngModel)]="customerProfile.Message"></textarea>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="canc-udt-btns canc-sent-bnts">
+                                                                        <ul>
+                                                                            <li class="canc"><button>Cancel</button></li>
+                                                                            <li class="udt"><button (click)="savePreference()">Save</button></li>
+                                                                        </ul>
+                                                                    </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu2" class="tab-pane fade">
+                                <div class="top-barr">
+                                    <div class="del-right-section">
+                                        <div class="main-pers-information">
+                                            <div class="row per-bg">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="per-info">
+                                                        <p>Courier Details
+                                                            <span>{{ this.customerAddress.CourierList.length }}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="new_consi-btn">
+                                                        <button type="button" data-toggle="modal" data-target="#new-couriermodal2">Add New Courier</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" *ngFor="let item of ObjCourierAddress; let i = index">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 cl-xs-12">
+                                                    <div class="main-consigni-na_me">
+                                                        <ul>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Courier Name</span> {{ item.Fullname }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p class="ran">
+                                                                    <span>Email</span> {{item.Email}}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Phone No.</span> {{ item.Contact }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Zip</span> {{ item.Zip}} </p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Terminal</span> {{ item.Terminal}} </p>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:;" *ngIf="item.EditEnabled" class="pan_cil" (click)=" EditCourierDetail(i)">
+                                                                    <i>
+                                                                        <img src="assets/images/autorod-images/consi-pick.png" alt="" />
+                                                                    </i>
+                                                                </a>
+                                                                <a href="javascript:;" class="tr_ash" (click)="RemoveCustomerShipmentAddress(item.Id)">
+                                                                    <i>
+                                                                        <img src="assets/images/autorod-images/consi-delete.png" alt="" />
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="main-coun_try-dub">
+                                                        <ul>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Country</span> {{ item.CountryName }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>City</span> {{ item.City }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>State</span> {{ item.State}}.</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Address</span> {{ item.Address}}.</p>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu3" class="tab-pane fade">
+                                <div class="top-barr">
+                                    <div class="del-right-section">
+                                        <div class="row per-bg">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="per-info">
+                                                    <p>Business Details</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="main-buness-feilds-sec" >
+                                            <div class="row">
+                                                
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="busiss-dels">
+                                                            <ul>
+                                                                <li *ngFor="let bus_detail of businessDetail" >
+                                                                    <label class="hand-tool" (click)=" bus_detail['isChecked'] = (bus_detail['isChecked'] == 'Yes')?'No':'Yes' ">
+                                                                        <input class="checkbox" type="checkbox" [checked]="bus_detail['isChecked'] == 'Yes' ">
+                                                                        <i class="rdbtn fa fa-check"></i>
+                                                                        <span>{{ bus_detail['name'] }}</span>
+                                                                    </label>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="main-corp-ind">
+                                                            <div class="busiss-dels busin-structure indiv-busi-dels">
+                                                                <p>Business Structure</p>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label (click)="customerProfile.BusinessStructure = 'Corporate' ">
+                                                                            <input class="checkbox" type="radio" name="indi-radio-corp" [checked]=" customerProfile.BusinessStructure == 'Corporate' "><i class="rdbtn"></i><span>Corporate</span></label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label (click)="customerProfile.BusinessStructure = 'Individual' ">
+                                                                            <input class="checkbox" type="radio" name="indi-radio-corp" [checked]=" customerProfile.BusinessStructure == 'Individual' "><i class="rdbtn"></i><span>Individual</span></label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="busiss-dels busin-structure indiv-busi-dels">
+                                                                <p>Receive Notifications for Autorod</p>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label (click)=" customerProfile.ReceiveNotificationForAutorod = 'Yes' ">
+                                                                            <input class="checkbox" type="radio" name="indi-radio" [checked]=" customerProfile.ReceiveNotificationForAutorod == 'Yes' "><i class="rdbtn"></i><span>Yes</span></label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label (click)=" customerProfile.ReceiveNotificationForAutorod = 'No' ">
+                                                                            <input class="checkbox" type="radio" name="indi-radio" [checked]=" customerProfile.ReceiveNotificationForAutorod == 'No' "><i class="rdbtn"></i><span>No</span></label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-bor-top">
+                                                    <div class="canc-udt-btns canc-sent-bnts">
+                                                        <ul>
+                                                            <li class="canc"><button>Cancel</button></li>
+                                                            <li class="udt"><button (click)="saveBusinessDetail()">Save</button></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu4" class="tab-pane fade">
+                                <div class="top-barr">
+                                    <div class="del-right-section">
+                                        <div class="main-pers-information">
+                                            <div class="row per-bg">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="per-info">
+                                                        <p>Consignee Details
+                                                            <span>{{ this.customerAddress.ConsigneeList.length }}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="new_consi-btn">
+                                                        <button type="button" data-toggle="modal" data-target="#new-consigneemodal2">Add New Consignee</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" *ngFor="let item of ObjConsigneeAddress; let i = index">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 cl-xs-12">
+                                                    <div class="main-consigni-na_me">
+                                                        <ul>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Consignee Name</span> {{ item.Fullname }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p class="ran">
+                                                                    <span>Email</span> {{item.Email}}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Phone No.</span> {{ item.Contact }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Zip</span> {{ item.Zip}} </p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Terminal</span> {{ item.Terminal}} </p>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:;" *ngIf="item.EditEnabled" class="pan_cil" (click)=" EditConisgneeDetail(i)">
+                                                                    <i>
+                                                                        <img src="assets/images/autorod-images/consi-pick.png" alt="" />
+                                                                    </i>
+                                                                </a>
+                                                                <a href="javascript:;" class="tr_ash" (click)="RemoveCustomerShipmentAddress(item.Id)">
+                                                                    <i>
+                                                                        <img src="assets/images/autorod-images/consi-delete.png" alt="" />
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="main-coun_try-dub">
+                                                        <ul>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Country</span> {{ item.CountryName }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>City</span> {{ item.City }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>State</span> {{ item.State }}.</p>
+                                                                <li>
+                                                                    <p>
+                                                                        <span>Address</span> {{ item.Address}}.</p>
+                                                                </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="main-pers-information">
+                                            <div class="row per-bg notifier_btns">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="per-info">
+                                                        <p>Notifier Details
+                                                            <span>{{ this.customerAddress.NotifierList.length }}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="new_consi-btn">
+                                                        <button type="button" data-toggle="modal" data-target="#new-notifiermodal2">Add New Notifier</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" *ngFor="let item of ObjNotifierAddress;  let i = index">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 cl-xs-12">
+                                                    <div class="main-consigni-na_me">
+                                                        <ul>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Notifier Name</span> {{ item.Fullname }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p class="ran">
+                                                                    <span>Email</span> {{ item.Email }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Phone No.</span> {{ item.Contact }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Zip</span> {{ item.Zip}} </p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Terminal</span> {{ item.Terminal}} </p>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:;" *ngIf="item.EditEnabled" (click)="EditNotifierDetail(i)" class="pan_cil">
+                                                                    <i>
+                                                                        <img src="assets/images/autorod-images/consi-pick.png" alt="" />
+                                                                    </i>
+                                                                </a>
+                                                                <a href="javascript:;" (click)="RemoveCustomerShipmentAddress(item.Id)" *ngIf="item.EditEnabled" class="tr_ash">
+                                                                    <i>
+                                                                        <img src="assets/images/autorod-images/consi-delete.png" alt="" />
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="main-coun_try-dub">
+                                                        <ul>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Country</span> {{ item.CountryName }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>City</span> {{ item.City }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>State</span> {{ item.State }}.</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Address</span> {{ item.Address }}</p>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu5" class="tab-pane fade">
+                                <div class="top-barr">
+                                    <div class="del-right-section">
+                                        <div class="main-other-information">
+                                            <div class="row per-bg">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="per-info">
+                                                        <p>Customer Details</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="new_consi-btn">
+                                                        <button type="button" data-toggle="modal" data-target="#newthirdparty">Add New Party</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" *ngFor="let item of ObjThirdPartyAddress; let i = index;">
+                                                <div class="col-lg-12 col-md-12 col-sm-">
+                                                    <div class="main-consigni-na_me na_mecon">
+                                                        <ul>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Full Name</span> {{ item.Fullname }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p class="ran">
+                                                                    <span>Email Address</span> {{ item.Email }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Phone Number</span> {{ item.Contact }}</p>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:;" class="pan_cil" *ngIf="item.EditEnabled" (click)="EditThirdPartyAddress(i)">
+                                                                    <i>
+                                                                        <img src="assets/images/autorod-images/consi-pick.png" alt="" />
+                                                                    </i>
+                                                                </a>
+                                                                <a href="javascript:;" class="tr_ash" *ngIf="item.EditEnabled" (click)="RemoveCustomerShipmentAddress(item.Id)">
+                                                                    <i>
+                                                                        <img src="assets/images/autorod-images/consi-delete.png" alt="" />
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="main-consi_para">
+                                                        <ul>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Country</span> {{ item.CountryName }}
+                                                                </p>
+                                                            </li>
+                                                            <li>
+                                                                <p>
+                                                                    <span>Address</span> {{ item.Address }}.</p>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- modal -->
+<div id="new-consigneemodal2" class="modal fade new-consigneemodalpop profde" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add New Consignee</h4>
+            </div>
+            <div class="modal-body">
+                <div class="consform">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Name </label>
+                                <input type="text" placeholder="Name Here" class="name" [(ngModel)]="customerDetailsConsignee.Fullname" (focusout)="alphabeticCapsOn('fullname')">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Email Address </label>
+                                <input type="text" placeholder="Email here" class="email" [(ngModel)]="customerDetailsConsignee.Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Cell Phone No. </label>
+                                <input type="text" placeholder="000 00 00 000" class="phone" [(ngModel)]="customerDetailsConsignee.Contact">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv twos">
+                                <div>
+                                    <label for="">City </label>
+                                    <input type="text" placeholder="City Here" class="city" [(ngModel)]="customerDetailsConsignee.City" (focusout)="alphabeticCapsOn('city')">
+                                </div>
+                                <div>
+                                    <label for="">State </label>
+                                    <input type="text" placeholder="State Here" class="state" [(ngModel)]="customerDetailsConsignee.State" (focusout)="alphabeticCapsOn('state')">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Address </label>
+                                <input type="text" placeholder="Address Here" class="address" [(ngModel)]="customerDetailsConsignee.Address" (focusout)="alphabeticCapsOn('address')">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv twos">
+                                <div>
+                                    <label for="">Zip </label>
+                                    <input type="text" placeholder="Zip Here" class="zip" [(ngModel)]="customerDetailsConsignee.Zip" (focusout)="alphabeticCapsOn('zip')">
+                                </div>
+                                <div>
+                                    <label for="">Terminal </label>
+                                    <input type="text" placeholder="Terminal Here" class="terminal" [(ngModel)]="customerDetailsConsignee.Terminal" (focusout)="alphabeticCapsOn('terminal')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default cancelbtn" (click)="hidePopUp(1)">Cancel</button>
+                <button type="button" class="btn btn-default savebtn" (click)="AddConsigneeAddress(false)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="new-notifiermodal2" class="modal fade new-consigneemodalpop profde" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add New Notifier</h4>
+            </div>
+            <div class="modal-body">
+                <div class="consform">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Name </label>
+                                <input type="text" placeholder="Name Here" class="name" [(ngModel)]="customerDetailsNotifier.Fullname">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Email Address </label>
+                                <input type="text" placeholder="Email here" class="email" [(ngModel)]="customerDetailsNotifier.Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Cell Phone No. </label>
+                                <input type="text" placeholder="000 00 00 000" class="phone" [(ngModel)]="customerDetailsNotifier.Contact">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv twos">
+                                <div>
+                                    <label for="">City </label>
+                                    <input type="text" placeholder="City Here" class="city" [(ngModel)]="customerDetailsNotifier.City">
+                                </div>
+                                <div>
+                                    <label for="">State </label>
+                                    <input type="text" placeholder="State Here" class="state" [(ngModel)]="customerDetailsNotifier.State">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Address </label>
+                                <input type="text" placeholder="Address Here" class="address" [(ngModel)]="customerDetailsNotifier.Address">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv twos">
+                                <div>
+                                    <label for="">Zip </label>
+                                    <input type="text" placeholder="Zip Here" class="zip" [(ngModel)]="customerDetailsNotifier.Zip">
+                                </div>
+                                <div>
+                                    <label for="">Terminal </label>
+                                    <input type="text" placeholder="Terminal Here" class="terminal" [(ngModel)]="customerDetailsNotifier.Terminal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default cancelbtn" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-default savebtn" (click)="AddNotifierAddress(false)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="newthirdparty" class="modal fade new-consigneemodalpop profde " role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add New Third Party</h4>
+            </div>
+            <div class="modal-body">
+                <div class="consform">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Name
+                                    <span>*</span>
+                                </label>
+                                <input type="text" placeholder="Name Here" class="name" [(ngModel)]="customerDetailsThirdParty.Fullname" #Fullname="ngModel">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Email Address </label>
+                                <input type="text" placeholder="Email here" class="email" [(ngModel)]="customerDetailsThirdParty.Email" #Email="ngModel">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Phone Number </label>
+                                <input type="text" placeholder="000 00 00 000" class="phone" [(ngModel)]="customerDetailsThirdParty.Contact" #Contact="ngModel">
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Address
+                                    <span>*</span>
+                                </label>
+                                <input type="text" placeholder="Address Here" class="address" [(ngModel)]="customerDetailsThirdParty.Address" #Address="ngModel">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default cancelbtn" (click)="hidePopUp(4)">Cancel</button>
+                <button type="button" class="btn btn-default savebtn" (click)="AddThirdPartyAddress(false)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="new-notifiermodaledit" class="modal fade new-consigneemodalpop profde  editnew-consigneemodalpopedit" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Notifier</h4>
+            </div>
+            <div class="modal-body">
+                <div class="consform">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Name </label>
+                                <input type="text" placeholder="Name Here" class="name" [(ngModel)]="customerDetailsNotifier.Fullname">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Email Address </label>
+                                <input type="text" placeholder="Email here" class="email" [(ngModel)]="customerDetailsNotifier.Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Cell Phone No. </label>
+                                <input type="text" placeholder="000 00 00 000" class="phone" [(ngModel)]="customerDetailsNotifier.Contact">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv twos">
+                                <div>
+                                    <label for="">City </label>
+                                    <input type="text" placeholder="City Here" class="city" [(ngModel)]="customerDetailsNotifier.City">
+                                </div>
+                                <div>
+                                    <label for="">State </label>
+                                    <input type="text" placeholder="State Here" class="state" [(ngModel)]="customerDetailsNotifier.State">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Address </label>
+                                <input type="text" placeholder="Address Here" class="address" [(ngModel)]="customerDetailsNotifier.Address">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv twos">
+                                <div>
+                                    <label for="">Zip </label>
+                                    <input type="text" placeholder="Zip Here" class="zip" [(ngModel)]="customerDetailsNotifier.Zip">
+                                </div>
+                                <div>
+                                    <label for="">Terminal </label>
+                                    <input type="text" placeholder="Terminal Here" class="terminal" [(ngModel)]="customerDetailsNotifier.Terminal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default cancelbtn" (click)="hidePopUp(2)">Cancel</button>
+                <button type="button" class="btn btn-default savebtn" (click)="AddNotifierAddress(true)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="newthirdpartyedit" class="modal fade  new-consigneemodalpop profde" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Third Party</h4>
+            </div>
+            <div class="modal-body">
+                <div class="consform">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Name
+                                    <span>*</span>
+                                </label>
+                                <input type="text" placeholder="Name Here" class="name" [(ngModel)]="customerDetailsThirdParty.Fullname">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Email Address </label>
+                                <input type="text" placeholder="Email here" class="email" [(ngModel)]="customerDetailsThirdParty.Email">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Phone Number </label>
+                                <input type="text" placeholder="000 00 00 000" class="phone" [(ngModel)]="customerDetailsThirdParty.Contact">
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Address
+                                    <span>*</span>
+                                </label>
+                                <input type="text" placeholder="Name Here" class="address" [(ngModel)]="customerDetailsThirdParty.Address">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default cancelbtn" (click)="hidePopUp(4)">Cancel</button>
+                <button type="button" class="btn btn-default savebtn" (click)="AddThirdPartyAddress(true)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="new-consigneemodaledit" class="modal fade new-consigneemodalpop profde  editnew-consigneemodalpopedit" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Consignee</h4>
+            </div>
+            <div class="modal-body">
+                <div class="consform">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Name </label>
+                                <input type="text" placeholder="Name Here" class="name" [(ngModel)]="customerDetailsConsignee.Fullname">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Email Address </label>
+                                <input type="text" placeholder="Email here" class="email" [(ngModel)]="customerDetailsConsignee.Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Cell Phone No. </label>
+                                <input type="text" placeholder="000 00 00 000" class="phone" [(ngModel)]="customerDetailsConsignee.Contact">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv twos">
+                                <div>
+                                    <label for="">City </label>
+                                    <input type="text" placeholder="City Here" class="city" [(ngModel)]="customerDetailsConsignee.City" value="{{ this?.customerDetailsConsignee?.City }}">
+                                </div>
+                                <div>
+                                    <label for="">State </label>
+                                    <input type="text" placeholder="State Here" class="state" [(ngModel)]="customerDetailsConsignee.State">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Address </label>
+                                <input type="text" placeholder="Address Here" class="address" [(ngModel)]="customerDetailsConsignee.Address">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv twos">
+                                <div>
+                                    <label for="">Zip </label>
+                                    <input type="text" placeholder="Zip Here" class="zip" [(ngModel)]="customerDetailsConsignee.Zip">
+                                </div>
+                                <div>
+                                    <!-- <select name="" id="">
+                                            <option value="">Abu Dhabi</option>
+                                        </select> -->
+                                    <label for="">Terminal </label>
+                                    <input type="text" placeholder="Terminal Here" class="terminal" [(ngModel)]="customerDetailsConsignee.Terminal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default cancelbtn" (click)="hidePopUp(1)">Cancel</button>
+                <button type="button" class="btn btn-default savebtn" (click)="AddConsigneeAddress(true)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="new-couriermodal2" class="modal fade new-consigneemodalpop profde" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add New Courier</h4>
+            </div>
+            <div class="modal-body">
+                <div class="consform">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Name </label>
+                                <input type="text" placeholder="Name Here" class="name" [(ngModel)]="customerDetailsCourier.Fullname">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Email Address </label>
+                                <input type="text" placeholder="Email here" class="email" [(ngModel)]="customerDetailsCourier.Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Cell Phone No. </label>
+                                <input type="text" placeholder="000 00 00 000" class="phone" [(ngModel)]="customerDetailsCourier.Contact">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv twos">
+                                <div>
+                                    <label for="">City </label>
+                                    <input type="text" placeholder="City Here" class="city" [(ngModel)]="customerDetailsCourier.City">
+                                </div>
+                                <div>
+                                    <label for="">State </label>
+                                    <input type="text" placeholder="State Here" class="state" [(ngModel)]="customerDetailsCourier.State">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Address </label>
+                                <input type="text" placeholder="Address Here" class="address" [(ngModel)]="customerDetailsCourier.Address">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv twos">
+                                <div>
+                                    <!-- <label for="">Country </label>
+                                <select name="" id="">
+                                    <option value="">UAE</option>
+                                </select> -->
+                                    <label for="">Zip </label>
+                                    <input type="text" placeholder="Zip Here" class="zip" [(ngModel)]="customerDetailsCourier.Zip">
+                                </div>
+                                <div>
+                                    <!-- <select name="" id="">
+                                    <option value="">Abu Dhabi</option>
+                                </select> -->
+                                    <label for="">Terminal </label>
+                                    <input type="text" placeholder="Terminal Here" class="terminal" [(ngModel)]="customerDetailsCourier.Terminal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default cancelbtn" (click)="hidePopUp(3)">Cancel</button>
+                <button type="button" class="btn btn-default savebtn" (click)="AddCourierAddress(false)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="new-couriermodaledit" class="modal fade new-consigneemodalpop profde  editnew-consigneemodalpopedit" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Courier</h4>
+            </div>
+            <div class="modal-body">
+                <div class="consform">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Name </label>
+                                <input type="text" placeholder="Name Here" class="name" [(ngModel)]="customerDetailsCourier.Fullname">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Email Address </label>
+                                <input type="text" placeholder="Email here" class="email" [(ngModel)]="customerDetailsCourier.Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Cell Phone No. </label>
+                                <input type="text" placeholder="000 00 00 000" class="phone" [(ngModel)]="customerDetailsCourier.Contact">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv twos">
+                                <div>
+                                    <label for="">City </label>
+                                    <input type="text" placeholder="City Here" class="city" [(ngModel)]="customerDetailsCourier.City">
+                                </div>
+                                <div>
+                                    <label for="">State </label>
+                                    <input type="text" placeholder="State Here" class="state" [(ngModel)]="customerDetailsCourier.State">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv">
+                                <label for="">Address </label>
+                                <input type="text" placeholder="Address Here" class="address" [(ngModel)]="customerDetailsCourier.Address">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="consformdv twos">
+                                <div>
+                                    <label for="">Zip </label>
+                                    <input type="text" placeholder="Zip Here" class="zip" [(ngModel)]="customerDetailsCourier.Zip">
+                                </div>
+                                <div>
+                                    <label for="">Terminal </label>
+                                    <input type="text" placeholder="Terminal Here" class="terminal" [(ngModel)]="customerDetailsCourier.Terminal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default cancelbtn" (click)="hidePopUp(3)">Cancel</button>
+                <button type="button" class="btn btn-default savebtn" (click)="AddCourierAddress(true)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end -->

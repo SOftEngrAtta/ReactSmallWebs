@@ -1,0 +1,94 @@
+.edit-carhub .back-scr-incm{
+    margin: 15px 0 0 10px;
+    color: #4246a4;
+    padding: 7px 25px;
+    height: 31px;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: Roboto;
+    font-weight: 500;
+    outline: none;
+    background: #fff;
+    border: 1px solid #4246a4;
+}
+.edit-carhub .back-scr-incm:hover{
+    background: #4246a4;
+    border-color: transparent;
+    color:#fff;
+}
+.viewconf .group-items-dt .group-items-dt-top .btns{
+	margin: 0px 10px;
+    display: inline-block;
+}
+.mad-fields{
+    color: red;
+}
+.txt-neg-css{
+    font-size: 13px;
+}
+.currencyrate{
+	font-size: 13px;
+    font-weight: 700;
+    color: #7a7a7a;
+    margin-bottom: 5px;
+}
+.calculate-amount{
+    background: none;
+}
+.disable-plans{
+    background: #00000073;
+}
+.slct-plan{
+    color: #4b4b4b;
+}
+.plan-drpdown{
+    width: 200px;
+    margin: 15px 0px 20px 15px;
+    position: relative;
+    float: left;
+}
+.hidden-grp{
+    display: none !important;
+}
+.auctionsheetpopn .enterchass input{
+	width: 75%;
+    display: inline-block;
+    font-size: 13px;
+    color: #8489ab;
+    border-radius: 4px 0px 0px 4px;
+    vertical-align: top;
+}
+.auctionsheetpopn .enterchass button{
+	width: 23%;
+    display: inline-block;
+    background: #585f8d;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    height: 30px;
+    vertical-align: top;
+    border: 1px solid #9a9dc9;
+    border-left: 0px;
+    border-radius: 0px 4px 0px 0px;
+}
+.auctionsheetpopn .svbtn:hover{
+	color: #4246a4;
+    background: #fff;
+}
+.auctionsheetpopn .svbtn{
+	width: 100%;
+    background: #4246a4;
+    height: 30px;
+    border: 1px solid #4246a4;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+}
+.error-msg{color :red}
+
+.display-msg{text-align: center;margin-top: 10px;}
+.updatefields{display: inline-flex;margin-left: 8%;}
+.bidprice-fld{width: 200px;}
+.checkitem{vertical-align: inherit !important;}

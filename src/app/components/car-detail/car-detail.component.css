@@ -1,0 +1,574 @@
+/* @import url("~/assets/css/bootstrap.min.css");
+@import url("~/assets/css/slick.css");
+@import url("~/assets/css/fancybox.css"); */
+
+* {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  outline: none;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.header {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f2f2+0,f2f2f2+99,ffffff+100 */
+  background: #f2f2f2;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f2f2f2 0%, #f2f2f2 99%, #ffffff 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #f2f2f2 0%, #f2f2f2 99%, #ffffff 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #f2f2f2 0%, #f2f2f2 99%, #ffffff 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff', GradientType=0);
+  /* IE6-9 */
+  min-height: 70px;
+  width: 100%;
+}
+
+.tagline {
+  font-size: 23px;
+  font-weight: 700;
+  color: #666666;
+  font-family: 'Open Sans', sans-serif;
+  float: left;
+  margin: 15px 20px 15px 30px;
+  padding: 0 0 0 20px;
+  border-left: solid 1px #d7d7d7;
+}
+
+.logo {
+  margin: 20px 0;
+  float: left;
+}
+
+h1 {
+  margin: 22px 0px 20px 0px;
+  padding: 10px 0px;
+  color: #525252;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  border-bottom: solid 1px #c3c3c3;
+}
+
+h2 {
+  margin: 0px 0px 0px 0px;
+  padding: 1px 0px 10px 0px;
+  color: #333333;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  border-bottom: 2px #ed2530 solid;
+  text-transform: uppercase;
+}
+
+.hr_bar {
+  height: 6px;
+  width: 100%;
+  background-color: #dfdfdf;
+  clear: both;
+  margin: 20px 0 0 0;
+}
+
+.slides_pne li img {
+  margin: 0 0 17px 0;
+}
+
+.cars_slider_thumbnails_hrz {
+  margin: 10px 0 0 0;
+}
+
+.slick-disabled.slick-arrow {
+  opacity: 0.3;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: #fff;
+  background: #ec1c24;
+}
+
+::selection {
+  color: #fff;
+  background: #ec1c24;
+}
+
+.slides_pne a {
+  outline: none;
+}
+
+.no_margin {
+  margin: 0px;
+  padding: 0px;
+}
+
+.cars_slider_bottom:before {
+  content: " ";
+  display: block;
+  height: 5px;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #a1151a;
+  z-index: 65;
+}
+
+.cars_slider_bottom:after {
+  content: " ";
+  display: block;
+  height: 0;
+  width: 135px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #158146;
+  z-index: 111;
+}
+
+.cars_slider_bottom {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+1,ffffff+100&0.9+1,0.9+100 */
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6ffffff', endColorstr='#e6ffffff', GradientType=0);
+  /* IE6-9 */
+  padding: 18px 14px 13px 14px;
+  clear: both;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 55px;
+  margin: -50px 0 0 0;
+}
+
+.cars_slider_bottom span {
+  font-size: 12px;
+  color: #333333;
+  font-weight: bold;
+  font-family: 'Lato', sans-serif;
+  float: right;
+  padding: 2px 5px 0 0;
+  position: relative;
+  margin: 0 0 0 32px;
+}
+
+.cars_slider_bottom span i {
+  display: block;
+  height: 10px;
+  width: 10px;
+  background-image: url(/assets/images/detail-sprites.png);
+  background-position: -197px -26px;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -15px;
+  top: 7px;
+}
+
+.cars_slider_bottom span i.whatsapp {
+  height: 19px;
+  width: 18px;
+  background-position: -168px -23px;
+  left: -20px;
+  top: 2px;
+}
+
+.cars_slider_bottom span+span:after {
+  content: " ";
+  display: block;
+  height: 11px;
+  width: 1px;
+  background-color: #333333;
+  position: absolute;
+  right: -5px;
+  top: 5px;
+}
+
+.cars_slider img {
+  height: auto;
+  width: 100%;
+}
+
+.features {
+  padding: 0px 0;
+  margin: 10px 0;
+  clear: both;
+  width: 100%;
+  overflow: hidden;
+  border-top: solid 1px #e5e5e5;
+  border-right: solid 1px #e5e5e5;
+}
+
+.features ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+.features li {
+  list-style: none;
+  padding: 16px 15px 0px 15px;
+  margin: 0px;
+  float: left;
+  width: 100%;
+  border-bottom: solid 1px #e5e5e5;
+  border-left: solid 1px #e5e5e5;
+  font-size: 14px;
+  color: #666666;
+  background-color: #fff;
+  height: 51px;
+}
+
+.features li span {
+  width: 60%;
+  float: left;
+  font-weight: 400;
+  background-color: #f7f8fa;
+  padding: 14px 10px 9px 55px;
+  margin: -15px 0 -10px -15px;
+  border-right: solid 1px #e5e5e5;
+  height: 50px;
+  border-bottom: solid 1px #e5e5e5;
+  position: relative;
+  color: #666666;
+}
+
+.features li span:before {
+  height: 30px;
+  width: 34px;
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  content: " ";
+  background-image: url(/assets/images/detail-sprites.png);
+  background-repeat: no-repeat;
+}
+
+.features li.ico1 span:before {
+  background-position: -14px -14px;
+}
+
+.features li.ico2 span:before {
+  background-position: -14px -68px;
+}
+
+.features li.ico3 span:before {
+  background-position: -14px -120px;
+  top: 10px;
+}
+
+.features li.ico4 span:before {
+  background-position: -13px -169px;
+  top: 7px;
+}
+
+.features li.ico5 span:before {
+  background-position: -8px -224px;
+}
+
+.features li.ico6 span:before {
+  background-position: -8px -276px;
+}
+
+.features li.ico7 span:before {
+  background-position: -8px -324px;
+  top: 6px;
+}
+
+.features li.ico8 span:before {
+  background-position: -10px -377px;
+  top: 5px;
+}
+
+.features li.ico9 span:before {
+  background-position: -10px -428px;
+  top: 6px;
+}
+
+.features li.ico10 span:before {
+  background-position: -9px -483px;
+  left: 18px;
+  top: 9px;
+}
+
+.features li strong {
+  font-weight: normal;
+  float: left;
+  width: 40%;
+  padding-left: 14px;
+  color: #666666;
+}
+
+.footer {
+  padding: 18px 0;
+  background-color: #1a1a1a;
+  clear: both;
+  width: 100%;
+  margin: 30px 0 0 0;
+  font-size: 13px;
+  color: #909090;
+}
+
+.footer a {
+  color: #909090;
+}
+
+.mnheight{ min-height: 495px;}
+
+.cars_slider [role=button] {
+  position: absolute !important;
+  z-index: 991;
+  top: 0px;
+  width: 30px !important;
+  height: 120px !important;
+  border: 0px;
+  font-size: 0px;
+  top: 49%;
+  margin-top: -60px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.6+0,0.6+100 */
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99000000', endColorstr='#99000000', GradientType=0);
+  /* IE6-9 */
+}
+
+.slick-arrow:before {
+  content: " ";
+  display: block;
+  height: 40px;
+  width: 30px;
+  background-image: url(/assets/images/detail-sprites.png);
+  background-repeat: no-repeat;
+  background-position: -271px -10px;
+}
+
+.slick-prev {
+  left: 0px;
+}
+
+.slick-next {
+  right: 0px;
+}
+
+.slick-prev.slick-arrow:before {
+  background-position: -226px -10px;
+}
+
+.slides_pne .slick-current img {}
+
+.cta_outer {
+  float: right;
+}
+
+.cars_slider_thumbnails .clso img {
+  border: solid 3px #ec1c24;
+  height: auto;
+  width: 100%;
+  -webkit-box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+}
+
+.cars_slider_thumbnails_hrz .clso img {
+  border: solid 3px #ec1c24;
+  -webkit-box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+}
+
+
+div.option_steps .features li {
+  height: 38px;
+}
+
+div.option_steps .features li span {
+  height: 37px;
+  padding: 7px 10px 9px 55px;
+}
+
+div.slick-list.draggable {
+  height: auto !important;
+}
+
+div.option_steps .features li strong {
+  margin: -8px 0 0 0;
+}
+
+div.option_steps .features li span:before {
+  top: 8px;
+}
+
+div.option_steps .features li.ico4 span:before,
+div.option_steps .features li.ico7 span:before,
+div.option_steps .features li.ico9 span:before,
+div.option_steps .features li.ico10 span:before {
+  top: 4px;
+}
+
+div.option_steps .features li.ico8 span:before {
+  top: 3px;
+}
+
+div.option_steps .slides_pne li.slick-current img {
+  border: solid 3px #ec1c24;
+  height: auto;
+  width: 100%;
+  -webkit-box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+}
+
+div.option_steps .features .slides_pne li img {
+  -webkit-transition: all 222ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+  -moz-transition: all 222ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+  -o-transition: all 222ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+  transition: all 222ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+  /* linear */
+  -webkit-transition-timing-function: cubic-bezier(0.250, 0.250, 0.750, 0.750);
+  -moz-transition-timing-function: cubic-bezier(0.250, 0.250, 0.750, 0.750);
+  -o-transition-timing-function: cubic-bezier(0.250, 0.250, 0.750, 0.750);
+  transition-timing-function: cubic-bezier(0.250, 0.250, 0.750, 0.750);
+  /* linear */
+}
+
+div.option_steps .features .slides_pne li.slick-current img {
+  margin: 0 0 20px 0;
+}
+
+.adds-body .cars_slider_thumbnails .slick-current img {
+  border: solid 3px #ec1c24;
+  height: auto;
+  width: 100%;
+  -webkit-box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+}
+
+.adds-body .cars_slider_thumbnails_hrz .slick-current img {
+  border: solid 3px #ec1c24;
+  -webkit-box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+  box-shadow: 8px 11px 5px -5px rgba(0, 0, 0, 0.13);
+}
+
+@media (min-width:1200px) {
+  .cars_slider_thumbnails_hrz_outer {
+    margin: 10px -18px 0 0;
+  }
+}
+
+@media only screen and (max-width: 1198px) {
+  .hide_1198 {
+    display: none;
+  }
+  .features li {
+    width: 100%;
+  }
+  .footer {
+    text-align: center;
+  }
+  .footer .col-sm-6 {
+    width: 100%;
+    text-align: center;
+  }
+  .slides_pne {
+    margin: 20px 0;
+  }
+  .slides_pne li {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .features li {
+    width: 100%;
+  }
+  .slides_pne li img {
+    height: auto;
+    width: 100%;
+  }
+  .tagline {
+    float: none;
+    text-align: center;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-size: 18px;
+    border: 0px;
+  }
+  .logo {
+    margin: 10px 0 0px 0;
+    float: none;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .tagline {
+    font-size: 14px;
+  }
+  .logo {
+    text-align: center;
+    margin-top: 13px;
+  }
+  .cta_outer {
+    float: none;
+    width: 229px;
+    margin: 5px auto 0 auto;
+  }
+  .cars_slider_bottom {
+    height: 65px;
+  }
+  .cta_outer span+span {
+    margin-left: 10px;
+  }
+  .cars_slider_bottom {
+    text-align: center;
+  }
+  .cars_slider_bottom img {
+    display: block;
+    width: 161px;
+    margin: 0 auto;
+  }
+  .features li {
+    width: 100%;
+  }
+  .footer .text-right {
+    margin-top: 15px;
+  }
+  .slick-arrow {
+    height: 80px;
+    top: 50%;
+    margin-top: -40px;
+  }
+  .cars_slider_bottom {
+    margin: 0px;
+  }
+  .slides_pne {
+    margin: 0px 0;
+  }
+  h1,
+  h2 {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 640px) {}
+
+@media only screen and (max-width :580px) {}
+
+@media only screen and (max-width :400px) {}

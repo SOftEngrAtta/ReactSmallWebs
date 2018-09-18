@@ -1,0 +1,463 @@
+.mvmenu {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.mvmenu:hover .inner-menu {
+  display: block;
+}
+
+.mvmenu .inner-menu {
+  display: none;
+  background: #fff;
+  position: absolute;
+  right: -20px;
+  top: 30px;
+  /* padding-top: 35px; */
+  width: 125px;
+  border: 1px solid #2c2c2c;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.mvmenu .inner-menu>li,
+.mvmenu .inner-menu>li:nth-child(2),
+.mvmenu .inner-menu>li:nth-child(3),
+.mvmenu .inner-menu>li:nth-child(4),
+.mvmenu .inner-menu>li:nth-child(5),
+.mvmenu .inner-menu>li:nth-child(6),
+.mvmenu .inner-menu>li:nth-child(7),
+.mvmenu .inner-menu>li:nth-child(8),
+.mvmenu .inner-menu>li:nth-child(9),
+.mvmenu .inner-menu>li:nth-child(10) {
+  text-align: left;
+  width: 100%;
+  padding: 0px;
+  position: relative;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.mvmenu .inner-menu>li:last-child {
+  border-bottom: 0px;
+}
+
+.mvmenu .inner-menu>li:nth-child(1):before {
+  position: absolute;
+  content: "";
+  background: url(/assets/images/tpic.png);
+  width: 10px;
+  height: 6px;
+  top: -6px;
+  right: 25px;
+}
+
+.mvmenu .inner-menu>li>a {
+  padding: 10px 0px 10px 20px;
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #545454;
+}
+
+.mvmenu .inner-menu>li>a:hover {
+  color: #f04444;
+}
+
+.dvhd-mn {
+  font-size: 0;
+  background: #c8c8c8;
+  padding: 0px 20px;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.dvhd-mn>div {
+  display: inline-block;
+  width: 50%;
+}
+
+.dv-hdin2 {
+  text-align: right;
+}
+
+.dv-hdin2 .ordeinf {
+  font-size: 11px;
+  font-weight: 700;
+  color: #5e5e5e;
+  margin-right: 12px;
+}
+
+.dv-hdin2 .ordecount {
+  padding: 6px 10px;
+  text-align: center;
+  background: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  color: #2c2c2c;
+  border-radius: 20px;
+  margin-right: 12px;
+}
+
+.dv-hdin2 .continue_btn {
+  padding: 6px 22px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.dh-hdq {
+  font-size: 15px;
+  font-weight: 900;
+  color: #000;
+  margin: 0px;
+  padding: 15px 0px;
+}
+
+.dvdt-sent {}
+
+.dvdt-sent table {
+  width: 100%;
+}
+
+.dvdt-sent table thead tr th {
+  background: #f0f0f0;
+  padding: 15px 0px 15px 20px;
+  font-size: 11px;
+  color: #2c2c2c;
+  font-weight: 700;
+  vertical-align: top;
+}
+
+.dvdt-sent table thead tr th span {
+  display: block;
+}
+
+.dvdt-sent table tbody tr>td {
+  padding: 15px 0px 15px 20px;
+  vertical-align: middle;
+}
+
+/* .dvdt-sent table tbody tr>td:nth-child(1){
+	
+	width:25%;
+}
+.dvdt-sent table tbody tr>td:nth-last-child(2){
+	
+	width:20%;
+} */
+
+.dvdt-sent table tbody tr>td:last-child {
+  padding-right: 20px;
+}
+
+.dvdt-sent table tbody tr:nth-child(odd) {
+  background: #fff;
+}
+
+.dvdt-sent table tbody tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+.dvdt-sent table tbody tr td.vehicldv-td .vehicldv-tddv {
+  font-size: 0;
+  display: table;
+  width: 100%
+}
+
+.dvdt-sent table tbody tr td.vehicldv-td .vehicldv-tddv>div {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.dvdt-sent table tbody tr td.vehicldv-td .vehicldv-tddv>div.vehicldv {}
+
+.dvdt-sent table tbody tr td.vehicldv-td .vehicldv-tddv>div.vehicldv a {
+  border-radius: 5px;
+  width: 54px;
+  display: inline-block;
+}
+
+.dvdt-sent table tbody tr td.vehicldv-td .vehicldv-tddv>div.vehicldv img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.dvdt-sent table tbody tr td.vehicldv-td .vehicldv-tddv h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  margin: 0px;
+}
+
+.dvdt-sent table tbody tr td.vehicldv-td .vehicldv-tddv h5 {
+  font-size: 11px;
+  font-weight: 600;
+  color: #545454;
+  margin: 0px;
+  padding-top: 5px;
+}
+
+.dvdt-sent table tbody tr td .quotdtst {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.dvdt-sent table tbody tr td .quotdtsp {
+  font-size: 13px;
+  font-weight: 700;
+  color: #545454;
+  display: block;
+}
+
+.dvdt-sent table tbody tr td .porceedbtn {
+  padding: 9px 15px;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  width: 100%;
+}
+
+.dvdt-sent table tbody tr td .porceedbtn.dsbld {
+  background: #dcdcdc;
+}
+
+.dvdt-sent table tbody tr td i.viewic {
+  color: #4477df;
+  margin-right: 4px;
+}
+
+.dvdt-sent table tbody tr td .bookedstn {
+  color: #f33a3a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.dvdt-sent table tbody tr td .bookedsty {
+  color: #18a01b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.unsent.dvdt-sent table tbody tr>td:last-child {
+  border-left: 1px solid #e9e9e9;
+  padding-right: 0px;
+  width: 18%;
+}
+
+.unsent.dvdt-sent table tbody tr>td>span {
+  margin-right: 20px;
+}
+
+.unsenttb .accordion-toggle .unsenttb-cont {
+  display: table;
+  width: 100%;
+}
+
+.senttb .accordion-toggle .senttb-cont {
+  display: table;
+  width: 100%;
+}
+
+.unsenttb .accordion-toggle .orderidnum {
+  display: table-cell;
+}
+
+.unsenttb .accordion-toggle .quotinf {
+  display: table-cell;
+  text-align: right;
+}
+
+.senttb .accordion-toggle .orderidnum {
+  display: table-cell;
+}
+
+.senttb .accordion-toggle .quotinf {
+  display: table-cell;
+  text-align: right;
+}
+
+.sent.dvdt-sent table tbody tr>td>span {
+  margin-right: 20px;
+}
+
+.senttb .accordion-toggle .unsenttb-cont {
+  display: table;
+  width: 100%;
+}
+
+.senttb .accordion-toggle .orderidnum {
+  display: table-cell;
+}
+
+.senttb .accordion-toggle .quotinf {
+  display: table-cell;
+  text-align: right;
+}
+
+.unsenttb .accordion-toggle .quotinf .addmr {
+  padding: 7px 16px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4246a4;
+  border:1px solid #4246a4;
+  margin-right: 10px;
+  background: #fff;
+ }
+
+.unsenttb .accordion-toggle .quotinf .genlink {
+  padding: 7px 16px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background: #21c15e;
+}
+
+.unsenttb .accordion-toggle .quotinf .cnt {
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  background: #c6c6c6;
+  color: #ffff;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.unsenttb .accordion-toggle.active .quotinf .cnt {
+  background: #fff;
+  color: #2c2c2c;
+}
+
+.unsenttb .accordion-toggle .quotinf .ordet {
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  margin-right: 10px;
+}
+
+.senttb .accordion-toggle .quotinf .cnt {
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  background: #c6c6c6;
+  color: #fff;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.senttb .accordion-toggle.active .quotinf .cnt {
+  background: #fff;
+  color: #2c2c2c;
+}
+
+.senttb .accordion-toggle .quotinf .ordet {
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  margin-right: 10px;
+}
+
+.unsenttb span.bl,
+.unsenttb span.bl.quotdtsp {
+  color: #4477df;
+}
+
+@media screen and (max-width: 768px) {
+  .unsenttb .accordion-toggle .quotinf .genlink {
+    margin-right: 50px;
+  }
+  .dvdt-sent.unsent {
+    max-width: 720px;
+  }
+  .senttb .accordion-toggle .quotinf .cnt {
+    margin-right: 50px;
+  }
+  .dvdt-sent {
+    max-width: 720px;
+  }
+}
+
+@media screen and (max-width:414px) {
+  .dvdt-sent.unsent {
+    max-width: 385px;
+  }
+  .dvdt-sent {
+    max-width: 385px;
+  }
+  .dvhd-mn>div {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  .dh-hdq {
+    padding-top: 5px;
+  }
+  .dv-hdin2 {
+    padding-bottom: 10px;
+  }
+  .unsenttb .accordion-toggle .quotinf {
+    text-align: left;
+    padding-left: 20px;
+  }
+  .unsenttb .accordion-toggle .quotinf .genlink {
+    margin-right: 10px;
+  }
+  .unsenttb .accordion-toggle .quotinf .addmr {
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width:375px) {
+  .dvdt-sent {
+    max-width: 345px;
+  }
+  .dvdt-sent.unsent {
+    max-width: 345px;
+  }
+}
+
+@media screen and (max-width:320px) {
+  .dvdt-sent.unsent {
+    max-width: 290px;
+  }
+  .unsenttb .accordion-toggle .quotinf {
+    display: block;
+    margin-bottom: 10px;
+    padding-left: 0px;
+  }
+  .unsenttb .accordion-toggle .orderidnum {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .dvdt-sent {
+    max-width: 290px;
+  }
+  .senttb .accordion-toggle .orderidnum {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .senttb .accordion-toggle .quotinf {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+}
+
+.dvdt-sent table tbody tr td.vehicldv-td .vehicldv-tddv h4{
+  max-width:95px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.view-yes{
+  color: #18a01b;
+}
+.no-record-found{margin-top: 20px; font-weight: 500; color: #6764a8;}

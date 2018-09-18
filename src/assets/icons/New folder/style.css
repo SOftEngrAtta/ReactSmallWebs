@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?vj82qe');
+  src:  url('fonts/icomoon.eot?vj82qe#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?vj82qe') format('truetype'),
+    url('fonts/icomoon.woff?vj82qe') format('woff'),
+    url('fonts/icomoon.svg?vj82qe#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-auc-icon:before {
+  content: "\e900";
+}
+.icon-Chassis-icon:before {
+  content: "\e901";
+}
+.icon-color-icon:before {
+  content: "\e902";
+}
+.icon-condition-icon:before {
+  content: "\e903";
+}
+.icon-dim-icon:before {
+  content: "\e904";
+}
+.icon-drive-icon:before {
+  content: "\e905";
+}
+.icon-eng-icon:before {
+  content: "\e906";
+}
+.icon-equ-icon:before {
+  content: "\e907";
+}
+.icon-fuel-icon:before {
+  content: "\e908";
+}
+.icon-Lot-icon:before {
+  content: "\e909";
+}
+.icon-milege-icon:before {
+  content: "\e90a";
+}
+.icon-transmission-icon:before {
+  content: "\e90b";
+}

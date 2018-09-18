@@ -1,0 +1,32 @@
+<div class="slpop-main main-sl" id="openInquireNow" [style.width.px]="600">
+    <div class="col-md-12 inq-hd">
+        INQUIRY (Free Quote)
+    </div>
+    <div class="row">
+        <div class="left-se">
+            <div class="pop-i" *ngIf="inquiredata.Images && inquiredata.Images.length && inquiredata.Images[0]['Title']">
+                <img [src]="inquiredata.Images[0].Title | splitimage" alt="" class="inquire-img">
+            </div>
+            <div class="pop-i" *ngIf="inquiredata.Images && inquiredata.Images.length && inquiredata.Images[0] && !inquiredata.Images[0]['Title']">
+                <img [src]="inquiredata.Images[0]| splitimage" alt="" class="inquire-img">
+            </div>
+            <h2>{{ inquiredata.Make }} {{ inquiredata.Model }} {{ inquiredata.Year }}</h2>
+            <ul class="list-dt">
+                <li>Engine <span>{{ inquiredata.Engine | number }}cc</span></li>
+                <li>Mileage <span>{{ inquiredata.Mileage | number }} Km</span></li> 
+                <li *ngIf="inquiredata.Location">Location<span>{{ inquiredata.Location }}</span></li>
+                <li *ngIf="inquiredata.Port">Port<span>{{ inquiredata.Port }}</span></li>
+                <li *ngIf="inquiredata.VehiclePrice">Vehicle Price<span class="col-vhcl-prc"> {{ inquiredata.VehiclePrice | number }} </span></li>
+                <li *ngIf="inquiredata.TotalPrice">Total Price<span class="col-totle-prc">{{ inquiredata.TotalPrice | number }} </span></li>                
+            </ul>
+        </div>
+        <div class="right-se">
+            <textarea class="txt-ar" name="" placeholder="Type" name="CommentText" [(ngModel)]="inquiredata.CommentText" #CommentText="ngModel"></textarea>
+            <a href="javascript:;" class="btn" (click)="submitInq()">Get a Price Quote Now</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- 
+ -->

@@ -1,0 +1,1165 @@
+<app-header></app-header>
+<div class="incomplete-empty incomplete-orderpg main-car-won-edit">
+	<section class="contentexist active">
+		<div class="clearfix"></div>
+		<div class="container">
+			<div class="agent_s_sec_two order-history-page1 myordrscndpage-hd">
+				<div class="row">
+					<div class="col-lg-6 col-sm-3 col-xs-2 resutl gen-invo-1">
+						<h5>
+							<strong>My Order</strong>
+							<span *ngIf="objOrdersByAgent.length > 0">{{ objOrdersByAgent.length }}</span>
+							<span *ngIf="objOrdersByAgent.length == 0">0</span>
+						</h5>
+					</div>
+					<div class="col-lg-6 col-sm-9 col-xs-10 gen-invo-2">
+						<div class="selectbidd" [style.margin-top.px]="19">
+							<div class="dropdown">
+								<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> {{ order_condition }}
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li (click)="getOrdersDetail('All')">
+										<a href="javascript:;">All</a>
+									</li>
+									<li (click)="getOrdersDetail('Won')">
+										<a href="javascript:;">Car Won</a>
+									</li>
+									<li (click)="getOrdersDetail('Lost')">
+										<a href="javascript:;">Car Lost</a>
+									</li>
+									<li (click)="getOrdersDetail('InProgress')">
+										<a href="javascript:;">Bid in Progress</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="mdordr-buttons">
+							<!-- <button class="genl-invc-btn" *ngIf="!isCustomerLogin" (click)="GenerateAuctionDepositInvoice()">Generate Invoice</button> -->
+                            <button class="invc-histo-btn" [routerLink]="['/invoice-history']">Invoice History</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		
+		<div class="agent_s_sec_three order-history-page myordrscndpage" *ngIf="objOrdersByAgent.length > 0">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="record_table">
+							<div class="accordion">
+								<div class="hglt ordrinpro">
+									<!-- TODO : For Loop Start 0 -->
+									<div *ngFor="let order of objOrdersByAgent; let i = index">
+										<h4 class="accordion-toggle active">
+											<span class="orderidnum">Order ID -
+												<span class="orderidval">{{ order.OrderDisplayId }}</span>
+											</span>
+											<div class="order_history_tab_info">
+												<button class="mk-payment-btn" [style.margin-left.px]="5" *ngIf="!isCustomerLogin && order['BidApproval'] && order['OrderItems'][0]['OrderDetails'][0]['AuctionTypeId'] != 5" (click)="sendEmail(order.OrderId)">Send Bid Approval Email</button>
+												<button class="mk-payment-btn" [routerLink]="['/order-detail']" [queryParams]="{orderId: order.OrderId}">View Order</button>												
+												<ul class="order_hist_tbinf pull-right">
+													<li>
+														<span class="infhd">Shipment Country</span>
+														<span>{{ order.CountryName }}</span>
+													</li>
+													<li>
+														<span class="infhd">Shipment Port</span>
+														<span>{{ order.PortName }}</span>
+													</li>
+													<li>
+														<span class="infhd">Shipment Type</span>
+														<span>{{ order.ShipmentType }}</span>
+													</li>
+													<li>
+														<span class="infhd">Freight Type</span>
+														<span>{{ order.ShipmentTerm }}</span>
+													</li>
+												</ul>
+											</div>
+										</h4>
+
+										<div class="accordion-content" style="display:block">
+											<!-- TODO : For Loop Start 1 -->
+											<div class="group-items" *ngFor="let group of order.OrderItems; let k = index">
+												<ul class="carw-odhd carw-items">
+													<li class="car-grp-1">Car Group - {{ k + 1}}</li>
+													<li class="grp-items">
+														<span>{{ group.OrderPurchaseCount }}</span>
+													</li>
+												</ul>
+												<!-- TODO : For Loop Start 2 -->
+												<div class="group-items-dt" *ngFor="let item of group.OrderDetails; let j = index">
+													<div class="group-items-dt-top">
+														<div class="group-items-dt-top-lft">
+															<div class="group-items-dt-top-lft-mn">
+																<div>
+																	<span class="selct-itms" *ngIf="!isCustomerLogin">
+																		<input type="checkbox" class="chkOrderDetail" value="{{item.OrderDetailId}}">
+																		<i class="fa fa-check chcktck" aria-hidden="true"></i>
+																	</span>
+																	<span class="grpitems-imgtg">
+																		<a [href]=" item.AuctionImage | splitimage " data-fancybox *ngIf="item.AuctionImage">
+																			<img [src]=" item.AuctionImage | splitimage " [ngClass]=" { 'img-li-css' : isCustomerLogin }">
+																		</a>
+																		<a data-fancybox href="./assets/images/no-image.png" *ngIf="!item.AuctionImage">
+																			<img src="./assets/images/no-image.png" style="width: 90%; margin-bottom: 5px; " [ngClass]=" { 'img-li-css' : isCustomerLogin }">
+																		</a>
+																	</span>
+																	<div class="grpitems_hd">
+																		<h4 class="lost_txt"></h4>
+																		<h5>{{ order.Membership }} Membership </h5>
+																		<h5>{{ item.OrderDetailDisplayId }} </h5>
+																		
+																		
+																	</div>
+																</div>
+																<div class="group-items-dt-top-dtdv">
+																	<table>
+																		<tbody>
+																			<tr>
+																				<td>
+																					<span>Type</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.AuctionTypeName }}</strong>
+																				</td>
+																				<td>
+																					<span>Chassis No.</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.Chassis }}</strong>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<span>Make</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.Make }}</strong>
+																				</td>
+																				<td>
+																					<span>Mileage</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.Mileage }} KM</strong>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<span>Model</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.Model }}</strong>
+																				</td>
+																				<td>
+																					<span>Engine CC</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.EngineCC }} CC</strong>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td>
+																					<span>Year</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.Year }}</strong>
+																				</td>
+																				<td>
+																					<span>Color</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.Color }}</strong>
+																				</td>
+																			</tr>
+																			<tr *ngIf="item.AuctionTypeId != 5 && !isCustomerLogin">
+																				<td>
+																					<span>Auction House </span>
+																				</td>
+																				<td>
+																					<strong>{{item.AuctionHouse}}</strong>
+																				</td>
+																				<td>
+																					<span>Auction Date</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.AuctionDate | date : 'dd.MM.yyyy'}} {{ item.AuctionDate | customtime }}</strong> 
+																				</td>
+																			</tr>		
+																			<tr *ngIf="item.AuctionTypeId != 5 && !isCustomerLogin">
+																				<td>
+																					<span>
+																						LotNo
+																					</span>
+																				</td>
+																				<td>
+																					<strong>
+																						{{ item.LotNo || '--' }}
+																					</strong>
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</div>
+															</div>
+														</div>
+														<div class="group-items-dt-top-cen">
+															<div class="group-items-dt-top-cen-main">
+																<div>
+																	<table>
+																		<tbody>
+																			<tr *ngIf="!isCustomerLogin && item.AuctionTypeId != 5">
+																				<td>
+																					<span *ngIf="order.PricingTypeId != 2">Bid Price</span>
+																					<span *ngIf="order.PricingTypeId == 2">Max Bid Price</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.CurrencySymbol }} {{ item.BidPrice | roundoffhtmlnumber | number }}</strong>
+																				</td>
+																			</tr>
+																			<tr *ngIf="order.PricingTypeId != 2 && item.PurchaseAmount && item.PurchaseAmount != null && item.AuctionTypeId != 5 && !isCustomerLogin">
+																				<td>
+																					<span>Won Price</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.CurrencySymbol }} {{ item.PurchaseAmount | roundoffhtmlnumber | number }}</strong>
+																				</td>
+																			</tr>
+																			<tr *ngIf="!isCustomerLogin && item.AuctionTypeId != 5">
+																				<td>
+																					<span>Service Char.</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.CurrencySymbol }} {{ item.ServiceCharges | roundoffhtmlnumber | number }}</strong>
+																				</td>
+																			</tr>
+																			<tr *ngIf="order.PricingTypeId != 2 && item.InspectionCharges && item.InspectionCharges != null && !isCustomerLogin">
+																				<td>
+																					<span>Inspection Charges</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.CurrencySymbol }} {{ item.InspectionCharges | roundoffhtmlnumber | number }}</strong>
+																				</td>
+																			</tr>
+																			<tr *ngIf="order.PricingTypeId != 2 && item.AlterationCharges && item.AlterationCharges != null && !isCustomerLogin && item.AuctionTypeId != 5">
+																				<td>
+																					<span>Alteration Charges</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.CurrencySymbol }} {{ item.AlterationCharges | roundoffhtmlnumber | number }}</strong>
+																				</td>
+																			</tr>
+																			<tr *ngIf="order.PricingTypeId != 2 && item.OnePriceFee && item.OnePriceFee != null && !isCustomerLogin && item.AuctionTypeId != 5">
+																				<td>
+																					<span>One Price</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.CurrencySymbol }} {{ item.OnePriceFee | roundoffhtmlnumber | number }}</strong>
+																				</td>
+																			</tr>
+																			<tr *ngIf="item.NegotiationCharges && item.NegotiationCharges != null && item.AuctionTypeId != 5">
+																				<td>
+																					<span>Negotiation Char.</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.CurrencySymbol }} {{ item.NegotiationCharges | roundoffhtmlnumber | number }}</strong>
+																				</td>
+																			</tr>
+																			<tr *ngIf="item.FOB">
+																				<td>
+																					<span>FOB</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.CurrencySymbol }} {{ item.FOB | roundoffhtmlnumber | number }}</strong>
+																				</td>
+																			</tr>
+																	</table>
+																</div>
+																<div>
+																	<table>
+																		<tbody>
+																			<tr>
+																				<td>
+																					<span>Freight</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.CurrencySymbol }} {{ item.FreightCharges | roundoffhtmlnumber | number }}</strong>
+																				</td>
+																			</tr>
+																			<tr *ngIf="order.PricingTypeId != 2 && item.RikusoCharges && item.RikusoCharges != null && !isCustomerLogin && item.AuctionTypeId != 5">
+																				<td>
+																					<span>Rikuso</span>
+																				</td>
+																				<td>
+																					<strong>{{ item.CurrencySymbol }} {{ item.RikusoCharges | roundoffhtmlnumber | number }}</strong>
+																				</td>
+																			</tr>
+																			<tr >
+																				<td><span>Total Price (CNF)</span></td>
+																				<td><strong>{{ item.CurrencySymbol }} {{ item.CNF | roundoffhtmlnumber | number }} </strong></td>
+																			</tr>
+																			
+																
+																		</tbody>
+																	</table>
+																</div>
+															</div>
+														</div>
+														<div class="group-items-dt-top-rt">
+															<table>
+																<tbody>
+																	<tr *ngIf="item.PreConfirmedAmount">
+																		<td>
+																			<span>Preconfirm Amt.</span>
+																		</td>
+																		<td>
+																			<strong>{{ item.CurrencySymbol }} {{ item.PreConfirmedAmount | roundoffhtmlnumber | number }}
+																			</strong>
+																		</td>
+																	</tr>
+																	<tr *ngIf="item.ReceivedAmount">
+																		<td>
+																			<span>Received Amt.</span>
+																		</td>
+																		<td>
+																			<strong>{{ item.CurrencySymbol }} {{ item.ReceivedAmount | roundoffhtmlnumber | number }}</strong>
+																		</td>
+																	</tr>
+																	<tr *ngIf="item.RequestedUtilied">
+																		<td>
+																			<span>Requested Utiliz.</span>
+																		</td>
+																		<td>
+																			<strong>{{ item.CurrencySymbol }} {{ item.RequestedUtilied | roundoffhtmlnumber | number }}</strong>
+																		</td>
+																	</tr>
+																	<tr *ngIf="item.RemainingAmount">
+																		<td>
+																			<span>Remaining Amt.</span>
+																		</td>
+																		<td>
+																			<strong>{{ item.CurrencySymbol }} {{ item.RemainingAmount | roundoffhtmlnumber | number }}</strong>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
+													<div class="group-items-dt-bot-mn">
+														<div class="group-items-dt-bot-lft">
+															<span>Invoice Status:</span>
+															<strong [ngClass]="{'orange-color' : ( item.OrderDetailStatusId == 1000 || item.OrderDetailStatusId == 1020 || item.OrderDetailStatusId == 1040 || item.OrderDetailStatusId == 1001 || item.OrderDetailStatusId == 1006) , 
+																'green-color' : ( item.OrderDetailStatusId == 1080 || item.OrderDetailStatusId == 1090 || item.OrderDetailStatusId == 1100 || item.OrderDetailStatusId == 1110) , 
+																'red-color' : ( item.OrderDetailStatusId == 1120 || item.OrderDetailStatusId == 1130 || item.OrderDetailStatus == 1140 || item.OrderDetailStatusId == 1150 || item.OrderDetailStatusId == 1002 || item.OrderDetailStatusId == 1007) }">
+																{{ item.OrderDetailStatus }}
+															</strong>
+															<!-- <button class="email-inprocess" *ngIf="!isCustomerLogin && item.OrderDetailStatusId == 1000 || item.OrderDetailStatusId == 1020 || item.OrderDetailStatusId == 1040 || item.OrderDetailStatusId == 1001 || item.OrderDetailStatusId == 1006" (click)="sendEmail(order.OrderId)">Send Bid Approval Email </button> -->
+															<img class="process-loader" src="/assets/images/quotation-page-loader.gif" alt="" *ngIf="emailsendloader && item.OrderDetailStatusId == 1000 || item.OrderDetailStatusId == 1020 || item.OrderDetailStatusId == 1040 || item.OrderDetailStatusId == 1001 || item.OrderDetailStatusId == 1006">
+														</div>
+														<div class="group-items-dt-bot-rt">
+															<!-- <button class="bidbtn" data-fancybox data-src="#bidrqst-pop">Bid Detail</button>-->
+															<button class="condet" *ngIf="!isCustomerLogin && IsShipmentFormVisible(item.OrderDetailStatusId)" (click)="OpenConsigneePopup(item.OrderDetailId, order.CountryCode, order.Email, order.PhoneNumber, item.OrderDetailStatusId , item.ShipmentStatusId);">Consignee Detail</button>
+															<!--*ngIf="IsShipmentFormVisible()"-->
+															<button class="coudet" *ngIf="!isCustomerLogin && IsCourierForm(item.OrderDetailStatusId)" (click)="OpenCourierPopup(item.OrderDetailId, order.CountryCode, order.Email, order.PhoneNumber, item.OrderDetailStatusId, item.IsCourierVerified);"
+															 data-fancybox data-src="#courier-detail">Courier Detail</button>
+															<!--*ngIf="IsCourierForm() "-->
+															<!--<button class="sndimgsbtn" data-fancybox="" data-src="#upc-pay-page-4">Send Images</button> -->
+															<button class="sndimgsbtn requti" *ngIf="!isCustomerLogin && IsRequestUtilizationVisible(item.OrderDetailStatusId, item.RemainingAmount)" (click)="showUtilizationPopup(item.OrderDetailId)">Request Utilization</button>
+														</div>
+													</div>
+												</div>
+												<!-- TODO : For Loop End 2 -->
+											</div>
+											<!-- TODO : For Loop End 1 -->
+										</div>
+									</div>
+									<!-- TODO : For Loop End 0 -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row no-record-found" align="center" *ngIf="objMyOrders.length == 0 && objOrdersByAgent.length == 0">
+			No Record Found
+		</div>
+	</section>
+</div>
+
+<! ---  Popups Start --- !>
+<div class="upc-paypop upc-pay-page upc-pay-page-2 upc-pay-page-3" id="RequestUtilizationPop" style="display:none;">
+	<div class="dep-heading-pop">
+		<h3>Request Utilization</h3>
+	</div>
+	<div class="main-mid-div">
+		<div class="main-fund-summery">
+			<div class="fund-sum-box-1">
+				<h5>Fund Summary</h5>
+				<ul>
+					<li>Total Fund Amount</li>
+					<li>
+						<strong>{{ objUtilizationDetail.CurrencySymbol}} {{ objUtilizationDetail.TotalFundAmount | number }}
+						</strong>
+					</li>
+					<li>Utilized Fund Amount</li>
+					<li>
+						<strong>{{ objUtilizationDetail.CurrencySymbol}} {{ objUtilizationDetail.TotalUtilizedAmount | number
+							}}
+						</strong>
+					</li>
+					<li>Remaining Fund Amount</li>
+					<li>
+						<strong>{{ objUtilizationDetail.CurrencySymbol}} {{ objUtilizationDetail.TotalRemainingAmount | number
+							}}</strong>
+					</li>
+					<li class="reqstut-1">Request + Utilized</li>
+					<li class="reqstut-2">
+						<strong>{{ objUtilizationDetail.CurrencySymbol}} {{ objUtilizationDetail.RequestnUtilized | number }}
+						</strong>
+					</li>
+					<li>Request Limit</li>
+					<li>
+						<strong>{{ objUtilizationDetail.CurrencySymbol}} {{ objUtilizationDetail.RequestLimit | number }}</strong>
+					</li>
+				</ul>
+			</div>
+			<div class="fund-sum-box-2">
+				<h5>Invoice Pricing</h5>
+				<ul>
+					<li>Total Price (C&F)</li>
+					<li>
+						<strong>{{ objUtilizationDetail.CurrencySymbol}} {{ objUtilizationDetail.CNF | number }}</strong>
+					</li>
+					<li>Amount (Requested)</li>
+					<li>
+						<strong>{{ objUtilizationDetail.CurrencySymbol}} {{ objUtilizationDetail.RequestedUtilizationAmount | number }}</strong>
+					</li>
+					<li>Amount (Received)</li>
+					<li>
+						<strong>{{ objUtilizationDetail.CurrencySymbol}} {{ objUtilizationDetail.AmountReceived | number }}</strong>
+					</li>
+					<li>Amount (Remaining)</li>
+					<li>
+						<strong>{{ objUtilizationDetail.CurrencySymbol}} {{ objUtilizationDetail.CNF - objUtilizationDetail.RequestedUtilizationAmount
+							- objUtilizationDetail.AmountReceived | number}}</strong>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="am-fu-box-1">
+			<p>Request Amount</p>
+			<div class="amou-box-fu">
+				<select [(ngModel)]="objUtilizationRequest.EncryptedCurrencyId">
+					<option *ngFor="let item of objAvailableCurrency;" value="{{ item.EncryptedCurrencyId }}">{{ item.CurrencyCode }}</option>
+				</select>
+				<input OnlyNumber="true" type="text" placeholder="Enter Amount Here" value="" [(ngModel)]="objUtilizationRequest.Amount"
+				/>
+			</div>
+		</div>
+		<div class="main-disc-area">
+			<p>Description</p>
+			<textarea placeholder="Enter Description Here" [(ngModel)]="objUtilizationRequest.Description"></textarea>
+		</div>
+		<div class="upc-paypop-bot gene-can-funds">
+			<button class="nobtn" (click)="generateUtilizationRequest();">Send Request</button>
+		</div>
+	</div>
+	<button data-fancybox-close="" class="fancybox-close-small" title="Close"></button>
+</div>
+
+<div class="consigneedet-pop" id="consigneedet-pop" style="display:none;">
+	<div class="consigneedet-hd">
+		<h3>Consignee Detail</h3>
+	</div>
+	<div class="consigneedet-mn">
+		<div class="consigneedet-inner">
+			<div class="consigneedet-lft">
+				<div *ngIf="loadersliderOne" align="center" [style.margin-top.px]="30">
+					<img src="/assets/images/sml-loader.gif" alt="" [style.width.px]="25">
+				</div>
+				<div *ngIf="!loadersliderOne && !customerAddress.ConsigneeList || customerAddress.ConsigneeList.length == 0 ">
+					No Record Found
+				</div>
+				<div class="consigneedet-lft-mn" *ngIf="customerAddress && customerAddress.ConsigneeList && customerAddress.ConsigneeList.length">
+					<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" (afterChange)="afterChange($event)">
+						<div ngxSlickItem class="consigneedet-lft-inn" *ngFor="let item of customerAddress.ConsigneeList; let i = index;" class="slide">
+							<div class="consigneedet-lft-inn-mn">
+								<h3>Consignee Address</h3>
+								<table>
+									<tr>
+										<td>
+											<span>Name</span>
+										</td>
+										<td>
+											<strong>{{ item.Fullname }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Address</span>
+										</td>
+										<td>
+											<textarea style="height:50px;" rows="3" [disabled]="true">{{ item.Address }}</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Contact</span>
+										</td>
+										<td>
+											<strong>{{ item.Contact }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Email</span>
+										</td>
+										<td>
+											<strong class="emailid">{{ item.Email }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>City</span>
+										</td>
+										<td>
+											<strong>{{ item.City }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>State</span>
+										</td>
+										<td>
+											<strong>{{ item.State }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Zip</span>
+										</td>
+										<td>
+											<strong>{{ item.Zip }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Terminal</span>
+										</td>
+										<td>
+											<strong>{{ item.Terminal }}</strong>
+										</td>
+									</tr>
+								</table>
+								<div>
+									<button (click)="UseThisAddressForConsignee(item.Fullname,item.Address,item.Contact,item.Email,item.City,item.State,item.Zip,item.Terminal,item.CountryCode)">Use This Address</button>
+								</div>
+							</div>
+						</div>
+					</ngx-slick>
+
+				</div>
+			</div>
+			<div class="consigneedet-right">
+				<h3>Consignee Detail </h3>
+				<div>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<label>Name </label>
+									<input type="text" name="Fullname" [(ngModel)]="customerDetailsConsignee.Fullname" #Fullname="ngModel" class="consignee-name"
+									 value="" placeholder="Name" (focusout)="alphabeticCapsOn('full name')">
+								</td>
+								<td>
+									<label>City </label>
+									<input type="text" class="consignee-city" name="City" [(ngModel)]="customerDetailsConsignee.City" #City="ngModel" value=""
+									 placeholder="City Name" (focusout)="alphabeticCapsOn('city')">
+								</td>
+							</tr>
+							<tr>
+								<td class="phone-no consignee">
+									<label>Phone No. </label>
+									<input type="text" name="contact" [(ngModel)]="customerDetailsConsignee.Contact" #Contact="ngModel" maxlength="16" placeholder="Phone No."
+									 class="phone consignee-contact">
+								</td>
+								<td>
+									<label>State </label>
+									<input type="text" name="State" [(ngModel)]="customerDetailsConsignee.State" #State="ngModel" placeholder="State Name" (focusout)="alphabeticCapsOn('state')">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>Email Address </label>
+									<input type="text" class="consignee-email" [(ngModel)]="customerDetailsConsignee.Email" value="" placeholder="Email">
+								</td>
+								<td>
+									<div>
+										<div>
+											<label>Zip</label>
+											<input type="text" name="Zip" [(ngModel)]="customerDetailsConsignee.Zip" #Zip="ngModel" placeholder="Zip Code" (focusout)="alphabeticCapsOn('zipcode')">
+										</div>
+										<div>
+											<label>Terminal</label>
+											<input type="text" name="Terminal" [(ngModel)]="customerDetailsConsignee.Terminal" #Terminal="ngModel" placeholder="Type here" (focusout)="alphabeticCapsOn('terminal')">
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<label>Address</label>
+									<textarea rows="2" name="Address" [(ngModel)]="customerDetailsConsignee.Address" #Address="ngModel" class="consignee-address"
+									 placeholder="Address" (focusout)="alphabeticCapsOn('address')"></textarea>
+								</td>
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="consigneedet-inner">
+			<div class="consigneedet-lft">
+				<div *ngIf="loadersliderTwo" align="center" [style.margin-top.px]="20">
+					<img src="/assets/images/sml-loader.gif" alt="" [style.width.px]="25">
+				</div>
+				<div *ngIf="!loadersliderTwo && !customerAddress.NotifierList || customerAddress.NotifierList.length == 0">
+					No Record Found
+				</div>
+				<div class="consigneedet-lft-mn" *ngIf="customerAddress && customerAddress.NotifierList && customerAddress.NotifierList.length">
+					<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" (afterChange)="afterChange($event)">
+						<div ngxSlickItem *ngFor="let item of customerAddress.NotifierList; let i = index;" class="slide">
+							<div class="consigneedet-lft-inn-mn">
+								<h3>Notifier Address</h3>
+								<table>
+									<tr>
+										<td>
+											<span>Name</span>
+										</td>
+										<td>
+											<strong>{{ item.Fullname }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Address</span>
+										</td>
+										<td>
+											<textarea style="height:50px;" rows="3" [disabled]="true"> {{ item.Address }}</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Contact</span>
+										</td>
+										<td>
+											<strong>{{ item.Contact }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Email</span>
+										</td>
+										<td>
+											<strong class="emailid">{{ item.Email }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>City</span>
+										</td>
+										<td>
+											<strong>{{ item.City }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>State</span>
+										</td>
+										<td>
+											<strong>{{ item.State }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Zip</span>
+										</td>
+										<td>
+											<strong>{{ item.Zip }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Terminal</span>
+										</td>
+										<td>
+											<strong>{{ item.Terminal }}</strong>
+										</td>
+									</tr>
+								</table>
+								<div>
+									<button (click)="UseThisAddressForNotifier(item.Fullname,item.Address,item.Contact,item.Email,item.City,item.State,item.Zip,item.Terminal,item.CountryCode)">Use This Address</button>
+								</div>
+							</div>
+						</div>
+					</ngx-slick>
+
+				</div>
+			</div>
+			<div class="consigneedet-right">
+				<h3>Notifier Detail
+					<span>
+						<a (click)="SameAsConsignee()" href="javascript:;">Same as Consignee</a>
+					</span>
+				</h3>
+				<div>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<label>Name </label>
+									<input type="text" [(ngModel)]="customerDetailsNotifier.Fullname" value="" class="notifier-name" placeholder="Name">
+								</td>
+								<td>
+									<label>City </label>
+									<input type="text" class="notifier-city" [(ngModel)]="customerDetailsNotifier.City" value="" placeholder="City Name">
+								</td>
+							</tr>
+							<tr>
+								<td class="notifier">
+									<label>Phone No. </label>
+									<input type="text" maxlength="16" [(ngModel)]="customerDetailsNotifier.Contact" name="contact" placeholder="Phone No." class="phone">
+								</td>
+								<td>
+									<label>State </label>
+									<input type="text" [(ngModel)]="customerDetailsNotifier.State" value="" placeholder="State Name">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>Email Address </label>
+									<input type="text" class="notifier-email" [(ngModel)]="customerDetailsNotifier.Email" value="" placeholder="Email">
+								</td>
+								<td>
+									<label>Zip</label>
+									<input type="text" [(ngModel)]="customerDetailsNotifier.Zip" placeholder="Zip Code">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<label>Address</label>
+									<textarea rows="2" [(ngModel)]="customerDetailsNotifier.Address" class="notifier-address" placeholder="Address"></textarea>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="consigneedet-bot">
+		<div class="consigneedet-bot-rt">
+			<label>
+				<input type="checkbox" [(ngModel)]="customerDetailsNotifier.IsBlSurrender">
+				<i class="fa fa-check chcktck" aria-hidden="true"></i>
+				<span>Do you Want to Surrender BL</span>
+			</label>
+			<button style="display:none;" class="sndcustomer">Send to Customer</button>
+			<button (click)="InsertCustomerAddress();" *ngIf="IsSubmitEnabled" class="submtbtn submit-consignee">Submit</button>
+		</div>
+
+	</div>
+	<button data-fancybox-close="" class="fancybox-close-small" title="Close"></button>
+</div>
+
+<div class="consigneedet-pop" id="courier-detail" style="display:none;">
+	<div class="consigneedet-hd">
+		<h3>
+			<span>Courier Address </span>
+			<span style="margin-left:20%;color : #f8ab52 ; font-size:13px;">* Do not mention City, State or Country in the Address Box</span>
+		</h3>
+	</div>
+	<div class="consigneedet-mn">
+		<div class="consigneedet-inner">
+			<div class="consigneedet-lft">
+				<div *ngIf="loadersliderThree" align="center" [style.margin-top.px]="30">
+					<img src="/assets/images/sml-loader.gif" alt="" [style.width.px]="25">
+				</div>
+				<div *ngIf="!loadersliderThree && !customerAddress.CourierList || customerAddress.CourierList.length == 0 ">
+					No Record Found
+				</div>
+				<div class="consigneedet-lft-mn" *ngIf="customerAddress && customerAddress.CourierList && customerAddress.CourierList.length">
+					<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" (afterChange)="afterChange($event)">
+						<div ngxSlickItem class="consigneedet-lft-inn" *ngFor="let item of customerAddress.CourierList; let i = index;" class="slide">
+							<div class="consigneedet-lft-inn-mn">
+								<h3>Courier Address</h3>
+								<table>
+									<tr>
+										<td>
+											<span>Name</span>
+										</td>
+										<td>
+											<strong>{{ item.Fullname }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Address</span>
+										</td>
+										<td>
+											<textarea style="height:50px;" rows="3" [disabled]="true"> {{ item.Address }}</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Contact</span>
+										</td>
+										<td>
+											<strong>{{ item.Contact }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Email</span>
+										</td>
+										<td>
+											<strong class="emailid">{{ item.Email }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>City</span>
+										</td>
+										<td>
+											<strong>{{ item.City }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>State</span>
+										</td>
+										<td>
+											<strong>{{ item.State }}</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Zip</span>
+										</td>
+										<td>
+											<strong>{{ item.Zip }}</strong>
+										</td>
+									</tr>
+									<!-- <tr>
+										<td>
+											<span>Terminal</span>
+										</td>
+										<td>
+											<strong>{{ item.Terminal }}</strong>
+										</td>
+									</tr> -->
+								</table>
+								<div>
+									<button (click)="UseThisAddressForCourier(item.Fullname,item.Address,item.Contact,item.Email,item.City,item.State,item.Zip,item.Terminal,item.CountryCode)">Use This Address</button>
+								</div>
+							</div>
+						</div>
+					</ngx-slick>
+				</div>
+			</div>
+			<div class="consigneedet-right">
+				<h3>Courier Detail
+					<span class="verif">
+						<a href="javascript:;">
+							<i class="fa fa-check " aria-hidden="true"></i> Verified</a>
+					</span>
+					<span class="unverif">
+						<a href="javascript:;">
+							<i class="fa fa-times" aria-hidden="true"></i> Unverified</a>
+					</span>
+				</h3>
+				<div>
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<label>Name </label>
+									<input type="text" class="courier-name" [(ngModel)]="customerDetailsCourier.Fullname" value="" placeholder="Name">
+								</td>
+								<td>
+									<label>City </label>
+									<input type="text" value="" class="courier-city" [(ngModel)]="customerDetailsCourier.City" placeholder="City Name">
+								</td>
+							</tr>
+							<tr>
+								<td class="courier">
+									<label>Phone No. </label>
+									<input type="text" maxlength="16" name="contact" [(ngModel)]="customerDetailsCourier.Contact" class="phone">
+								</td>
+								<td>
+									<label>State </label>
+									<input type="text" value="" [(ngModel)]="customerDetailsCourier.State" placeholder="State Name">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>Email Address </label>
+									<input type="text" class="courier-email" value="" [(ngModel)]="customerDetailsCourier.Email" placeholder="Email">
+								</td>
+								<td>
+									<div>
+										<div>
+											<label>Zip</label>
+											<input type="text" class="courier-zip" [(ngModel)]="customerDetailsCourier.Zip" placeholder="Zip Code">
+										</div>
+										<!-- <div>
+											<label>Terminal</label>
+											<input type="text" [(ngModel)]="customerDetailsCourier.Terminal" placeholder="Type here">
+										</div> -->
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<label>Address</label>
+									<textarea rows="2" maxlength="70" class="courier-address" [(ngModel)]="customerDetailsCourier.Address" placeholder="Address"></textarea>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="consigneedet-bot">
+		<div class="consigneedet-bot-rt">
+			<!-- <span class="Error-Msg" style="color : red;"></span> -->
+			<button style="display:none;" class="sndcustomer">Send to Customer</button>
+			<button class="submtbtn courier-submit" (click)="InsertCourierAddress();" *ngIf="IsCourierEnabled" [disabled]="showsubmitbtn">Submit</button>
+		</div>
+
+	</div>
+</div>
+
+<div class="upc-paypop upc-pay-page upc-pay-page-2 upc-pay-page-3 upc-pay-page-4" id="upc-pay-page-4" style="display:none;">
+	<div class="dep-heading-pop">
+		<h3>Send Images</h3>
+	</div>
+	<div class="main-mid-div main-mid-div-2">
+		<div class="main-yard-images">
+			<h4>Yard Pictures</h4>
+			<span>Click on image to select</span>
+			<ul id="chs-sect-list-elem" class="yard-img-ul">
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+			</ul>
+			<ul class="yard-img-ul">
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+			</ul>
+		</div>
+		<div class="main-yard-images main-yard-images-aucti">
+			<h4>Auction House Picture</h4>
+			<ul class="yard-img-ul">
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+				<li>
+					<input type="checkbox" name="chassisrd" id="" />
+					<img src="/assets/images/slider-img.png" alt="">
+					<i class="fa fa-check"></i>
+				</li>
+			</ul>
+		</div>
+		<div class="main-yard-images main-yard-input-field">
+			<h4>Customer Link</h4>
+			<input type="text" placeholder="URL will appear here..." />
+		</div>
+		<div class="upc-paypop-bot gene-can-funds se-send">
+			<button class="nobtn se-send-1" onclick="$.fancybox.close();" data-fancybox="" data-src="#generate_bid_popup">Generate Link</button>
+			<button class="nobtn se-send-2">Send</button>
+		</div>
+	</div>
+</div>
+
+<div id="generate_bid_popup" class="OrderCreation em-compose-main em-compose-main-agent-bid">
+	<div class="em-compose1 em-compose1-agent-bid em-compose1-agent-gen">
+		<div class="popup_top">
+			<h3>Copy Link</h3>
+			<div class="agent-bid">
+				<ul>
+					<li>
+						<img src="../assets/images/ordr-detailcar04.jpg" alt="" />
+						<img src="../assets/images/ordr-detailcar04.jpg" alt="" />
+					</li>
+					<li>
+						<p>Make</p>
+						<span>Model</span>
+					</li>
+					<li>
+						<p>Toyota</p>
+						<span>Vitz</span>
+					</li>
+					<li>
+						<p>Year</p>
+						<span>Chassis</span>
+					</li>
+					<li>
+						<p>2014</p>
+						<span>NSP130</span>
+					</li>
+				</ul>
+			</div>
+			<div class="generate-bid-field">
+				<p>To Share this file with other, Copy and paste this link.</p>
+				<label>
+					<input type="text" name=""  />
+				</label>
+			</div>
+			<div class="agent-gen-btns">
+				<button class="gene-btn" id="" onclick="$.fancybox.close();">Cancel</button>
+				<button class="save-bid-btn copied" id="copy-bid-agent">Copy to Clipboard</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="submittedpop membplansubmit gold" id="finalpop" style="display:none;">
+	<h2>Utilization Request has been placed. </h2>
+	<button data-fancybox-close="" class="fancybox-close-small" title="Close"></button>
+</div>
+
+<input type="hidden" [(ngModel)]="OrderDetId">

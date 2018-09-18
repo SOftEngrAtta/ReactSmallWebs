@@ -1,0 +1,99 @@
+<app-header></app-header>
+<div class="container">
+  <div class="agent_s_sec_two bidding-page1">
+    <div class="row">
+      <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 resutl">
+        <h5>
+          <strong>My Favourite</strong>
+          <span>{{ favourites.length }}</span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="agent_s_sec_three my-favourite-page" *ngIf="favourites.length > 0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 ">
+        <div class="myfvpagedt hglt mfvsect">
+          <ul class="myfav-odhd">
+            <li>Vehicle Specification</li>
+            <li>Chassis</li>
+            <li>Mileage</li>
+            <li>Auction House</li>
+            <li>Lot Number</li>
+            <li>Engine CC</li>
+            <li>Start Price</li>
+            <li>Average Price</li>
+            <li>Finish Price</li>
+            <li></li>
+          </ul>
+          <ul class="myfav-oddet" *ngFor="let item of favourites; let i = index">
+            <li>
+              <div class="myfavcarimage">
+                <a data-fancybox [href]="item.CarImage | splitimage">
+                  <img style="height:46px;width:46px;" [src]=" item.CarImage | splitimage ">              
+                </a>
+              </div>
+              <div class="myfavcardet">
+                <h3 title="{{item.MakerName}}">{{item.MakerName}}</h3>
+                <ul>
+                  <li>
+                    <span>Model</span>
+                    <strong title="{{item.ModelName}}">{{item.ModelName}}</strong>
+                  </li>
+                  <li>
+                    <span>Year</span>
+                    <strong>
+                      <span>{{item.ModelYear}}</span>
+                    </strong>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <span>{{ item.ChassisNumber }}</span>
+            </li>
+            <li>
+              <span>{{ item.Mileage | number }} </span>
+              <span>KM</span>
+            </li>
+            <li>
+              <span title="{{item.AuctionHouseName}}">{{ item.AuctionHouseName }}</span>
+            </li>
+            <li>
+              <span>{{ item.LotNumber }}</span>
+            </li>
+            <li>
+              <span>{{ item.EngineCC }}</span>
+            </li>
+            <li>
+              <span>¥</span>
+              <span>{{ item.PriceStart | number }}</span>
+            </li>
+            <li>
+              <span>¥</span>
+              <span>{{ item.PriceAverage | number }}</span>
+            </li>
+            <li>
+              <span>¥</span>
+              <span>{{ item.PriceFinish | number }}</span>
+            </li>
+            <li>
+              <button class="viewunitbtn" (click)="viewfavcar(item)">View Unit</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="agent_s_sec_three my-favourite-page " *ngIf="favourites.length == 0">
+  <div class="container">
+    <div class="row" align="center">
+      No Record Found
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1705 @@
+<app-header></app-header>
+<div class="searchpan">
+  <div class="container">
+    <div class="tabs_panels home-tb">
+      <div class="row">
+
+        <div class="col-md-6 col-md-push-6 col-xs-12 text-right">
+          <div class="shipconfirm-det">
+            <table *ngIf="!openStockTabByCustomer && (!isCustomerLogin || _bidallow) ">
+              <tbody>
+                <tr>
+                  <td *ngIf="!isCustomerLogin">
+                    <label>View Type</label>
+                    <span *ngIf="new_order_or_quotation == 'quotation' "> Quotation</span>
+                    <span *ngIf="new_order_or_quotation == 'order' "> Order</span>
+                  </td>
+                  <td>
+                    <label>Shipment Country</label>
+                    <span *ngIf="customerShipmentDetail?.ShipmentCountry?.name">
+                      {{customerShipmentDetail?.ShipmentCountry?.name}}
+                      <div class="infic" [ngClass]="{'active' : cntryRstrtnPopUp}" (click)="cntryRstrtnPopUp = !cntryRstrtnPopUp" *ngIf="countryRestrictionDetail && countryRestrictionDetail.GeneralPolicy">
+                        <a href="javascript:;">
+                          <i class="fa fa-info" aria-hidden="true"></i>
+                        </a>
+                        <div class="inficbox">
+                          <div class="inficboxinner">
+                            {{ countryRestrictionDetail.GeneralPolicy }}
+                          </div>
+                        </div>
+                      </div>
+                    </span>
+                  </td>
+                  <td>
+                    <label>Shipment Port</label>
+                    <span *ngIf="customerShipmentDetail && customerShipmentDetail.ShipmentPort && customerShipmentDetail.ShipmentPort.name">{{customerShipmentDetail.ShipmentPort.name}}</span>
+                  </td>
+                  <td>
+                    <label>Shipment Type</label>
+                    <span *ngIf="customerShipmentDetail && customerShipmentDetail.ShipmentType && customerShipmentDetail.ShipmentType.name">{{customerShipmentDetail.ShipmentType.name}}</span>
+                  </td>
+                  <td>
+                    <label>Freight Type</label>
+                    <span *ngIf="customerShipmentDetail && customerShipmentDetail.ShipmentTerm && customerShipmentDetail.ShipmentTerm.name">{{customerShipmentDetail.ShipmentTerm.name}}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-6 col-md-pull-6 col-xs-12 ">
+          <ul class="tabs_panels_3 tabs_panels_list search-arean hglt twentytwo" id="tabs-search">
+            <li *ngIf="!openStockTabByCustomer">
+              <a href="javascript:;" id="tab-search1" (click)="searchCarData('Auction')" [ngClass]="{'active-tab-btn' : ( selectedsource == 'Auction' )}">
+                Auction Cars</a>
+            </li>
+            <li *ngIf="!openStockTabByCustomer">
+              <a href="javascript:;" id="tab-search2" (click)="searchCarData('OnePrice')" [ngClass]="{'active-tab-btn' : ( selectedsource == 'OnePrice' )}">
+                One Price</a>
+            </li>
+            <li *ngIf="!isCustomerLogin && !openStockTabByCustomer">
+              <a  href="javascript:;" id="tab-search3" (click)="searchCarData('Stock')" [ngClass]="{'active-tab-btn' : ( selectedsource == 'Stock' )}">Statistics</a>
+            </li>
+            <li *ngIf="new_order_or_quotation == 'order' || isCustomerLogin">
+              <a  href="javascript:;"  (click)="searchCarData('OwnStock')"  [ngClass]="{'active-tab-btn' : ( selectedsource == 'OwnStock' )}">Stock</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div *ngIf="!openStockTabByCustomer && selectedsource == 'Auction' " class="tab_content tabcontainer-search home-tb search-arean-container" id="tab-search1C"
+        style="display:none;">
+        <div class="row ">
+          <div class="col-md-12 dsinline hglt twentythree ">
+            <div class="top-srch-sect"></div>
+
+            <div class="srch-boxes auct-days-sect auct-days-sectn">
+              <div class="auct-days-sect-inner">
+                <div class="auct-days-sect-list">
+                  <ul class="auct-days-sect-list-sl">
+                    <li *ngFor="let day of days ; let i = index " (click)="selectunselectday(i,day)">
+                      <span>{{day.Title}}</span>
+                    </li>
+
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="srch-boxes make-sect-list ">
+              <h3 class="srcbox-hd srcbox-hd1">MAKE</h3>
+              <a class="srchmkic srchmkic1" href="javascript:;">
+                <i class="fa fa-search " aria-hidden="true"></i>
+              </a>
+              <div class="srchmkic-dv srchmkic-dv1">
+                <input type="text" placeholder="Search.." class="mkfind" id="myInput">
+                <a class="srchmkic-cls srchmkic-cls1" href="javascript:;">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="make-sect-list-inner scroll-style-2">
+                <ul class="make-sect-list-elem" id="myUL">
+                  <li *ngFor="let make of makes" (click)="selectMake(make)" [class.active]="selectedMake.Id == make.Id">
+                    <span>{{make.Title}}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="srch-boxes model-sect-list" *ngIf="selectedVehicleModel && selectedVehicleModel.Selected">
+              <h3 class="srcbox-hd srcbox-hd1">MODEL</h3>
+              <a class="srchmkic srchmdic" href="javascript:;">
+                <i class="fa fa-search " aria-hidden="true"></i>
+              </a>
+              <div class="srchmkic-dv srchmdic-dv">
+                <input type="text" id="mdlinput" (keyup)="searhData()"  placeholder="Search..">
+                <a class="srchmkic-cls srchmdic-cls" href="javascript:;">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="model-sect-list-inner scroll-style-2">
+                <ul id="model-sect-list-elem" class="model-sect-list-eleme">
+                  <li *ngFor="let vehicleModel of vehicleModels" (click)="selectVehicleModel(vehicleModel)" [class.active]="selectedVehicleModel.Id == vehicleModel.Id">
+                    <span>{{vehicleModel.Title}}</span>
+                    <span class="count-val">({{vehicleModel.Count}})</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="srch-boxes mdl-filter-sect" *ngIf="selectedVehicleModel && selectedVehicleModel.Selected">
+              <h3 class="srcbox-hd srcbox-hd1 mdltxt">AUTOZAM AZ-1 (19)</h3>
+              <div class="mdl-filter-sect-inner-mn">
+                <div class="mdl-filter-sect-inner">
+                  <textarea name="" id="" class="lotvals" placeholder="Type" [(ngModel)]="auctionSearch.Type"></textarea>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Lot number
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="javascript:;" (click)="auctionSearch.IsSelectedLotNumber = false">Chassis ID</a>
+                      </li>
+                      <li>
+                        <a href="javascript:;" (click)="auctionSearch.IsSelectedLotNumber = true">Lot number</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="src-selects-mn">
+                    <div class="src-selects src-selectsn">
+                      <div class="src-selects-year">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="src-selects-lbl">
+                                <label>Year</label>
+                              </td>
+                              <td>
+                                <select [(ngModel)]="auctionSearch.Year.Min" name="year-min">
+                                  <option *ngFor="let year of years  ; let i = index " [value]="year.Title">{{year.Title}}</option>
+                                </select>
+                              </td>
+                              <td>
+                                <select [(ngModel)]="auctionSearch.Year.Max" name="year-max">
+                                  <option *ngFor="let year of years; let i = index" [value]="year.Title">{{year.Title}}</option>
+                                </select>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="src-selects-year">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="src-selects-lbl src-selects-lblmlg">
+                                <label>Mileage</label>
+                              </td>
+                              <td class="mlg frst-tdy">
+                                <input type="text" [(ngModel)]="searchVehicle.Mileage.Min" [value]="searchVehicle.Mileage.Min" name="Mileage-Min" name="milage"
+                                  (keypress)="onlyNumberKey($event)">
+                              </td>
+                              <td class="mlg second-tdy">
+                                <input type="text" [(ngModel)]="searchVehicle.Mileage.Max" [value]="searchVehicle.Mileage.Max" name="Mileage-Max" name="milage"
+                                  (keypress)="onlyNumberKey($event)">
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="src-selects-year">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="src-selects-lbl">
+                                <label>V.CC</label>
+                              </td>
+                              <td class="frst-tdy">
+                                <input type="text" [(ngModel)]="searchVehicle.Engine.Min" [value]="searchVehicle.Engine.Min" name="Engine-Min" name="milage"
+                                  (keypress)="onlyNumberKey($event)">
+                              </td>
+                              <td class="second-tdy">
+                                <input type="text" [(ngModel)]="searchVehicle.Engine.Max" [value]="searchVehicle.Engine.Max" name="Engine-Max" name="milage"
+                                  (keypress)="onlyNumberKey($event)">
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="advsrc-btns">
+                  <button class="resetbutton" type="reset">Clear All</button>
+                  <button class="search-button search-button1" (click)="searchAuctioncars('0')">Search</button>
+                </div>
+              </div>
+            </div>
+            <div class="srch-boxes aucthouses-sect-list " *ngIf="selectedVehicleModel && selectedVehicleModel.Selected">
+              <h3 class="srcbox-hd srcbox-hd1">Act. House</h3>
+              <a class="srchmkic aucthouses-sect-list" href="javascript:;">
+                <i class="fa fa-search " aria-hidden="true"></i>
+              </a>
+              <div class="srchmkic-dv aucthouses-sect-list">
+                <input type="text" placeholder="Search.." (keyup)="searhData()" class="mkfind" id="auct-list-k">
+                <a class="srchmkic-cls aucthouses-sect-list" href="javascript:;">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="aucthouses-sect-list-inner scroll-style-2">
+                <ul class="aucthouses-sect-list-elem" id="auct-list">
+                  <li *ngFor="let auctionhouse of vehicleAuctionHouses" (click)="selectedauctionhouse(auctionhouse)">
+                    <input type="checkbox">
+                    <span>{{ auctionhouse.Title }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="srch-boxes dvrght dvrght1">
+              <div class="dvrght-inner">
+                <div class="srch-boxes chassis-sect chassis-sectn">
+                  <h3 class="srcbox-hd srcbox-hd1">CHASSIS</h3>
+                  <a class="srchmkic srchchassic" href="javascript:;">
+                    <i class="fa fa-search " aria-hidden="true"></i>
+                  </a>
+                  <div class="srchmkic-dv srchchassic-dv">
+                    <input id="chsinput" type="text" placeholder="Search.." class="mkfind">
+                    <a class="srchmkic-cls srchchassic-cls" href="javascript:;">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="chassis-sect-inner">
+                    <div class="chassis-lst scroll-style-2 ">
+                      <ul id="chs-sect-list-elem" class="chs-sect-list-eleme">
+                        <li *ngFor="let chassis of searchVehicle.Chassis">
+                          <label>
+                            <input type="checkbox" [(ngModel)]="chassis.Selected" name="chassisrd" id="">
+                            <i class="rdbtn"></i>
+                            <span>
+                              <span [innerHTML]="chassis.Id"></span> ({{chassis.Count}})</span>
+                          </label>
+                        </li>
+                      </ul>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="srch-boxes condition-sect condition-sectn">
+                  <h3 class="srcbox-hd srcbox-hd1 ">CONDITION</h3>
+                  <a class="srchmkic" href="javascript:;">
+                    <i class="fa fa-search " aria-hidden="true"></i>
+                  </a>
+                  <div class="srchmkic-dv">
+                    <input type="text" id="condlinput" placeholder="Search.." class="mkfind">
+                    <a class="srchmkic-cls" href="javascript:;">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="condition-sect-inner">
+                    <div class="condition-list scroll-style-2">
+                      <ul class="condition-sect-inner-lst">
+                        <li *ngFor="let condition of conditions">
+                          <label>
+                            <input type="checkbox" [(ngModel)]="condition.Selected" name="conditrd" id="">
+                            <i class="rdbtn"></i>
+                            <span [innerHTML]="condition.Title"></span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="srch-boxes colors-sect colors-sectn">
+                  <h3 class="srcbox-hd srcbox-hd1 nobrdrbot">COLORS</h3>
+                  <a class="srchmkic" href="javascript:;">
+                    <i class="fa fa-search " aria-hidden="true"></i>
+                  </a>
+                  <div class="srchmkic-dv">
+                    <input type="text" id="colorslinput" placeholder="Search here.." class="mkfind">
+                    <a class="srchmkic-cls" href="javascript:;">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="colors-sect-inner">
+                    <div class="colors-sect-lst scroll-style-2">
+                      <ul class="colors-sect-lst-in">
+                        <li *ngFor="let color of this.searchVehicle.Colors">
+                          <label>
+                            <input type="checkbox" [(ngModel)]="color.Selected" name="colorsrd" id="">
+                            <i class="rdbtn"></i>
+                            <span>{{color.Title}}</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="srch-boxes status-gear-sect-src status-sect-src">
+                  <div class="status-inner-sect">
+                    <h3 class="srcbox-hd srcbox-hd1 gearhd">STATUS</h3>
+                    <div class="status-inner-sect-list">
+                      <ul *ngFor="let status of statuses">
+                        <li>
+                          <label>
+                            <input type="checkbox" [(ngModel)]="status.Selected" name="statrd" id="">
+                            <i class="rdbtn"></i>
+                            <span>{{status.Title}}</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="srch-boxes status-gear-sect-src gear-sect-src1">
+                  <div class="gear-inner-sect">
+                    <h3 class="srcbox-hd srcbox-hd1 gearhd">Gearbox</h3>
+                    <div class="gear-inner-sect-list">
+                      <div class="gear-inner-sect-list scroll-style-2">
+                        <ul class="">
+                          <li *ngFor="let transmission of transmissions">
+                            <label>
+                              <input type="checkbox" [(ngModel)]="transmission.Selected" name="colorsrd" id="">
+                              <i class="rdbtn"></i>
+                              <span [innerHtml]="transmission.Title"></span>
+                            </label>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!openStockTabByCustomer && selectedsource == 'OnePrice' " class="tab_content tabcontainer-search home-tb search-arean-container" id="tab-search2C"
+        style="display:none;">
+        <div class="row ">
+          <div class="col-md-12 dsinline hglt twentythree ">
+            <div class="top-srch-sect"></div>
+
+            <div class="srch-boxes auct-days-sect auct-days-sectn">
+              <div class="auct-days-sect-inner">
+                <div class="auct-days-sect-list">
+                  <ul class="auct-days-sect-list-sl">
+                    <li *ngFor="let day of days ; let i = index " (click)="selectunselectday(i,day)">
+                      <span>{{day.Title}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="srch-boxes make-sect-list ">
+              <h3 class="srcbox-hd srcbox-hd1">MAKE</h3>
+              <a class="srchmkic srchmkic1" href="javascript:;">
+                <i class="fa fa-search " aria-hidden="true"></i>
+              </a>
+              <div class="srchmkic-dv srchmkic-dv1">
+                <input type="text" placeholder="Search.." class="mkfind" id="myInput1">
+                <a class="srchmkic-cls srchmkic-cls1" href="javascript:;">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="make-sect-list-inner scroll-style-2">
+                <ul class="make-sect-list-elem" id="myUL">
+                  <li *ngFor="let make1 of makes" (click)="selectMake(make1)" [class.active]="selectedMake.Id == make1.Id">
+                    <span>{{make1.Title}}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="srch-boxes model-sect-list" *ngIf="selectedVehicleModel && selectedVehicleModel.Selected">
+              <h3 class="srcbox-hd srcbox-hd1">MODEL</h3>
+              <a class="srchmkic srchmdic" href="javascript:;">
+                <i class="fa fa-search " aria-hidden="true"></i>
+              </a>
+              <div class="srchmkic-dv srchmdic-dv">
+                <input type="text" id="minput4" (keyup)="searhData()" placeholder="Search..">
+                <a class="srchmkic-cls srchmdic-cls" href="javascript:;">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="model-sect-list-inner scroll-style-2">
+                <ul id="model-sect-list-elem" class="model-sect-list-eleme">
+                  <li *ngFor="let vehicleModel1 of vehicleModels" (click)="selectVehicleModel(vehicleModel1)" [class.active]="selectedVehicleModel.Id == vehicleModel1.Id">
+                    <span class="title">{{vehicleModel1.Title}}</span>
+                    <span class="count-val">({{vehicleModel1.Count}})</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="srch-boxes mdl-filter-sect" *ngIf="selectedVehicleModel && selectedVehicleModel.Selected">
+              <h3 class="srcbox-hd srcbox-hd1 mdltxt">AUTOZAM AZ-1 (19)</h3>
+              <div class="mdl-filter-sect-inner-mn">
+                <div class="mdl-filter-sect-inner">
+                  <textarea name="" id="" class="lotvals" placeholder="Type" [(ngModel)]="auctionSearch.Type"></textarea>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Lot number
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="javascript:;" (click)="auctionSearch.IsSelectedLotNumber = false">Chassis ID</a>
+                      </li>
+                      <li>
+                        <a href="javascript:;" (click)="auctionSearch.IsSelectedLotNumber = true">Lot number</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="src-selects-mn">
+
+                    <div class="src-selects src-selectsn">
+                      <div class="src-selects-year">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="src-selects-lbl">
+                                <label>Year</label>
+                              </td>
+                              <td class="frst-tdy">
+                                <select [(ngModel)]="auctionSearch.Year.Min" name="year-min">
+                                  <option *ngFor="let year of years; let i = index" [value]="year.Title">{{year.Title}}</option>
+                                </select>
+                              </td>
+                              <td class="second-tdy">
+                                <select [(ngModel)]="auctionSearch.Year.Max" name="year-max">
+                                  <option *ngFor="let year of years; let i = index" [value]="year.Title">{{year.Title}}</option>
+                                </select>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="src-selects-year">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="src-selects-lbl src-selects-lblmlg">
+                                <label>Mileage</label>
+                              </td>
+                              <td class="mlg frst-tdy">
+                                <input type="text" [(ngModel)]="searchVehicle.Mileage.Min" [value]="searchVehicle.Mileage.Min" name="Mileage-Min" name="milage"
+                                  (keypress)="onlyNumberKey($event)">
+                              </td>
+                              <td class="mlg second-tdy">
+                                <input type="text" [(ngModel)]="searchVehicle.Mileage.Max" [value]="searchVehicle.Mileage.Max" name="Mileage-Max" name="milage"
+                                  (keypress)="onlyNumberKey($event)">
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="src-selects-year">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="src-selects-lbl">
+                                <label>V.CC</label>
+                              </td>
+                              <td class="frst-tdy">
+                                <input type="text" [(ngModel)]="searchVehicle.Engine.Min" [value]="searchVehicle.Engine.Min" name="Engine-Min" name="milage"
+                                  (keypress)="onlyNumberKey($event)">
+                              </td>
+                              <td class="second-tdy">
+                                <input type="text" [(ngModel)]="searchVehicle.Engine.Max" [value]="searchVehicle.Engine.Max" name="Engine-Max" name="milage"
+                                  (keypress)="onlyNumberKey($event)">
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="advsrc-btns">
+                  <button class="resetbutton" type="reset">Clear All</button>
+
+                  <button class="search-button search-button1" (click)="searchAuctioncars('0')">Search</button>
+                </div>
+              </div>
+            </div>
+            <div class="srch-boxes aucthouses-sect-list ">
+              <h3 class="srcbox-hd srcbox-hd1">Act. House</h3>
+              <a class="srchmkic aucthouses-sect-list" href="javascript:;">
+                <i class="fa fa-search " aria-hidden="true"></i>
+              </a>
+              <div class="srchmkic-dv aucthouses-sect-list">
+                <input type="text" placeholder="Search.." (keyup)="searhData()" class="mkfind" id="auct-list-k1">
+                <a class="srchmkic-cls aucthouses-sect-list" href="javascript:;">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="aucthouses-sect-list-inner scroll-style-2">
+                <ul class="aucthouses-sect-list-elem" id="auct-list">
+                  <li *ngFor="let auctionhouse of vehicleAuctionHouses" (click)="selectedauctionhouse(auctionhouse)">
+                    <input type="checkbox">
+                    <span>{{ auctionhouse.Title }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="srch-boxes dvrght dvrght1">
+              <div class="dvrght-inner">
+                <div class="srch-boxes chassis-sect chassis-sectn">
+                  <h3 class="srcbox-hd srcbox-hd1">CHASSIS</h3>
+                  <a class="srchmkic srchchassic" href="javascript:;">
+                    <i class="fa fa-search " aria-hidden="true"></i>
+                  </a>
+                  <div class="srchmkic-dv srchchassic-dv">
+                    <input id="chsinput1" type="text" placeholder="Search.." class="mkfind">
+                    <a class="srchmkic-cls srchchassic-cls" href="javascript:;">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="chassis-sect-inner">
+                    <div class="chassis-lst scroll-style-2 ">
+                      <ul id="chs-sect-list-elem" class="chs-sect-list-eleme">
+                        <li *ngFor="let chassis of searchVehicle.Chassis">
+                          <label>
+                            <input type="checkbox" [(ngModel)]="chassis.Selected" name="chassisrd" id="">
+                            <i class="rdbtn"></i>
+                            <span>{{chassis.Id}} ({{chassis.Count}})</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="srch-boxes condition-sect condition-sectn">
+                  <h3 class="srcbox-hd srcbox-hd1 ">CONDITION</h3>
+                  <a class="srchmkic" href="javascript:;">
+                    <i class="fa fa-search " aria-hidden="true"></i>
+                  </a>
+                  <div class="srchmkic-dv">
+                    <input type="text" id="condlinput1" placeholder="Search.." class="mkfind">
+                    <a class="srchmkic-cls" href="javascript:;">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="condition-sect-inner">
+                    <div class="condition-list scroll-style-2">
+                      <ul class="condition-sect-inner-lst">
+                        <li *ngFor="let condition of conditions">
+                          <label>
+                            <input type="checkbox" [(ngModel)]="condition.Selected" name="conditrd" id="">
+                            <i class="rdbtn"></i>
+                            <span>{{condition.Title}}</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="srch-boxes colors-sect colors-sectn">
+                  <h3 class="srcbox-hd srcbox-hd1 nobrdrbot">COLORS</h3>
+                  <a class="srchmkic" href="javascript:;">
+                    <i class="fa fa-search " aria-hidden="true"></i>
+                  </a>
+                  <div class="srchmkic-dv">
+                    <input type="text" id="colorslinput1" placeholder="Search here.." class="mkfind">
+                    <a class="srchmkic-cls" href="javascript:;">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="colors-sect-inner">
+                    <div class="colors-sect-lst scroll-style-2">
+                      <ul class="colors-sect-lst-in">
+                        <li *ngFor="let color1 of this.searchVehicle.Colors">
+                          <label>
+                            <input type="checkbox" [(ngModel)]="color1.Selected" name="colorsrd" id="">
+                            <i class="rdbtn"></i>
+                            <span>{{color1.Title}}</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="srch-boxes status-gear-sect-src status-sect-src">
+                  <div class="status-inner-sect">
+                    <h3 class="srcbox-hd srcbox-hd1 gearhd">Status</h3>
+                    <div class="status-inner-sect-list">
+                      <ul *ngFor="let status of statuses">
+                        <li>
+                          <label>
+                            <input type="checkbox" [(ngModel)]="status.Selected" name="statrd" id="">
+                            <i class="rdbtn"></i>
+                            <span>{{status.Title}}</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="srch-boxes status-gear-sect-src gear-sect-src1">
+                  <h3 class="srcbox-hd srcbox-hd1 gearhd">Gearbox</h3>
+                  <div class="gear-inner-sect-list">
+                    <div class="gear-inner-sect-list scroll-style-2">
+                      <ul class="">
+                        <li *ngFor="let transmission of transmissions">
+                          <label>
+                            <input type="checkbox" [(ngModel)]="transmission.Selected" name="colorsrd" id="">
+                            <i class="rdbtn"></i>
+                            <span [innerHtml]="transmission.Title"></span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!openStockTabByCustomer && selectedsource == 'Stock' " class="tab_content tabcontainer-search home-tb search-arean-container" id="tab-search3C">
+        <div class="row ">
+          <div class="col-md-12 dsinline hglt twentythree">
+            <div class="top-srch-sect"></div>
+            <div class="srch-boxes month-sect month-sect1">
+              <h3 class="srcbox-hd">Month</h3>
+              <div class="month-list-sel scroll-style-2">
+                <ul>
+                  <li *ngFor="let month of months" (click)="selectmonth(month)">
+                    <span>
+                      {{ month.Title }}
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="srch-boxes make-sect-list make-sect-listn make-sect-listn1">
+              <h3 class="srcbox-hd srcbox-hd1">MAKE</h3>
+              <a class="srchmkic srchmkic1" href="javascript:;">
+                <i class="fa fa-search " aria-hidden="true"></i>
+              </a>
+              <div class="srchmkic-dv srchmkic-dv1">
+                <input type="text" placeholder="Search.." class="mkfind" id="myInput2">
+                <a class="srchmkic-cls srchmkic-cls1" href="javascript:;">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="make-sect-list-inner scroll-style-2">
+                <ul class="make-sect-list-elem" id="myUL">
+                  <li *ngFor="let make1 of makes" (click)="selectMake(make1)" [class.active]="selectedMake.Id == make1.Id">
+                    <span>{{make1.Title}}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- <div class="srch-boxes model-sect-list" *ngIf="selectedVehicleModel && selectedVehicleModel.Selected">
+                <h3 class="srcbox-hd srcbox-hd1">MODEL</h3>
+                <a class="srchmkic srchmdic" href="javascript:;">
+                  <i class="fa fa-search " aria-hidden="true"></i>
+                </a>
+                <div class="srchmkic-dv srchmdic-dv">
+                  <input type="text" id="minput4" (keyup)="searhData()" placeholder="Search..">
+                  <a class="srchmkic-cls srchmdic-cls" href="javascript:;">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </a>
+                </div>
+                <div class="model-sect-list-inner scroll-style-2">
+                  <ul id="model-sect-list-elem" class="model-sect-list-eleme">
+                    <li *ngFor="let vehicleModel1 of vehicleModels" (click)="selectVehicleModel(vehicleModel1)" [class.active]="selectedVehicleModel.Id == vehicleModel1.Id">
+                      <span class="title">{{vehicleModel1.Title}}</span>
+                      <span class="count-val">({{vehicleModel1.Count}})</span>
+                    </li>
+                  </ul>
+                </div>
+              </div> -->
+
+            <div class="srch-boxes model-sect-list" *ngIf="selectedMake && selectedMake.Selected && vehicleModels.length > 0">
+              <h3 class="srcbox-hd srcbox-hd1">MODEL</h3>
+              <a class="srchmkic srchmdic" href="javascript:;">
+                <i class="fa fa-search " aria-hidden="true"></i>
+              </a>
+              <div class="srchmkic-dv srchmdic-dv">
+                <input type="text" id="mdlinput2" (keyup)="searhData()" placeholder="Search..">
+                <a class="srchmkic-cls srchmdic-cls" href="javascript:;">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="model-sect-list-inner scroll-style-2">
+                <ul id="model-sect-list-elem" class="model-sect-list-eleme">
+                  <li *ngFor="let vehicleModel1 of vehicleModels" (click)="selectVehicleModel(vehicleModel1)" [class.active]="selectedVehicleModel.Id == vehicleModel1.Id">
+                    <span>{{vehicleModel1.Title}}</span>
+                    <span class="count-val">({{vehicleModel1.Count}})</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="srch-boxes mdl-filter-sect mdl-filter-sect1 mdl-filter-sect2" *ngIf="selectedVehicleModel && selectedVehicleModel.Selected">
+              <h3 class="srcbox-hd srcbox-hd1 mdltxt">AUTOZAM AZ-1 (19)</h3>
+              <div class="mdl-filter-sect-inner-mn">
+                <div class="mdl-filter-sect-inner">
+                  <textarea name="" id="" class="lotvals" placeholder="Type" [(ngModel)]="auctionSearch.Type"></textarea>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Lot number
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="javascript:;" (click)="auctionSearch.IsSelectedLotNumber = false">Chassis ID</a>
+                      </li>
+                      <li>
+                        <a href="javascript:;" (click)="auctionSearch.IsSelectedLotNumber = true">Lot number</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="src-selects-mn">
+                    <div class="src-selects src-selectsn">
+                      <div class="src-selects-year">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="src-selects-lbl">
+                                <label>Year</label>
+                              </td>
+                              <td class="frst-tdy">
+                                <select [(ngModel)]="auctionSearch.Year.Min" name="year-min">
+                                  <option *ngFor="let year of years; let i = index" [value]="year.Title">{{year.Title}}</option>
+                                </select>
+                              </td>
+                              <td class="second-tdy">
+                                <select [(ngModel)]="auctionSearch.Year.Max" name="year-max">
+                                  <option *ngFor="let year of years; let i = index" [value]="year.Title">{{year.Title}}</option>
+                                </select>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="src-selects-year">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="src-selects-lbl src-selects-lblmlg">
+                                <label>Mileage</label>
+                              </td>
+                              <td class="mlg frst-tdy">
+                                <input type="text" [(ngModel)]="searchVehicle.Mileage.Min" [value]="searchVehicle.Mileage.Min" name="Mileage-Min" name="milage"
+                                  (keypress)="onlyNumberKey($event)">
+                              </td>
+                              <td class="mlg second-tdy">
+                                <input type="text" [(ngModel)]="searchVehicle.Mileage.Max" [value]="searchVehicle.Mileage.Max" name="Mileage-Max" name="milage"
+                                  (keypress)="onlyNumberKey($event)">
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="src-selects-year">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="src-selects-lbl">
+                                <label>V.CC</label>
+                              </td>
+                              <td class="frst-tdy">
+                                <input type="text" [(ngModel)]="searchVehicle.Engine.Min" [value]="searchVehicle.Engine.Min" name="Engine-Min" name="milage"
+                                  (keypress)="onlyNumberKey($event)">
+                              </td>
+                              <td class="second-tdy">
+                                <input type="text" [(ngModel)]="searchVehicle.Engine.Max" [value]="searchVehicle.Engine.Max" name="Engine-Max" name="milage"
+                                  (keypress)="onlyNumberKey($event)">
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+                <div class="advsrc-btns">
+                  <button class="resetbutton" type="reset">Clear All</button>
+                  <button class="search-button search-button1" (click)="searchAuctioncars('0')">Search</button>
+                </div>
+              </div>
+            </div>
+            <div class="srch-boxes aucthouses-sect-list ">
+              <h3 class="srcbox-hd srcbox-hd1">Act. House</h3>
+              <a class="srchmkic aucthouses-sect-list" href="javascript:;">
+                <i class="fa fa-search " aria-hidden="true"></i>
+              </a>
+              <div class="srchmkic-dv aucthouses-sect-list">
+                <input type="text" placeholder="Search.." (keyup)="searhData()" class="mkfind" id="auct-list-k2">
+                <a class="srchmkic-cls aucthouses-sect-list" href="javascript:;">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="aucthouses-sect-list-inner scroll-style-2">
+                <ul class="aucthouses-sect-list-elem" id="auct-list">
+                  <li *ngFor="let auctionhouse of vehicleAuctionHouses" (click)="selectedauctionhouse(auctionhouse)">
+                    <input type="checkbox">
+                    <span>{{ auctionhouse.Title }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="srch-boxes dvrght" *ngIf="selectedVehicleModel && selectedVehicleModel.Selected">
+              <div class="dvrght-inner">
+                <div class="srch-boxes chassis-sect chassis-sectn">
+                  <h3 class="srcbox-hd srcbox-hd1">CHASSIS</h3>
+                  <a class="srchmkic srchchassic" href="javascript:;">
+                    <i class="fa fa-search " aria-hidden="true"></i>
+                  </a>
+                  <div class="srchmkic-dv srchchassic-dv">
+                    <input id="chsinput2" type="text" placeholder="Search.." class="mkfind">
+                    <a class="srchmkic-cls srchchassic-cls" href="javascript:;">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="chassis-sect-inner">
+                    <div class="chassis-lst scroll-style-2 ">
+                      <ul id="chs-sect-list-elem" class="chs-sect-list-eleme">
+                        <li *ngFor="let chassis of searchVehicle.Chassis">
+                          <label>
+                            <input type="checkbox" [(ngModel)]="chassis.Selected" name="chassisrd" id="">
+                            <i class="rdbtn"></i>
+                            <span>{{chassis.Id}} ({{chassis.Count}})</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="srch-boxes condition-sect condition-sectn">
+                  <h3 class="srcbox-hd srcbox-hd1 ">CONDITION</h3>
+                  <a class="srchmkic" href="javascript:;">
+                    <i class="fa fa-search " aria-hidden="true"></i>
+                  </a>
+                  <div class="srchmkic-dv">
+                    <input type="text" id="condlinput2" placeholder="Search.." class="mkfind">
+                    <a class="srchmkic-cls" href="javascript:;">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="condition-sect-inner">
+                    <div class="condition-list scroll-style-2">
+                      <ul class="condition-sect-inner-lst">
+                        <li *ngFor="let condition of conditions">
+                          <label>
+                            <input type="checkbox" [(ngModel)]="condition.Selected" name="conditrd" id="">
+                            <i class="rdbtn"></i>
+                            <span>{{condition.Title}}</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="srch-boxes colors-sect colors-sectn">
+                  <h3 class="srcbox-hd srcbox-hd1 nobrdrbot">COLORS</h3>
+                  <a class="srchmkic" href="javascript:;">
+                    <i class="fa fa-search " aria-hidden="true"></i>
+                  </a>
+                  <div class="srchmkic-dv">
+                    <input type="text" id="colorslinput2" placeholder="Search here.." class="mkfind">
+                    <a class="srchmkic-cls" href="javascript:;">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="colors-sect-inner">
+                    <div class="colors-sect-lst scroll-style-2">
+                      <ul class="colors-sect-lst-in">
+                        <li *ngFor="let color1 of this.searchVehicle.Colors">
+                          <label>
+                            <input type="checkbox" [(ngModel)]="color1.Selected" name="colorsrd" id="">
+                            <i class="rdbtn"></i>
+                            <span>{{color1.Title}}</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="srch-boxes status-gear-sect-src status-sect-src">
+                  <div class="status-inner-sect">
+                    <h3 class="srcbox-hd srcbox-hd1 gearhd">Status</h3>
+                    <div class="status-inner-sect-list">
+                      <ul *ngFor="let status of statuses">
+                        <li>
+                          <label>
+                            <input type="checkbox" [(ngModel)]="status.Selected" name="statrd" id="">
+                            <i class="rdbtn"></i>
+                            <span>{{status.Title}}</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="srch-boxes status-gear-sect-src gear-sect-src1">
+                  <h3 class="srcbox-hd srcbox-hd1 gearhd">Gearbox</h3>
+                  <div class="gear-inner-sect-list">
+                    <div class="gear-inner-sect-list scroll-style-2">
+                      <ul class="">
+                        <li *ngFor="let transmission of transmissions">
+                          <label>
+                            <input type="checkbox" [(ngModel)]="transmission.Selected" name="colorsrd" id="">
+                            <i class="rdbtn"></i>
+                            <span [innerHtml]="transmission.Title"></span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Stock portion -->
+      <section class="search-areamn" *ngIf=" selectedsource == 'OwnStock' " >
+            <div class="container">
+                <div class="toptb-sect">
+                    <div class="row">
+                        <div class="advance-search-box">
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-selct-box">
+                                  <select class="valid-check" id="ddlMake" [(ngModel)]="selectedVehicleMake.Id" (change)="getModels()">
+                                      <option selected disabled value="0">Select Make</option>
+                                      <option *ngFor="let make of makes" [ngValue]="make.Id">{{make.Title}}</option>
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-selct-box">
+                                    <select class="valid-check" id="ddlModel" [(ngModel)]="selectedVehicleModel.Id" (change)="onModelChange(selectedVehicleModel.Id)">
+                                        <option selected value="0">Select Model</option>
+                                        <option *ngFor="let model of models" [ngValue]="model.id">{{model.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-selct-box dual">
+                                    <select name="" id="" [(ngModel)]="_minYear" >
+                                        <option value="0">Min Year</option>
+                                        <option *ngFor="let year of displayYearsMont.year" [ngValue]="year">{{ year }}</option>
+                                    </select>
+                                    <select name="" id="" [(ngModel)]="_maxYear" >
+                                        <option value="0">Max Year</option>
+                                        <option *ngFor="let year of displayYearsMont.year" [ngValue]="year">{{ year }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-selct-box dual">
+                                    <input type="number" placeholder="Min Price" [(ngModel)]="_minPrice" class="price-min-max">
+                                  <input type="number" placeholder="Max Price" [(ngModel)]="_maxPrice" class="price-min-max">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-selct-box dual">
+                                    <input type="number" placeholder="Min Engine CC" [(ngModel)]="_minEngineCC" class="price-min-max">
+                                    <input type="number" placeholder="Max Engine CC" [(ngModel)]="_maxEngineCC" class="price-min-max">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-selct-box dual">
+                                  <input type="number" placeholder="Min Mileage" [(ngModel)]="_minMileage" class="price-min-max">
+                                  <input type="number" placeholder="Max Mileage" [(ngModel)]="_maxMileage" class="price-min-max">  
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-selct-box">
+                                    <select name="" id="" [(ngModel)]="_selectedTransmission">
+                                        <option selected value="0">Select Body Type</option>
+                                        <option *ngFor="let item of _bodyType" [ngValue]="item.Id" >{{ item.Title}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-selct-box">
+                                    <select name="" id="ddlSteering">
+                                        <option value="0">Select Steering</option>
+                                        <option value="1">Right Hand Drive</option>
+                                        <option value="2">Left Hand Drive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6" style="display: none;">
+                                <div class="search-selct-box">
+                                    <select name="" id="">
+                                        <option value="">Select Fuel</option>
+                                    </select>
+                                </div>
+                            </div>
+                           
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-selct-box">
+                                    <select name="" id="ddlColor" [(ngModel)]="_selectedColor">
+                                        <option selected value="0">Select Color</option>
+                                        <option *ngFor="let item of _colors" [ngValue]="item.Id" >{{ item.Title}}</option>
+                                    </select>  
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-selct-box">
+                                    <select name="" id="ddlDriveType" >
+                                        <option value="0">Select Drive</option>
+                                        <option value="1">2 WD</option>
+                                        <option value="2">4 WD</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-selct-box">
+                                    <select name="" id="ddlDoor">
+                                        <option value="0">Any Door</option>
+                                        <option value="1">2</option>
+                                        <option value="2">3</option>
+                                        <option value="3">4</option>
+                                        <option value="4">5</option>
+                                        <option value="5">7</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="search-selct-box" *ngIf="_customerShipmentDetailStock && _customerShipmentDetailStock.ShipmentCountry">
+                                  <select class="sel-invc" id="ddlCountry" [(ngModel)]="_customerShipmentDetailStock.ShipmentCountry.id">
+                                    <option [ngValue]="-1" [selected]="true" value="-1">Select Shipment Country</option>
+                                    <option *ngFor="let country of shipmentDetail.country" [ngValue]="country.id">{{country.name}}</option>
+                                  </select>
+                                </div>
+                                <div class="search-selct-box" *ngIf="_customerShipmentDetailStock && !_customerShipmentDetailStock.ShipmentCountry">
+                                  <select class="sel-invc" id="ddlCountry" [(ngModel)]="customerCountryId">
+                                    <option [ngValue]="-1" [selected]="true" value="-1">Select Shipment Country</option>
+                                    <option *ngFor="let country of shipmentDetail.country" [ngValue]="country.id">{{country.name}}</option>
+                                  </select>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <div class="more-option">
+                            
+                            <!-- <div class="col-md-3 col-sm-6">
+                                <div class="emptdv"></div>
+                            </div> -->
+
+                            <div class="col-md-3">
+                                <div class="tick-list">
+                                    <div>
+                                        <ul>
+                                            <li>
+                                              <label (click)="featuresListSelection(1)">
+                                                <input type="checkbox" value="1">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Air Bag (AB)</span>
+                                            </label>
+                                            </li>
+                                            <li>
+                                              <label (click)="featuresListSelection(2)">
+                                                <input type="checkbox" value="2">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Dual Air Bags </span>
+                                            </label>
+                                            </li>
+                                            <li>
+                                              <label (click)="featuresListSelection(3)">
+                                                <input type="checkbox" value="3">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>ABS</span>
+                                            </label>
+                                            </li>
+                                            <li>
+                                              <label (click)="featuresListSelection(4)">
+                                                <input type="checkbox" value="4">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Air Condition </span>
+                                            </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <ul>
+                                            <li><label>
+                                                <input type="checkbox" value="5">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Allow Wheels </span>
+                                            </label>
+                                            </li>
+                                            <li><label>
+                                                <input type="checkbox" value="6">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Back Tire </span>
+                                            </label>
+                                            </li>
+                                            <li><label>
+                                                <input type="checkbox" value="7">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Fog Lights </span>
+                                            </label>
+                                            </li>
+                                            <li><label>
+                                                <input type="checkbox" value="8">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Grill Guard </span>
+                                            </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="tick-list">
+                                    <div>
+                                        <ul>
+                                            <li>
+                                              <label (click)="featuresListSelection(9)">
+                                                <input type="checkbox" value="9">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Leather Seats</span>
+                                            </label>
+                                            </li>
+                                            <li>
+                                              <label (click)="featuresListSelection(10)">
+                                                <input type="checkbox" value="10">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Navigation</span>
+                                            </label>
+                                            </li>
+                                            <li>
+                                              <label (click)="featuresListSelection(11)">
+                                                <input type="checkbox" value="11">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Power Steering</span>
+                                            </label>
+                                            </li>
+                                            <li>
+                                              <label (click)="featuresListSelection(12)">
+                                                <input type="checkbox" value="12">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Power Windows</span>
+                                            </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <ul>
+                                            <li>
+                                              <label (click)="featuresListSelection(13)">
+                                                <input type="checkbox" value="13">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Roof Rails</span>
+                                            </label>
+                                            </li>
+                                            <li>
+                                              <label (click)="featuresListSelection(14)">
+                                                <input type="checkbox" value="14">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Rear Spoiler</span>
+                                            </label>
+                                            </li>
+                                            <li>
+                                              <label (click)="featuresListSelection(15)">
+                                                <input type="checkbox" value="15">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Sun Roof</span>
+                                            </label>
+                                            </li>
+                                            <li>
+                                              <label (click)="featuresListSelection(16)">
+                                                <input type="checkbox" value="16">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>TV</span>
+                                            </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="tick-list">
+                                    <div>
+                                        <ul>
+                                            <li>
+                                              <label (click)="featuresListSelection(17)">
+                                                <input type="checkbox" value="17">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>Sound System</span>
+                                            </label>
+                                            </li>
+                                            <li>
+                                              <label (click)="featuresListSelection(18)">
+                                                <input type="checkbox" value="18">
+                                                <i class="fa fa-check chkbx" aria-hidden="true"></i>
+                                                <span>HID</span>
+                                            </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-12 text-right">
+                                <button class="opt-button"> <span>SHOW MORE OPTIONS</span> <i class="fa fa-angle-down option-icon" aria-hidden="true"></i></button>
+                                <button class="search-btn" (click)="SearchStockFilter(1,10,'','',false)" >SEARCH</button>
+                                <!-- <button class="add-wish-btn">ADD TO WISH LIST</button> -->
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      <!-- end -->
+    </div>
+  </div>
+</div>
+
+
+<!-- list of record displaying -->
+
+<!-- Search Table -->
+<div class="sec_three" style="margin-bottom: 75px;"  *ngIf="auctionSearchResponses && auctionSearchResponses.length > 0 && selectedsource != 'OwnStock' ">
+  <div class="container hglt twentyfive" data-scrollto='tooltip'>
+    <div class="row">
+      <div class="col-lg-4 resutl">
+        <h5>Showing Result of
+          <strong>{{selectedMake.Title}}</strong>
+          <span>{{page.TotalRecords}}</span>
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  nopad_right">
+        <div class="record_table indxcarlist list-customer">
+          <ngx-datatable class="bootstrap ngx-datatable fixed-header" [rows]="auctionSearchResponses" [columnMode]="'standard'" [headerHeight]="40"
+            [footerHeight]="40" [rowHeight]="'auto'" [scrollbarH]="true" [externalPaging]="true" [count]="page.TotalRecords"
+            [offset]="page.Index" [limit]="page.Size" (page)='setPage($event)' (sort)="sorting($event)">
+            <ngx-datatable-column name="Photos" [width]="170">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span>
+                  <strong>Photos</strong>
+                </span>
+              </ng-template>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <h3 class="pht-ttl">{{row.Make}} {{row.Model}} {{row.Year}}</h3>
+                <div class="srch-imgdv">
+                  <span class="srch-img">
+                    <a data-fancybox href="{{row?.Images[0]?.Title | splitimage }}">
+                      <img *ngIf="imageRefresh" src="./assets/images/giphy.gif">
+                      <img *ngIf="!imageRefresh" src="{{ row?.Images[0]?.Title | aucsplitimage }}">
+                    </a>
+                  </span>
+                  <span class="srch-img">
+                    <a data-fancybox href="{{row?.Images[1]?.Title | splitimage}}">
+                      <img *ngIf="imageRefresh" src="./assets/images/giphy.gif">
+                      <img *ngIf="!imageRefresh" src="{{row?.Images[1]?.Title | aucsplitimage }}">
+                    </a>
+                  </span>
+                  <span class="srch-img">
+                    <a data-fancybox href="{{row.AuctionSheet | splitimage }}">
+                      <img src="/assets/images/trans-icon.png">
+                    </a>
+                  </span>
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="LotNo" [width]="100">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span (click)="sort()">
+                  <strong>Lot Number</strong>
+                </span>
+              </ng-template>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="lot_num" (click)="openunitdetailpage(row)" [title]="row.LotNo">
+                  <a href="javascript:;">{{row.LotNo}}</a>
+                </span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="AuctionDate" [width]="130">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span (click)="sort()">
+                  <strong>Auction</strong>
+                </span>
+              </ng-template>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="auction_name" [title]="row.AuctionHouse">{{ row.AuctionHouse}}</span>
+                <span class="auction_date">{{ row.AuctionDate | date : 'dd.MM.yyyy'}}
+                  <span class="auc_time"> {{ row.AuctionDate | customtime }} </span>
+                </span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Chassis" [width]="80">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span (click)="sort()">
+                  <strong>Chassis</strong>
+                </span>
+              </ng-template>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="year_chasses" [style.margin-left.px]="5" [title]="row.Chassis"> {{row.Chassis}}</span>
+                <span [innerHTML]="row.Grade" [style.margin-left.px]="5" [title]="row.Grade"></span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Engine" [width]="170">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span (click)="sort()">
+                  <strong>Engine CC & Equpment</strong>
+                </span>
+              </ng-template>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="list_row_one auction_name">
+                  <span class="mn_txt" [innerHtml]="row.Transmission"></span> {{row.Engine}} CC</span>
+                <span class="auction_date">{{row.Color | uppercase}}</span>
+                <br/>
+                <span class="auction_date">{{row.PW}}</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Mileage" [width]="140">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span (click)="sort()">
+                  <strong>Mileage & Condition</strong>
+                </span>
+              </ng-template>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="mileage">{{row.Mileage | number }} km</span>
+                <span class="auction_date mn_txt" [innerHTML]="row.Condition"></span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="StartSolidFor" [width]="110">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span (click)="sort()">
+                  <strong>Start & Sold For</strong>
+                </span>
+              </ng-template>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="start_soldfor">¥ {{row.StartPrice | number }}</span>
+                <span class="auction_date1">¥ {{row.SoldPrice | number }}</span>
+                <br/>
+                <span class="auction_date1">{{row.Status}}</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="AveragePrice" [width]="100">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span (click)="sort()">
+                  <strong>Average Price</strong>
+                </span>
+              </ng-template>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <span class="average_price">¥ {{row.AveragePrice | number }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Action" [width]="120">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span>
+                  <strong>Action</strong>
+                </span>
+              </ng-template>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <button class="login_btn3" [style.margin-bottom.px]="5" (click)="openInquireNowPopUp(row , selectedauctionsource)" *ngIf="isCustomerLogin">Inquire Now</button>
+                <button class="view-btn-src sendlink" (click)="selectedVehicleLink(row)" *ngIf="!isCustomerLogin && new_order_or_quotation == 'quotation'" style="padding-left: 25px; padding-right: 25px;">Send Link</button>
+                <button class="view-btn-src sendlink" (click)="addOrder(row,1)" *ngIf="!isCustomerLogin && new_order_or_quotation == 'order' " style="padding-left: 25px; padding-right: 25px;">Add Order</button>
+                <button class="view-btn-src sendlink hand-tool" *ngIf="isCustomerLogin && _bidallow" (click)="openunitdetailpage(row)" style="padding-left: 5px; padding-right: 5px;padding-top:8px;padding-bottom:8px;">Proceed To Order</button>
+                <!-- <button class="rstrct-btn" *ngIf="row['Ristriction']">Year Restriction</button> -->
+
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="searchListEmprty && selectedsource != 'OwnStock' " align="center" class="list-rcrd">
+  No Record Found
+</div>
+
+<!-- stock table list html -->
+<section class="search-results-disp" *ngIf="selectedsource == 'OwnStock' " >
+  <div class="container">
+      <div class="row">
+          <div class="col-md-3 col-sm-3">
+              <div class="shopbymake-dv">
+                  <h3>Shop By Make</h3>
+                  <div class="makelst">
+                      <ul>
+                          <li (click)="multimakeSelection(3)">
+                              <input type="checkbox" value="3"><img src="/assets/images/search-arean-images/toyota-icon.png" alt="">
+                              <span>TOYOTA</span>
+                              <!-- <span>395</span> -->
+                          </li>
+                          <li (click)="multimakeSelection(4)">
+                              <input type="checkbox" value="4"><img src="/assets/images/search-arean-images/nissan-icon.png" alt="">
+                              <span>NISSAN</span>
+                              <!-- <span>404</span> -->
+                          </li>
+                          <li (click)="multimakeSelection(7)">
+                              <input type="checkbox" value="7"><img src="/assets/images/search-arean-images/honda-icon.png" alt="">
+                              <span>HONDA</span>
+                              <!-- <span>110</span> -->
+                          </li>
+                      </ul>
+                      <ul>
+                          <li (click)="multimakeSelection(5)">
+                              <input type="checkbox"  value="5"><img src="/assets/images/search-arean-images/mazda-icon.png" alt="">
+                              <span>MAZDA</span>
+                              <!-- <span>10</span> -->
+                          </li>
+                          <li (click)="multimakeSelection(6)">
+                              <input type="checkbox"  value="6"><img src="/assets/images/search-arean-images/mitsubishi-icon.png" alt="">
+                              <span>MITSUBISHI</span>
+                              <!-- <span>20</span> -->
+                          </li>
+                          <li (click)="multimakeSelection(14)">
+                              <input type="checkbox"  value="14"><img src="/assets/images/search-arean-images/subaru-icon.png" alt="">
+                              <span>SUBARU</span>
+                              <!-- <span>12</span> -->
+                          </li>
+                      </ul>
+                      <ul>
+                          <li (click)="multimakeSelection(8)">
+                              <input type="checkbox" value="8"><img src="/assets/images/search-arean-images/suzuki-icon.png" alt="">
+                              <span>SUZUKI</span>
+                              <!-- <span>6495</span> -->
+                          </li>
+                          <li (click)="multimakeSelection(15)">
+                              <input type="checkbox" value="15"><img src="/assets/images/search-arean-images/isuzu-icon.png" alt="">
+                              <span>ISUZU</span>
+                              <!-- <span>302</span> -->
+                          </li>
+                          <li (click)="multimakeSelection(16)">
+                              <input type="checkbox" value="16"><img src="/assets/images/search-arean-images/daihatsu-icon.png" alt="">
+                              <span>DAIHATSU</span>
+                              <!-- <span>321</span> -->
+                          </li>
+                      </ul>
+                      <ul>
+                          <li (click)="multimakeSelection(33)">
+                              <input type="checkbox" value="33"><img src="/assets/images/search-arean-images/hino-icon.png" alt="">
+                              <span>HINO</span>
+                              <!-- <span>214</span> -->
+                          </li>
+                          <li (click)="multimakeSelection(18)">
+                              <input type="checkbox" value="18"><img src="/assets/images/search-arean-images/lexus-icon.png" alt="">
+                              <span>LEXUS</span>
+                              <!-- <span>24</span> -->
+                          </li>
+                          <li (click)="multimakeSelection(13)">
+                              <input type="checkbox"  value="13"><img src="/assets/images/search-arean-images/mercedes-icon.png" alt="">
+                              <span>MERCEDES</span>
+                              <!-- <span>80</span> -->
+                          </li>
+                      </ul>
+                      <ul>
+                          <li (click)="multimakeSelection(10)">
+                              <input type="checkbox" value="10"><img src="/assets/images/search-arean-images/bmw-icon.png" alt="">
+                              <span>BMW</span>
+                              <!-- <span>76</span> -->
+                          </li>
+                          <li (click)="multimakeSelection(55)">
+                              <input type="checkbox" value="55"><img src="/assets/images/search-arean-images/volkswagen-icon.png" alt="">
+                              <span>VOLKSWAGEN</span>
+                              <!-- <span>23</span> -->
+                          </li>
+                          <li (click)="multimakeSelection(9)">
+                              <input type="checkbox" value="9"><img src="/assets/images/search-arean-images/audi-icon.png" alt="">
+                              <span>AUDI</span>
+                              <!-- <span>65</span> -->
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="shopbyprice-dv">
+                  <h3>Shop By Price</h3>
+                  <div class="shopbyprice-list">
+                      <ul>
+                          <li (click)="PriceRangeSelection(0,50000)">
+                              <input type="checkbox" name="prices"><span><i class="dlr">¥</i></span><span>Under</span><span>-</span><span>¥50000</span>
+                            </li>
+                          <li (click)="PriceRangeSelection(50000,100000)">
+                              <input type="checkbox" name="prices"><span><i class="dlr">¥</i></span><span>¥50000</span> <span>-</span><span>¥1,00000</span>
+                          <li (click)="PriceRangeSelection(100000,150000)">
+                              <input type="checkbox" name="prices"><span><i class="dlr">¥</i></span><span>¥1,00000</span><span>-</span><span>¥1,50000</span>
+                          <li (click)="PriceRangeSelection(150000,200000)">
+                              <input type="checkbox" name="prices"><span><i class="dlr">¥</i></span><span>¥1,50000</span><span>-</span><span>¥2,00000</span>
+                          <li (click)="PriceRangeSelection(200000,250000)">
+                              <input type="checkbox" name="prices"><span><i class="dlr">¥</i></span><span>¥2,00000</span><span>-</span><span>¥2,50000</span>
+                          <li (click)="PriceRangeSelection(250000,400000)">
+                              <input type="checkbox" name="prices"><span><i class="dlr">¥</i></span><span>¥2,50000</span><span>-</span><span>¥4,00000</span>
+                          <li (click)="PriceRangeSelection(400000,800000)">
+                              <input type="checkbox" name="prices"><span><i class="dlr">¥</i></span><span>¥4,00000</span><span>-</span><span>¥8,00000</span>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-9 col-sm-9">
+              <div class="row" style="margin-bottom:20px;">
+                  <div class="col-md-5">
+                      <h3 class="show-reshd" *ngIf="!isCustomerLogin">Showing Result of {{ selectedVehicleMake?.Title }} {{ selectedVehicleModel?.Title }} <span>{{ _searchStockResponse?.Count }}</span></h3>
+                  </div>
+                  <div class="col-md-7">
+                      <!-- <div class="pageination"></div> -->
+                      <div class="mnpage" style="padding:0px 0px !important;">
+                          <ul id="pagination-dm2" class="pagination-sm"></ul>
+                      </div>
+                  </div>
+              </div>
+              <div class="search-filt-options">
+                  <div class="row">
+                      <div class="col-md-9">
+                          <ul class="filt-options">
+                              <!-- <li (change)="OnSortFilterChange('MakeAscending',false)">
+                                <a href="javascript:;" (change)="OnSortFilterChange('MakeAscending',false)" class="active">New Arrivals</a></li>
+                              <li><a href="javascript:;" (change)="OnSortFilterChange('PriceAscending',false)" >Price Low to High</a></li>
+                              <li><a href="javascript:;" (change)="OnSortFilterChange('YearAscending',false)" >Year Low to High</a></li> -->
+                          </ul>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="selctbox">
+                              <select  name="" id="ddlSort" class="selct-box" [(ngModel)]="_selectedSortFilter" (change)="OnSortFilterChange(_selectedSortFilter,true)">
+                                  <option selected value="0">Select</option>
+                                  <option *ngFor="let item of filterDropDown;"  [ngValue]="item.Value"> {{ item.Name }}</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="search-result-lists">
+                <div *ngIf="_searchStockResponse?.Count > 0">
+                    <ul *ngFor="let items of _searchStockResponse.Results; let i = index;">
+                        <li>
+                            <div>
+                                <div class="main-content">
+                                    <div>
+                                        <a class="car-image-bx" href="{{items.Images[0]}}" data-fancybox="">
+                                            <span *ngIf="items.PublicStatusId == 3" class="sld">Sold</span>
+                                            <span *ngIf="items.PublicStatusId == 5" class="rsrvd">Reserved</span>                                            
+                                          <img src="{{items.Images[0]}}" alt=""/>
+                                        </a>
+                                    </div>
+                                    <div class="main-cent-content">
+                                        <p class="car-ref"><span>Ref:</span> <strong>{{ items.ReferenceId}}</strong></p>
+                                        <h3 class="car-ttl">{{ items.Make }} {{ items.Model}} {{ items.Year}}</h3>
+                                        <div class="tbl-data">
+          
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span>Engine</span><strong>{{items.Engine}}cc - (HR15)</strong></td>
+                                                        <td><span>Color</span><strong>{{items.Color}}</strong></td>
+                                                        <td><span>Mileage</span><strong>{{items.Mileage}}</strong></td>
+                                                        <td><span>Steering Trans</span><strong>{{ items.Steering }} - {{items.Transmission}}</strong></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span>Chass. No</span><strong>{{items.Chassis}}cc - (HR15)</strong></td>
+                                                        <td><span>Grade</span><strong [innerHTML]="items.Grade" [title]="items.Grade"></strong></td>
+                                                        <td><span>Fuel</span><strong> {{items.Fuel || '--'}} </strong></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="price-info" *ngIf="!isCustomerLogin">
+                                            <p class="price-info-hd1">Vehicle Price (50%)</p>
+                                            <h4 class="price-info-val">¥ {{ items.Price50 | roundoffhtmlnumber | number }}</h4>
+                                            <p class="price-info-hd2">Vehicle Price (100%)</p>
+                                            <h4 class="price-info-val2">¥ {{ items.Price100 | roundoffhtmlnumber | number }}</h4>
+                                        </div>
+                                        <div class="price-info" *ngIf="isCustomerLogin">
+                                          <p class="price-info-hd2">Vehicle Price</p>
+                                          <h4 class="price-info-val2">¥ {{ items.Price100 | roundoffhtmlnumber | number }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-content">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-right" style="float: right;">
+                                            <!-- <button class="favourite-btn"> <span class="favourite-icon"></span> FAVOURITES</button> -->                                            
+                                            <button class="inquiry-btn" (click)="openInquireNowPopUp(items , 5)">Inquire Now</button>
+                                            <button class="inquiry-btn" (click)="openstocldetailpage(items)">View Detail</button>
+                                            <button class="buynow-btn" (click)="openstockpricepopup(items)" *ngIf="!isCustomerLogin && items.PublicStatusId != 3">Reserve Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li> 
+                    </ul>
+                </div>
+
+                <div *ngIf="_searchStockResponse?.Results?.length == 0">
+                   <h4 class="notfound-heading">No record found.</h4>
+                </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+<!-- modal -->
+<div class="newzealand-block" id="restrictionpopup" style="display:none;padding: 0px;margin: 0px;">
+  <div class="modal-dialog" role="document" style="padding: 0px;margin: 0px;">
+    <div class="modal-content">
+      <div class="modal-header errodv">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="notifhd-main">
+              <div>
+                <i class="fa fa-exclamation-circle notifc" aria-hidden="true"></i>
+              </div>
+              <div>
+                <p>This car can not be shipped to
+                  <span class="rd"> {{customerShipmentDetail?.ShipmentCountry?.name}} </span>kindly choose another one.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- end -->
+
+
+<!-- hide and view taskbar list -->
+<section class="vehicle-add-sect hglt thrtyfv" *ngIf="hideshowtaskList">
+  <div class="container-fluid">
+    <div class="container nopad_xs_left">
+      <div class="container">
+        <div class="row caritemslist colp">
+          <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 nopad_sm_right nopad_left nopad_xs_right nopad_xs_left">
+            <ngx-slick class="carousel addmorebox" #slickModal="slick-modal" [config]="slideConfig">
+              <li ngxSlickItem *ngFor="let quotationSlide of quotationSlideData; let i = index" [class.current]="i == 0">
+                <div class="carimagespar" [ngClass]="{'active-ft-car' : quotationSlide.active }" (click)="activeftrCar(i)">
+                  <div class="carimagespar-inner">
+                    <div class="cart-prd-image">
+                      <img src="{{quotationSlide.AuctionImage | splitimage}}" class="ftr-width">
+                    </div>
+                    <div class="cart-prd-det">
+                      <h4 title="{{ quotationSlide.Make }} {{ quotationSlide.Model }}" class="taskbar-heading">{{quotationSlide.Make}} {{(quotationSlide.Model.length>5)? (quotationSlide.Model | slice:0:5)+'..':(quotationSlide.Model)
+                        }}
+                      </h4>
+                      <h5>{{quotationSlide.Year}}</h5>
+                      <a href="javascript:;" class="itemscount" tabindex="-1">{{quotationSlide.LotNo}}</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ngx-slick>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 text-right">
+            <div class="viewquotebtn">
+              <button [routerLink]="['/quotation-detail']" [queryParams]="{id: quotationId}" *ngIf="new_order_or_quotation == 'quotation'">View Quotation</button>
+              <button [routerLink]="['/view-confirm-order']" [queryParams]="{id : quotationSlideData[0]['OrderId'] }" *ngIf="new_order_or_quotation == 'order'">Confirm Order</button>
+              <!-- <a class="update-act-btn" [routerLink]="['/quotation-detail']" [queryParams]="{id: quotationId}" *ngIf="new_order_or_quotation == 'quotation'">View Quotation</a> -->
+              <!-- <a class="update-act-btn" href="javascript:;" [routerLink]="['/view-confirm-order']" [queryParams]="{id : quotationSlideData[0]['OrderId'] }"
+                *ngIf="new_order_or_quotation == 'order'">Confirm Order</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end -->
+<app-bidprice [quotationPricingInput]="selectedQuotationPricing" [isUpdateInput]="false" (updated)="updatequotationtaskbar($event)"></app-bidprice>
+
+<!-- stock price -->
+<app-stockprice [StockDetail]="_stockdetail"></app-stockprice>
+
+<!-- inquire now -->
+<app-inquire [InquireNow]="inquirenow"></app-inquire>

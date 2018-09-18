@@ -1,0 +1,39 @@
+.time-sec{
+    visibility: hidden;
+}
+
+.request-transl-css{
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 10px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    background-color: #2e398f;
+    width: 175px;
+    border: 1px solid transparent;
+    color: white;
+    margin-top: 10px;
+}
+.loader-css{
+    width: 40px;
+    float: left;
+    margin-left: 40px;
+}
+.err-display{
+    float: left;
+    font-size: 16px;
+    color: #e5353f;
+}
+.year-month-css{
+    float: left;
+    font-size: 16px;
+    color: #717888;
+}
+.flag-icon{
+    font-size: 21px;
+}
+.pop-img{width: 100%}
+.disply-resp{font-size: 17px; color: #219d58;}

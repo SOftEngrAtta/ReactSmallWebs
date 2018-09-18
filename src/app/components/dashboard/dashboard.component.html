@@ -1,0 +1,354 @@
+<app-header [CustomerInformation]="customerInformation"></app-header>
+
+<section class="dashboard-reminder-disc expirynotif  password" *ngIf="!dashboard?.CustomerDetails?.EmailVerified">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<h3 class="reminderttl"> <strong>Your email is still un verified,  </strong> kindly verify your email in order to complete the registration.</h3>
+			</div>
+			<div class="col-lg-4 text-right">
+				<a class="clicktohide" href="javascript:;"><img src="/assets/images/close2.png"></a>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="dashboard-reminder-disc expirynotif hglt thrtnth" *ngIf="dashboard?.CustomerDetails?.ProfileComplete < 100">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<h3 class="reminderttl"> Your <span class="percent">{{ 100 - dashboard?.CustomerDetails?.ProfileComplete  }}%</span> Profile completion is remaining complete your profile.</h3>
+			</div>
+			<div class="col-lg-4 text-right">
+				<a class="clicktohide" href="javascript:;"><img src="/assets/images/close2.png" /></a>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="dashboard-sect">
+	<div class="container dashboard-main">
+		<div class="dashboard-head">
+			<div class="row">
+				<div class="col-lg-6 col-xs-6  nopad_xs_right"><div class="headbor1"><h1 class="hd1">Welcome to Dashboard</h1></div></div>
+				<div class="col-lg-6 col-xs-6 text-right nopad_xs_left" *ngIf="!isCustomerLogin">
+					<button class="btn-new-ord addordr svnth "  (click)="addOrderOrQuotation('order')">Add New Order</button>
+					<button class="btn-new-ord addordr svnth" (click)="addOrderOrQuotation('quotation')">Add New Quotation</button>					
+				</div>
+				<div class="col-lg-6 col-xs-6 text-right nopad_xs_left" *ngIf="isCustomerLogin && showAuctionSearchBtn && !bidallowtocustomer">
+					<button class="btn-new-ord addordr svnth" [routerLink]="['/auction-car-search']">Auction Search</button>
+				</div>
+				<div class="col-lg-6 col-xs-6 text-right nopad_xs_left" *ngIf="isCustomerLogin && showAuctionSearchBtn && bidallowtocustomer">
+					<button class="btn-new-ord addordr svnth" (click)="addOrderOrQuotation('order')">Auction Search</button>
+				</div>
+			</div>
+		</div>
+		<div class="dashboard-cont">
+			<div class="row">
+				<div class="col-lg-8 col-xs-12 ">
+					<ul class="dashboard-box">
+						<li class="green hglt eight" [routerLink]="['/my-orders'] " [queryParams]="{  status : 'Won'}">
+							
+							<div class="dash-inner">
+								<div class="inner-content">
+									<span>Car Won</span>
+									<h3>{{ dashboard.CarProcess.CarWon > 0 ? dashboard.CarProcess.CarWon : 0 | number }}</h3>
+								</div>
+								<div class="inner-icon">
+									<span class="icon-car-ic icon-one-01"></span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<button type="button" [style.margin-top.px]="55" >View Car Won</button>
+						</li>
+						<li class="ltbrown hglt ninth" [routerLink]="['/my-orders']" [queryParams]="{  status : 'InProgress'}">
+							
+							<div class="dash-inner">
+								<div class="inner-content">
+									<span>In Progress</span>
+									<h3 class="colyellow">{{ dashboard.CarProcess.CarProgress > 0 ? dashboard.CarProcess.CarProgress : 0 | number }}</h3>
+								</div>
+								<div class="inner-icon">
+									<span class="icon-mitter-ic icon-two-02"></span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							
+							<button type="button" [style.margin-top.px]="55" [routerLink]="['/my-orders']" [queryParams]="{  status : 'InProgress'}">View Car Progress</button>
+						</li>
+						
+						<li class="red hglt tnthel" [routerLink]="['/my-orders']" [queryParams]="{  status : 'Lost'}">
+							
+							<div class="dash-inner">
+								<div class="inner-content">
+									<span>Car Lost</span>
+									<h3 class="colred">
+										{{ dashboard.CarProcess.CarLost > 0 ? dashboard.CarProcess.CarLost : 0 | number }}
+									</h3>
+								</div>
+								<div class="inner-icon">
+									<span class="icon-car-ic-2 icon-three-03"></span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<button type="button" [style.margin-top.px]="55" >View Car Lost</button>
+						</li>
+					</ul>
+				</div>
+				<div class="col-lg-4 col-xs-12  ">
+					
+					<div class="min-profile hglt elvnth">
+						
+						<div class="prf-det">
+							<img src="/assets/images/user-placeholder-one.png" class="prfimage">
+							<h5 class="prf-name">{{ dashboard?.CustomerDetails?.FullName }} </h5>
+							
+						</div>
+						<div class="prf-det">
+							<ul>
+								<li class="progressbar">
+									<h3>{{ (dashboard.CustomerDetails && dashboard.CustomerDetails.ProfileComplete > 0 )  ? dashboard.CustomerDetails.ProfileComplete : 0 }} %</h3>
+									<div class="progress">
+										<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" [style.width.%]="dashboard?.CustomerDetails?.ProfileComplete">
+										</div>
+									</div>
+								</li>
+								<li class="prf-hd">
+									
+									<h4>Profile Completion</h4>
+								</li>
+							</ul>
+							
+							
+						</div>
+						
+						<a href="javascript:;" class="btn-prof-complete" (click)="openProfile()">Complete Your Profile</a>
+						
+						
+					</div>
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 col-xs-12 ">
+					<div class="payment-cont ">
+						<div class="pay-met hglt svnteth " data-disable-interaction="1">
+							<h3>Available Funds</h3>
+							<button class="btn-prof-complete" [routerLink]="['/payment-history']">Add More Fund</button>
+							<div class="avlfund-amount-det">
+								<ul>
+									<li class="balance">
+										<div>
+											<span class="icon-pig-ic icon-six-06"></span>
+										</div>
+										<span>Available Fund</span>
+										<strong >
+											<span>{{ displaycurrency }}</span> 
+											<span *ngIf="(dashboard?.FundsDetails?.AvaliableFunds - dashboard?.FundsDetails?.ReservedFunds) > 0"> {{ dashboard?.FundsDetails?.AvaliableFunds - dashboard?.FundsDetails?.ReservedFunds | number }}</span>
+											<span *ngIf="(dashboard?.FundsDetails?.AvaliableFunds - dashboard?.FundsDetails?.ReservedFunds) <= 0"> 0</span>
+										</strong>
+									</li>
+									<li class="balance">
+										<!-- <div><img src="/assets/images/rsrvfund-icon.png"></div> -->
+										<div>
+                                            <span class="icon-res-fund fnt icon-six-06"></span>
+										</div>
+										
+										<span>Reserved Fund</span>
+										<strong>
+											<span>{{ displaycurrency }}</span>
+											<span *ngIf="(dashboard?.FundsDetails?.AvaliableFunds - dashboard?.FundsDetails?.ReservedFunds) >= 0"> {{ dashboard?.FundsDetails?.ReservedFunds | number }}</span>
+											<span *ngIf="(dashboard?.FundsDetails?.AvaliableFunds - dashboard?.FundsDetails?.ReservedFunds) < 0"> {{ dashboard?.FundsDetails?.AvaliableFunds | number }}</span>
+										</strong>
+									</li>
+									<li class="creditlimit">
+										<div>
+											<span class="icon-funds-ic icon-six-06"></span>
+										</div>
+										<span>Credit limit</span>
+										<strong >
+											<span>
+												{{ displaycurrency }}
+											</span>
+											<span>{{ dashboard?.FundsDetails?.CreditLimit | number }}</span>
+										</strong>
+									</li>
+									<li class="utilize_amount">
+										<div>
+											<span class="icon-atm-ic icon-six-06"></span>
+										</div>
+										<span>Utilized Amount</span>
+										<strong>
+											<span>
+												{{ displaycurrency }}
+											</span>
+											<span>{{  dashboard?.FundsDetails?.UtilizedFunds | number }}</span>
+										</strong>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-xs-12 ">
+					<div class="current-memb hglt nintnth" [ngStyle]=" { 'background-color' : dashboard?.CustomerDetails?.MembershipColor }">
+						<h3>Current Membership</h3>
+						<div class="crnt-memb-det">
+								<h4>{{ dashboard?.CustomerDetails?.MembershipName }} Membership</h4>
+							<!-- <span>Expire Date: 12 - 10 - 2017</span> -->
+						</div>
+						<div class="memb-upg-btn">
+							<a href="javascript:;" class="upg-btn" [routerLink]="['/membership']">Upgrade</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-5 col-xs-12 ">
+					<div class="my-fav hglt twentnth">
+						<h3>My Favourite</h3>
+						<ul *ngFor="let favCar  of dashboard?.FavouritesList">
+							<li>
+								<a data-fancybox [href]="favCar.AuctionImage | splitimage" *ngIf="favCar.AuctionImage">
+									<img [src]=" favCar.AuctionImage | splitimage " style="width: 90%; margin-bottom: 5px; ">
+								</a>
+								<a data-fancybox href="./assets/images/no-image.png" *ngIf="!favCar.AuctionImage">
+									<img src="./assets/images/no-image.png" style="width: 90%; margin-bottom: 5px; ">
+								</a>
+							</li>
+							<li>
+								<h4 [title]="favCar?.Make" class="hand-tool">{{ favCar?.Make }}</h4>
+								<ul class="my-fav-inner">
+									<li><strong [title]="favCar?.Model" class="hand-tool">{{ favCar?.Model }}</strong></li>
+								</ul>
+								<ul>
+									<li [title]="favCar?.Year" class="hand-tool">{{ favCar?.Year }}</li>
+								</ul>
+							</li>
+							<li>
+								<span>Chassis</span>
+								<br>
+								<strong [title]="favCar?.Chassis" class="hand-tool">{{ favCar?.Chassis }}</strong>
+							</li>
+							<li [routerLink]="['/favourite']">
+								<a href="javascript:;" class="view-btn">View</a>
+							</li>
+						</ul>
+						<div class="display-msg" *ngIf="dashboard && dashboard.FavouritesList.length == 0"> 
+							No record found
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-7 col-xs-12  ">
+					<div class="recent-activity hglt twentnthonth">
+						<h3>Recent Activity</h3>
+						<ul *ngFor="let activity of recentActivities" class="recent-activity-css">
+							<li>
+								<img src="/assets/images/exportdoc-icon.png">
+							</li>
+							<li class="title-descr">
+								<span [title]="activity.Title">{{ activity.Title  }}</span>
+								<strong class="ellipsistext" [title]="activity.Description"> {{ activity.Description }} </strong>
+							</li>
+							<li>
+								<span *ngIf="activity.OrderID">Order ID</span>
+								<strong *ngIf="activity.OrderID">{{ activity.OrderID || '--' }}</strong>
+							</li>
+							<li>
+								<span>Date</span>
+								<strong>{{ activity.Date | date }}</strong>
+							</li>
+							<li *ngIf="activity.ActionUrl && activity.ActionUrl != null">
+								<a href="javascript:;" class="view-order" (click)="openurl(activity.ActionUrl)">View Detail</a>
+							</li>
+						</ul>
+						<div class="display-msg" *ngIf="recentActivities && recentActivities.length == 0"> 
+								No record found
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- modal -->
+<div class="slct-ship-det" id="addnewc-ship-det" style="display:none;">
+	<div class="slct-ship-det-hd">
+		<h3>Select Shipping Detail</h3>
+	</div>
+	<div class="slct-ship-det-inner">
+		<div class="typ">
+			<h4 *ngIf="!isCustomerLogin && neworderorquotation == 'quotation' ">Quotation Type</h4>
+			<table *ngIf="!isCustomerLogin && neworderorquotation == 'quotation'  ">
+				<tbody>
+					<tr>
+						<td *ngFor="let quotation of quatationTypes;  let i=index">
+							<label (click)="selectquotationtype(quotation , i )">
+								<input type="radio" [checked]="quotation.Selected == true"  [value]="true" name="shiptype" class="rd">
+								<i class="rdbtn"></i>
+								<span>{{quotation.Name}}</span>
+							</label>
+						</td>
+					</tr>
+			</table>
+			<div class="slct-box">
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<label>Shipment Country</label>
+
+								<select *ngIf="!isCustomerLogin " [(ngModel)]="customerShipmentDetail.ShipmentCountry" (change)="selectedShipmentCountry(customerShipmentDetail.ShipmentCountry)">
+									<option [ngValue]="undefined" [disabled]="true" [selected]="true">Select Shipment Country</option>
+									<option *ngFor="let country of shipmentDetail.country" [ngValue]="country">{{country.name}}</option>
+								</select>
+
+								<select *ngIf="isCustomerLogin && bidallowtocustomer" [(ngModel)]="customerShipmentDetail.ShipmentCountry" (change)="selectedShipmentCountry(customerShipmentDetail.ShipmentCountry)"  [ngClass]=" { 'disable-btn' : bidallowtocustomer } " [disabled]="bidallowtocustomer">
+									<option [ngValue]="undefined" [disabled]="true" [selected]="true">Select Shipment Country</option>
+									<option *ngFor="let country of shipmentDetail.country" [ngValue]="country">{{country.name}}</option>
+								</select>
+
+							</td>
+							<td>
+								<label>Shipment Port</label>
+								<select [(ngModel)]="customerShipmentDetail.ShipmentPort" [disabled]="filteredShipmentPorts.length <= 0" (change)="selectFreightType()">
+									<option [ngValue]="undefined" [disabled]="true" [selected]="true">Select Shipment Port</option>
+									<option *ngFor="let port of filteredShipmentPorts" [ngValue]="port">{{port.name}}</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label>Shipment Type</label>
+								<select [(ngModel)]="customerShipmentDetail.ShipmentType">
+									<option [ngValue]="undefined" [disabled]="true" [selected]="true">Select Shipment Type</option>
+									<option *ngFor="let shipmentType of shipmentDetail.shipmenttype" [ngValue]="shipmentType">{{shipmentType.name}}</option>
+								</select>
+							</td>
+							<td class="frttype-td">
+								<label>Select Freight Type</label>
+								<ul class="frttype" *ngIf="filterFreightType">
+									<li *ngFor="let freightType of filterFreightType; let i=index">
+										<label>
+											<input type="radio" [checked]="freightType.selected == true" (change)="onFreightType(freightType)" name="fright-type">
+											<i class="rdbtn"></i>
+											<span>{{freightType.name}}</span>
+										</label>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="slct-ship-det-btns">
+		<button class="cncl" onclick="$.fancybox.close();">Cancel</button>
+		<button class="sbm" type="submit" (click)="submitShipmentDetail()">Submit</button>
+	</div>
+</div>
+
+<div class="submittedpop" id="comingsoon" style="display:none;">
+	<h3>Coming Soon</h3>
+</div>
+<!-- end -->

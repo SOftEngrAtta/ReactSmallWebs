@@ -1,0 +1,2385 @@
+ 
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4{
+	width: 930px;
+    padding: 0px 0px;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 p{
+	    display: inline-block;
+	        margin-right: 10px;
+	        font-size: 13px;
+            color: #858585;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area p{
+	    display: inline-block;
+    margin-right: 45px;
+    vertical-align: top;
+    font-size: 13px;
+            color: #858585;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area{
+	margin-top: 15px;
+	    border-bottom: none;
+    padding-bottom: 0;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea{
+	display: inline-block;
+	width: 83%;
+	    height: 70px;
+}
+.amou-box-fu {
+    display: inline-block;
+        width: 30%;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1{
+	width: 100%;
+}
+.upc-pay-page-2 .am-fu-box-1 .amou-box-fu select{
+	display:inline-block;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input{
+	width: 40%;
+}
+.availbalancedet>ul>li>strong {
+	font-weight: 700;
+	font-size: 15px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    display: inline-block;
+    width: 49%;
+    padding: 15px 15px 20px 15px;
+    vertical-align: top;
+     min-height: 196px;
+    background-color: #f5f5f5;
+}
+.upc-pay-page-3 .fund-sum-box-1 {
+    display: inline-block;
+    width: 49%;
+    margin-right: 8px;
+    padding: 15px 15px 20px 15px;
+    vertical-align: top;
+     min-height: 196px;
+    background-color: #f5f5f5;
+}
+.upc-pay-page-3 .fund-sum-box-1 h5, .upc-pay-page-3 .fund-sum-box-2 h5{
+	font-size: 15px;
+    color: #3c3c3c;
+    font-weight: bold;
+}
+.upc-pay-page-3 .main-fund-summery {
+    padding-bottom: 20px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    float: left;
+    width: 47%;
+    font-size: 13px;
+    color: #767676;
+    line-height: 25px;
+    margin-right: 9px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li strong, .upc-pay-page-3 .fund-sum-box-2 ul li strong{
+	color:#343333;
+	margin-right: 0px;
+	
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li:nth-child(even), .upc-pay-page-3 .fund-sum-box-2 ul li:nth-child(even){
+	text-align:right;
+}
+.upc-pay-page-3 .main-mid-div .upc-paypop-bot button.nobtn {
+    background: #38b078;
+}
+.upc-pay-page-3 .main-mid-div .upc-paypop-bot button.nobtn:hover{    -webkit-box-shadow: 2px 5px 19px 3px rgba(24, 160, 27, 0.18);
+    box-shadow: 2px 5px 19px 3px rgba(24, 160, 27, 0.18);}
+.upc-pay-page-4 .main-yard-images h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: #3c3c3c;
+}
+.upc-pay-page-4 .main-yard-images span {
+    font-size: 11px;
+    font-weight: bold;
+    color: #727272;
+    display: block;
+    margin-bottom: 10px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li i{
+	position: absolute;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    color: #fff;
+    margin: auto;
+    top: 20px;
+    font-size: 16px;
+    width: 15px;
+    display:none;
+}
+.main-yard-images ul li input[type="checkbox"] {
+    opacity: 0;
+    width: 80px;
+    position: absolute;
+    z-index: 1;
+    height: 57px;
+    margin: 0px;
+    cursor: pointer;
+}
+.main-yard-images ul li input[type="checkbox"]:checked + img{
+	webkit-filter: brightness(.4);
+    filter: brightness(.4);
+}
+.main-yard-images ul li input[type="checkbox"]:checked + img + i{
+	display:block;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img{
+	    width: 80px;
+    margin-right: 6px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li:nth-child(10) img{
+	margin-right: 0px;
+}
+.upc-pay-page-4 .main-yard-images.main-yard-images-aucti h4{
+    padding: 5px 0 10px 0;
+    border-bottom: #e7e7e7 1px solid;
+    margin-bottom: 10px;
+}
+.upc-pay-page-4 .main-yard-images.main-yard-input-field h4{
+	padding: 5px 0 10px 0;
+}
+.upc-pay-page-4 .main-yard-images.main-yard-input-field input{
+	font-size: 13px;
+    color: #b5b5b5;
+    font-weight: 500;
+    width: 100%;
+}
+.upc-pay-page-4 .upc-paypop-bot.se-send button.nobtn.se-send-1{
+    background: #4477df;
+    padding: 3px 30px;
+}
+.upc-pay-page-4 .upc-paypop-bot.se-send button.nobtn.se-send-1:hover{
+	box-shadow: none;
+}
+.upc-pay-page-4 .upc-paypop-bot.se-send button.nobtn.se-send-2{
+    background: #38b078;
+    padding: 3px 30px;	
+}
+.upc-pay-page-4 .upc-paypop-bot.se-send button.nobtn.se-send-2:hover{
+	box-shadow: none;
+}  
+.payment-div.border { border-top: 1px solid #dadada; border-bottom: 1px solid #dadada;}
+	.payment-div { padding: 10px 0px 10px 20px;}
+	.payment-div .selct-itms { margin-top: 13px;}
+    .payment-div.last .selct-itms { margin-top: 5px;}
+    
+.email-inprocess{
+    float: right;
+    background: #21c15e;
+    border: none;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 3px;
+}    
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-PAGES-END=======*/
+
+
+ /* My order new Page css Start */
+
+
+.myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn{
+    /* color:#545454; */
+    border:1px solid #545454;
+    /* background:transparent; */
+    }
+    .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .mk-payment-btn, .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn:hover{
+        /* color:#fff; */
+        border:1px solid transparent;
+        /* background:#545454; */
+        }
+    
+    .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .order_hist_tbinf{
+        float:right;
+    }
+    .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .order_hist_tbinf>li{
+        /*min-width:110px;*/
+    }
+    
+    
+    .mdordr-buttons{
+        text-align:right;
+        margin:20px 0px;
+    }
+    .mdordr-buttons button{
+        border:1px solid transparent;
+        /* border-radius:20px; */
+        padding:5px 20px;
+        text-align:center;
+        color:#fff;
+        font-size:13px;
+        font-weight:500;
+    }
+    .mdordr-buttons .genl-invc-btn{
+    /* background:#4477df; */
+    margin:0px 5px;
+    }
+    .mdordr-buttons .gen-invc-btn{
+        /* background:#4477df; */
+        margin:0px 5px;
+    }
+    .mdordr-buttons .gen-invc-btn:hover,.mdordr-buttons .genl-invc-btn:hover{
+        border:1px solid #4477df;
+        color:#4477df;
+        background:transparent;
+    }
+    .mdordr-buttons .invc-histo-btn{
+        margin-right:15px;
+        /* background:#38b078; */
+        /* margin-left:5px; */
+    }
+    
+    .mdordr-buttons .invc-histo-btn:hover{
+        color:#38b078;
+        border-color:#38b078;
+        background:transparent;
+    
+    
+    }
+    
+    .is-css{
+        margin-right: 20px;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    .group-items-dt .group-items-dt-top{
+        display:table;
+        width:100%;
+        background:#fff;
+        border-bottom:1px solid #ededed;
+        padding:0px 5px;
+    }
+    .group-items-dt .group-items-dt-top>div{
+        display:table-cell;
+        border-right:1px solid #ededed;
+        
+        
+        
+    }
+    .group-items-dt .group-items-dt-top>div:last-child{
+        border-right:0px;
+        vertical-align:top;
+    }
+    .group-items-dt-top-lft-mn{
+        display:table;
+        width:100%;
+        padding:15px 0px 15px 5px;
+    }
+    
+    .group-items-dt-top-lft-mn>div{
+        display:table-cell;
+        vertical-align: top;
+    
+    
+    }
+    .group-items-dt-top-lft-mn>div.group-items-dt-top-dtdv{
+        padding:0px;
+    }
+    .group-items-dt-top div table{
+        width:100%;
+    }
+    
+    .group-items-dt-top .group-items-dt-top-cen{
+        padding:15px 0px 15px 15px;
+        /* width:32%; */
+    }
+    .group-items-dt-top .group-items-dt-top-rt{
+        padding:15px 5px 15px 15px;
+    }
+    .group-items-dt-top div table tbody tr td {
+        vertical-align:top;
+        width:unset;
+    }
+    .group-items-dt-top div table tbody tr td span{
+        font-size:13px;
+        font-weight:500;
+        color:#767676;
+    }
+    .group-items-dt-top div table tbody tr td strong{
+    font-size:13px;
+    font-weight:700;
+    color:#343434;
+    }
+    
+    
+    .selct-itms{
+        position:relative;
+        text-align:center;
+        display:inline-block;
+        vertical-align:top;
+        margin-right:10px;
+        visibility: hidden;
+    }
+    .selct-itms input[type='checkbox']{
+        opacity: 0;
+        width: 15px;
+        position: absolute;
+        z-index: 3;
+        height: 15px;
+        
+        margin: 0px;
+        cursor: pointer;
+    }
+    .selct-itms input[type='checkbox'] + i.chcktck{
+        /* border:1px solid #6f6f6f; */
+        border:1px solid #aeaeae;
+        border-radius:2px;
+        width:15px;
+        height:15px;
+        color:transparent;
+        padding-left: 2px;
+        padding-top: 1px;
+        font-size:10px;
+        vertical-align:top;
+        
+            
+    }
+    .selct-itms input[type='checkbox']:checked + i.chcktck{
+        border:1px solid #6f6f6f;
+        color:#6f6f6f;
+        transition:0.2s ease-in-out;
+    
+    }
+    
+    .grpitems-imgtg{
+        width:54px;
+        height:40px;
+        display:inline-block;
+        vertical-align:top;
+        
+    }
+    .grpitems-imgtg a img{
+        width:100%;
+        border-radius:3px;
+    }
+    .grpitems_hd h4{
+    font-size:13px;
+    font-weight:700;
+    margin:0px;
+    padding:6px 0px 0px 30px;
+    
+    }
+    .grpitems_hd h5{
+        font-size:12px;
+        font-weight:700;
+        color:#545454;
+        margin:0px;
+        padding-left:30px;
+    }
+    h4.wn_txt{
+    color:#38b078;
+    }
+    h4.inprog_txt{
+        color:#f5ba2b;
+        }
+    h4.lost_txt{
+    color:#e93d3f;
+    }
+    
+    
+    .group-items-dt-bot-mn{
+        display:table;
+        width:100%;
+        background:#fff;
+        padding:10px;
+        border-bottom:3px solid #efeff0;
+        }
+    .group-items-dt-bot-mn>div{
+            display:table-cell;
+            
+        }
+    .group-items-dt-bot-mn>div:last-child{
+            text-align:right;
+        }
+    
+    .group-items-dt-bot-lft span{
+        font-size:13px;
+        font-weight:500;
+        color:#4246a4;
+    }
+    .group-items-dt-bot-lft strong{
+        color:#4246a4;
+        font-size:13px;
+        font-weight:700;
+        padding-left:5px;
+    }
+    .group-items-dt-bot-rt button{
+    padding:5px 20px;
+    border-radius:2px;
+    text-align:center;
+    font-size:13px;
+    font-weight:500;
+    }
+    .group-items-dt-bot-rt button.bidbtn,.group-items-dt-bot-rt button.condet,.group-items-dt-bot-rt button.coudet{
+    border:1px solid #4246a4;
+    background:transparent;
+    color:#4246a4;
+    margin:0px 5px;
+    }
+    .group-items-dt-bot-rt button.bidbtn:hover,.group-items-dt-bot-rt button.condet:hover,.group-items-dt-bot-rt button.coudet:hover,.requti{
+        background: #4246a4;
+        /* background: -webkit-gradient(linear, left top, right top, from(rgb(76, 76, 76)), to(rgb(45, 45, 45)));
+        background: linear-gradient(to right, rgb(76, 76, 76) 0%, rgb(45, 45, 45) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#2d2d2d', GradientType=1); */
+        color:#fff;
+    
+    }
+    
+    .requti{background:#4246a4 !important; }
+    .requti:hover{color:#4246a4 !important; background:transparent !important; border: 1px solid #4246a4 !important;}
+    .group-items-dt-bot-rt button.sndimgsbtn{
+        background:#4477df;
+        color:#fff;
+        border:1px solid transparent;
+        margin:0px 0 0 5px;
+        padding:6px 20px;
+    }
+    .group-items-dt-bot-rt button.sndimgsbtn:hover{
+        border:1px solid #4477df;
+        color:#4477df;
+        background:#fff;
+    }
+    
+    
+    
+ 
+ 
+ /* Bid Request Popup Css Start */
+
+ .bidrqst-popdet {
+    width: 950px;
+    margin: 0px;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+.bidrqst-popdet .bidrqst-hd {
+    padding: 0px 0px 20px 0px;
+}
+
+.bidrqst-popdet .bidrqst-hd h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #3c3c3c;
+    margin: 0px;
+
+}
+
+.bidrqst-bd-top {
+    background: #eaeaea;
+    padding: 15px 20px;
+
+}
+
+.bidrqst-popdet .bidrqst-bd {
+    padding: 0px;
+}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl {
+    width: 70%;
+}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl tbody tr td {}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl tbody tr td:first-child {
+    padding-left: 0px;
+    width: 175px;
+}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl tbody tr td:nth-child(2) {
+    width: 120px;
+}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl tbody tr td:nth-child(3) {
+    width: 235px;
+}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl tbody tr td:first-child {
+    padding-left: 0px;
+}
+
+.bidrqst-popdet .bidrqst-bd-top .bidrqst-hdtbl tbody tr td span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #7a7a7a;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner {
+    display: table;
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ededed;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div {
+    display: table-cell;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-invid {
+    background: #ecf7f1;
+    padding: 10px 20px;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-invid>h4 {
+    color: #7a7a7a;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+.consigneedet-pop .intl-tel-input.allow-dropdown .flag-container,
+.consigneedet-pop .intl-tel-input.separate-dial-code .flag-container {
+    height: 25px;
+
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-invid>h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #343333;
+    margin: 0px;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-vehdet {}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-vehdet>table {
+    width: 100%;
+    border-bottom: 1px solid #ededed;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-vehdet>table:last-child {
+    border-bottom: 0px;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-vehdet>table>tbody>tr>td>span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #a1a1a1;
+    padding: 5px 0px 5px 10px;
+}
+
+.bidrqst-dtmn .bidrqst-dtmn-inner>div.bidrqst-dtmn-vehdet>table>tbody>tr>td>strong {
+    font-size: 13px;
+    font-weight: 700;
+    color: #343333;
+}
+
+/* Bid Request Popup Css End */
+
+/* Consgineed Detail Popup Start */
+
+.consigneedet-pop {
+    width: 1100px;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 10px;
+
+}
+
+.consigneedet-pop .consigneedet-hd {
+    padding: 10px 19px;
+    border-bottom: 1px solid #e7e7e7;
+
+}
+
+.consigneedet-pop .consigneedet-hd h3 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #3c3c3c;
+}
+
+.consigneedet-pop .consigneedet-mn {
+    padding: 0px 10px;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px 5px;
+
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div {
+    display: table-cell;
+    border: 1px solid #e7e7e7;
+    border-radius: 5px;
+    vertical-align: top;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right {
+    background: #f8f8f8;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right>div>table {
+    width: 100%;
+}
+
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft {
+    padding: 0px 10px;
+    width: 30%;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #000;
+    margin: 0px;
+    padding-bottom: 5px;
+}
+
+.consigneedet-lft-mn {
+    display: block;
+    width: 290px;
+}
+
+.slick-prev {
+    font-size: 0;
+    width: 24px;
+    height: 24px;
+    top: 0px;
+    right: 20px;
+    position: absolute;
+    background: url(/assets/images/slck-prev-icn.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 200;
+
+}
+
+.slick-prev:hover {
+
+    background: url(/assets/images/slck-prev-icn-hvr.png);
+}
+
+.slick-next {
+    font-size: 0;
+    position: absolute;
+    width: 24px;
+    top: 0px;
+    right: -10px;
+    height: 24px;
+    background: url(/assets/images/slck-next-icn.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 201;
+}
+
+.slick-next:hover {
+    background: url(/assets/images/slck-next-icn-hvr.png);
+    background-size: cover;
+}
+
+.consigneedet-lft-inn {
+    width: 220px;
+}
+
+.consigneedet-lft-inn .consigneedet-lft-inn-mn {
+    width: 220px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft table {
+    width: 100%;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft table tr td {
+    padding: 1px 0px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft table tr td span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #858585;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft table tr td strong {
+    color: #3c3c3c;
+    font-size: 13px;
+    font-weight: 500;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft table tr td textarea {
+    display: block;
+    resize: none;
+    border-radius: 5px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft table tr td:last-child {
+    padding-left: 10px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft div button {
+    width: 100%;
+    padding: 3px;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background: #666666;
+    color: #fff;
+    margin-top: 10px;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft strong.emailid {
+    color: #38b078 !important;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft button:hover {
+    border: 1px solid #666666;
+    background: #fff;
+    color: #666666;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right {
+    padding: 10px 20px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3 {
+    font-size: 15px;
+    margin: 0px;
+    font-weight: 500;
+    color: #262626;
+    position: relative;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3 span {
+    color: #4477df;
+    font-size: 12px;
+    font-weight: 700;
+    position: absolute;
+    right: 0px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3 span.verif {
+    display: none;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3.verif span.verif {
+    color: #38b078;
+    display: block;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3 span.unverif {
+    display: none;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3.unverif span.unverif {
+    color: red;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #858585;
+
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right input {
+    height: 25px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td:first-child {
+    padding-left: 0px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td:last-child {
+    padding-left: 15px;
+}
+
+.consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div:not(.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3) {
+    font-size: 0px;
+    display: table;
+    width: 100%;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div.intl-tel-input {
+    width: 100%;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div.intl-tel-input .selected-flag .iti-flag {
+    left: 10px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div>div {
+    display: table-cell;
+    width: 50%;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div>div:last-child {
+    padding-left: 15px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div>div>input {
+
+    display: block;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr:last-child td {
+    padding-left: 0px;
+}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td textarea {
+    height: auto;
+    width: 100%;
+    resize: none;
+    border-radius: 10px;
+    padding-top: 5px;
+}
+
+.consigneedet-pop .consigneedet-bot {
+    padding: 10px 20px;
+}
+
+.consigneedet-bot-rt {
+    text-align: right;
+}
+
+.consigneedet-pop .consigneedet-bot label {
+    position: relative;
+    margin: 0px;
+
+}
+
+.consigneedet-pop .consigneedet-bot label input[type="checkbox"] {
+    opacity: 0;
+    width: 15px;
+    position: absolute;
+    z-index: 3;
+    height: 15px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.consigneedet-pop .consigneedet-bot label input[type="checkbox"]+i.chcktck {
+
+    border: 1px solid #aeaeae;
+    border-radius: 2px;
+    width: 15px;
+    height: 15px;
+    color: transparent;
+    padding-left: 1px;
+    padding-top: 1px;
+    font-size: 10px;
+    vertical-align: top;
+    text-align: center;
+    margin-top: 3px;
+
+}
+
+.consigneedet-pop .consigneedet-bot label input[type="checkbox"]:checked+i.chcktck {
+    border: 1px solid #6f6f6f;
+    color: #6f6f6f;
+    transition: 0.2s ease-in-out;
+}
+
+.consigneedet-pop .consigneedet-bot span {
+    color: #262626;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.consigneedet-pop .consigneedet-bot .sndcustomer {
+    padding: 3px 20px;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background: #4477df;
+    color: #fff;
+    margin: 0px 5px 0px 10px;
+}
+
+.consigneedet-pop .consigneedet-bot .sndcustomer:hover {
+    color: #4477df;
+    border-color: #4477df;
+    background: #fff;
+}
+
+.consigneedet-pop .consigneedet-bot .submtbtn {
+    padding: 3px 20px;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background: #38b078;
+    color: #fff;
+    margin: 0px 5px 0px 5px;
+}
+
+.consigneedet-pop .consigneedet-bot .submtbtn:hover {
+    border-color: #38b078;
+    background: white;
+    color: #38b078;
+}
+
+
+
+.main-mid-div .upc-paypop-bot.gene-can-funds{
+	text-align: right;
+	margin-top: 20px;
+}
+
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-PAGES-START=======*/
+.main-my-order-page .main-my-invo table{
+	width: 100%;
+}
+.main-my-order-page .main-my-invo table thead{
+	
+}
+.main-my-order-page .main-my-invo table thead tr th{
+    padding: 20px 0 15px 15px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #2c2c2c;
+    background: #c8c8c8;
+}
+.main-my-order-page .main-my-invo table thead tr th:nth-child(1){
+	border-radius: 10px 0 0 0;
+}
+.main-my-order-page .main-my-invo table thead tr th:nth-child(9){
+	border-radius: 0px 10px 0 0;
+}
+.main-my-order-page .main-my-invo table thead tr{
+	
+}
+.main-my-order-page .main-my-invo table tbody{
+	border-bottom: #efeff0 3px solid;
+}
+.main-my-order-page .main-my-invo table tbody tr{
+	background: #fff;
+    border-bottom: 1px; 
+}
+.main-my-order-page .main-my-invo table tbody tr td{
+	 padding: 20px 0 15px 15px;
+    font-size: 13px;
+    color: #545454;
+    font-weight: 600;
+}
+.main-my-order-page .main-my-invo table tbody tr td strong{
+	font-size: 15px;
+    color: #000000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 190px;
+    overflow: hidden;
+    display: block;
+}
+.main-my-order-page .main-my-invo table tbody tr td strong.auc-dep-si{
+	font-size: 13px;
+}
+.main-my-order-page .main-my-invo table tbody tr td strong span{
+	padding-right: 5px;
+}
+.main-my-order-page .main-my-invo table tbody tr td.yes{
+	color: #38b078;
+}
+.main-my-order-page .main-my-invo table tbody tr td.no{
+	color: #ee282f;
+}
+.main-my-order-page .main-my-invo table tbody tr button.viewse-1 {
+    background: transparent;
+    color: #4477df;
+    border: none;
+	border:1px solid #4477df;
+    font-size: 13px;
+    padding: 6px 25px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.main-my-order-page .main-my-invo table tbody tr button.viewse-1:hover{
+    background: #4477df;
+    color: white;
+}
+.main-my-order-page .main-my-invo table tbody tr button.viewse-2 {
+    background: #545454;
+    color: #fff;
+    border: none;
+    font-size: 13px;
+    padding: 7px 25px;
+    border-radius: 20px;
+}
+.main-my-order-page .back-to-order{
+	    background: #858585;
+	    color: #fff;
+    border-radius: 20px;
+    padding: 5px 15px;
+    display:inline-block;
+    margin-top: 20px;
+    margin-left: 5px;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 500;
+}
+.back-to-order.dep{
+	background: #38b078;
+}
+.main-mid-div .upc-paypop-bot.gene-can-funds{
+	text-align: right;
+	margin-top: 20px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2{
+	width: 620px;
+    padding: 0px 0px;
+}
+.main-mid-div{
+	 padding: 15px 25px;
+}
+.main-mid-div.main-mid-div-2{
+	 padding: 15px 20px;
+}
+.upc-paypop .dep-heading-pop h3{
+	color: #2c2c2c;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0px;
+    padding: 13px 25px;
+    border-bottom: #dadada 1px solid;
+}
+.upc-pay-page-2 .am-fu-box-1 p, .upc-pay-page-2 .am-fu-box-2 p, .main-disc-area p{
+	font-size: 12px;
+    color: #4f4f4f;
+    font-weight: bold;
+}
+.upc-pay-page-2 .am-fu-box-1 {
+    display: inline-block;
+    width: 48.5%;
+    margin-right: 13px;
+    position: relative;
+}
+.upc-pay-page-2 .am-fu-box-1 input {
+    position: absolute;
+    width: 70%;
+    color:#6b6b6b;
+    border: #bcbcbc 1px solid;
+    font-size: 13px;
+    border-radius: 0 15px 16px 0;
+    padding: 5px 10px 5px 10px;
+    height: auto;
+}
+.upc-pay-page-2 .am-fu-box-1 select {
+    width: 30%;
+    font-size: 13px;
+    color:#6b6b6b;
+    padding: 4px 14px 6px 14px;
+    height: auto;
+    border: #bcbcbc 1px solid;
+    border-radius: 16px 0 0px 16px;
+}
+.upc-pay-page-2 .am-fu-box-1 select:focus{
+	box-shadow:0px 3px 6px 0px rgba(44, 44, 44, 0.3);
+	border-color: #2d2d2d;
+	border-radius: 7px 0px 0px 0px;
+}
+.upc-pay-page-2 .am-fu-box-2 select{
+	font-size: 13px;
+    border-radius:16px;
+    color:#6b6b6b;
+    border: #bcbcbc 1px solid;
+    padding: 3px 17px 5px 15px;
+}
+.upc-pay-page-2 .am-fu-box-2 select:focus{
+	box-shadow:0px 3px 6px 0px rgba(44, 44, 44, 0.3);
+	border-color: #2d2d2d;
+	border-radius: 7px 7px 0px 0px;
+}
+.upc-pay-page-2 .am-fu-box-2 {
+    display: inline-block;
+    width: 48.5%;
+}
+.main-amount-fund-type {
+    margin-bottom: 20px;
+}
+.main-disc-area textarea {
+    border-radius: 7px;
+    height: 110px;
+    width: 100%;
+    color:#6b6b6b;
+    font-size: 13px;
+    padding: 10px 15px;
+	border: #bcbcbc 1px solid;
+	resize:none;
+}
+.main-disc-area {
+    border-bottom: #bcbcbc 1px solid;
+    padding-bottom: 15px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3{
+	width: 760px;
+    padding: 0px 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4{
+	width: 930px;
+    padding: 0px 0px;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 p{
+	    display: inline-block;
+	        margin-right: 10px;
+	        font-size: 13px;
+            color: #858585;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area p{
+	    display: inline-block;
+    margin-right: 45px;
+    vertical-align: top;
+    font-size: 13px;
+            color: #858585;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area{
+	margin-top: 15px;
+	    border-bottom: none;
+    padding-bottom: 0;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea{
+	display: inline-block;
+	width: 83%;
+	    height: 70px;
+}
+.amou-box-fu {
+    display: inline-block;
+        width: 30%;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1{
+	width: 100%;
+}
+.upc-pay-page-2 .am-fu-box-1 .amou-box-fu select{
+	display:inline-block;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input{
+	width: 40%;
+}
+.availbalancedet>ul>li>strong {
+	font-weight: 700;
+	font-size: 15px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    display: inline-block;
+    width: 49%;
+    padding: 15px 15px 20px 15px;
+    vertical-align: top;
+     min-height: 196px;
+    background-color: #f5f5f5;
+}
+.upc-pay-page-3 .fund-sum-box-1 {
+    display: inline-block;
+    width: 49%;
+    margin-right: 8px;
+    padding: 15px 15px 20px 15px;
+    vertical-align: top;
+     min-height: 196px;
+    background-color: #f5f5f5;
+}
+.upc-pay-page-3 .fund-sum-box-1 h5, .upc-pay-page-3 .fund-sum-box-2 h5{
+	font-size: 15px;
+    color: #3c3c3c;
+    font-weight: bold;
+}
+.upc-pay-page-3 .main-fund-summery {
+    padding-bottom: 20px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    float: left;
+    width: 47%;
+    font-size: 13px;
+    color: #767676;
+    line-height: 25px;
+    margin-right: 9px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li strong, .upc-pay-page-3 .fund-sum-box-2 ul li strong{
+	color:#343333;
+	margin-right: 0px;
+	
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li:nth-child(even), .upc-pay-page-3 .fund-sum-box-2 ul li:nth-child(even){
+	text-align:right;
+}
+.upc-pay-page-3 .main-mid-div .upc-paypop-bot button.nobtn {
+    background: #38b078;
+}
+.upc-pay-page-3 .main-mid-div .upc-paypop-bot button.nobtn:hover{    -webkit-box-shadow: 2px 5px 19px 3px rgba(24, 160, 27, 0.18);
+    box-shadow: 2px 5px 19px 3px rgba(24, 160, 27, 0.18);}
+.upc-pay-page-4 .main-yard-images h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: #3c3c3c;
+}
+.upc-pay-page-4 .main-yard-images span {
+    font-size: 11px;
+    font-weight: bold;
+    color: #727272;
+    display: block;
+    margin-bottom: 10px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li i{
+	position: absolute;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    color: #fff;
+    margin: auto;
+    top: 20px;
+    font-size: 16px;
+    width: 15px;
+    display:none;
+}
+.main-yard-images ul li input[type="checkbox"] {
+    opacity: 0;
+    width: 80px;
+    position: absolute;
+    z-index: 1;
+    height: 57px;
+    margin: 0px;
+    cursor: pointer;
+}
+.main-yard-images ul li input[type="checkbox"]:checked + img{
+	webkit-filter: brightness(.4);
+    filter: brightness(.4);
+}
+.main-yard-images ul li input[type="checkbox"]:checked + img + i{
+	display:block;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img{
+	    width: 80px;
+    margin-right: 6px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li:nth-child(10) img{
+	margin-right: 0px;
+}
+.upc-pay-page-4 .main-yard-images.main-yard-images-aucti h4{
+    padding: 5px 0 10px 0;
+    border-bottom: #e7e7e7 1px solid;
+    margin-bottom: 10px;
+}
+.upc-pay-page-4 .main-yard-images.main-yard-input-field h4{
+	padding: 5px 0 10px 0;
+}
+.upc-pay-page-4 .main-yard-images.main-yard-input-field input{
+	font-size: 13px;
+    color: #b5b5b5;
+    font-weight: 500;
+    width: 100%;
+}
+.upc-pay-page-4 .upc-paypop-bot.se-send button.nobtn.se-send-1{
+    background: #4477df;
+    padding: 3px 30px;
+}
+.upc-pay-page-4 .upc-paypop-bot.se-send button.nobtn.se-send-1:hover{
+	box-shadow: none;
+}
+.upc-pay-page-4 .upc-paypop-bot.se-send button.nobtn.se-send-2{
+    background: #38b078;
+    padding: 3px 30px;	
+}
+.upc-pay-page-4 .upc-paypop-bot.se-send button.nobtn.se-send-2:hover{
+	box-shadow: none;
+}  
+.payment-div.border { border-top: 1px solid #dadada; border-bottom: 1px solid #dadada;}
+	.payment-div { padding: 10px 0px 10px 20px;}
+	.payment-div .selct-itms { margin-top: 13px;}
+	.payment-div.last .selct-itms { margin-top: 5px;}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-PAGES-END=======*/
+
+.group-items-dt-top-cen-main{
+    font-size:0;
+}
+.group-items-dt-top-cen-main>div{
+    display:inline-block;
+    vertical-align:top;
+    width:50%;
+}
+.group-items-dt-top-cen-main span{
+    padding:0px 5px;
+}
+
+
+
+
+/* Consignee Detail Popup End */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and   (-webkit-min-device-pixel-ratio: 1)  {
+    /*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+    .resutl h5 span {
+        bottom: 17px;
+        right: 210px;
+    }
+    .bidding-page1 h5 {
+        margin: 0px 0px 20px 0px;
+    }
+    /*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+    
+    /*=======PROFILE-INDIVIDUAL-STARTS=======*/
+    .profile-bg-img-main .m_type.mem-bor-right:after {
+        right: -63px;
+    }
+    .main-pro-form .year-box-1 {
+        display: inline-block;
+        width: 47%;
+        margin-right: 10px;
+    }
+    /*=======PROFILE-INDIVIDUAL-ENDS=======*/
+    
+    /*========view-and-confirm-agent-order-creation========*/
+    .view-confirm-act-det-in {
+        padding: 10px 20px;
+    }
+    .availbalancedet>ul>li {
+        padding-left: 5px;
+    }
+    .availbalancedet>ul>li>span {
+        font-size: 14px;
+    }
+    .main-view-new .unit-prc-det>ul>li:nth-child(5) {
+        width: 16%;
+    }
+    .main-view-new .unit-prc-det>ul>li:nth-child(2) {
+        width: 20%;
+    }
+    .main-view-new .unit-prc-det:before {
+        height: 83px !important;
+    }
+    /*========view-and-confirm-agent-order-creation========*/
+    
+    /*====================BID-PRICE-NEW-POPUP-STARTS============================*/
+    .main-left-side-section {
+        width: 550px !important;
+    }
+    /*====================BID-PRICE-NEW-POPUP-ENDS============================*/
+    
+        }	
+        
+        /*=====CAR-WON--CAR-LOST-PAGE-STARTS=====*/
+        @media screen and (max-width:1024px){
+            /*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 750px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+    width: 63px;
+    margin-right: 5px;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+        .main-order-deatils-edit .car-feature-slider .car-images-big div span img {
+            width: 60%;
+        }
+        .main-car-won-edit .carw-items{
+                display:block;
+                }
+        .main-car-won-edit li.grp-items {
+            width: 48%;
+        }	
+    /*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+    .upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+        width: 750px;
+    }
+    .upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+        width: 63px;
+        margin-right: 5px;
+    }
+    /*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+
+}
+
+
+@media screen and (max-width:768px) {
+
+    /*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.resutl h5 span {
+    bottom: 15px;
+    right: 115px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 0px;
+}
+.main-my-order-page .pay-ment-321 .back-to-order {
+    margin-top: 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 725px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+    width: 63px;
+    margin-right: 2px;
+}
+.main-yard-images ul li input[type="checkbox"] {
+    width: 64px;
+    height: 40px;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+    /* Consignee Detail Popup start */
+    .consigneedet-pop {
+        width: 740px;
+    }
+
+
+    /* Consignee Detail Popup End */
+    /* Bid Request Popup Css Start */
+    .bidrqst-popdet .bidrqst-bd {
+        overflow-x: scroll;
+    }
+    .bidrqst-popdet .bidrqst-bd>div {
+        min-width: 910px;
+    }
+    .bidrqst-popdet {
+        width: 730px;
+    }
+
+    /* Bid Request Popup Css End */
+}
+ @media screen and (max-width:736px) {
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf{float: left !important;}
+    
+        /*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+        .resutl h5 span {
+            bottom: 15px;
+            right: 115px;
+        }
+        .main-my-order-page .back-to-order {
+            margin-top: 0px;
+        }
+        .main-my-order-page .pay-ment-321 .back-to-order {
+            margin-top: 0px;
+        }
+        .upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+            width: 725px;
+        }
+        .upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+            width: 63px;
+            margin-right: 2px;
+        }
+        .main-yard-images ul li input[type="checkbox"] {
+            width: 64px;
+            height: 40px;
+        }
+        /*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/ 
+
+}
+
+@media screen and (max-width: 667px){
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/ 
+.resutl h5 span {
+    bottom: 17px;
+    right: 100px;
+}
+.pay-ment-321 .resutl h5 span {
+    bottom: 17px;
+    right: 92px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 0px;
+}
+ .main-my-order-page .pay-ment-321 .back-to-order {
+    margin-top: 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 655px;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea {
+    width: 80%;
+}
+.main-mid-div {
+    padding: 25px 10px;
+}
+.upc-pay-page-3 .fund-sum-box-1, .upc-pay-page-3 .fund-sum-box-2 {
+    padding: 15px 10px 20px 10px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    width: 46%;
+    min-height: 36px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 645px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+    margin-right: 0px;
+    width: 57px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    width: 46%;
+    min-height: 50px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    min-height: 320px;
+}
+.main-yard-images ul li input[type="checkbox"] {
+    width: 58px;
+    height: 40px;
+}
+.myordrscndpage.order-history-page .accordion-content {
+    max-width: 636px;
+    overflow-x: scroll;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input {
+    width: 71%;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+    .upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+        width: 645px;
+    }
+    .upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+        margin-right: 0px;
+        width: 57px;
+    }
+    .upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+        width: 46%;
+        min-height: 50px;
+    }
+    .upc-pay-page-3 .fund-sum-box-2 {
+        min-height: 320px;
+    }
+    .main-yard-images ul li input[type="checkbox"] {
+        width: 58px;
+        height: 40px;
+    }
+    .myordrscndpage.order-history-page .accordion-content {
+        max-width: 636px;
+        overflow-x: scroll;
+    }
+    .upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input {
+        width: 71%;
+    }
+    /*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/ 
+
+}
+/* iPhone 5 */
+	/* Landscape */
+	@media only screen
+	and (max-height: 320px)
+	and (max-width: 568px)
+	and (orientation:landscape){
+
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.resutl h5 span {
+    bottom: 16px;
+    right: 45px;
+}
+.pay-ment-321 .resutl h5 span {
+    bottom: 8px;
+    right: 40px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 0px;
+}
+.upc-pay-page-2 .am-fu-box-1 {
+    display:block;
+    width: 100%;
+    margin-right: 0px;
+}   
+.upc-pay-page-2 .am-fu-box-2 {
+    display:block;
+    width: 100%;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2 {
+    width: 545px;
+    padding: 0px 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 545px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 550px;
+}
+.upc-pay-page-3 .fund-sum-box-1 {
+    width: 48%;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    width: 46%;
+    min-height: 50px;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea {
+    width: 78%;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    min-height: 322px;
+}
+.main-yard-images ul li input[type="checkbox"] {
+    width: 58px;
+    height: 40px;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input {
+    width: 50%;
+}
+.myordrscndpage.order-history-page .accordion-content{
+        max-width:538px;
+        overflow-x:scroll;  
+    }
+
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+
+	.edit-carhub .ad-new-right {
+		width: 63%;
+	}
+	.edit-carhub .view-left {
+		width: 37%;
+	}
+	.noti-bid-car .dvdt-sent {
+           max-width: 535px;
+   }
+   .noti-bid-car .unsenttb .accordion-toggle .orderidnum {
+    display: block;
+    width: 100%;
+    }
+	.noti-bid-car .unsenttb .accordion-toggle .quotinf {
+    display: block;
+    width: 100%;
+	padding-right: 0px;
+	padding-top: 10px;
+       }
+	.main-agent-model .text-right.ad-new-right {
+    text-align: center;
+    padding-bottom: 15px;
+	width:100%;
+}
+.main-agent-model .agent-heading {
+    text-align: center;
+	width:100%;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.resutl h5 span {
+    bottom: 16px;
+    right: 45px;
+}
+.pay-ment-321 .resutl h5 span {
+    bottom: 8px;
+    right: 40px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 0px;
+}
+.upc-pay-page-2 .am-fu-box-1 {
+    display:block;
+    width: 100%;
+    margin-right: 0px;
+}	
+.upc-pay-page-2 .am-fu-box-2 {
+    display:block;
+    width: 100%;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2 {
+    width: 545px;
+    padding: 0px 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 545px;
+}
+    }
+@media screen and (max-width:568px) {
+    /* Consginee Detail popup css */
+    .consigneedet-pop {
+        width: 540px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr{    display: block;
+width: 217px;}
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td{    display: block;
+width: 100%;}
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td:last-child{padding-left: 0px;}
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right h3 span{    top: 19px;}
+.myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf, .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .order_hist_tbinf{
+display: block;width: 100%;    padding-top: 10px;
+}
+.myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf>li>span{padding-bottom: 0;}
+
+.myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf>li{    width: 35%;padding: 1px;}
+    /* Consginee Detail popup css end */
+    /* Bid Request Popup Css Start */
+    .bidrqst-popdet {
+        width: 530px;
+    }
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn{    right: 30px;bottom: 10px;}
+    .order_hist_tbinf>li>span.infhd{    width: 108px;}
+
+    /* Bid Request Popup Css End */
+}
+
+@media screen and (max-width:414px) {
+
+    /*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.resutl h5 span {
+    bottom: 15px;
+    right: -15px;
+}
+.pay-ment-321 .resutl h5 span {
+    bottom: 8px;
+    right: -25px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 0px;
+}
+.upc-pay-page-2 .am-fu-box-1 {
+    display:block;
+    width: 100%;
+    margin-right: 0px;
+}   
+.upc-pay-page-2 .am-fu-box-2 {
+    display:block;
+    width: 100%;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2 {
+    width: 390px;
+    padding: 0px 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 395px;
+        margin: 30px 0 0;
+}
+.upc-pay-page-3 .fund-sum-box-1 {
+    display: inline-block;
+    width: 100%;
+    margin-right: 0px;
+        margin-bottom: 10px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    display: inline-block;
+    width: 100%;
+    margin-right: 0px;
+}
+.upc-pay-page-3 .main-mid-div .upc-paypop-bot.gene-can-funds {
+    text-align: center;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 390px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+    margin-right: 0px;
+    width: 55px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    min-height: 196px;
+}
+.myordrscndpage.order-history-page .accordion-content{
+        max-width:384px;
+        overflow-x:scroll;  
+    }
+.amou-box-fu {
+    display: inline-block;
+    width: 100%;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea {
+    width: 100%;
+}
+
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+    .upc-pay-page-3 .main-mid-div .upc-paypop-bot.gene-can-funds {
+        text-align: center;
+    }
+    /* Consginee Detail popup css */
+    .consigneedet-pop {
+        width: 390px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft {
+        display: block;
+        width: 100%;
+    }
+    .consigneedet-pop .consigneedet-bot .sndcustomer{
+        margin-bottom:5px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right {
+        width: 100%;
+        display: block;
+    }
+    .consigneedet-bot-rt {
+        text-align: center;
+    }
+    /* Consginee Detail popup css end */
+    /* Bid Request Popup Css Start */
+    .bidrqst-popdet {
+        width: 390px;
+    }
+
+    /* Bid Request Popup Css End */
+
+
+
+   
+		.em-compose1-agent-bid{
+			width:290px;
+			
+		}
+		.agent-gen-btns button{
+			margin:5px 0px;
+			display:block;
+			width:100%;
+		}
+		.em-compose-main-agent-bid{
+			width:290px;
+		}
+		.agent-max-bid ul li:nth-child(2){
+			width:50%;
+		}
+		.agent-max-bid ul li:nth-child(2):after{
+			right:-20px;
+		}
+		.noti-bid-car .dvdt-sent {
+           max-width: 380px;
+        }
+		.noti-bid-car .senttb .accordion-toggle .quotinf {
+           padding-right: 25px;
+        }
+		.noti-bid-car .unsenttb .accordion-toggle .orderidnum {
+    display: block;
+    width: 100%;
+}
+.noti-bid-car .unsenttb .accordion-toggle .quotinf {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 10px;
+}
+.noti-bid-car .unsenttb .accordion-toggle .quotinf .ordet {
+    margin-right: 30px;
+}
+.noti-bid-car .unsenttb .accordion-toggle.active .quotinf .cnt{
+	margin-right:32px;
+	}
+.edit-carhub .order_history_tab_info {
+    right: -11px;
+}
+.main-agent-model .text-right.ad-new-right {
+    text-align: center;
+    padding-bottom: 15px;
+	width:100%;
+}
+.main-agent-model .agent-heading {
+    text-align: center;
+	width:100%;
+}
+.edit-carhub .view-confirm-act-det-in {
+    padding: 10px 15px;
+}
+.edit-carhub .unit-prc-det ul li {
+    width: 33%;
+    float: left !important;
+    margin-bottom: 10px;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.resutl h5 span {
+    bottom: 15px;
+    right: -15px;
+}
+.pay-ment-321 .resutl h5 span {
+    bottom: 8px;
+    right: -25px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 0px;
+}
+.upc-pay-page-2 .am-fu-box-1 {
+    display:block;
+    width: 100%;
+    margin-right: 0px;
+}	
+.upc-pay-page-2 .am-fu-box-2 {
+    display:block;
+    width: 100%;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2 {
+    width: 390px;
+    padding: 0px 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 395px;
+        margin: 30px 0 0;
+}
+.upc-pay-page-3 .fund-sum-box-1 {
+    display: inline-block;
+    width: 100%;
+    margin-right: 0px;
+        margin-bottom: 10px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    display: inline-block;
+    width: 100%;
+    margin-right: 0px;
+}
+.upc-pay-page-3 .main-mid-div .upc-paypop-bot.gene-can-funds {
+    text-align: center;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 390px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+    margin-right: 0px;
+    width: 55px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    min-height: 196px;
+}
+
+/* My order new Page css start */
+
+.myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn{
+    right: 5px;
+    bottom: 5px;
+}
+.myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf, .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .order_hist_tbinf{
+    width:auto;
+}
+
+
+
+.main-car-won-edit .myordrscndpage .group-items{
+    min-width:1110px;
+}
+.myordrscndpage-hd.order-history-page1 .resutl h5{
+    margin:20px 0px 0px 0px;
+}
+.mdordr-buttons{
+    margin-bottom:0px;
+}
+.mdordr-buttons button,.mdordr-buttons .genl-invc-btn{
+    margin-bottom:10px;
+}
+
+/* My order new Page css End */
+}
+
+@media screen and (max-width:375px) {
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/
+.resutl h5 span {
+    bottom: 15px;
+    right: -30px;
+}
+.pay-ment-321 .resutl h5 span{
+    bottom: 16px;
+    right: -40px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 2px;
+}
+.upc-pay-page-2 .am-fu-box-1 {
+    display:block;
+    width: 100%;
+    margin-right: 0px;
+}   
+.upc-pay-page-2 .am-fu-box-2 {
+    display:block;
+    width: 100%;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2 {
+    width: 355px;
+    padding: 0px 0px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 356px;
+}
+.upc-pay-page-3 .fund-sum-box-1 {
+    display: inline-block;
+    width: 100%;
+    margin-right: 0px;
+    margin-bottom: 10px;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    display: inline-block;
+    width: 100%;
+    margin-right: 0px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    float: left;
+    width: 46%;
+    font-size: 11px;
+    color: #767676;
+    min-height: 25px;.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 300px;
+}
+.main-mid-div {
+    padding: 25px 10px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    float: left;
+    width: 46%;
+    font-size: 11px;
+    color: #767676;
+    min-height: 50px;
+}
+    margin-right: 9px;
+}   
+  .upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 355px;
+} 
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea {
+    width: 65%;
+}
+.upc-pay-page-3 .fund-sum-box-2 {
+    min-height: 150px;
+}
+.myordrscndpage.order-history-page .accordion-content {
+    max-width: 345px;
+    overflow-x: scroll;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input {
+    width: 57%;
+}
+.agent_s_sec_two.order-history-page1.myordrscndpage-hd .gen-invo-2 {
+    width: 100%;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+
+
+    .upc-pay-page-3 .main-mid-div .upc-paypop-bot.gene-can-funds {
+        text-align: right;
+    }
+    /* Consginee Detail popup css */
+    .consigneedet-pop {
+        width: 350px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right {
+        width: 100%;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .consigneedet-bot-rt {
+        text-align: center;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div>div:last-child {
+        padding-left: 5px;
+    }
+    .consigneedet-lft-mn {
+        width: 255px;
+    }
+    .consigneedet-pop .consigneedet-bot label {
+        margin-bottom: 5px;
+    }
+    /* Consginee Detail popup css end */
+    /* Bid Request Popup Css Start */
+    .bidrqst-popdet {
+        width: 360px;
+    }
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn, .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .mk-payment-btn, .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn:hover{right: 15px;}
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf>li, .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .order_hist_tbinf>li{width: 38%;min-width: 90px;}    
+
+    /* Bid Request Popup Css End */
+}
+
+@media screen and (max-width:320px) {
+    /* Consginee Detail popup css */
+    .consigneedet-pop {
+        width: 300px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-lft {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right {
+        width: 100%;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .consigneedet-bot-rt {
+        text-align: center;
+    }
+    .consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr td>div>div:last-child {
+        padding-left: 5px;
+    }
+    .consigneedet-lft-mn {
+        width: 255px;
+    }
+    .consigneedet-pop .consigneedet-bot label {
+        margin-bottom: 5px;
+    }
+    /* Consginee Detail popup css end */
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf>li{    width: 40%;}
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn{    right: 3px;padding: 6px 11px;}
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf>li, .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .order_hist_tbinf>li{width: 40%;}
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn, .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .mk-payment-btn{    right: 3px;
+padding: 6px 11px;}
+
+.consigneedet-pop .consigneedet-mn .consigneedet-inner>div.consigneedet-right table tr{
+    width:235px;
+}
+
+    /* Bid Request Popup Css Start */
+    .bidrqst-popdet {
+        width: 300px;
+    }
+    /* Bid Request Popup Css End */
+}
+
+
+@media screen and (max-width: 568px) {
+	/* My order new Page css Start */
+
+	
+	
+	.main-car-won-edit .myordrscndpage .group-items{
+		min-width:1110px;
+	}
+	.myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf>li{
+		display:inline-block;
+	}
+	.myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf, .myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .order_hist_tbinf{
+
+	}
+	.mdordr-buttons{
+		text-align:left;
+	}
+
+
+
+
+
+
+
+
+	/* My order new Page css End */
+
+	/* send link popup css start */
+
+	.slpopdet-sel-pck>table>tbody>tr>td{
+		margin-top:10px;
+	}
+	.slpopdet-sel-pck table>tbody>tr>td>div>a.colpexp-ic{
+		display:block;
+		padding:0px 10px;
+	}
+	.slpopdet-sel-pck table>tbody>tr>td>div.dtl.active{
+		display:block;
+		transition:1s linear all;
+	}
+	.slpopdet-sel-pck table>tbody>tr>td>div>a.colpexp-ic>i.dwn{display:none;}
+	.slpopdet-sel-pck table>tbody>tr>td>div>a.colpexp-ic.active>i.dwn{display:block;}
+	.slpopdet-sel-pck table>tbody>tr>td>div>a.colpexp-ic.active>i.tp{display:none;}
+	.slpopdet-sel-pck1.slpopdet-sel-pck>table>tbody>tr>td{
+		width:100%;
+	}
+
+}
+
+
+
+@media screen and (max-width:375px){
+	/* My order new Page css start */
+	.myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .order_hist_tbinf>li,.myordrscndpage.order-history-page .accordion-toggle.active .order_history_tab_info .order_hist_tbinf>li{
+		width:45%;
+		min-width:90px;
+	}
+
+	.myordrscndpage.order-history-page .accordion-content{
+		max-width:345px;
+		overflow-x:scroll;
+		
+	}
+	
+	.main-car-won-edit .myordrscndpage .group-items{
+		min-width:1110px;
+	}
+
+    .upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+        width: 355px;
+    } 
+    .upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea {
+        width: 65%;
+    }
+    .upc-pay-page-3 .fund-sum-box-2 {
+        min-height: 150px;
+    }
+    .myordrscndpage.order-history-page .accordion-content {
+        max-width: 345px;
+        overflow-x: scroll;
+    }
+    .upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input {
+        width: 57%;
+    }
+    .agent_s_sec_two.order-history-page1.myordrscndpage-hd .gen-invo-2 {
+        width: 100%;
+    }
+    /*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+
+
+    /* My order new Page css End */
+}
+
+@media screen and (max-width:320px){
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/    
+.resutl h5 span {
+    bottom: 15px;
+    right: -5px;
+}
+.pay-ment-321 .resutl h5 span {
+    bottom: 15px;
+    right: -5px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 13px;
+}
+.main-my-order-page .pay-ment-321 .back-to-order {
+    margin-top: 13px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2 {
+    width: 300px;
+    padding: 0px 0px;
+}
+.upc-paypop-bot button {
+    padding: 8px 26px;
+}
+  .upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 300px;
+}
+.main-mid-div {
+    padding: 25px 10px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    min-height: 20px;
+}
+.fund-sum-box-1 li.reqstut-1{
+    width: 50% !important;
+} 
+.fund-sum-box-1 li.reqstut-2{
+    width: 40% !important;
+} 
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 300px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+    width: 58px;
+    margin-right: 4px;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea {
+    width: 100%;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 .amou-box-fu {
+    display: inline-block;
+    width: 100%;
+}
+.upc-pay-page-2.upc-pay-page-3 .am-fu-box-1 input {
+    width: 70%;
+}
+.upc-pay-page-3 .main-mid-div .upc-paypop-bot.gene-can-funds {
+    text-align: right;
+}
+.myordrscndpage.order-history-page .accordion-content {
+    max-width: 289px;
+    overflow-x: scroll;
+}
+.agent_s_sec_two.order-history-page1.myordrscndpage-hd .gen-invo-2 {
+    width: 100%;
+}
+/*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-END=======*/
+
+    /* My order new Page css start */
+
+    .myordrscndpage.order-history-page .accordion-toggle .order_history_tab_info .mk-payment-btn{
+        padding:7px 18px;
+        font-size:12px;
+    }
+
+    .main-car-won-edit .myordrscndpage .group-items{
+        min-width:1110px;
+    }
+    
+    
+    /* My order new Page css End */
+
+
+    /*=======INVOICE-HISTORY--AND--PAYMENT-HISTORY-POPUPS-START=======*/	
+.resutl h5 span {
+    bottom: 15px;
+    right: -5px;
+}
+.pay-ment-321 .resutl h5 span {
+    bottom: 15px;
+    right: -5px;
+}
+.main-my-order-page .back-to-order {
+    margin-top: 13px;
+}
+.main-my-order-page .pay-ment-321 .back-to-order {
+    margin-top: 13px;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2 {
+    width: 300px;
+    padding: 0px 0px;
+}
+.upc-paypop-bot button {
+    padding: 8px 26px;
+}
+  .upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 {
+    width: 300px;
+}
+.main-mid-div {
+    padding: 25px 10px;
+}
+.upc-pay-page-3 .fund-sum-box-1 ul li, .upc-pay-page-3 .fund-sum-box-2 ul li {
+    min-height: 20px;
+}
+.fund-sum-box-1 li.reqstut-1{
+	width: 50% !important;
+} 
+.fund-sum-box-1 li.reqstut-2{
+	width: 40% !important;
+} 
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3.upc-pay-page-4 {
+    width: 300px;
+}
+.upc-pay-page-4 .main-yard-images .yard-img-ul li img {
+    width: 58px;
+    margin-right: 4px;
+}
+.upc-pay-page-2.upc-pay-page-3 .main-disc-area textarea {
+    width: 100%;
+}
+.upc-paypop.upc-pay-page.upc-pay-page-2.upc-pay-page-3 .amou-box-fu {
+    display: inline-block;
+    width: 100%;
+}
+}
+.header-btns-div{
+    margin-top: 20px;
+}
+.invc-histo-btn{
+    /* background: #38b078; */
+    border: none;
+    border: 1px solid transparent;
+    /* border-radius: 20px; */
+    padding: 5px 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+}
+.img-li-css{
+    margin-left: 30px;
+}
+
+.process-loader{
+    width: 30px;
+    float: right;
+}
+.no-record-found{margin-top: 20px; font-weight: 500; color: #6764a8;}

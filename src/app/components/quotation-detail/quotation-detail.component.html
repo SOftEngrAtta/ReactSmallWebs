@@ -1,0 +1,218 @@
+<app-header></app-header>
+<section class="agent_s_sec_two resutl">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <h5>
+          <strong>Quotation - View and Confirm</strong>
+          <span *ngIf="details">
+            {{ details.length }}
+          </span>
+        </h5>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right ad-new-right" *ngIf="details && details.length > 0">
+        <button class="email_btn" (click)="openAuctionPage()" >Add More Car</button>
+        <button class="email_btn orderplacebtn agnt-place-btn" (click)="generateShortUrl(quotationId)" data-fancybox data-src="#generate_quotation_link">Generate link</button>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+<div class="agent_s_sec_three" *ngIf="details && details.length > 0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h3 class="agnt-shorthd">Quotation</h3>
+        <div class="record_table agentshort">
+          <ul class="table_head v_spec">
+            <li>Vehicle Specification
+            </li>
+            <li>Chassis#
+            </li>
+            <li>Mileage
+            </li>
+            <!-- <li>Max Bid Price
+            </li>
+            <li>Best Bid Price
+            </li> -->
+            <li>Lot #
+            </li>
+            <li>Auction House
+            </li>
+            <li>Shipping
+            </li>
+            <li>Service Charges
+            </li>
+            <li>Inspection(s)
+            </li>
+            <li>CNF
+            </li>
+            <li>Action</li>
+          </ul>
+          <ul class="table_body agent_shortlist" *ngFor="let item of details; let i = index">
+            <li>
+              <div class="prd-image">
+                <a data-fancybox [href]="item.CarImage  | splitimage " *ngIf="item.CarImage">
+                  <img class="img-css" [src]=" item.CarImage  | splitimage ">
+                </a>
+                <a data-fancybox href="./assets/images/no-image.png" *ngIf="!item.CarImage">
+                  <img class="img-css" src=" ./assets/images/no-image.png">
+                </a>
+              </div>
+              <div class="prod-det">
+                <h3 title="{{ item.MakerName }} {{ item.ModelName }}">{{ item.MakerName }} {{ item.ModelName }}</h3>
+                <span>{{ item.ModelYear }}</span>
+              </div>
+            </li>
+            <li>{{ item.ChassisNumber }}</li>
+            <li>{{ item.Mileage | roundoffhtmlnumber | number}} KM</li>
+            <!-- <li>¥ {{ item.MaxBidPrice }}</li>
+            <li>¥ {{ item.BestBidPrice }}</li> -->
+            <li>{{ item.LotNumber }}</li>
+            <li title="{{ item.AuctionHouseName }}">{{ item.AuctionHouseName }}</li>
+            <li>{{ item?.CurrencyCode }} {{ item.ShippingPrice | roundoffhtmlnumber | number }} </li>
+            <li>{{ item?.CurrencyCode }} {{ item.ServiceCharges | roundoffhtmlnumber | number }}</li>
+            <li>{{ item?.CurrencyCode }} {{ item.InspectionPrice | roundoffhtmlnumber | number }}</li>
+            <li>{{ item?.CurrencyCode }} {{ item.CNF | roundoffhtmlnumber | number }}</li>
+            <li>
+              <span>
+                <button class="edit-icon" href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Edit" (click)="selectedVehicleLink(item)">
+                  <img src="/assets/images/edit-icn.png">
+                </button>
+              </span>
+              <span>
+                <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Delete" (click)="showDeleteConfirmPopup(item.EncryptedQuotationItemId);">
+                  <img src="/assets/images/delete_icon.png">
+                </a>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 result">
+      </div>
+      <!--       <div class="col-lg-8 text-right">
+        <div class="mnpage">
+          <span class="showrslts">Showing 1 - 10 of 123 Records</span>
+          <ul id="pagination-dm" class="pagination-sm"></ul>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<div class="agent_s_sec_three my-favourite-page " *ngIf="!details || details.length == 0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 " align="center">
+        <div class="myfvpagedt hglt mfvsect">
+          <br>
+          <span >No Record Found</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Start of Popups -->
+
+<div class="delete_order remove_box_one" id="qi_confirm_delete" style="display:none;">
+  <!--<div class="bid_login remove_box_one" id="bid_login" style="display:none;" >-->
+  <div class="remove_incomplete_order">
+    <h3>Are you sure you want to remove?</h3>
+    <button class="login_btn3" onclick="$.fancybox.close();">No</button>
+    <button class="login_btn3 deletecurrent" id="btn_confirm_delete" (click)="deleteQuotationItem();">Yes</button>
+  </div>
+</div>
+
+<div id="qi_bid_update" class="OrderCreation em-compose-main em-compose-main-agent-bid">
+  <div class="em-compose1 em-compose1-agent-bid">
+    <div class="popup_top">
+      <h3>Bid Price</h3>
+      <div class="agent-bid">
+        <ul>
+          <li>
+            <img src="{{ popupCarImage }}" alt="" />
+          </li>
+          <li>
+            <p>Make</p>
+            <span>Model</span>
+          </li>
+          <li>
+            <p>{{ popupMake }}</p>
+            <span>{{ popupModel }}</span>
+          </li>
+          <li>
+            <p>Year</p>
+            <span>Chassis</span>
+          </li>
+          <li>
+            <p>{{ popupYear }}</p>
+            <span>{{ popupChassis }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="agent-max-bid">
+        <ul>
+          <li>Max Bid Price</li>
+          <li>
+            <span>¥</span>
+            <input type="text" class="rounded_text tmpproto" type="number" [(ngModel)]="userBidPrice" name="userBidPrice"
+              id="userBidPrice" autocomplete="off">
+            <a href="javascript:;" (click)="getUnitPrice();">revaluate</a>
+          </li>
+          <li *ngIf="pricing.serviceCharges">Services Charges</li>
+          <li *ngIf="pricing.serviceCharges">
+            <span>¥</span>{{ pricing.serviceCharges }}</li>
+          <li *ngIf="pricing.fob">FOB</li>
+          <li *ngIf="pricing.fob">
+            <span>¥</span>{{ pricing.fob }}</li>
+          <li *ngIf="pricing.freightCharges">Freight Charges</li>
+          <li *ngIf="pricing.freightCharges">
+            <span>¥</span>{{ pricing.freightCharges }}</li>
+          <li *ngIf="pricing.inspection">Inspection</li>
+          <li *ngIf="pricing.inspection">
+            <span>¥</span>{{ pricing.inspection }}</li>
+          <li *ngIf="pricing.cnfCharges">CNF</li>
+          <li *ngIf="pricing.cnfCharges">
+            <span>¥</span>{{ pricing.cnfCharges }}</li>
+          <li>Bid Win Charges</li>
+          <li> {{ bidWinChance }}%</li>
+        </ul>
+      </div>
+      <div class="agent-gen-btns">
+        <button class="gene-btn" onclick="$.fancybox.close();">Cancel</button>
+        <button class="save-bid-btn" id="" onclick="$.fancybox.close();">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="history password_reset_con" id="qi_success" style="display:none;">
+  <div class="remove_incomplete_order" align="center">
+    <h3>Vehicle has been removed from quotation.</h3>
+    <button class="login_btn3" onclick="$.fancybox.close();">Close</button>
+  </div>
+</div>
+
+<div id="generate_quotation_link" class="OrderCreation em-compose-main em-compose-main-agent-bid">
+  <div class="em-compose1 em-compose1-agent-bid em-compose1-agent-gen">
+    <div class="popup_top">
+      <h3>Copy Link</h3>
+      <div class="generate-bid-field">
+        <p>To Share this file with other, Copy and paste this link.</p>
+        <label>
+          <input type="text" name=""  #inputTarget readonly [value]="shortUrl" />
+        </label>
+      </div>
+      <div class="agent-gen-btns">
+        <button class="gene-btn" id="" onclick="$.fancybox.close();">Cancel</button>
+        <button class="save-bid-btn copied" id="copy-bid-agent" [ngxClipboard]="inputTarget" (click)="copylink()">Copy to Clipboard</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Popups -->
+
+<app-bidprice [quotationPricingInput]="selectedQuotationPricing" [isUpdateInput]="true" (updated)="updatedBidPrice($event)"></app-bidprice>

@@ -1,0 +1,106 @@
+li.order-detail-cars-list-items {
+  position: relative;
+  margin-bottom: 25px;
+  opacity: 0.5;
+}
+li.order-detail-cars-list-items.active {
+  opacity: 1;
+}
+li.order-detail-cars-list-items .imganchors {
+  display: block;
+  position: relative;
+}
+.imganchors img {
+  width: 100%;
+}
+li.order-detail-cars-list-items .carsitem {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  padding: 4px 7px;
+  color: #fff;
+  background: #f03f3f;
+  z-index: 10;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 20px;
+}
+li.order-detail-cars-list-items span.hdcarlist {
+  font-size: 13px;
+  color: #414062;
+  font-weight: 700;
+  padding: 7px 0px 7px 5px;
+  display: block;
+}
+li.order-detail-cars-list-items a {
+  position: relative;
+  display: block;
+  border: 1px solid transparent;
+  margin: 0px 5px 10px 5px;
+}
+li.order-detail-cars-list-items.active:before {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border-bottom: 15px solid #ececec;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: -25px;
+}
+li.order-detail-cars-list-items.active a {
+  border-color: #2d2d2d;
+  -moz-box-shadow: 0px 3px 6px 0px rgba(44, 44, 44, 0.3);
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(44, 44, 44, 0.3);
+  box-shadow: 0px 3px 6px 0px rgba(44, 44, 44, 0.3);
+}
+
+.ordr-detail-cars {
+  padding: 20px 30px 0px 0px;
+  margin: 0px;
+}
+
+.ordr-detail-cars .ordr-detail-cars-small a {
+  display: block;
+}
+.ordr-detail-cars .ordr-detail-cars-small img {
+  width: 100%;
+}
+.ordr-detail-cars .ordr-detail-cars-small div {
+  float: left;
+  width: 116px;
+  text-align: center;
+  min-height: 120px;
+  margin: 0px 5px;
+}
+.zoom-cls{
+  padding: 4px 16px;
+  display: inline-block;
+  color: #fff;
+  border: 0px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  border-radius: 3px;
+  font-weight: 500;
+  background: #34388c;
+  margin-bottom: 10px;
+}
+.flgimg{
+  position: absolute;
+  width: 89px;
+  height: auto;
+  content: "";
+  right: 50px;
+  bottom: 237px;
+  padding: 7px;
+  background: #fff;
+  border-radius: 4px;
+}
+.updated-flg-css{
+  background-repeat: no-repeat;
+  background-size: 100px 41px;
+  padding: 15px 50px 17px 20px;
+}

@@ -1,0 +1,47 @@
+<div class="log-main">
+    <img class="login-logo" src="/assets/login/login-logo.png" alt="">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-toggle="tab" href="javascript:;">Sign In</a>
+        </li>
+        <li>
+            <a href="javascript:;" [routerLink]="['/sign-up']">Sign Up</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <div class="login_username1">
+                <label class="active">Email</label>
+                <input type="text" 
+                    placeholder="Enter Email Address" 
+                    [(ngModel)]="userLogin.email" 
+                    name="email" 
+                    #email="ngModel"
+                    required 
+                    autocomplete="off">
+                <i class="user-input-icon"></i>
+                <i class="fa fa-check log-correct" aria-hidden="true"></i>
+            </div>
+            <div class="login_username1">
+                <label class="active">Password</label>
+                <input type="password" 
+                    placeholder="Enter Password" 
+                    [(ngModel)]="userLogin.password"  
+                    #password="ngModel"
+                    name="password" 
+                    required 
+                    autocomplete="off"
+                    (keypress)="login($event)">
+                <i class="user-password-icon"></i>
+                <i class="fa fa-check log-correct" aria-hidden="true"></i>
+            </div>
+            <div class="remember_me">
+                <label><a class="forgot_password" href="javascript:;" [routerLink]="['/forget-password']">Forgot your password?</a></label>
+            </div>
+            <div class="signup_btn">
+                <button type="submit" (click)="login('click')">Sign in</button>
+                <a class="create_acc" href="javascript:;" [routerLink]="['/sign-up']">Create New Account</a>
+            </div>
+        </div>
+    </div>
+</div>

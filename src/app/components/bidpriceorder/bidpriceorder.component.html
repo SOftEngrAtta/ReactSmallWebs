@@ -1,0 +1,498 @@
+<div class="slpop-main main-sl" id="sendlinkpopup">
+    <div class="slpop-hd"><h3>Bid Price</h3></div>
+    <div class="slpop-innerdv">
+        <div class="slpopdet-top">
+            <div class="slpopdet-top-in">
+                <a class="img-zoom" data-fancybox="gallery1" [href]=" carImages[0] | splitimage " [style.margin-left.px]="5">
+                    <img [src]="carImages[0] | splitimage " [style.width.px]="54" [style.height.px]="40">            
+                </a>
+                <a *ngIf="carImages[1]" class="img-zoom" data-fancybox="gallery1" [href]="carImages[1] | splitimage  " [style.margin-left.px]="5">
+                    <img [src]="carImages[1] | splitimage " [style.width.px]="54" [style.height.px]="40">            
+                </a>
+                <a class="img-zoom" data-fancybox="gallery1" [href]="orderdetail?.AuctionSheet | splitimage " [style.margin-left.px]="5">
+                    <img [src]="orderdetail?.AuctionSheet | splitimage " [style.width.px]="54" [style.height.px]="40">
+                </a>
+                <button class="view-detail" (click)="openviewdetail()"> View Detail </button>
+            </div>
+            <div class="slpopdet-top-inrt">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h3>
+                                    {{ orderdetail.Make }}
+                                </h3>
+                                <span>
+                                    {{ orderdetail.Model }} - {{ orderdetail.Year }}
+                                </span>
+                            </td>
+                            <td>
+                                <span>Chassis#</span>
+                                <strong>
+                                    {{ orderdetail.Body || '--' }}
+                                </strong>
+                            </td>
+                            <td>
+                                <span>Lot No.</span>
+                                <strong>
+                                    {{ orderdetail.LotNo || '--' }}
+                                </strong>
+                            </td>
+                            <td>
+                                <span>Auction House</span>
+                                <strong>
+                                    {{ orderdetail.AuctionHouse  || '--' }}
+                                </strong>
+                            </td>
+                            <td>
+                                <span>Auction Date</span>
+                                <strong class="dt">
+                                    {{ orderdetail.AuctionDate | date }}
+                                </strong>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="main-section">
+            <div class="main-left-side-section" [style.margin-top.px]="0" [style.padding-top.px]="5">
+                <div class="main-bid-price-nego">
+                    <p>Select Plan</p>
+                    <select name="" id="" [(ngModel)]="selectedplan.index" (change)="changedplan()">
+                        <option *ngFor="let plan of plans" [value]="plan.index"> {{ plan.plan_name }} </option>
+                    </select>
+                    <div class="nego-box-1">
+                        <p *ngIf="orderdetail && orderdetail.PricingTypeId == 1"> Bid Price <span class="mad-fields"> * </span></p>
+                        <p *ngIf="orderdetail && orderdetail.PricingTypeId == 2"> CNF Price <span class="mad-fields"> * </span></p>
+                        <input type="text" 
+                            name="bidprice" 
+                            [(ngModel)]="userdetail.bidprice"
+                            #bidprice="ngModel"
+                            placeholder="Enter Bid Price"
+                            (keypress)="onlyNumberKey($event)"
+                            (focusout)="focusOut($event)"
+                            [disabled]="displayloader">
+                    </div>
+                    <div class="nego-box-2">
+                        <p>Chassis Number <span class="mad-fields">* <a href="javascript:;" class="msga"><i class="fa fa-question-circle" aria-hidden="true"></i><span class="msg">See Auction Sheet for Complete Chassis number</span></a> </span></p>                                           
+                        <input type="text" 
+                        name="chassisnumber" 
+                        [(ngModel)]="userdetail.chassisnumber"
+                        #chassisnumber="ngModel"
+                        placeholder="Enter Chassiss Number"
+                        [disabled]="displayloader"
+                        class="chassis-input-css"
+                        (keypress)="openAuctionSheet()"
+                        (click)="openAuctionSheet()">
+                        <!-- <button class="check-chassis-css" (click)="checkchassis()">Check</button> -->
+
+                    </div>
+                </div>
+                <div class="main-manu-year">
+                    <div class="manu-box-1" [style.width.%]="34">
+                        <p>Manufacturing Month / Year <span span class="mad-fields"> * </span> </p>
+                        <select class="sel-mon" [(ngModel)]="userdetail.selectedmonth">
+                            <option selected disabled value="">Select Month</option>
+                            <option [value]="month.id" *ngFor="let month of userdetail.months">
+                                {{ month.name }}
+                            </option>
+                        </select>
+                        <select [(ngModel)]="userdetail.selectedYear">
+                            <option selected disabled value="">Select Year</option>
+                            <option [value]="year" *ngFor="let year of userdetail.years  ">
+                                {{ year }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="manu-box-2" [style.width.%]="60">
+                        <p>Comments</p>
+                        <textarea placeholder="Enter Comments" 
+                            name="comment"
+                            [(ngModel)]="orderdetail.BidComments"
+                            #BidComments="ngModel">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="main-num-chass">
+                    <div class="nego-box-2 nego-boxx-2">
+                        <p>Interested in Negotiation</p>
+                        <label class="rdbtninput rdbtninput-are-u" (change)="activecheckornot('negotiation')" >
+                            <input type="checkbox" class="inpst" [checked]="userdetail.isNegotiationActive" >
+                            <i class="fa fa-check rdbtn"></i>
+                            <span class="hand-tool">Are you interested in Negotiation?</span>
+                        </label>
+                    </div>
+                    <div class="nego-box-1 nego-boxx-1">
+                        <p>Number Plate</p>
+                        <div class="nego-box-inner">
+                            <label class="rdbtninput rdbtnputee rdbtninput-are-u" (change)="activecheckornot('numberplate')">
+                                <input type="checkbox" 
+                                    placeholder="Enter Number Plate" 
+                                    class="inpst" 
+                                    [checked]="userdetail.isNumberPlateActive">
+                                <i class="fa fa-check rdbtn"></i>
+                            </label>
+                            <input type="text" 
+                                name="numberplate"
+                                [(ngModel)]="userdetail.numberplate" 
+                                #numberplate="ngModel"
+                                [disabled]="!userdetail.isNumberPlateActive"
+                                placeholder="Enter Number Plate">
+                        </div>
+                    </div>
+                    <div class="nego-box-2 nego-boxx-2 mgtp" *ngIf=" orderdetail.CountryCode == 'PAK' " (change)="calculate()">
+                        <p>Non-Drivable </p>
+                        <label class="rdbtninput rdbtninput-are-u rdbtninput-are-u2" (change)="activecheckornot('drivable')">
+                            <input type="checkbox" class="inpst">
+                            <i class="fa fa-check rdbtn"></i>
+                            <span class="hand-tool">This vehicle is not drivable</span>
+                        </label>
+                    </div>
+                    <div class="nego-box-1 nego-boxx-1 mgtp" *ngIf=" orderdetail.CountryCode == 'NZL' ">
+                        <p>Preferred Shipping Line</p>
+                        <select [(ngModel)]="userdetail.PreferredShipping">
+                            <option selected disabled value="">Select Shipping Line</option>
+                            <option [value]="ship_line.id" *ngFor="let ship_line of preferred_shipping">
+                                {{ ship_line.name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="main-allte">
+                    <!-- <textarea class=" tm-input em-subject tag_autos"></textarea> -->
+                    <ng-select [items]="alertationdata"
+                                bindLabel="title"
+                                bindValue="id"
+                                [addTag]="addCustomUser"
+                                [multiple]="true"
+                                placeholder="Alteration"
+                                [(ngModel)]="selectedalteration"
+                                (change)="addremovealteration()">
+                    </ng-select>
+                </div>
+                <div class="main-metter-rever">
+                    <div class="metter-box-1" >
+                        <p *ngIf="displayMeterReversal">Meter Reversal</p>
+                        <input type="text" 
+                            name="meterReversal" 
+                            [(ngModel)]="userdetail.meterReversal"
+                            #meterReversal="ngModel"
+                            placeholder="Meter Reversal"
+                            *ngIf="displayMeterReversal">
+                    </div>
+                    <div class="metter-box-2">
+                        <p>Total Alternation Amount</p>
+                        <span>
+                            {{ currenc_code }}
+                            {{ userdetail.totalalterationamount | number }}
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="main-right-side-section" *ngIf="!displayerrormsg">
+                <div class="slpopdet-sel-pck slpopdet-sel-pckdfr slpopdet-sel-pck1">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td [class]="orderdetail.PlanClass | lowercase ">
+                                    <div class="hd">
+                                        <h3> {{ orderdetail.PlanName}}
+                                            <!-- <span>Saver</span> -->
+                                        </h3>
+                                        <h4> {{ orderdetail.PlanPercentage }} % Upfront Payment</h4>
+                                        <a class="colpexp-ic" href="javascript:;">
+                                            <i class="fa fa-angle-right tp" aria-hidden="true"></i>
+                                            <i class="fa fa-angle-down dwn" aria-hidden="true"></i>
+                                        </a>
+                                        <span *ngIf="orderdetail.IsBooked" class="selected-plan-tick">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </div>
+                                    <div class="dtl">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td *ngIf="orderdetail && orderdetail.PricingTypeId == 2">
+                                                        <span>Max Bid Price</span>
+                                                    </td>
+                                                    <td *ngIf="orderdetail && orderdetail.PricingTypeId == 1">
+                                                        <span>Bid Price</span>
+                                                    </td>
+                                                    <td>
+                                                        <strong class="qtcrn">{{ currenc_code }}</strong>
+                                                        <strong>
+                                                            {{ orderdetail.BidPrice | number }}
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf="orderdetail.ServiceCharges != null ">
+                                                    <td>
+                                                        <span>Services Charges</span>
+                                                    </td>
+                                                    <td>
+                                                        <strong class="qtcrn"> {{ currenc_code }} </strong>
+                                                        <strong>
+                                                            {{ orderdetail.ServiceCharges | number }}
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf=" orderdetail.AlterationCharges || orderdetail.RikusoFee || orderdetail.ExtraFee ">
+                                                    <td>
+                                                        <span>Additional Charges</span>
+                                                    </td>
+                                                    <td>
+                                                        <strong class="qtcrn"> {{ currenc_code }} </strong>
+                                                        <strong><span>{{ orderdetail.AlterationCharges + orderdetail.RikusoFee + orderdetail.ExtraFee || '0' | number }}</span><span class="hlp-icon">
+                                                                <a href="javascript:;">
+                                                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                                                </a>
+                                                            </span><div class="popshd" style="display: none;">
+                                                              <div class="popshd-inner">
+                                                                  <a class="close-popshd" href="javascript:;">
+                                                                      <i class="fa fa-times" aria-hidden="true"></i>
+                                                                  </a>
+                                                                  <table>
+                                                                      <tbody>
+                                                                          <tr *ngIf="orderdetail.AlterationCharges">
+                                                                              <td>ALTERATION CHARGES</td>
+                                                                                <td>
+                                                                                <span class="current-currency">{{ currenc_code }}</span> 
+                                                                                    {{ orderdetail.AlterationCharges || '0' | number }}
+                                                                                </td>
+                                                                          </tr>
+                                                                          <tr *ngIf="orderdetail.RikusoFee">
+                                                                              <td>ADDITIONAL RIKUSO</td>
+                                                                              <td>
+                                                                                    <span class="current-currency">
+                                                                                        {{ currenc_code }}
+                                                                                    </span> 
+                                                                                    {{ orderdetail.RikusoFee || '0' | number }}
+                                                                              </td>
+                                                                          </tr>
+                                                                          <tr *ngIf="orderdetail.ExtraFee">
+                                                                              <td>AUCNET CHARGES</td>
+                                                                              <td>
+                                                                                  <span class="current-currency">{{ currenc_code }}</span> {{ orderdetail.ExtraFee || '0' | number }} </td>
+                                                                          </tr>
+                                                                      </tbody>
+                                                                      <tfoot>
+                                                                          <tr>
+                                                                              <th>TOTAL</th>
+                                                                              <th>
+                                                                                  <span class="current-currency">{{ currenc_code }}</span> {{ orderdetail.AlterationCharges + orderdetail.RikusoFee + orderdetail.ExtraFee || '0' | number }}</th>
+                                                                          </tr>
+                                                                      </tfoot>
+                                                                  </table>
+                                                              </div>
+                                                          </div></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf="orderdetail.InspectionCharges != null ">
+                                                    <td>
+                                                        <span>Inspection</span>
+                                                    </td>
+                                                    <td>
+                                                        <strong class="qtcrn">{{ currenc_code }}</strong>
+                                                        <strong>
+                                                            {{ orderdetail.InspectionCharges || '0'  | number }}
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf="orderdetail.OnePriceFee > 0">
+                                                    <td>
+                                                        <span>One Price Charges</span>
+                                                    </td>
+                                                    <td>
+                                                        <strong class="qtcrn">{{ currenc_code }}</strong>
+                                                        <strong>
+                                                            {{ orderdetail.OnePriceFee || '0' | number }}
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                                
+                                                
+                                                <tr *ngIf="orderdetail.VanningCharges && orderdetail.VanningCharges != null ">
+                                                    <td>
+                                                        <span>Vanning Charges</span>
+                                                    </td>
+                                                    <td>
+                                                        <strong class="qtcrn">{{ currenc_code }}</strong>
+                                                        <strong>
+                                                            {{ orderdetail.VanningCharges || '0'  | number }}
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf="orderdetail.NegotiableAmount && orderdetail.NegotiableAmount != null ">
+                                                    <td>
+                                                        <span>Negotiable Char.</span>
+                                                    </td>
+                                                    <td>
+                                                        <strong class="qtcrn">{{ currenc_code }}</strong>
+                                                        <strong>
+                                                            {{ orderdetail.NegotiableAmount || '0'  | number }}
+                                                        </strong>
+                                                    </td>
+                                                </tr>   
+                                                <tr *ngIf="orderdetail.FOB != null ">
+                                                    <td>
+                                                        <span>FOB of Unit</span>
+                                                    </td>
+                                                    <td>
+                                                        <strong class="qtcrn">{{ currenc_code }}</strong>
+                                                        <strong>
+                                                            {{ orderdetail.FOB || '0'  | number }}
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf="orderdetail.FreightCharges != null ">
+                                                    <td>
+                                                        <span>Freight Charges</span>
+                                                    </td>
+                                                    <td>
+                                                        <strong class="qtcrn">{{ currenc_code }}</strong>
+                                                        <strong>
+                                                            {{ orderdetail.FreightCharges || '0' | number }}    
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                    <div class="ft">
+                                        <table>
+                                            <tbody>
+                                                <tr *ngIf="orderdetail.CountryCode == 'LKA' ">
+                                                    <td>Total CIF Price</td>
+                                                    <td>
+                                                        {{ orderdetail.CNF || '0' | number }}
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf="orderdetail.CountryCode != 'LKA' ">
+                                                    <td>Total CNF Price</td>
+                                                    <td>
+                                                        {{ orderdetail.CNF || '0' | number }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="par-currency">
+                    <span class="currencyrate">
+                        Currency Rate : 1 USD = {{ orderdetail.CurrencyRate }} JPY
+                    </span>
+                    <br />
+                    <span class="currencyrate" *ngIf="orderdetail.FOB">
+                        FOB : USD {{  orderdetail.FOB / orderdetail.CurrencyRate || '0' | roundoffhtmlnumber  }}
+                    </span>
+                    <br />
+                    <span class="currencyrate" *ngIf="orderdetail.CNF">
+                        Total CNF Price : USD {{  orderdetail.CNF / orderdetail.CurrencyRate || '0' | roundoffhtmlnumber  }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="slpop-ftrdv slpop-ftrdvdv-2" [style.margin-top.px]="10">
+            <div *ngIf="displayerrormsg" class="error-msg">
+                Bid price is invalid, kindly update the price and evaluate again.
+            </div>
+            <span *ngIf="displayloader">
+                <img src="/assets/images/sml-loader.gif" alt="" [style.width.px]="25" [style.margin-right.px]="130">  
+            </span>
+            <button class="calcu-amon calculate-amount" href="javascript:;" (click)="calculate()" [disabled]="displayloader">
+                <img src="/assets/images/eval-ref-icon.png">
+                Calculate Amount
+            </button>
+            <button class="addquote addquoteadded" (click)="proceedtoorder()" [disabled]="displayloader">Proceed to Bid</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal -->
+
+<div class="auctionsheetpopn" id="auctionsheetpopn" style="display: none;">
+    <div class="auctionsheetpopnhd">
+        <div class="row">
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                <h4 class="auctionsheetpopnhdh">Auction Sheet</h4>
+            </div>
+        </div>
+    </div>
+    <div class="top">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12 nopad_xs_right">
+                <div class="enterchass">
+                    <input type="text" 
+                        name="chassisnumber" 
+                        [(ngModel)]="userdetail.chassisnumber"
+                        #chassisnumber="ngModel"
+                        placeholder="Enter Chassiss Number"
+                        [disabled]="displayloader"
+                        (focusout)="alphabeticCapsOn($event)"
+                        class="chassis-input-css">
+                        <button class="check-chassis-css" (click)="checkchassis()">Check</button>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4  col-xs-12 nopad_right nopad_xs_right">
+                        <select class="sel-mon" [(ngModel)]="userdetail.selectedmonth">
+                            <option selected disabled value="">Select Month</option>
+                            <option [value]="month.id" *ngFor="let month of userdetail.months">
+                                {{ month.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 nopad_right nopad_xs_right">
+                        <select [(ngModel)]="userdetail.selectedYear">
+                            <option selected disabled value="">Select Year</option>
+                            <option [value]="year" *ngFor="let year of userdetail.years  ">
+                                {{ year }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 nopad_right nopad_xs_right">
+                        <button class="svbtn"  onclick="$.fancybox.close();">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div align="center" *ngIf="checkChassiValueLoader"><img class="chassis-val-loader" src="/assets/images/sml-loader.gif" alt="" width="12"></div>
+        <span *ngIf="manufact_detail['message']" class="error-msg">Message : {{ manufact_detail['message'] }}</span>
+    </div>
+    <div class="bot">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="auctshetimg">
+                    <img [src]="orderdetail?.AuctionSheet | splitimage " alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="history autorod-popup password_reset_con" id="order_incomplete" style="display:none;">
+    <div class="signup_success_popup" align="center">
+        <!-- <img src="assets/images/green_circel_chk.png"> -->
+        <h3>Success</h3>
+        <h4 id="qi_success_body">Incomplete order created for this vehicle.</h4>
+        <button class="close-btn" data-fancybox-close="" onclick="javascript:;">Close</button>
+    </div>
+</div>
+
+
+<!--  -->

@@ -1,0 +1,107 @@
+<app-header></app-header>
+<div class="main-my-order-page">
+    <div class="clearfix"></div>
+    <div class="container">
+        <div class="agent_s_sec_two bidding-page1">
+            <div class="row">
+                <div class="col-lg-12 nopad_left">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 resutl">
+                        <h5>
+                            <strong>Invoice History </strong>
+                            <span *ngIf=" invoices && invoices.length ">
+                                {{ invoices.length }}
+                            </span>
+                            <span *ngIf="!invoices || invoices.length == 0">
+                                0
+                            </span> 
+                        </h5>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 text-right nopad_right">
+                        <a href="javascript:;" class="back-to-order" [routerLink]="['/my-orders']">Back to My Order</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="agent_s_sec_three upcoming-payment-page">
+        <div class="container">
+            <div class="row " *ngIf=" !invoices || invoices.length == 0 ">
+                <div class="col-lg-12" align="center">
+                    No Record Found
+                </div>
+            </div>
+            <div class="col-lg-12 hglt upcpayt" *ngIf=" invoices && invoices.length ">
+                <div class="row">
+                    <div class="record_table upcomingpaypg">
+
+                        <div class="main-my-invo">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>S.no</th>
+                                        <th>Invoice Number</th>
+                                        <th>Invoice Type</th>
+                                        <th>Generated Date</th>
+                                        <th>Amount</th>
+                                        <!-- <th>Is Paid</th> -->
+                                        <th>Due Date</th>
+                                        <th *ngIf="!isCustomerLogin">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody *ngFor="let invoice of invoices ; let i = index">
+                                    <tr>
+                                        <td>{{ i + 1 }}</td>
+                                        <td [title]="invoice.InvoiceNumber">
+                                            <strong>
+                                                {{ invoice.InvoiceNumber }}
+                                            </strong>
+                                        </td>
+                                        <td [title]="invoice.InvoiceType">
+                                            {{ invoice.InvoiceType }}
+                                        </td>
+                                        <td>
+                                            {{ invoice.InvoiceGenerateDate | date }}
+                                        </td>
+                                        <td >
+                                            <strong class="auc-dep-si">
+                                                <span>
+                                                    {{ invoice.CurrencyCode }}
+                                                </span>
+                                                {{ invoice.Amount | roundoffhtmlnumber | number }}
+                                            </strong>
+                                        </td>
+                                        <!-- <td class="yes">
+                                            <span *ngIf="invoice.IsPaid == 'Paid'">
+                                                Yes
+                                            </span>
+                                            <span *ngIf="invoice.IsPaid != 'Paid'" style="color: #ee282f;">
+                                                No
+                                            </span>
+                                        </td> -->
+                                        <td>
+                                            {{ invoice.PaidDate | date }}
+                                        </td>
+                                        <td >
+                                            <button *ngIf="!isCustomerLogin" class="pay-order-btn viewse-1" (click)="openpdf(invoice.ActionURL)">View</button>
+                                            <button class="pay-order-btn viewse-2" (click)="sendEmail(invoice.EncryptedOrderInvoiceId)">Send Email</button>
+                                            <!-- <button class="pay-order-btn viewse-2">Send</button> -->
+                                            <!-- <button class="pay-order-btn viewse-1" data-fancybox="" data-src="#upc-pay-page-4">View</button>
+                                                <button class="pay-order-btn viewse-2">Send</button> -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>

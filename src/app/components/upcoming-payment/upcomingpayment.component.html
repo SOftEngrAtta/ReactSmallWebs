@@ -1,0 +1,89 @@
+<app-header></app-header>
+<div class="container">
+
+    <div class="agent_s_sec_two bidding-page1">
+        <div class="row">
+            <div class="col-lg-12 nopad_left">
+                <div class="col-lg-5 resutl">
+                    <h5>
+                        <strong>Upcoming Payments </strong>
+                        <span>0</span>
+                    </h5>
+                </div>
+                <div class="col-lg-7 text-right nopad_right">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="agent_s_sec_three upcoming-payment-page">
+    <div class="container">
+
+        <div class="col-lg-12 hglt upcpayt">
+            <div class="row" align="center">
+                No Record Found
+            </div>
+        </div>
+        <div class="col-lg-4 resutl">
+
+        </div>
+        <!-- <div class="col-lg-8 text-right nopad_right">
+            <div class="mnpage">
+                <span class="showrslts">Showing 1 - 10 of 123 Records</span>
+                <ul id="pagination-dm" class="pagination-sm"></ul>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+<!-- modal -->
+<div class="upc-paypop upc-pay-page" id="upc-pay-page" style="display:none;">
+    <h3>Upcoming Payments</h3>
+    <div class="pay-upc-det-inner">
+        <ul>
+            <li>
+                <span>Order ID</span>
+                <strong class="ordid">ATESAC4587</strong>
+                <span>Order Date</span>
+                <strong>Jan, 10, 2017</strong>
+                <span>Payment Due Date</span>
+                <strong>Feb, 21, 2017</strong>
+                <span>Current Order Status</span>
+                <strong>Waiting to Bid</strong>
+            </li>
+            <li>
+                <span>Total Paid</span>
+                <strong>
+                    <span>&yen; </span>
+                    <span>1349.00</span>
+                </strong>
+                <span>Total Unpaid</span>
+                <strong class="curramt">
+                    <span> &yen; </span>
+                    <span> 127569.00</span>
+                </strong>
+                <span>Due Amount</span>
+                <strong class="exceed">
+                    <span>&yen; </span>
+                    <span>27569.00</span>
+                </strong>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="upc-paypop-bot">
+        <h4>Are you sure you want to pay your dues?</h4>
+        <button class="nobtn" onclick="$.fancybox.close();">No</button>
+        <button class="yesbtn" data-fancybox data-src="#submittedpop" onclick="$.fancybox.close();">Yes</button>
+    </div>
+</div>
+
+<div class="submittedpop" id="submittedpop" style="display:none;">        
+    <img src="/assets/images/submitted-tick.png">
+    <h3>Your funds request has been submitted.</h3>
+    <p>Our Agent will get back to you soon!</p>        
+</div>
+
+<!-- end -->

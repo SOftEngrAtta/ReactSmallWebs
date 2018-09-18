@@ -1,0 +1,485 @@
+
+    select:focus,input:focus{box-shadow: none;}
+    .boordrrr-bt{border-bottom: 1px solid #e7e7e7;}
+    .mannhd{color: #2c2c2c;font-size: 17px;font-weight: 800;margin: 0;}
+    .manual{
+            background: #fff;
+            margin-bottom: 30px;
+            margin-top: 30px;
+            -webkit-box-shadow: 0px 9px 48px -21px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 9px 48px -21px rgba(0, 0, 0, 0.75);
+            border-radius: 8px;
+            padding-bottom: 40px;
+    }
+    .man-top{margin: 10px;padding: 15px;background: #f5f5f5;}
+    .man-top ul{
+        margin: 0;
+    }
+    .man-top ul li{display: inline-block;color: #a1a1a1;font-size: 13px;font-weight: 800;border-right: 1px solid #d0d0d0;width: 14%;margin-right: 43px; line-height: 15px;
+    vertical-align: top;}
+    .man-top ul li:last-child{border-right: none;}
+    .man-top ul li span{display: block;color: #2c2c2c;font-size: 17px;padding-top: 10px;}
+    
+    
+    .mkemdl{}
+    .mkemdl h3{padding: 21px 0;}
+    
+    .selefields{ display: inline-block;width: 203px;margin-right: 15px;}
+    .selefields label{display: block;font-size: 12px;font-weight: 600;color: #2c2c2c;    margin-bottom: 2px;}
+    .selefields select{display: block;font-size: 12px;color: #6b6b6b;font-weight: 600;width: 100%;    padding: 6px 10px;}
+    
+    
+    .entrfields{display: inline-block;width: 203px;margin-right: 15px;}
+    .entrfields label{display: block;font-size: 12px;font-weight: 600;color: #2c2c2c;    margin-bottom: 2px;}
+    .entrfields input[type=text], .entrfields textarea, .entrfields select{display: block;font-size: 12px;color: #6b6b6b;font-weight: 600;width: 100%;    padding: 6px 10px;margin-bottom: 19px;}
+    
+    .entrfields.entrfieldsdat{position: relative;}
+    .entrfields.entrfieldsdat input{padding-left: 50px;}
+    .entrfields.entrfieldsdat:before{
+            position: absolute;
+        content: "\f073";
+        left: 13px;
+        top: 23px;
+        bottom: 0;
+        /* bottom: 0; */
+        margin: auto;
+        display: inline-block;
+        font-family: "fontawesome";
+        font-size: 15px;
+        color: #6b6b6b;
+        
+    }
+    .entrfields.entrfieldsdat:after{    border-right: 1px solid #ccc;
+        width: 30px;
+        position: absolute;
+        content: "";
+        left: 10px;
+        top: 19px;
+        height: 30px;
+    }
+    
+    
+    
+    .entrfields-txtarea{width: 100%;display: block;}
+    .entrfields-txtarea textarea{border-radius: 4px;height: 133px;resize: none;    margin-bottom: 0;}
+    
+    .vehinfo{}
+    .vehinfo label{display: block;}
+    .browse-carsmain #upload_imag {
+        position: relative;
+        z-index: 881;
+        opacity: 0;
+        width: 119px;
+        height: 71px;
+        cursor: pointer;
+    
+    }
+    .vehinfo .browse-carsmain {
+        text-align: left;
+        cursor: pointer;
+        margin-bottom: 20px;
+        margin-top: 15px;
+        width: 119px;
+        height: 71px;
+        position: relative;
+        /* border: 1px solid #dadada; */
+        display: inline-block;
+        background: #f4f4f4;
+        border-radius: 5px;
+        margin-right: 7px;
+        vertical-align: top;
+    }
+    .browse-carsmain img{
+          opacity: 1;
+      transition: .5s ease;
+      backface-visibility: hidden;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 0;
+        display: inline-block;
+            width: 100%;
+    }
+    .vehinfo label + .browse-cars {
+        border: 1px solid #dadada; 
+    }
+    .vehinfo .browse-cars {
+        cursor: pointer;
+        margin-bottom: 20px;
+        margin-top: 15px;
+        width: 119px;
+        height: 71px;
+        position: relative;
+        /* border: 1px solid #dadada; */
+        display: inline-block;
+        background: #f4f4f4;
+        border-radius: 5px;
+        margin-right: 7px;
+        vertical-align: top;
+    }
+    .browse-cars img{
+          opacity: 1;
+      transition: .5s ease;
+      backface-visibility: hidden;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 0;
+        display: inline-block;
+            width: 100%;	
+    }
+    .middle {
+      transition: .5s ease;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .middle i{
+            width: 119px;
+        height: 71px;
+        background: #979797b0;
+        border-radius: 5px;
+        top: 1px;
+        position: relative;
+    }
+    .middle i:before{
+        content: "\f00d";
+        border-radius: 30px;
+        color: #fff;
+        border: 3px solid #fff;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: 24px;
+        position: absolute;
+        width: 24px;
+        padding: 3px;
+    }
+    /*.browse-cars:hover img {
+      opacity: 0.3;
+    }*/
+    
+    .browse-cars:hover .middle {
+      opacity: 1;
+    }
+    .browse-carsmain #upload_auc{
+        position: relative;
+        z-index: 881;
+        opacity: 0;
+        width: 119px;
+        height: 71px;
+        cursor: pointer;
+    
+    }
+    
+    .man-req{background: #f0ad4e;padding: 20px;border-radius: 5px;}
+    .man-req h3{color: #fff;display: inline-block;font-weight: 800;font-size: 17px;margin: 0;text-transform: capitalize;}
+    .man-req .man-reqsle{    display: inline-block;
+        vertical-align:  middle;    width: 75%;}
+    .man-req .man-reqsle select{
+        margin-left: 20px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        color: #2c2c2c;
+        font-size: 12px;
+        padding: 8px;
+        vertical-align: middle;
+        width: 70px;
+        border-right: 1px solid #ccc;
+        outline: none !important;
+        border: none;
+        background-position: right;
+    }
+    .man-req .man-reqsle input[type="text"]{
+        width: 80%;
+        margin-left: -3px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        color: #a3a3a3;
+        font-size: 12px;
+        padding: 12px;
+        vertical-align: middle;
+        outline: none !important;
+        border: none;
+        border-left: 1px solid #ccc;
+    }
+    
+    .mau-bot{text-align: center;}
+    .mau-bot p{font-size: 15px;color: #2c2c2c;font-weight: 700;padding: 40px 0;}
+    .mau-bot p span.red{color: #ff0000;}
+    .mau-bot ul{}
+    .mau-bot ul li{display: inline-block;}
+    .mau-bot ul li a{border-radius: 30px;width: 302px;text-align: center;color: #fff;font-size: 13px;padding: 10px 0;    display: inline-block;}
+    .mau-bot ul li a.bck{margin-right: 20px;background: #4f4f4f;}
+    .mau-bot ul li a.sub{background: #0d9d19;}
+    
+    
+    @media (max-width:1024px){
+        .man-top ul li{width: 20%;}
+        .man-req .man-reqsle{width: 70%;}
+        .man-req .man-reqsle input[type="text"]{    width: 70%;}
+    }
+    @media (max-width:823px){
+        .man-top ul li {
+        width: 23%;
+        margin-right: 10px;
+        padding-left: 7px;
+    }
+    .selefields{margin-bottom: 20px;}
+    }
+    @media (max-width:768px){
+        .man-top ul li {
+        width: 24%;
+        margin-right: 0;
+        padding-left: 10px;
+        vertical-align: top;
+    }
+    .selefields{margin-bottom: 20px;}
+    }
+    @media (max-width:736px){
+        .man-top ul li{ width: 23%;
+        margin-right: 5px;
+    }
+    }
+    @media (max-width:667px){
+    .man-top ul li {
+        width: 23%;
+        margin-right: 7px;
+        padding-left: 2px;
+        border-right: none;
+    }
+    .man-req .man-reqsle{width: 65%;}
+    .man-req .man-reqsle input[type="text"]{    width: 70%;}
+    }
+    @media (max-width:568px){
+        .manual{
+          padding-top: 10px;text-align: center;margin-bottom: 10px;}
+        .man-top{/* margin-top: 10px; */}
+        .man-top ul li{
+        margin-right: 0;
+        line-height: 18px;
+        display: inline-block;
+        border-right: none;
+        width: 49%;
+        text-align: left;
+        margin-bottom: 20px;
+        font-size: 16px;
+        font-weight: 700;
+        }
+        .man-top ul li:nth-child(2){}
+        .man-top ul li span{
+        display: block;
+        font-size: 17px;
+        /* padding-top: 10px; */
+        }
+    
+        .mannhd{font-size: 23px;text-align: left;}
+        .selefields {
+        display: inline-block;
+        width: 100%;
+        margin-right: 0;
+    
+         text-align: left;
+        }
+    
+        .selefields label {
+        display: inline-block;
+        font-size: 16px;
+        color: #2c2c2c;
+        margin-bottom: 5px;
+        text-align: left;
+     }
+    
+    .selefields select {
+        display: inline-block;
+        font-size: 12px;
+        color: #6b6b6b;
+        font-weight: 600;
+        width: 100%;
+        padding: 6px 10px;
+        margin-bottom: 15px;
+        }
+    .vehinfo label{text-align: left;}
+    .entrfields {
+            display: inline-block;
+        width: 100%;
+        margin-right: 0;
+    
+         text-align: left;
+    }
+    .entrfields label{
+            display: inline-block;
+            font-size: 16px;
+            color: #2c2c2c;
+            margin-bottom: 5px;
+            text-align: left;
+    }
+    .entrfields input[type="text"],.entrfields textarea, .entrfields selects{
+            display: inline-block;
+        font-size: 12px;
+        color: #6b6b6b;
+        font-weight: 600;
+        width: 100%;
+        padding: 6px 10px;
+        margin-bottom: 15px;
+    
+    }
+    .entrfields.entrfieldsdat:before{    top: 30px;}
+    .entrfields.entrfieldsdat input{    padding-left: 50px;}
+    .entrfields.entrfieldsdat:after{    top: 30px;}
+    
+    .entrfields textarea{margin-bottom: 0;}
+    
+    .mau-bot ul li a{width: 140px;}
+    .mau-bot ul li a.bck{margin-right: 0;}
+    
+    .man-req{margin: 0 5px;    padding: 8px;}
+    
+    .man-req h3{padding-bottom: 15px;}
+    .man-req .man-reqsle{display: block;width: 100%;}
+    .man-req .man-reqsle select{
+        margin-left: 0;
+    }
+    .man-req .man-reqsle input[type="text"]{width: 70%;}
+    .mau-bot{margin: 0 5px;    padding: 8px;}
+    
+    
+    .mau-bot p{padding: 10px 0;}
+    
+    
+    
+    
+    }
+    
+    
+    @media (max-width:414px){	
+        .manual{
+          padding-top: 10px;text-align: center;margin-bottom: 10px;}
+        .man-top{/* margin-top: 10px; */}
+        .man-top ul li{
+        line-height: 18px;
+        display: block;
+        border-right: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: 700;
+        }
+        .man-top ul li span{
+        display: block;
+        font-size: 17px;
+        /* padding-top: 10px; */
+        }
+    
+        .mannhd{font-size: 23px;text-align: left;}
+        .selefields {
+        display: inline-block;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 0;
+         text-align: left;
+        }
+    
+        .selefields label {
+        display: inline-block;
+        font-size: 16px;
+        color: #2c2c2c;
+        margin-bottom: 5px;
+        text-align: left;
+     }
+    
+    .selefields select {
+        display: inline-block;
+        font-size: 12px;
+        color: #6b6b6b;
+        font-weight: 600;
+        width: 100%;
+        padding: 6px 10px;
+        margin-bottom: 15px;
+        }
+    .vehinfo label{text-align: left;}
+    .entrfields {
+            display: inline-block;
+        width: 100%;
+        margin-right: 0;
+    
+         text-align: left;
+    }
+    .entrfields label{
+            display: inline-block;
+            font-size: 16px;
+            color: #2c2c2c;
+            margin-bottom: 5px;
+            text-align: left;
+    }
+    .entrfields input[type="text"],.entrfields textarea, .entrfields selects{
+            display: inline-block;
+        font-size: 12px;
+        color: #6b6b6b;
+        font-weight: 600;
+        width: 100%;
+        padding: 6px 10px;
+        margin-bottom: 15px;
+    
+    }
+    .entrfields.entrfieldsdat:before{    top: 30px;}
+    .entrfields.entrfieldsdat input{    padding-left: 50px;}
+    .entrfields.entrfieldsdat:after{    top: 30px;}
+    
+    .entrfields textarea{margin-bottom: 0;}
+    
+    .mau-bot ul li a{width: 140px;}
+    .mau-bot ul li a.bck{margin-right: 0;}
+    
+    .man-req{margin: 0 5px;    padding: 8px;}
+    
+    .man-req h3{padding-bottom: 15px;}
+    .man-req .man-reqsle{display: block;width: 100%;}
+    .man-req .man-reqsle select{
+        margin-left: 0;
+    }
+    .man-req .man-reqsle input[type="text"]{width: 70%;}
+    .mau-bot{margin: 0 5px;    padding: 8px;}
+    
+    
+    .mau-bot p{padding: 10px 0;}
+    
+    
+    
+    
+    
+    }
+    
+
+/* ========== */
+
+.update-datepicker-css{
+    width: 250px;
+    vertical-align: top;
+}
+.mad-field{
+    color:red;
+}
+
+.display-auc-msg{
+    margin-left: 18px;
+    color: #ff0000;
+    font-size: 15px;
+    font-weight: 700;
+}
+.disabled-sub{
+    background-color: #d2d0d0 !important;
+}

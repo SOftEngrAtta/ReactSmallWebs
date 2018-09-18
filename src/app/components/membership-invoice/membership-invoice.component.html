@@ -1,0 +1,255 @@
+<div *ngIf="!isCustomerLogin" style="padding:8px;">
+	<button class="btn btn-success" (click)="OpenInvoiceInNewTab()" id="btnGenerate">Generate</button>
+	<button class="btn btn-success" (click)="SendEmailToCustomer()">Send Email</button>
+</div>
+<div class="cont-pdfHTML" style="list-style : decimal;">
+	<div class="wrapper1">
+		<div class="containerr"  style="page-break-after: always;">
+				<div class="watermark-chj" style="position: absolute;z-index:-1;margin:-20px;width: 930px;
+				left: 4px;
+				top: 15px">
+						<img style=" width:100%;" src="https://www.autorod.com/Assets/images/invoic-bg.png" alt="Error">
+						
+				</div>
+			<div class="headerr">
+				<div class="haed-rite haed-rite-2"><img src="https://www.autorod.com/Assets/images/invoice-logo.png" alt="Invoice Logo" />
+					<div class="top-rite-2">
+						<table>
+							<tr>
+								<td class="cus">Customer ID:</td>
+								<td>{{ invoicedetails?.CustomerDetail?.CustomerId }}</td>
+							</tr>
+							<tr>
+								<td class="cus">Customer Name:</td>
+								<td>{{ invoicedetails?.CustomerDetail?.CustomerName }}</td>
+							</tr>
+							<tr>
+								<td class="cus">Customer Address:</td>
+								<td>{{ invoicedetails?.CustomerDetail?.CustomerAddress }}</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>TEL: +{{ invoicedetails?.CustomerDetail?.PhoneNumber }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="haed-left haed-left-2">
+						<table class="tab-pro">
+								<tbody><tr>
+									<td class="inv"><strong>Invoice No:</strong> <span>{{ invoicedetails?.InvoiceNumber }}</span></td>
+									<td><strong>Date:</strong><span>{{ invoicedetails?.CreationDate | date:'MMMM dd, yyyy' }}</span></td>
+								</tr>
+							</tbody></table>
+					<h1><span>Membership Fee Invoice</span></h1>
+					<div class="cont-uper-rite">
+						<div class="inv-stampp">
+							<!-- <h4>Sign</h4> -->
+							<div class="mhaed-rite"><img src="https://www.autorod.com/Assets/images/invoic-stampp.png" alt="Stamp Logo" /></div>
+						</div>
+						<div class="aditop-rite">
+							<h4>Autorod CO., LTD.</h4>
+							<p>Oak Minami Azabu Building 14F, 3-19-23 Minami
+								<br/>Azabu, Minato-ku, Tokyo, Japan 106-0047</p>
+							<p>Phone +81 3 4560 2331</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="contentt">
+				<div class="cont-uper">
+				</div>
+				<div class="port-load" style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<td>Port of Loading<span>Any port of JAPAN</span></td>
+								<td class="bor-port">Port of Discharge<span>Paramaribo, Suriname</span></td>
+								<td>Ship Via<span>{{ invoicedetails?.CustomerDetail?.ShipmentType }}</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="cont-botom">
+					<ul>
+						<li class="first">NOTE</li>
+						<li class="second">Your Invoice Number <strong>"{{ invoicedetails?.InvoiceNumber }}"</strong> must be on the TT-Slip. Without your invoice number, shipping will be delayed.</li>
+						<li class="theird" style="background: rgba(212, 210, 210, 0.5) !important;">Please transfer amount to</li>
+					</ul>
+					<table>
+						<tbody>
+							<tr *ngIf="invoicedetails?.BankDetail?.BankName">
+								<td class="alg-right">Bank Name:</td>
+								<td> {{ invoicedetails?.BankDetail?.BankName }}</td>
+							</tr>
+							<tr class="bg-tr" *ngIf="invoicedetails?.BankDetail?.SwiftCode" style="background: rgba(212, 210, 210, 0.5) !important;">
+								<td class="alg-right">Swift Code</td>
+								<td>{{ invoicedetails?.BankDetail?.SwiftCode }}</td>
+							</tr>
+							<tr *ngIf="invoicedetails?.BankDetail?.Branch">
+								<td class="alg-right">Branch Name</td>
+								<td>{{ invoicedetails?.BankDetail?.Branch }} (Branch Code: {{invoicedetails?.BankDetail?.BranchCode}})</td>
+							</tr>
+							<tr class="bg-tr" *ngIf="invoicedetails?.BankDetail?.Address" style="background: rgba(212, 210, 210, 0.5) !important;">
+								<td class="alg-right">Bank Address</td>
+								<td>{{ invoicedetails?.BankDetail?.Address }} Zip:{{ invoicedetails?.BankDetail?.BankZipCode}}</td>
+							</tr>
+							<tr  *ngIf="invoicedetails?.BankDetail?.BeneficiaryAccountNumber">
+								<td class="alg-right">Account Number</td>
+								<td>{{ invoicedetails?.BankDetail?.BeneficiaryAccountNumber }}</td>
+							</tr>
+							<tr class="bg-tr" *ngIf="invoicedetails?.BankDetail?.BeneficiaryName" style="background: rgba(212, 210, 210, 0.5) !important;">
+								<td class="alg-right">Beneﬁciary Name</td>
+								<td>{{ invoicedetails?.BankDetail?.BeneficiaryName }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="main-desc">
+					<table>
+						<thead>
+							<tr>
+								<th class="des-th1">S.NO.</th>
+								<th class="des-th2">Description</th>
+								<th class="des-th3">Amount</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="back">
+								<td class="des-td1">01</td>
+								<td class="des-td2">AUTOROD {{ invoicedetails?.CustomerDetail?.Membership }} MEMBERSHIP</td>
+								<td class="des-td3">{{invoicedetails?.BankDetail?.CurrencyCode}} {{invoicedetails.TotalAmount}}</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td class="usdbscndlast"></td>
+							</tr>
+							<tr class="usd-amo">
+								<td></td>
+								<td class="des-amo"></td>
+								<td class="des-usd">{{invoicedetails?.BankDetail?.CurrencyCode}} {{invoicedetails.TotalAmount}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="main-imp-note">
+					<ul style="background: rgba(212, 210, 210, 0.5) !important;">
+						<li>
+							<h3>important note:</h3></li>
+						<li>The membership fee will not be adjusted against any order placed by the customer.</li>
+						<li class="rd">All Bank Charges Must Be Paid By Customer.</li>
+						<li>All bank charges must be paid by customer.</li>
+						<li>Please Make The Payment Within 3 Days.</li>
+						<li>Please make the payment immediately.</li>
+					</ul>
+					<div class="bottom-para">
+						<p>The prices quoted are an estimate and will be finalized after the bid is won.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper2">
+		<div class="containerr" style="page-break-after: always;">
+		<div class="watermark-chj" style="position: absolute;z-index:-1;margin:-20px;width: 930px;
+						left: 4px;
+						top: 15px">
+				<img style=" width:100%;" src="https://www.autorod.com/Assets/images/invoic-bg.png" alt="Error">
+
+				</div>
+			<div class="headerr">
+				<div class="haed-rite"><img src="https://www.autorod.com/Assets/images/invoice-logo.png" alt="Invoice Logo" /></div>
+				<div class="aditop-rite">
+						<h4>Autorod CO., LTD.</h4>
+						<p>Oak Minami Azabu Building 14F, 3-19-23 Minami Azabu,
+							<br>Minato-ku, Tokyo, Japan 106-0047</p>
+						<p>Phone +81 3 4560 2331 | www.autorod.com </p>
+					</div>
+			</div>
+			<div class="contenttt notice_aw">
+				<h3><span>Terms and Conditions</span></h3>
+				<h4>ENROLMENT IN A MEMBERSHIP PROGRAM:</h4>
+				<p>Autorod offers its buyers with four rewarding membership tiers, namely: Starter,Standard and Deluxe. Each tier comes with its own set of rewards, benefits and credit limit. Every buyer(s), enrolling in the program must adhere to the following terms:
+                </p>
+				<h4>SHIPPING</h4>
+				<ul>
+                    <li>The membership is open to individuals, small, medium and large size auto dealers.</li>
+                    <li>The membership and its credit limit is non-transferable. </li>
+                    <li>To successfully become the member, the interested individual/party must provide all mandatory details and pay the Pre-decided security deposit. Autorod may accept or reject any application at its absolute discretion. </li>
+                    <li>The rewards, benefits and discounts get activated once the member makes his first purchase via Autorod. </li>
+                    <li>The rewards, benefits and discounts provided to a member at each Tier may be changed at any time, with a prior notice which may be communicated via email or phone. </li>
+                    <li>Every tier comes with a minimum required purchase limit. The member should be able to make that required number of used car purchases in a month or the membership would become null and void. </li>
+                    <li>Every tier comes with a credit limit. The member cannot purchase beyond that given credit limit before clearing all of his \ previous payments.</li>
+                    <li>During registration, small, medium and large sized organizations, will be asked to nominate one employee as an Account Manager on behalf of the Organization. The Account Manager will be responsible for purchasing, collection, vehicle payment and all other coordination on behalf of the organization. </li>
+                    <li>Autorod reserves the right to monitor and audit membership and registration of its members at any time to ensure compliance with these Terms and Conditions.
+                    </li>
+                </ul>
+				<h4>SHIPPING</h4>
+				<ul>
+                    <li>Every membership tier has its pre-decided security deposit that the member has to pay to successfully activate his membership status. Deluxe members are to pay $5,000 security deposit. </li>
+                    <li>The security deposit is kept safe and is refunded in full incase the member deactivates his membership status with Autorod or if Autorod nullifies the membership status of the buyer. </li>
+                    <li>In case of Any loss or damage to Autorod, an amount will be deducted from your deposit including but not limited to non-payment of any purchased vehicle.</li>
+                </ul>
+				<h4>CREDIT LIMIT PROCESS & TERMS:</h4>
+				<ul>
+                    <li> Every membership tier is granted a certain credit limit in dollars (equivalent to Japanese Yen), which they can use to purchase their desired used – vehicles. For Deluxe Members, the credit limit is of $25,000.</li>
+                    <li>As long as the member has the credit limit in his account, the member will be able to continue making purchases.</li>
+                    <li>The credit amount increases at as membership levels go high, allowing the member to easily make more vehicle purchases.</li>
+                </ul>
+				<div class="border-bottom"></div>
+			</div>
+			<!--<div class="footerr">
+				<p>The prices quoted are an estimate and will be ﬁnalized after the bid is won</p>
+			</div>-->
+		</div>
+	</div>
+	<div class="wrapper2">
+		<div class="containerr">
+		<div class="watermark-chj" style="position: absolute;z-index:-1;margin:-20px;width: 930px;
+						left: 4px;
+						top: 15px">
+				<img style=" width:100%;" src="https://www.autorod.com/Assets/images/invoic-bg.png" alt="Error">
+
+				</div>
+			<div class="headerr">
+				<div class="haed-rite"><img src="https://www.autorod.com/Assets/images/invoice-logo.png" alt="Invoice Logo" /></div>
+				<div class="aditop-rite">
+						<h4>Autorod CO., LTD.</h4>
+						<p>Oak Minami Azabu Building 14F, 3-19-23 Minami Azabu,
+							<br>Minato-ku, Tokyo, Japan 106-0047</p>
+						<p>Phone +81 3 4560 2331 | www.autorod.com </p>
+					</div>
+			</div>
+			<div class="contenttt notice_aw">
+				<h3> &nbsp;</h3>
+				<ul class="notice_aw2">
+                    <li class="nobfic">Autorod has designed its credit limit mechanism in a manner that it allows the member to continue making maximum purchase throughout the year, for e.g.:</li>
+                    <li class="nobf">
+                        <ul>
+                            <li>We have a Deluxe Member having a credit limit of $25,000</li>
+                            <li> Out of this credit limit, he bids for a car worth $15,000. If the bid is won, the $15,000 will be deducted from his account, leaving him with a remaining credit balance of $10,000. </li>
+                            <li> The deducted credit amount will automatically reimburse back in his account when he makes payment of his purchased vehicle.</li>
+                            <li>For instance, as per his invoice, he has to pay 50% of the total amount which is $7500. Upon payment, this $7500 will be added in his credit limit reimbursing it to $42500 ($10000+$7500). </li>
+                            <li> If the member fails to make any payment(s) beyond its grace days, his credit limit will be halted and will not be able to buy any further vehicles till he does not clear his previous dues. </li>
+                        </ul>
+                    </li>
+                </ul>
+				<h4>UPGRADING TO ANOTHER MEMBERSHIP TIER:</h4>
+				<p>The members are given the option of upgrading to the next tier by paying the security deposit amount required for the particular tier. For instance: </p>
+				<ul>
+                    <li> A Standard Member wishes to upgrade to Deluxe Membership. At Standard, the security deposit amount required is $1000 whereas for Deluxe it is $5,000. The Standard Member may pay an additional $4000 and get his tier upgraded. Once the tier gets upgraded, his rewards, benefits, discounts and credit limit will increase accordingly. </li>
+                </ul>
+				<h4>CANCELLATION OF MEMBERSHIP:</h4>
+				<ul>
+                    <li> Autorod retains the right to cancel any membership in the event of any breach of the membership Terms and Conditions or for any other reason that Autorod may consider as misuse or abuse of membership at Autorod’s discretion. </li>
+                    <li> Upon cancellation, the member’s security deposit will be returned or held as per the terms decided.</li>
+                </ul>
+				<div class="border-bottom"></div>
+			</div>
+			<!--<div class="footerr">
+				<p>The prices quoted are an estimate and will be ﬁnalized after the bid is won</p>
+			</div>-->
+		</div>
+	</div>
+</div>

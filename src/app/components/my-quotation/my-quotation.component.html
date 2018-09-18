@@ -1,0 +1,521 @@
+<app-header></app-header>
+<div class="myquotation-page noti-bid-car">
+  <div class="agent_s_sec_three bidding-page car-won agnt-notif-content carwcarl-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="record_table">
+            <div class="tabs_panels home-tb">
+              <ul class="tabs_panels_3 tabs_panels_list" id="tabs">
+                <li class="">
+                    <a href="javascript:;" id="tab2">
+                    <strong> Un-Sent</strong>
+                    <span class="vals" *ngIf="displaytable.unsendtable">
+                      {{ objQuotations.UnSentQuotationList.length }}
+                    </span>
+                    <span *ngIf="!displaytable.unsendtable">
+                      0
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;" id="tab1">
+                    <strong>Sent</strong>
+                    <span class="vals" *ngIf="displaytable.senttable">
+                      {{ objQuotations.SentQuotationList.length }}
+                    </span>
+                    <span class="vals" *ngIf="!displaytable.senttable">
+                      0
+                    </span>
+                  </a>
+                </li> 
+                <li>
+                  <a href="javascript:;" id="tab3">
+                    <strong>Booked</strong>
+                    <span class="vals" *ngIf="displaytable.bookedtable">
+                      {{ objQuotations.BookedQuotationList.length }}
+                    </span>
+                    <span class="vals" *ngIf="!displaytable.bookedtable">
+                      0
+                    </span>
+                  </a>
+                </li>
+              </ul>
+              <div class="tab_content tabcontainer home-tb car-lost-tb-cont unsenttb" id="tab2C">
+                
+                <div class="row" *ngIf="displaytable.unsendtable">
+                  <div class="col-md-12 col-xs-12">
+                    <div class="accordion" *ngFor="let item of objQuotations.UnSentQuotationList; index as i ">
+                      <h4 class="accordion-toggle active">
+                        <div class="unsenttb-cont">
+                          <span class="orderidnum">
+                            <span class="orderidval">{{ item.QuotationName }} {{ i + 1}}</span>
+                          </span>
+                          <div class="quotinf">
+                            <span class="ordet">Create Date: {{ item.QuotationCreatedDate | amUtc | amLocal | amDateFormat: 'YYYY-MM-DD'}}</span>
+                            <span class="cnt">{{ item.QuotationDetailList.length }}</span>
+                            <button class="addmr" (click)="openAuctionPage(item)">Add more car</button>
+                            <button class="genlink" (click)="showGenerateLinkPopup(item.EncryptedQuotationId)">Generate Link</button>
+                          </div>
+                        </div>
+                      </h4>
+                      <div class="accordion-content" style="display: block;">
+                        <div class="dvdt-sent unsent">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Vehicle Specification</th>
+                                <th>Lot No.</th>
+                                <th>Chassis#</th>
+                                <th>Auction House</th>
+                                <th>Engine CC</th>
+                                <th>Mileage</th>
+                                <th>Start &
+                                  <span>Sold For</span>
+                                </th>
+                                <th>Average
+                                  <span>Price</span>
+                                </th>
+                                <th style="text-align:center;">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let row of item.QuotationDetailList; let k = index">
+                                <td class="vehicldv-td">
+                                  <div class="vehicldv-tddv">
+                                    <div class="vehicldv">
+                                      <a data-fancybox href="{{ row.CarImage | splitimage }}" *ngIf="row.CarImage">
+                                        <img src="{{ row.CarImage | splitimage }}">
+                                      </a>
+                                      <a data-fancybox href="./assets/images/no-image.png" *ngIf="!row.CarImage">
+                                        <img src="./assets/images/no-image.png" style="width: 90%; margin-bottom: 5px; ">
+                                      </a>
+                                    </div>
+                                    <div class="vehicldv-inf">
+                                      <h4 title="{{ row.MakerName }} {{ row.ModelName }}">{{ row.MakerName }} {{ row.ModelName }}
+                                      </h4>
+                                      <h5>{{ row.ModelYear }}</h5>
+                                        <h5>
+                                            <span class="auction_date">{{ row.AuctionDate | date : 'dd.MM.yyyy'}}
+                                              <span class="auc_time"> {{ row.AuctionDate | customtime }} </span>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <strong class="quotdtst">{{ row.LotNumber }}</strong>
+
+                                </td>
+                                <td>
+                                  <strong class="quotdtst">{{ row.ChassisNumber }}</strong>
+                                </td>
+                                <td>
+                                  <strong class="quotdtst" title="{{ row.AuctionHouseName }}">{{ row.AuctionHouseName }}
+                                  </strong>
+                                </td>
+                                <td>
+                                  <strong class="quotdtst">
+                                    {{ row.EngineCC | roundoffhtmlnumber | number }} CC
+                                  </strong>
+                                </td>
+
+                                <td>
+                                  <strong class="quotdtst">{{ row.Mileage | roundoffhtmlnumber | number }} KM</strong>
+                                </td>
+                                <td>
+                                  <strong class="quotdtst">{{ row.CurrencyCode }} {{ row.PriceStart | roundoffhtmlnumber | number }}
+                                  </strong>
+                                  <span class="quotdtsp 455">{{ row.CurrencyCode }} {{ row.PriceFinish | roundoffhtmlnumber | number }}
+                                  </span>
+                                </td>
+                                <td>
+                                  <strong class="quotdtst">{{ row.CurrencyCode }} {{ row.PriceAverage | roundoffhtmlnumber | number }}
+                                  </strong>
+                                </td>
+                                <td align="center">
+                                  <span>
+                                    <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="" (click)="selectedVehicleLink(row)" data-original-title="Edit">
+                                      <img src="/assets/images/edit-icn.png">
+                                    </a>
+                                  </span>
+                                  <!-- <span class="mvmenu" *ngIf="objQuotations.UnSentQuotationList.length > 0">
+
+                                    <a *ngIf=" objQuotations.UnSentQuotationList.length > 1 " href="javascript:;" data-toggle="tooltip" data-placement="top"
+                                      title="" data-original-title="Move">
+                                      <img src="/assets/images/move-icon.png">
+                                    </a>
+                                    <ul class="inner-menu">
+                                      <li *ngFor="let ulItem of objQuotations.UnSentQuotationList; let j = index">
+                                        <a *ngIf="ulItem.EncryptedQuotationId != item.EncryptedQuotationId;" href="javascript:;" (click)="showMoveConfirmPopup(ulItem.EncryptedQuotationId, row.EncryptedQuotationItemId);">{{ item.QuotationName }} {{ j + 1}}</a>
+                                      </li>
+                                    </ul>
+                                  </span> -->
+
+                                  <span>
+                                    <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="" (click)="showDeleteConfirmPopup(row.EncryptedQuotationItemId);">
+                                      <img src="/assets/images/delete_icon.png">
+                                    </a>
+                                  </span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="agent_s_sec_three my-favourite-page " *ngIf="objQuotations.UnSentQuotationList.length == 0">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-lg-12 ">
+                            <div class="myfvpagedt hglt mfvsect">
+                              <br>
+                              <span>No Records Exists!</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row no-record-found" *ngIf="!displaytable.unsendtable" align="center">
+                  No Record Found
+                </div>
+              </div>
+            </div>
+            <div class="tab_content tabcontainer home-tb senttb" id="tab1C">
+              <div class="row" *ngIf="displaytable.senttable">
+                <div class="col-md-12 col-xs-12">
+                  <div class="accordion" *ngFor="let item of objQuotations.SentQuotationList; let i = index">
+                    <h4 class="accordion-toggle active">
+                      <div class="senttb-cont">
+                        <span class="orderidnum">
+                          <span class="orderidval">{{ item.QuotationName }} {{ i + 1}}</span>
+                        </span>
+                        <div class="quotinf">
+                          <span class="ordet">Sent Date: {{ item.QuotationSentDate | amUtc | amLocal | amDateFormat: 'YYYY-MM-DD'}}</span>
+                          <span class="cnt">{{ item.QuotationDetailList.length }}</span>
+                        </div>
+                      </div>
+                    </h4>
+                    <div class="accordion-content" style="display: block;">
+                      <div class="dvdt-sent ">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Vehicle Specification</th>
+                              <th>Chassis#
+                                <span>/Mileage</span>
+                              </th>
+                              <th>Auction House
+                                <span>/Lot Number</span>
+                              </th>
+                              <th>Package
+                                <span>Plan</span>
+                              </th>
+                              <th>Bid Price
+                                <span>/FOB of Unit</span>
+                              </th>
+                              <th>Sent Date</th>
+                              <th>View Date</th>
+                              <th>
+                                <span>View by</span> Customer</th>
+                              <th>
+                                <span>Booking</span>Status</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let row of item.QuotationDetailList; let k = index">
+                              <td class="vehicldv-td">
+                                <div class="vehicldv-tddv">
+                                  <div class="vehicldv">
+                                    <a data-fancybox href="{{ row.CarImage | splitimage }}" *ngIf="row.CarImage">
+                                      <img src="{{ row.CarImage | splitimage }}">
+                                    </a>
+                                    <a data-fancybox href="./assets/images/no-image.png" *ngIf="!row.CarImage">
+                                      <img src="./assets/images/no-image.png" style="width: 90%; margin-bottom: 5px; ">
+                                    </a>
+                                  </div>
+                                  <div class="vehicldv-inf">
+                                    <h4 title="{{ row.MakerName }} {{ row.ModelName }}" [style.margin-left.px]="5">{{ row.MakerName }} {{ row.ModelName }}</h4>
+                                    <h5 [style.margin-left.px]="5">{{ row.ModelYear }}</h5>
+                                    <h5 [style.margin-left.px]="5">
+                                      <span class="auction_date">{{ row.AuctionDate | date : 'dd.MM.yyyy'}}
+                                          <span class="auc_time"> {{ row.AuctionDate | customtime }} </span>
+                                        </span>
+                                    </h5>
+                                    <ul>
+                                      <li>
+                                        <span>Year</span>
+                                      </li>
+                                      <li>
+                                        <strong>{{ row.ModelYear }}</strong>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <strong class="quotdtst">{{ row.ChassisNumber }}</strong>
+                                <span class="quotdtsp">{{ row.Mileage | roundoffhtmlnumber | number }} KM</span>
+                              </td>
+                              <td>
+                                <strong class="quotdtst" title="{{ row.AuctionHouseName }}">{{ row.AuctionHouseName }}</strong>
+                                <span class="quotdtsp">{{ row.LotNumber }}</span>
+                              </td>
+                              <td>
+                                <strong class="quotdtst">{{ row.PackageName }}</strong>
+                                <span class="quotdtsp"> {{ row.CurrencyCode }} {{ row.CNF | roundoffhtmlnumber | number }}</span>
+                              </td>
+                              <td>
+                                <strong class="quotdtspcr">{{ row.CurrencyCode }}</strong>
+                                <strong class="quotdtst">{{ row.BidPrice | roundoffhtmlnumber | number }}</strong>
+                                <span class="quotdtsp">{{ row.CurrencyCode }} {{ row.FOB | roundoffhtmlnumber | number }}</span>
+                              </td>
+                              <td>
+                                <strong class="quotdtst">{{ row.SentDate | amUtc | amLocal | amDateFormat: 'YYYY-MM-DD'}}</strong>
+                              </td>
+                              <td>
+                                <strong class="quotdtst" *ngIf="row.ViewDate != null">{{ row.ViewDate | amUtc | amLocal | amDateFormat: 'YYYY-MM-DD'}}</strong>
+                                <strong *ngIf="row.ViewDate == null"> -- </strong>
+                              </td>
+                              <td *ngIf="row.IsViewed; else elseBlock">
+                                <i class="fa fa-eye viewic" aria-hidden="true"></i>
+                                <strong class="view-yes">Yes</strong>
+                              </td>
+                              <ng-template #elseBlock>
+                                <td>
+                                  <i class="fa fa-eye-slash viewic" aria-hidden="true"></i>
+                                  <strong>No</strong>
+                                </td>
+                              </ng-template>
+                              <td *ngIf="row.IsBooked; else elseBlock2">
+                                <span class="bookedsty">
+                                  <i class="fa fa-check-circle" aria-hidden="true"></i> Yes</span>
+                              </td>
+                              <ng-template #elseBlock2>
+                                <td>
+                                  <span class="bookedstn">
+                                    <i class="fa fa-times-circle" aria-hidden="true"></i> No</span>
+                                </td>
+                              </ng-template>
+                              <td>
+                                
+                                <button class="updt-gnr-btn" (click)="showorderdetail(row);">Proceed to Order</button>
+                                <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="" (click)="showDeleteConfirmPopup(row.EncryptedQuotationItemId);" [style.margin-left.px]="5">
+                                  <img src="/assets/images/delete_icon.png">
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="agent_s_sec_three my-favourite-page " *ngIf="objQuotations.SentQuotationList.length == 0">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-lg-12 ">
+                          <div class="myfvpagedt hglt mfvsect">
+                            <br>
+                            <span>No Records Exists!</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row no-record-found" *ngIf="!displaytable.senttable" align="center">
+                No Record Found
+              </div>
+            </div>
+            <div class="tab_content tabcontainer home-tb senttb" id="tab3C">
+              <div class="row no-record-found" *ngIf="!displaytable.bookedtable" align="center">
+                No Record Found
+              </div>  
+              <div class="row" *ngIf="displaytable.bookedtable">
+                  <div class="col-md-12 col-xs-12">
+                    <div class="accordion" *ngFor="let item of objQuotations.BookedQuotationList; let i = index">
+                      <h4 class="accordion-toggle active">
+                        <div class="senttb-cont">
+                          <span class="orderidnum">
+                            <span class="orderidval">{{ item.QuotationName }} {{ i + 1}}</span>
+                          </span>
+                          <div class="quotinf">
+                            <span class="ordet">Sent Date: {{ item.QuotationSentDate | amUtc | amLocal | amDateFormat: 'YYYY-MM-DD'}}</span>
+                            <span class="cnt">{{ item.QuotationDetailList.length }}</span>
+                          </div>
+                        </div>
+                      </h4>
+                      <div class="accordion-content" style="display: block;">
+                        <div class="dvdt-sent ">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Vehicle Specification</th>
+                                <th>Chassis#
+                                  <span>/Mileage</span>
+                                </th>
+                                <th>Auction House
+                                  <span>/Lot Number</span>
+                                </th>
+                                <th>Package
+                                  <span>Plan</span>
+                                </th>
+                                <th>Bid Price
+                                  <span>/FOB of Unit</span>
+                                </th>
+                                <th>Sent Date</th>
+                                <th>View Date</th>
+                                <th>
+                                  <span>View by</span> Customer</th>
+                                <th>
+                                  <span>Booking</span>Status</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let row of item.QuotationDetailList; let k = index">
+                                <td class="vehicldv-td">
+                                  <div class="vehicldv-tddv">
+                                    <div class="vehicldv">
+                                      <a data-fancybox href="{{ row.CarImage | splitimage }}" *ngIf="row.CarImage">
+                                        <img src="{{ row.CarImage | splitimage }}">
+                                      </a>
+                                      <a data-fancybox href="./assets/images/no-image.png" *ngIf="!row.CarImage">
+                                        <img src="./assets/images/no-image.png" style="width: 90%; margin-bottom: 5px; ">
+                                      </a>
+                                    </div>
+                                    <div class="vehicldv-inf">
+                                      <h4 title="{{ row.MakerName }} {{ row.ModelName }}" [style.margin-left.px]="5">{{ row.MakerName }} {{ row.ModelName }}
+                                      </h4>
+                                      <h5 [style.margin-left.px]="5">{{ row.ModelYear }}</h5>
+                                      <h5 [style.margin-left.px]="5">
+                                          <span class="auction_date">{{ row.AuctionDate | date : 'dd.MM.yyyy'}}
+                                            <span class="auc_time"> {{ row.AuctionDate | customtime }} </span>
+                                          </span>
+                                      </h5>
+                                      <ul>
+                                        <li>
+                                          <span>Year</span>
+                                        </li>
+                                        <li>
+                                          <strong>{{ row.ModelYear }}</strong>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <strong class="quotdtst">{{ row.ChassisNumber }}</strong>
+                                  <span class="quotdtsp">{{ row.Mileage | roundoffhtmlnumber | number }} KM</span>
+                                </td>
+                                <td>
+                                  <strong class="quotdtst" title="{{ row.AuctionHouseName }}">{{ row.AuctionHouseName }}</strong>
+                                  <span class="quotdtsp">{{ row.LotNumber }}</span>
+                                </td>
+                                <td>
+                                  <strong class="quotdtst">{{ row.PackageName }}</strong>
+                                  <span class="quotdtsp"> {{ row.CurrencyCode }} {{ row.CNF | roundoffhtmlnumber | number }}</span>
+                                </td>
+                                <td>
+                                  <strong class="quotdtspcr">{{ row.CurrencyCode }}</strong>
+                                  <strong class="quotdtst">{{ row.BidPrice | roundoffhtmlnumber | number }}</strong>
+                                  <span class="quotdtsp">{{ row.CurrencyCode }} {{ row.FOB | roundoffhtmlnumber | number }}</span>
+                                </td>
+                                <td>
+                                  <strong class="quotdtst">{{ row.SentDate | amUtc | amLocal | amDateFormat: 'YYYY-MM-DD'}}</strong>
+                                </td>
+                                <td>
+                                  <strong class="quotdtst" *ngIf="row.ViewDate != null">{{ row.ViewDate | amUtc | amLocal | amDateFormat: 'YYYY-MM-DD'}}</strong>
+                                  <strong *ngIf="row.ViewDate == null"> -- </strong>
+                                </td>
+                                <td *ngIf="row.IsViewed; else elseBlock">
+                                  <i class="fa fa-eye viewic" aria-hidden="true"></i>
+                                  <strong class="view-yes">Yes</strong>
+                                </td>
+                                <ng-template #elseBlock>
+                                  <td>
+                                    <i class="fa fa-eye-slash viewic" aria-hidden="true"></i>
+                                    <strong>No</strong>
+                                  </td>
+                                </ng-template>
+                                <td *ngIf="row.IsBooked; else elseBlock2">
+                                  <span class="bookedsty">
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i> Yes</span>
+                                </td>
+                                <ng-template #elseBlock2>
+                                  <td>
+                                    <span class="bookedstn">
+                                      <i class="fa fa-times-circle" aria-hidden="true"></i> No</span>
+                                  </td>
+                                </ng-template>
+                                <td>
+                                  <button class="updt-gnr-btn" (click)="showorderdetail(row);">Proceed to Order</button>
+                                  <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="" (click)="showDeleteConfirmPopup(row.EncryptedQuotationItemId);" [style.margin-left.px]="5">
+                                    <img src="/assets/images/delete_icon.png">
+                                  </a>
+
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    
+  
+                </div>
+                
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start of Popups -->
+
+<div class="delete_order remove_box_one" id="qi_confirm_delete" style="display:none;">
+  <div class="remove_incomplete_order">
+    <h3>Are you sure you want to remove?</h3>
+    <button class="login_btn3" onclick="$.fancybox.close();">No</button>
+    <button class="login_btn3 deletecurrent" id="btn_confirm_delete" (click)="deleteQuotationItem();">Yes</button>
+  </div>
+</div>
+
+<div class="delete_order remove_box_one" id="qi_confirm_move" style="display:none;">
+  <div class="remove_incomplete_order">
+    <h3>Are you sure you want to move this vehicle to the selected quotation?</h3>
+    <button class="signup_btn3" onclick="$.fancybox.close();">No</button>
+    <button class="login_btn3 deletecurrent" id="btn_confirm_delete" (click)="moveQuotationItem();">Yes</button>
+  </div>
+</div>
+
+<div id="generate_quotation_link" class="OrderCreation em-compose-main em-compose-main-agent-bid">
+  <div class="em-compose1 em-compose1-agent-bid em-compose1-agent-gen">
+    <div class="popup_top">
+      <h3>Copy Link</h3>
+      <div class="generate-bid-field">
+        <p>To Share this file with other, Copy and paste this link.</p>
+        <label>
+          <input type="text" name="" #inputTarget readonly [value]=" shortUrl " />
+        </label>
+      </div>
+      <div class="agent-gen-btns">
+        <button class="gene-btn" id="" onclick="$.fancybox.close();">Cancel</button>
+        <button class="save-bid-btn copied" id="copy-bid-agent" [ngxClipboard]="inputTarget" (click)="copylink()">Copy to Clipboard</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End of Popups -->
+
+<app-bidprice [quotationPricingInput]="selectedQuotationPricing" [isUpdateInput]="true" (updated)="updatedBidPrice($event)"></app-bidprice>
+<app-birpriceorder [pricingorder]="pricingorderdetail" ></app-birpriceorder> 
